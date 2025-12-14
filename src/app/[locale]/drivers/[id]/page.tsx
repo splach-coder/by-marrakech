@@ -187,7 +187,7 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
 
                         {/* Booking Section */}
                         <div className="mt-auto">
-                            <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wider text-sm">
+                            <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wider">
                                 <CalendarCheck className="w-5 h-5 text-primary" />
                                 Start Your Journey
                             </h3>
