@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Tahoma', 'Inter', 'sans-serif' !important;
+}
+
+@font-face {
+  font-family: 'Tahoma';
+  src: url('/fonts/tahoma.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Tailwind v4 uses @theme instead of tailwind.config.ts */
+@theme {
+  /* Colors */
+  --color-primary: #912b2b;
+  --color-primary-dark: #8b2626;
+  --color-primary-light: #a63838;
+  
+  --color-secondary: #bfa77b;
+  --color-secondary-light: #c8bba8;
+  --color-secondary-dark: #a68f66;
+  
+  --color-background: #f8f6f2;
+  --color-background-light: #ffffff;
+  --color-background-cream: #eae4d9;
+  --color-background-cream-dark: #ebe8e0;
+  
+  --color-text-primary: #3b2f2f;
+  --color-text-secondary: #4a3f35;
+  --color-text-tertiary: #5a4a42;
+  
+  --color-border: #e8e3d8;
+  --color-border-light: #f0ede5;
+  --color-border-dark: #c8bba8;
+}
+
+@font-face {
+  font-family: 'Tahoma';
+  src: url('/fonts/tahoma.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'Tahoma', 'Inter', 'sans-serif';
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container-custom {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1280px;
+}
+
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+/* Utility Classes */
+.bg-primary { background-color: var(--color-primary); }
+.bg-primary-dark { background-color: var(--color-primary-dark); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-background { background-color: var(--color-background); }
+.bg-background-cream { background-color: var(--color-background-cream); }
+
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-text-primary { color: var(--color-text-primary); }
+.text-text-secondary { color: var(--color-text-secondary); }
+.text-text-tertiary { color: var(--color-text-tertiary); }
+
+.border-border { border-color: var(--color-border); }
+
+.hover\:bg-secondary:hover { background-color: var(--color-secondary); }
+.hover\:bg-secondary-dark:hover { background-color: var(--color-secondary-dark); }
+.hover\:text-secondary:hover { color: var(--color-secondary); }

@@ -1,0 +1,118 @@
+{
+  "SubHeader": {
+    "helpText": "Besoin d'aide?",
+    "tagline": "SOUVENIRS FAITS PAR MARRAKECH"
+  },
+  "Header": {
+    "home": "Accueil",
+    "shop": "Boutique",
+    "collections": "Collections",
+    "about": "À propos",
+    "artisans": "Nos Artisans",
+    "contact": "Contact",
+    "catalog": "Catalogue",
+    "followUs": "Suivez-nous",
+    "discover": "Découvrir Plus"
+  },
+  "home": {
+    "hero": {
+      "title": "Découvrez la Magie de Marrakech",
+      "subtitle": "Immergez-vous dans les couleurs vibrantes et la riche culture de la ville la plus enchanteresse du Maroc. Des médinas anciennes aux riads luxueux, vivez la magie de Marrakech.",
+      "ctaPrimary": "Explorez Nos Tours",
+      "ctaSecondary": "Essayez une Expérience de Luxe"
+    },
+    "about": {
+      "label": "À Propos de Marrakech",
+      "title": "Découvrez le cœur de Marrakech avec nos expériences authentiques"
+    },
+    "features": {
+      "weather": {
+        "title": "Météo Parfaite",
+        "description": "Profitez de plus de 300 jours de soleil par an avec des journées chaudes et des soirées fraîches, parfait pour explorer toute l'année."
+      },
+      "culture": {
+        "title": "Traditions Intemporelles",
+        "description": "Découvrez des coutumes séculaires, des hammams traditionnels à l'appel à la prière enchanteur résonnant à travers la ville."
+      },
+      "hospitality": {
+        "title": "Hospitalité Chaleureuse",
+        "description": "Ressentez la gentillesse authentique des habitants désireux de partager leur culture et leurs traditions avec les visiteurs."
+      }
+    },
+    "cta": {
+      "title": "Prêt à Découvrir le Maroc Authentique?",
+      "description": "Laissez nos guides locaux experts créer un voyage personnalisé à travers la magie de Marrakech et au-delà. Des souks vibrants aux paysages désertiques sereins, votre aventure marocaine inoubliable vous attend.",
+      "button": "Commencer la Planification"
+    }
+  },
+  "experiences": {
+    "label": "DÉCOUVRIR LES ACTIVITÉS",
+    "title": "Explorez les Expériences de Marrakech",
+    "filterText": "Filtrer les Expériences",
+    "viewDetails": "Voir les Détails",
+    "duration": "DURÉE",
+    "price": "PRIX",
+    "rating": "Note",
+    "guests": "Invités",
+    "featured": "À LA UNE",
+    "notForChildren": "Pas pour les enfants"
+  },
+  "tours": {
+    "label": "DÉCOUVREZ NOS CIRCUITS",
+    "title": "Découvrez le meilleur du Maroc",
+    "days": "Jours",
+    "notForChildren": "PAS POUR LES ENFANTS",
+    "featured": "À LA UNE"
+  },
+  "events": {
+    "label": "ÉVÉNEMENTS À VENIR",
+    "title": "Découvrez les Événements de Marrakech",
+    "liveNow": "EN DIRECT",
+    "upcoming": "À VENIR"
+  },
+  "testimonials": {
+    "label": "TÉMOIGNAGES CLIENTS",
+    "title": "Voyages de nos clients à Marrakech"
+  },
+  "cta": {
+    "title": "Prêt à Découvrir le Maroc Authentique?",
+    "description": "Laissez nos guides locaux experts créer un voyage personnalisé à travers la magie de Marrakech et au-delà. Des souks vibrants aux paysages désertiques sereins, votre aventure marocaine inoubliable vous attend.",
+    "button": "Commencer la Planification"
+  },
+  "footer": {
+    "description": "Découvrez la magie de Marrakech avec nos expériences locales authentiques, visites guidées et services de voyage personnalisés. Votre voyage à travers le Maroc commence ici.",
+    "downloadApp": "Télécharger Notre App",
+    "downloadOn": "Télécharger sur",
+    "getItOn": "Disponible sur",
+    "company": {
+      "title": "Entreprise",
+      "aboutUs": "À Propos",
+      "ourStory": "Notre Histoire",
+      "travelBlog": "Blog Voyage",
+      "careers": "Carrières",
+      "pressKit": "Kit Presse"
+    },
+    "tours": {
+      "title": "Nos Tours",
+      "cityTours": "Visites de la Ville",
+      "desertExpeditions": "Expéditions Désert",
+      "atlasMountains": "Montagnes de l'Atlas",
+      "cookingClasses": "Cours de Cuisine",
+      "multiDayPackages": "Forfaits Multi-jours"
+    },
+    "support": {
+      "title": "Support",
+      "contactUs": "Contactez-Nous",
+      "faqs": "FAQs",
+      "bookingInfo": "Info Réservation",
+      "privacy": "Confidentialité",
+      "terms": "Conditions Générales"
+    },
+    "paySecurely": "Paiement Sécurisé Avec",
+    "paymentDescription": "Toutes les transactions sont cryptées et traitées en toute sécurité avec le protocole SSL.",
+    "copyright": "BYMARRAKECH. Tous droits réservés.",
+    "newsletter": "Abonnez-vous à notre newsletter",
+    "emailPlaceholder": "Votre adresse email",
+    "subscribe": "S'abonner"
+  }
+}

@@ -1,0 +1,252 @@
+'use client';
+
+import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { siteData } from '@/data/siteData';
+import { useState } from 'react';
+import {
+    X,
+    ChevronRight,
+    Check,
+    Star,
+    ArrowRight,
+    Shield,
+    Clock,
+    MapPin,
+    Home,
+    Phone
+} from 'lucide-react';
+import GalleryGrid from '../../components/GalleryGrid';
+import PrivateDriverService from '../components/PrivateDriverService';
+
+interface ServicePageProps {
+    params: {
+        id: string;
+        locale: string;
+    };
+}
+
+export default function ServicePage({ params }: ServicePageProps) {
+    if (params.id === '501') {
+        return <PrivateDriverService />;
+    }
+
+    const service = siteData.services.find(s => String(s.id) === params.id);
+    const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+    if (!service) {
+        notFound();
+    }
+
+    const galleryImages = service.gallery?.map(img => img.url) || [
+        service.image.url
+    ];
+
+    const avgRating = service.reviews && service.reviews.length > 0
+        ? (service.reviews.reduce((acc, rev) => acc + rev.rating, 0) / service.reviews.length).toFixed(1)
+        : '5.0';
+
+    const handleBook = () => {
+        const message = `I'm interested in booking the service: ${service.title}`;
+        const url = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    };
+
+    return (
+        <main className="min-h-screen bg-white">
+
+            {/* 1. IMAGE FIRST (Top Section) */}
+            <section className="relative h-[60vh] md:h-[70vh] w-full">
+                <Image
+                    src={service.banner_image?.url || service.image.url}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                    priority
+                />
+                {/* Subtle gradient at bottom only for transition */}
+                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+
+                {/* Breadcrumbs Overlay */}
+                <div className="absolute top-0 left-0 p-6 md:p-10 w-full z-10">
+                    <nav className="inline-flex items-center gap-2 text-xs md:text-sm text-white/90 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full">
+                        <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
+                            <Home className="w-3.5 h-3.5 mb-0.5" />
+                            <span className="uppercase tracking-wider font-semibold">Home</span>
+                        </Link>
+                        <ChevronRight className="w-3 h-3 text-white/70" />
+                        <Link href="/services" className="hover:text-white transition-colors">
+                            <span className="uppercase tracking-wider font-semibold">Services</span>
+                        </Link>
+                        <ChevronRight className="w-3 h-3 text-white/70" />
+                        <span className="text-white font-serif font-medium truncate max-w-[150px] md:max-w-none">
+                            {service.title}
+                        </span>
+                    </nav>
+                </div>
+            </section>
+
+            {/* 2. DATA / CONTENT SECTION */}
+            <section className="relative -mt-20 z-10 px-4 md:px-0 pb-20">
+                <div className="container-custom max-w-5xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-stone-100"
+                    >
+                        {/* Header Info */}
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8 border-b border-stone-100 pb-8">
+                            <div>
+                                <div className="flex items-center gap-2 text-sm text-primary font-bold uppercase tracking-wider mb-3">
+                                    <Star className="w-4 h-4 fill-primary" />
+                                    <span>Premium Service</span>
+                                </div>
+                                <h1 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                                    {service.title}
+                                </h1>
+                                <div className="flex items-center gap-4 text-gray-500">
+                                    <div className="flex items-center gap-1.5">
+                                        <Clock className="w-4 h-4 text-primary" />
+                                        <span>24/7 Available</span>
+                                    </div>
+                                    <div className="flex items-center gap-1.5">
+                                        <MapPin className="w-4 h-4 text-primary" />
+                                        <span>Morocco Wide</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* CTAs */}
+                            <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
+                                <button
+                                    onClick={handleBook}
+                                    className="px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2"
+                                >
+                                    <span>Book Now</span>
+                                    <ArrowRight className="w-4 h-4" />
+                                </button>
+                                <span className="text-sm text-gray-400 font-medium">
+                                    Contact for price
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Description & Details */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                            <div className="lg:col-span-2">
+                                <h2 className="text-xl font-bold text-gray-900 mb-4">Description</h2>
+                                <p className="text-lg text-gray-600 leading-relaxed font-light mb-8">
+                                    {service.description}
+                                </p>
+
+                                <h2 className="text-xl font-bold text-gray-900 mb-4">Service Highlights</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {service.highlights.map((highlight, index) => (
+                                        <div key={index} className="flex items-start gap-3 p-3 bg-stone-50 rounded-lg">
+                                            <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                                            <span className="text-gray-700">{highlight}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Sidebar Info */}
+                            <div className="lg:col-span-1 space-y-6">
+                                <div className="bg-[#faf9f6] p-6 rounded-2xl">
+                                    <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+                                        <Shield className="w-5 h-5 text-primary" />
+                                        Why Choose Us
+                                    </h3>
+                                    <ul className="space-y-3">
+                                        <li className="text-sm text-gray-600 flex gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                                            Professional Drivers
+                                        </li>
+                                        <li className="text-sm text-gray-600 flex gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                                            Modern Vehicles
+                                        </li>
+                                        <li className="text-sm text-gray-600 flex gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                                            Fully Insured
+                                        </li>
+                                        <li className="text-sm text-gray-600 flex gap-2">
+                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
+                                            Fix Price
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* 3. SIMPLE GALLERY */}
+            <section className="py-12 bg-white">
+                <div className="container-custom max-w-5xl mx-auto">
+                    <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">
+                        Gallery
+                    </h2>
+                    <GalleryGrid images={galleryImages} onImageClick={setSelectedImage} />
+                </div>
+            </section>
+
+            {/* 4. REVIEWS */}
+            {service.reviews && service.reviews.length > 0 && (
+                <section className="py-16 bg-[#faf9f6]">
+                    <div className="container-custom max-w-5xl mx-auto">
+                        <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">
+                            Recent Reviews
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {service.reviews.map((review, index) => (
+                                <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-stone-100">
+                                    <div className="flex gap-1 mb-3">
+                                        {[...Array(5)].map((_, i) => (
+                                            <Star key={i} className={`w-3.5 h-3.5 ${i < review.rating ? 'fill-primary text-primary' : 'text-gray-200'}`} />
+                                        ))}
+                                    </div>
+                                    <p className="text-gray-600 text-sm mb-4 leading-relaxed">"{review.text}"</p>
+                                    <div className="font-bold text-gray-900 text-sm">{review.name}</div>
+                                    <div className="text-xs text-gray-400">{review.country}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            )}
+
+            {/* LIGHTBOX */}
+            <AnimatePresence>
+                {selectedImage !== null && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center"
+                        onClick={() => setSelectedImage(null)}
+                    >
+                        <button
+                            onClick={() => setSelectedImage(null)}
+                            className="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                        >
+                            <X className="w-6 h-6 text-white" />
+                        </button>
+                        <div className="relative w-full h-full max-w-5xl max-h-[90vh] p-8 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+                            <Image
+                                src={galleryImages[selectedImage]}
+                                alt="Gallery"
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </main>
+    );
+}

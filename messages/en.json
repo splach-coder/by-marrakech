@@ -1,0 +1,134 @@
+{
+  "SubHeader": {
+    "helpText": "Can We Help?",
+    "tagline": "MEMORIES MADE BY MARRAKECH"
+  },
+  "Header": {
+    "home": "Home",
+    "shop": "Shop",
+    "marrakech": "Marrakech",
+    "about": "About",
+    "artisans": "Our Artisans",
+    "contact": "Contact",
+    "catalog": "Catalog",
+    "followUs": "Follow Us",
+    "discover": "Discover More"
+  },
+  "home": {
+    "hero": {
+      "title": "Discover Morocco with ByMarrakech",
+      "subtitle": "Your trusted travel agency offering authentic tours, excursions, and experiences across Morocco. From Marrakech to the Sahara Desert, we create unforgettable journeys.",
+      "ctaPrimary": "Explore Our Tours",
+      "ctaSecondary": "View Experiences"
+    },
+    "about": {
+      "label": "About ByMarrakech",
+      "title": "Your Trusted Morocco Travel Agency"
+    },
+    "features": {
+      "weather": {
+        "title": "Perfect Weather",
+        "description": "Enjoy over 300 days of sunshine annually with warm days and cool evenings, perfect for exploring year-round."
+      },
+      "culture": {
+        "title": "Timeless Traditions",
+        "description": "Experience centuries-old customs, from traditional hammams to the enchanting call to prayer echoing across the city."
+      },
+      "hospitality": {
+        "title": "Warm Hospitality",
+        "description": "Feel welcomed by the genuine kindness of locals eager to share their culture and traditions with visitors."
+      }
+    },
+    "cta": {
+      "title": "Ready to Experience Authentic Morocco?",
+      "description": "Let our expert local guides create a personalized journey through the magic of Marrakech and beyond. From vibrant souks to serene desert landscapes, your unforgettable Moroccan adventure awaits.",
+      "button": "Start Planning"
+    }
+  },
+  "experiences": {
+    "label": "DISCOVER ACTIVITIES",
+    "title": "Explore Marrakech Experiences",
+    "filterText": "Filter Experiences",
+    "viewDetails": "View Details",
+    "duration": "DURATION",
+    "price": "PRICE",
+    "rating": "Rating",
+    "guests": "Guests",
+    "featured": "FEATURED",
+    "notForChildren": "Not for children"
+  },
+  "tours": {
+    "label": "DISCOVER OUR TOURS",
+    "title": "Experience the best of Morocco",
+    "days": "Days",
+    "notForChildren": "NOT FOR CHILDRENS",
+    "featured": "FEATURED"
+  },
+  "events": {
+    "label": "UPCOMING EVENTS",
+    "title": "Explore Marrakech Events",
+    "liveNow": "LIVE NOW",
+    "upcoming": "UPCOMING"
+  },
+  "testimonials": {
+    "label": "CLIENT STORIES",
+    "title": "Clients journeys in Marrakech"
+  },
+  "cta": {
+    "title": "Ready to Experience Authentic Morocco?",
+    "description": "Let our expert local guides create a personalized journey through the magic of Marrakech and beyond. From vibrant souks to serene desert landscapes, your unforgettable Moroccan adventure awaits.",
+    "button": "Start Planning"
+  },
+  "footer": {
+    "description": "ByMarrakech - Your trusted Morocco travel agency offering authentic tours, excursions, services, and cultural experiences. From Marrakech to the Sahara, we create unforgettable journeys.",
+    "downloadApp": "Download Our App",
+    "downloadOn": "Download on the",
+    "getItOn": "Get it on",
+    "company": {
+      "title": "Company",
+      "aboutUs": "About Us",
+      "ourStory": "Our Story",
+      "travelBlog": "Travel Blog",
+      "careers": "Careers",
+      "pressKit": "Press Kit"
+    },
+    "tours": {
+      "title": "Our Tours",
+      "cityTours": "City Tours",
+      "desertExpeditions": "Desert Expeditions",
+      "atlasMountains": "Atlas Mountains",
+      "cookingClasses": "Cooking Classes",
+      "multiDayPackages": "Multi-day Packages"
+    },
+    "support": {
+      "title": "Support",
+      "contactUs": "Contact Us",
+      "faqs": "FAQs",
+      "bookingInfo": "Booking Information",
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions"
+    },
+    "paySecurely": "Pay Securely With",
+    "paymentDescription": "All transactions are encrypted and securely processed with SSL protocol.",
+    "copyright": "BYMARRAKECH. All rights reserved.",
+    "newsletter": "Subscribe to our newsletter",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe"
+  },
+  "booking": {
+    "title": "Book Your Experience",
+    "subtitle": "Easy · Fast · Secure via WhatsApp",
+    "step1": "Choose Your Experience",
+    "step2": "Travel Details",
+    "step3": "Your Information",
+    "step4": "Additional Details",
+    "submit": "Send via WhatsApp",
+    "name": "Full Name",
+    "email": "Email",
+    "phone": "Phone Number",
+    "date": "Preferred Date",
+    "travelers": "Number of Travelers",
+    "message": "Special Requests",
+    "preferences": "Preferences"
+  }
+}
