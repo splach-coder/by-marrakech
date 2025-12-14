@@ -20,7 +20,7 @@ export default function Hero({
   subtitle = 'Experience the vibrant colors, rich culture, and warm hospitality of Morocco\'s most enchanting city. From ancient medinas to luxurious riads, Marrakech offers an unforgettable journey into the heart of North Africa.',
   ctaPrimary = 'Explore Our Tours',
   ctaSecondary = 'Try a Luxury Experience',
-  backgroundImage = '/images/hero-background.jpg',
+  backgroundImage = '/images/marrakech/hero.jpg',
 }: HeroProps) {
   const locale = useLocale();
   const [mounted, setMounted] = useState(false);

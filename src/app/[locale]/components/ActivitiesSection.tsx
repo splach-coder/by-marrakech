@@ -62,18 +62,21 @@ export default function ActivitiesSection({ activities }: ActivitiesSectionProps
                     </div>
                 </motion.div>
 
-                {/* Expandable Bars Layout */}
-                <div className="flex gap-2 h-[600px]">
+                {/* Layout: Vertical Stack on Mobile, Expandable Row on Desktop */}
+                <div className="flex flex-col md:flex-row gap-4 md:gap-2 h-auto md:h-[600px]">
                     {displayActivities.map((activity, index) => {
                         const isHovered = hoveredIndex === index;
-                        const width = isHovered ? '40%' : '15%';
+                        // Mobile: always full width, Desktop: dynamic width
+                        const width = typeof window !== 'undefined' && window.innerWidth < 768
+                            ? '100%'
+                            : (isHovered ? '40%' : '15%');
 
                         return (
                             <motion.div
                                 key={activity.id}
-                                className="relative rounded-2xl overflow-hidden cursor-pointer group"
+                                className="relative rounded-2xl overflow-hidden cursor-pointer group h-[250px] md:h-full w-full md:w-auto"
                                 style={{ width }}
-                                animate={{ width }}
+                                animate={{ width }} // Only animates on desktop effectively due to conditional logic
                                 transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(0)}
@@ -92,65 +95,58 @@ export default function ActivitiesSection({ activities }: ActivitiesSectionProps
 
                                     {/* Content */}
                                     <div className="relative h-full flex flex-col justify-end p-6">
-                                        {/* Collapsed State - Vertical Title */}
-                                        {!isHovered && (
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: 1 }}
-                                                exit={{ opacity: 0 }}
-                                                transition={{ duration: 0.3 }}
-                                                className="absolute inset-0 flex items-end justify-center pb-8"
-                                            >
-                                                <h3
-                                                    className="text-white font-bold text-xl writing-mode-vertical transform rotate-180 whitespace-nowrap"
-                                                    style={{ writingMode: 'vertical-rl' }}
+                                        {/* Mobile view or Desktop Hovered */}
+                                        <div className="md:hidden block">
+                                            <h3 className="text-2xl font-bold text-white mb-2">{activity.title}</h3>
+                                            <div className="flex items-center gap-2 text-white/90 text-sm">
+                                                <span>Explore</span> <ArrowRight className="w-4 h-4" />
+                                            </div>
+                                        </div>
+
+                                        {/* Desktop Only Logic */}
+                                        <div className="hidden md:block">
+                                            {/* Collapsed State - Vertical Title */}
+                                            {!isHovered && (
+                                                <motion.div
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: 1 }}
+                                                    exit={{ opacity: 0 }}
+                                                    transition={{ duration: 0.3 }}
+                                                    className="absolute inset-0 flex items-end justify-center pb-8"
                                                 >
-                                                    {activity.title}
-                                                </h3>
-                                            </motion.div>
-                                        )}
+                                                    <h3
+                                                        className="text-white font-bold text-xl writing-mode-vertical transform rotate-180 whitespace-nowrap"
+                                                        style={{ writingMode: 'vertical-rl' }}
+                                                    >
+                                                        {activity.title}
+                                                    </h3>
+                                                </motion.div>
+                                            )}
 
-                                        {/* Expanded State - Full Details */}
-                                        {isHovered && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: 20 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: 20 }}
-                                                transition={{ duration: 0.3, delay: 0.2 }}
-                                                className="space-y-4"
-                                            >
-
-                                                {/* Title */}
-                                                <h3 className="text-3xl font-bold text-white leading-tight">
-                                                    {activity.title}
-                                                </h3>
-
-                                                {/* Description */}
-                                                <p className="text-white/80 text-sm leading-relaxed line-clamp-3">
-                                                    {activity.description}
-                                                </p>
-
-                                                {/* Location */}
-                                                {activity.locations && activity.locations.length > 0 && (
-                                                    <div className="flex items-center gap-2 text-white/90">
-                                                        <MapPin className="w-4 h-4" />
-                                                        <span className="text-sm">
-                                                            {activity.locations.slice(0, 2).map((loc: any) =>
-                                                                typeof loc === 'string' ? loc : loc.name
-                                                            ).join(', ')}
-                                                        </span>
+                                            {/* Expanded State - Full Details */}
+                                            {isHovered && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 20 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    exit={{ opacity: 0, y: 20 }}
+                                                    transition={{ duration: 0.3, delay: 0.2 }}
+                                                    className="space-y-4"
+                                                >
+                                                    <h3 className="text-3xl font-bold text-white leading-tight">
+                                                        {activity.title}
+                                                    </h3>
+                                                    <p className="text-white/80 text-sm leading-relaxed line-clamp-3">
+                                                        {activity.description}
+                                                    </p>
+                                                    <div className="pt-4">
+                                                        <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                                                            <span>Explore</span>
+                                                            <ArrowRight className="w-4 h-4" />
+                                                        </div>
                                                     </div>
-                                                )}
-
-                                                {/* Explore Button */}
-                                                <div className="pt-4">
-                                                    <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                                        <span>Explore</span>
-                                                        <ArrowRight className="w-4 h-4" />
-                                                    </div>
-                                                </div>
-                                            </motion.div>
-                                        )}
+                                                </motion.div>
+                                            )}
+                                        </div>
                                     </div>
                                 </Link>
                             </motion.div>

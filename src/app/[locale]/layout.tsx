@@ -49,6 +49,9 @@ export const metadata = {
       'Discover authentic Moroccan experiences with expert local guides through Marrakech and beyond.',
     site: '@bymarrakech',
   },
+  icons: {
+    icon: '/icons/Artboard 1.ico',
+  },
 };
 
 function HeaderWithTranslations({ locale }: { locale: string }) {
@@ -106,7 +109,7 @@ export default function LocaleLayout({
         <SubHeader />
         <HeaderWithTranslations locale={locale} />
         <NextIntlClientProvider>{children}
-        <Footer />
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

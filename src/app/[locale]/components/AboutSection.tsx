@@ -50,7 +50,7 @@ export default function AboutSection({
     { src: aboutData.images.image1, alt: "Atlas Mountains", rotate: -3 },
     { src: aboutData.images.image2, alt: "Desert Safari", rotate: 2 },
     { src: aboutData.images.image3, alt: "Marrakech Souks", rotate: -2 },
-    { src: aboutData.images.ctaImage, alt: "Sahara Sunset", rotate: 3 },
+    { src: aboutData.images.image4, alt: "Sahara Sunset", rotate: 3 },
   ];
 
   return (
@@ -90,37 +90,38 @@ export default function AboutSection({
           </motion.div>
         </motion.div>
 
-        {/* Slanted Image Gallery */}
+        {/* Image Grid - Mobile: 2x2 Grid, Desktop: Slanted Row */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           className="relative pt-10 pb-20"
         >
-          <div className="flex flex-nowrap md:grid md:grid-cols-4 gap-6 px-4 md:px-0 overflow-x-auto md:overflow-visible pb-8 md:pb-0 scrollbar-hide">
+          <div className="grid grid-cols-2 md:flex md:flex-nowrap md:gap-6 gap-3 px-0 md:px-0">
             {images.map((img, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50, rotate: 0 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
-                  rotate: img.rotate,
+                  rotate: typeof window !== 'undefined' && window.innerWidth >= 768 ? img.rotate : 0,
                   transition: {
                     duration: 0.8,
                     delay: index * 0.1,
-                    type: "spring",
-                    stiffness: 50
                   }
                 }}
                 viewport={{ once: true }}
                 whileHover={{
                   scale: 1.05,
-                  rotate: 0,
                   zIndex: 10,
                   transition: { duration: 0.3 }
                 }}
-                className="relative flex-shrink-0 w-[280px] md:w-auto h-[350px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl"
+                className={`relative w-full h-[200px] md:w-auto md:h-[400px] rounded-xl md:rounded-2xl overflow-hidden shadow-lg md:shadow-xl md:flex-1 ${
+                  // Add specific rotations only for md screen and up via style if needed, 
+                  // but for simplicity we rely on framer motion animate prop or classes
+                  ""
+                  }`}
               >
                 <Image
                   src={img.src}
@@ -128,8 +129,6 @@ export default function AboutSection({
                   fill
                   className="object-cover"
                 />
-
-
               </motion.div>
             ))}
           </div>

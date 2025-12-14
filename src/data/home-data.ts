@@ -10,10 +10,10 @@ export const aboutData = {
         stat3: { number: "50+", label: "Unique Experiences" }
     },
     images: {
-        image1: "/images/about/marrakech-tower.jpg",
-        image2: "/images/about/marrakech-souk.jpg",
-        image3: "/images/about/marrakech-night.jpg",
-        ctaImage: "/images/about/marrakech-tower.jpg"
+        image1: "/images/marrakech/marrakech1.jpg",
+        image2: "/images/marrakech/marrakech2.jpg",
+        image3: "/images/marrakech/marrakech3.jpg",
+        image4: "/images/marrakech/marrakech4.jpg"
     },
     cta: {
         title: "Ready to Experience the Magic of Marrakech?",

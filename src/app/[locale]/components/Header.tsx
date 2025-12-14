@@ -44,8 +44,8 @@ export default function Header({ locale, translations }: HeaderProps) {
   return (
     <header
       className={`left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'fixed top-0 bg-white/90 backdrop-blur-md shadow-sm py-3'
-        : 'absolute top-10 bg-transparent py-5'
+        ? 'fixed top-0 bg-white/95 backdrop-blur-md shadow-md py-2'
+        : 'absolute bg-gradient-to-b from-black/50 to-transparent py-2 md:py-6'
         }`}
     >
       <div className="container-custom">
@@ -53,23 +53,32 @@ export default function Header({ locale, translations }: HeaderProps) {
           {/* Logo */}
           <Link href={`/${locale}`} className="flex-shrink-0 relative z-50">
             <Image
-              src="/logo.png"
+              src={isScrolled ? "/images/logo-red.png" : "/images/logo-yellow.png"}
               alt="ByMarrakech"
-              width={180}
-              height={50}
-              className={`object-contain transition-all duration-300 ${isScrolled ? 'h-10 w-auto' : 'h-12 w-auto brightness-0 invert'
+              width={200}
+              height={60}
+              className={`object-contain transition-all duration-300 ${isScrolled ? 'h-10 md:h-12 w-auto' : 'h-12 md:h-16 lg:h-20 w-auto'
                 }`}
               priority
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navigationLinks.map((link) => (
+          <nav className="hidden xl:flex items-center gap-8">
+            {[
+              { href: `/${locale}`, label: translations.home },
+              { href: `/${locale}/tours`, label: 'Tours' },
+              { href: `/${locale}/experiences`, label: 'Experiences' },
+              { href: `/${locale}/services`, label: 'Services' },
+              { href: `/${locale}/activities`, label: 'Activities' },
+              { href: `/${locale}/marrakech`, label: translations.marrakech },
+              { href: `/${locale}/about`, label: translations.about },
+              { href: `/${locale}/contact`, label: translations.contact },
+            ].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors hover:text-primary ${isScrolled ? 'text-text-primary' : 'text-white'
+                className={`text-sm font-medium uppercase tracking-wider transition-colors hover:text-secondary ${isScrolled ? 'text-text-primary' : 'text-white'
                   }`}
               >
                 {link.label}
@@ -80,32 +89,41 @@ export default function Header({ locale, translations }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-full transition-colors relative z-50 ${isScrolled
+            className={`xl:hidden p-2 rounded-full transition-colors relative z-50 ${isScrolled
               ? 'hover:bg-gray-100 text-text-primary'
               : 'hover:bg-white/10 text-white'
               }`}
             aria-label="Toggle mobile menu"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
+              <X className="w-8 h-8" />
             ) : (
-              <Menu className="w-6 h-6" />
+              <Menu className="w-8 h-8" />
             )}
           </button>
         </div>
 
         {/* Mobile Menu Overlay */}
         <div
-          className={`fixed inset-0 bg-background z-40 lg:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`fixed inset-0 bg-background z-40 xl:hidden transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
         >
-          <div className="flex flex-col items-center justify-center h-full space-y-8 p-8">
-            {navigationLinks.map((link) => (
+          <div className="flex flex-col items-center justify-center h-full space-y-6 p-8 overflow-y-auto">
+            {[
+              { href: `/${locale}`, label: translations.home },
+              { href: `/${locale}/tours`, label: 'Tours' },
+              { href: `/${locale}/experiences`, label: 'Experiences' },
+              { href: `/${locale}/services`, label: 'Services' },
+              { href: `/${locale}/activities`, label: 'Activities' },
+              { href: `/${locale}/marrakech`, label: translations.marrakech },
+              { href: `/${locale}/about`, label: translations.about },
+              { href: `/${locale}/contact`, label: translations.contact },
+            ].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-bold text-text-primary hover:text-primary transition-colors"
+                className="text-xl font-bold text-text-primary hover:text-primary transition-colors uppercase tracking-widest"
               >
                 {link.label}
               </Link>

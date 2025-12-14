@@ -58,16 +58,17 @@ export default function TestimonialsSection({
   };
 
   const currentTestimonial = testimonials[currentIndex];
+  const reviews = currentTestimonial.review.split(". ");
 
   return (
-    <section className="py-16 md:py-24 bg-background">
+    <section className="py-12 md:py-24 bg-background">
       <div className="container-custom">
-        <div className="mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-sm text-text-tertiary uppercase tracking-wider">{label}</span>
-            <ArrowDown className="w-4 h-4 text-text-tertiary" />
+        <div className="mb-8 md:mb-12">
+          <div className="flex items-center gap-2 mb-2 md:mb-4">
+            <span className="text-xs md:text-sm text-text-tertiary uppercase tracking-wider">{label}</span>
+            <ArrowDown className="w-3 h-3 md:w-4 md:h-4 text-text-tertiary" />
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">{title}</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">{title}</h2>
         </div>
 
         <div className="relative">
