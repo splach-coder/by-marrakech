@@ -4,7 +4,7 @@
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import type { BookingItem } from '@/types/booking';
-import type { Tour } from '@/data/tours';
+import type { Tour } from '@/types/tour';
 
 interface BookNowButtonProps {
   tour: Tour;
@@ -16,13 +16,13 @@ export default function BookNowButton({ tour }: BookNowButtonProps) {
 
   const handleBookNow = () => {
     const bookingItem: BookingItem = {
-      id: tour.id,
+      id: String(tour.id),
       type: 'tour',
       title: tour.title,
-      image: tour.image,
+      image: tour.image.url,
       duration: tour.duration,
       price: tour.price,
-      location: tour.location,
+      location: tour.location || tour.locations?.[0]?.name || 'Morocco',
     };
 
     // Store in localStorage

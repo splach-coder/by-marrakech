@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { siteData } from '@/data/siteData';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import {
     X,
     ChevronRight,
@@ -22,19 +22,21 @@ import GalleryGrid from '../../components/GalleryGrid';
 import PrivateDriverService from '../components/PrivateDriverService';
 
 interface ServicePageProps {
-    params: {
+    params: Promise<{
         id: string;
         locale: string;
-    };
+    }>;
 }
 
 export default function ServicePage({ params }: ServicePageProps) {
-    if (params.id === '501') {
+    const { id } = use(params);
+    const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+    if (id === '501') {
         return <PrivateDriverService />;
     }
 
-    const service = siteData.services.find(s => String(s.id) === params.id);
-    const [selectedImage, setSelectedImage] = useState<number | null>(null);
+    const service = siteData.services.find(s => String(s.id) === id);
 
     if (!service) {
         notFound();

@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
-import type { Tour } from '@/data/tours';
+import type { Tour } from '@/types/tour';
 
 interface TourCardProps {
   tour: Tour;
@@ -25,19 +25,19 @@ export default function TourCard({ tour }: TourCardProps) {
 
   return (
     <motion.div variants={cardVariants}>
-      <Link 
-        href={`/${locale}/tours/${tour.slug}`}
+      <Link
+        href={`/${locale}/tours/${tour.id}`}
         className="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
       >
         {/* Image */}
         <div className="relative h-64 overflow-hidden">
           <Image
-            src={tour.image}
+            src={tour.image.url}
             alt={tour.title}
             fill
             className="object-cover group-hover:scale-110 transition-transform duration-500"
           />
-          
+
           {/* Badges */}
           <div className="absolute top-4 left-4 flex flex-col gap-2">
             {tour.featured && (
@@ -65,7 +65,7 @@ export default function TourCard({ tour }: TourCardProps) {
           {/* Category */}
           <div className="mb-2">
             <span className="text-xs font-semibold text-secondary uppercase tracking-wider">
-              {tour.category}
+              {tour.category || tour.categories?.[0] || 'Tour'}
             </span>
           </div>
 
@@ -76,7 +76,7 @@ export default function TourCard({ tour }: TourCardProps) {
 
           {/* Short Description */}
           <p className="text-text-tertiary text-sm leading-relaxed mb-4">
-            {tour.shortDescription}
+            {tour.shortDescription || tour.description}
           </p>
 
           {/* Footer */}

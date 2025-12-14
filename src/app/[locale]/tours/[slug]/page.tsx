@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { siteData } from '@/data/siteData';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import {
   MapPin,
   Clock,
@@ -26,14 +26,15 @@ import BookingCard from '@/app/[locale]/components/BookingCard';
 import GalleryGrid from '@/app/[locale]/components/GalleryGrid';
 
 interface TourPageProps {
-  params: {
+  params: Promise<{
     slug: string;
     locale: string;
-  };
+  }>;
 }
 
 export default function TourPage({ params }: TourPageProps) {
-  const tour = siteData.tours.find(t => String(t.id) === params.slug);
+  const { slug } = use(params);
+  const tour = siteData.tours.find(t => String(t.id) === slug);
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   if (!tour) {

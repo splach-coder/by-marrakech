@@ -12,7 +12,7 @@ interface Activity {
     title: string;
     image: string;
     description: string;
-    locations: Array<{ name: string; id: number }>;
+    locations: (string | { name: string; id: number })[];
 }
 
 interface ActivitiesSectionProps {

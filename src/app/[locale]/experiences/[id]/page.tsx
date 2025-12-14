@@ -8,7 +8,7 @@ import { siteData } from '@/data/siteData';
 import Itinerary from '../../components/Itinerary';
 import GalleryGrid from '../../components/GalleryGrid';
 import BookingCard from '../../components/BookingCard';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import {
     X,
     ChevronLeft,
@@ -24,14 +24,15 @@ import {
 } from 'lucide-react';
 
 interface ExperiencePageProps {
-    params: {
+    params: Promise<{
         id: string;
         locale: string;
-    };
+    }>;
 }
 
 export default function ExperiencePage({ params }: ExperiencePageProps) {
-    const experience = siteData.excursions.find(e => String(e.id) === params.id);
+    const { id } = use(params);
+    const experience = siteData.excursions.find(e => String(e.id) === id);
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
     if (!experience) {

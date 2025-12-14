@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { siteData } from '@/data/siteData';
-import { useState } from 'react';
+import { use, useState } from 'react';
 import {
     X,
     ChevronLeft,
@@ -21,14 +21,15 @@ import {
 import GalleryGrid from '../../components/GalleryGrid';
 
 interface ActivityPageProps {
-    params: {
+    params: Promise<{
         id: string;
         locale: string;
-    };
+    }>;
 }
 
 export default function ActivityPage({ params }: ActivityPageProps) {
-    const activity = siteData.activities.find(a => String(a.id) === params.id);
+    const { id } = use(params);
+    const activity = siteData.activities.find(a => String(a.id) === id);
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
     if (!activity) {

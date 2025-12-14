@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { use } from 'react';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { motion } from 'framer-motion';
@@ -17,14 +17,15 @@ import {
 import Link from 'next/link';
 
 interface EventPageProps {
-    params: {
+    params: Promise<{
         id: string;
         locale: string;
-    };
+    }>;
 }
 
 export default function EventPage({ params }: EventPageProps) {
-    const event = eventsData.find((e) => e.id === params.id);
+    const { id } = use(params);
+    const event = eventsData.find((e) => e.id === id);
 
     if (!event) {
         notFound();
@@ -69,7 +70,7 @@ export default function EventPage({ params }: EventPageProps) {
                 <div className="absolute top-8 left-0 right-0 z-20 px-4">
                     <div className="container-custom mx-auto">
                         <Link
-                            href={`/${params.locale}/events`}
+                            href="/events"
                             className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors backdrop-blur-sm bg-black/10 px-4 py-2 rounded-full"
                         >
                             <ArrowLeft className="w-4 h-4" />
