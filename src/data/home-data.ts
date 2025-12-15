@@ -153,7 +153,7 @@ export const testimonialsData = [
         tour: 'Atlas Mountains Trek',
         rating: 5,
         review: 'Trekking through the Atlas Mountains with our guide Mohammed was the highlight of our Morocco trip. The dramatic landscapes and insights into Berber culture were unforgettable. The food was delicious, especially the lamb. Truly a 5-star experience!',
-        image: '/images/testimonial-1.jpg'
+        image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: '2',
@@ -162,7 +162,7 @@ export const testimonialsData = [
         tour: 'Marrakech Film Festival',
         rating: 5,
         review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à ByMarrakech. L\'organisation était parfaite, et nous avons découvert des endroits que nous n\'aurions jamais trouvés seuls. Merci pour tout!',
-        image: '/images/testimonial-2.jpg'
+        image: 'https://images.unsplash.com/photo-1542596594-649edbc13630?auto=format&fit=crop&w=800&q=80'
     },
     {
         id: '3',
@@ -171,7 +171,7 @@ export const testimonialsData = [
         tour: 'Desert Safari',
         rating: 5,
         review: 'The desert experience was absolutely magical! Sleeping under the stars in Agafay was a dream come true. The camel ride at sunset is a must-do. Highly recommend ByMarrakech for their professionalism.',
-        image: '/images/testimonial-3.jpg'
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'
     }
 ];
 
@@ -185,7 +185,7 @@ export const eventsData = [
         endDate: '2025-12-29',
         location: 'Marrakech',
         description: "Morocco's oldest folklore festival with music, dance, and traditions.",
-        image: '/images/festival-arts.jpg',
+        image: '/images/marrakech/marrakech.jpg',
         size: 'large'
     },
     {
@@ -195,7 +195,7 @@ export const eventsData = [
         startDate: '2025-08-03',
         endDate: '2025-08-10',
         location: 'Marrakech',
-        image: '/images/bailaimos.jpg',
+        image: '/images/marrakech/marrakech1.jpg',
         size: 'medium'
     },
     {
@@ -205,7 +205,7 @@ export const eventsData = [
         startDate: '2025-09-10',
         endDate: '2025-09-12',
         location: 'Marrakech',
-        image: '/images/ghiwani.jpg',
+        image: '/images/marrakech/hero.jpg',
         size: 'medium'
     },
     {
@@ -215,7 +215,7 @@ export const eventsData = [
         startDate: '2025-11-28',
         endDate: '2025-12-06',
         location: 'Marrakech',
-        image: '/images/film-festival.jpg',
+        image: '/images/casablanca/oussama-rahib-NNECQHl9bJc-unsplash.jpg',
         size: 'medium'
     },
     {
@@ -225,7 +225,7 @@ export const eventsData = [
         startDate: '2025-12-06',
         endDate: '2025-12-08',
         location: 'Marrakech',
-        image: '/images/coffee-festival.jpg',
+        image: '/images/food-tour/florian-d-bazac-PitkCiuzigI-unsplash.jpg',
         size: 'medium'
     }
 ];

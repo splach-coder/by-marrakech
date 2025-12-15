@@ -67,18 +67,6 @@ export default function EventPage({ params }: EventPageProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 </motion.div>
 
-                <div className="absolute top-8 left-0 right-0 z-20 px-4">
-                    <div className="container-custom mx-auto">
-                        <Link
-                            href="/events"
-                            className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors backdrop-blur-sm bg-black/10 px-4 py-2 rounded-full"
-                        >
-                            <ArrowLeft className="w-4 h-4" />
-                            <span className="text-sm font-medium">Back to Events</span>
-                        </Link>
-                    </div>
-                </div>
-
                 <div className="absolute bottom-0 left-0 right-0 z-10 pb-16 px-4">
                     <div className="container-custom mx-auto">
                         <motion.div
@@ -86,6 +74,19 @@ export default function EventPage({ params }: EventPageProps) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
+                            {/* Breadcrumbs - First element */}
+                            <nav className="inline-flex items-center gap-2 text-xs md:text-sm text-white/90 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                                <Link href="/" className="hover:text-white transition-colors">
+                                    Home
+                                </Link>
+                                <span className="text-white/50">/</span>
+                                <Link href="/events" className="hover:text-white transition-colors">
+                                    Events
+                                </Link>
+                                <span className="text-white/50">/</span>
+                                <span className="text-white font-medium truncate max-w-[200px]">{event.title}</span>
+                            </nav>
+
                             <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6 ${statusColor === 'bg-red-100 text-red-800 animate-pulse' ? 'bg-red-600 text-white' : 'bg-white/20 text-white backdrop-blur-md'}`}>
                                 {status === 'Happening Now' && <span className="w-2 h-2 rounded-full bg-white animate-pulse" />}
                                 {status}

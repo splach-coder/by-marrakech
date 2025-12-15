@@ -72,9 +72,9 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
             {/* Creative Header */}
             <div className="relative p-1">
                 <div className="absolute inset-0 bg-stone-50/50" />
-                <div className="relative flex items-center justify-between p-6 z-10">
+                <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-6 gap-4 z-10">
                     <div>
-                        <h3 className="text-2xl font-serif font-bold text-gray-900 flex items-center gap-3">
+                        <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-900 flex items-center gap-3">
                             {title}
                             {viewMode === 'map' && (
                                 <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800 animate-pulse">
@@ -85,27 +85,27 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
                     </div>
 
                     {/* Floating Tab Interaction */}
-                    <div className="relative flex bg-gray-200/50 p-1.5 rounded-full overflow-hidden backdrop-blur-sm">
+                    <div className="relative flex bg-gray-200/50 p-1 md:p-1.5 rounded-full overflow-hidden backdrop-blur-sm w-full md:w-auto">
                         {/* Sliding Background */}
                         <div
-                            className={`absolute top-1.5 bottom-1.5 rounded-full bg-white shadow-sm transition-all duration-300 ease-spring ${viewMode === 'timeline' ? 'left-1.5 w-[calc(50%-4px)]' : 'left-[50%] w-[calc(50%-4px)]'
+                            className={`absolute top-1 md:top-1.5 bottom-1 md:bottom-1.5 rounded-full bg-white shadow-sm transition-all duration-300 ease-spring ${viewMode === 'timeline' ? 'left-1 md:left-1.5 w-[calc(50%-4px)]' : 'left-[50%] w-[calc(50%-4px)]'
                                 }`}
                         />
 
                         <button
                             onClick={() => setViewMode('timeline')}
-                            className={`relative z-10 flex items-center gap-2 px-6 py-2 rounded-full text-sm font-bold transition-colors ${viewMode === 'timeline' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'
+                            className={`relative z-10 flex items-center justify-center gap-2 px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold transition-colors flex-1 md:flex-none ${viewMode === 'timeline' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'
                                 }`}
                         >
-                            <List className="w-4 h-4" />
+                            <List className="w-3 md:w-4 h-3 md:h-4" />
                             <span>Timeline</span>
                         </button>
                         <button
                             onClick={() => setViewMode('map')}
-                            className={`relative z-10 flex items-center gap-2 px-6 py-2 rounded-full text-sm font-bold transition-colors ${viewMode === 'map' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'
+                            className={`relative z-10 flex items-center justify-center gap-2 px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-bold transition-colors flex-1 md:flex-none ${viewMode === 'map' ? 'text-gray-900' : 'text-gray-500 hover:text-gray-700'
                                 }`}
                         >
-                            <MapIcon className="w-4 h-4" />
+                            <MapIcon className="w-3 md:w-4 h-3 md:h-4" />
                             <span>Map View</span>
                         </button>
                     </div>

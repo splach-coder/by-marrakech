@@ -60,7 +60,7 @@ export default function ServicePage({ params }: ServicePageProps) {
         <main className="min-h-screen bg-white">
 
             {/* 1. IMAGE FIRST (Top Section) */}
-            <section className="relative h-[60vh] md:h-[70vh] w-full">
+            <section className="relative h-[50vh] md:h-[70vh] w-full">
                 <Image
                     src={service.banner_image?.url || service.image.url}
                     alt={service.title}
@@ -72,7 +72,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
 
                 {/* Breadcrumbs Overlay */}
-                <div className="absolute top-0 left-0 p-6 md:p-10 w-full z-10">
+                <div className="absolute bottom-20 left-0 p-6 md:p-10 w-full z-10">
                     <nav className="inline-flex items-center gap-2 text-xs md:text-sm text-white/90 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full">
                         <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
                             <Home className="w-3.5 h-3.5 mb-0.5" />
@@ -91,13 +91,13 @@ export default function ServicePage({ params }: ServicePageProps) {
             </section>
 
             {/* 2. DATA / CONTENT SECTION */}
-            <section className="relative -mt-20 z-10 px-4 md:px-0 pb-20">
+            <section className="relative -mt-20 z-10 md:px-0 pb-8 md:pb-20">
                 <div className="container-custom max-w-5xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-stone-100"
+                        className="bg-white rounded-3xl shadow-xl py-8 px-4 md:p-12 border border-stone-100"
                     >
                         {/* Header Info */}
                         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8 border-b border-stone-100 pb-8">
@@ -106,7 +106,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                                     <Star className="w-4 h-4 fill-primary" />
                                     <span>Premium Service</span>
                                 </div>
-                                <h1 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                                <h1 className="text-2xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
                                     {service.title}
                                 </h1>
                                 <div className="flex items-center gap-4 text-gray-500">
@@ -188,8 +188,8 @@ export default function ServicePage({ params }: ServicePageProps) {
             </section>
 
             {/* 3. SIMPLE GALLERY */}
-            <section className="py-12 bg-white">
-                <div className="container-custom max-w-5xl mx-auto">
+            <section className="py-8 md:py-12 bg-white">
+                <div className="px-4 md:container-custom max-w-5xl mx-auto">
                     <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">
                         Gallery
                     </h2>
@@ -233,18 +233,47 @@ export default function ServicePage({ params }: ServicePageProps) {
                         onClick={() => setSelectedImage(null)}
                     >
                         <button
-                            onClick={() => setSelectedImage(null)}
-                            className="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                            onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
+                            className="absolute top-4 md:top-6 right-4 md:right-6 text-white/80 hover:text-white transition-colors z-50 bg-black/30 backdrop-blur-sm rounded-full p-2"
                         >
-                            <X className="w-6 h-6 text-white" />
+                            <X className="w-6 md:w-8 h-6 md:h-8" />
                         </button>
-                        <div className="relative w-full h-full max-w-5xl max-h-[90vh] p-8 flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
-                            <Image
-                                src={galleryImages[selectedImage]}
-                                alt="Gallery"
-                                fill
-                                className="object-contain"
-                            />
+                        <div className="relative w-full h-full max-w-7xl flex flex-col items-center justify-center">
+                            <div className="relative w-full flex-1 flex items-center justify-center">
+                                <Image
+                                    src={galleryImages[selectedImage]}
+                                    alt="Gallery"
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
+
+                            {/* Thumbnail Navigation */}
+                            <div className="w-full max-w-4xl mt-4 px-4">
+                                <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide">
+                                    {galleryImages.map((url, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
+                                            className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden snap-center transition-all ${idx === selectedImage
+                                                ? 'ring-2 ring-white scale-110'
+                                                : 'opacity-50 hover:opacity-100'
+                                                }`}
+                                        >
+                                            <Image
+                                                src={url}
+                                                alt={`Thumbnail ${idx + 1}`}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 font-medium tracking-widest text-sm bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                                {selectedImage + 1} / {galleryImages.length}
+                            </div>
                         </div>
                     </motion.div>
                 )}

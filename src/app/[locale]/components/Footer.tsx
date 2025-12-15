@@ -29,13 +29,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
           {/* Brand Column (4 cols) */}
           <div className="lg:col-span-4 flex flex-col items-start text-left">
-            <Link href={`/${locale}`} className="inline-block mb-8">
+            <Link href={`/${locale}`} className="inline-block mb-2">
               <Image
-                src="/images/logo-yellow.png"
+                src="/images/logo-red.png"
                 alt="ByMarrakech"
                 width={220}
                 height={70}
-                className="object-contain h-16 w-auto"
+                className="object-contain h-32 w-auto"
               />
             </Link>
             <p className="text-white/80 leading-relaxed mb-8 max-w-sm font-light text-lg">
@@ -65,7 +65,7 @@ export default function Footer() {
 
           {/* Discover Column (2 cols) */}
           <div className="lg:col-span-2">
-            <h3 className="text-secondary font-serif font-bold text-xl mb-8 tracking-wide">
+            <h3 className="text-secondary-dark font-serif font-bold text-xl mb-8 tracking-wide">
               Discover
             </h3>
             <nav className="flex flex-col space-y-4">
@@ -77,6 +77,9 @@ export default function Footer() {
               </Link>
               <Link href={`/${locale}/activities`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
                 Activities
+              </Link>
+              <Link href={`/${locale}/gallery`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
+                Photo Gallery
               </Link>
               <Link href={`/${locale}/marrakech`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
                 Visit Marrakech

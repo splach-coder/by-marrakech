@@ -28,7 +28,7 @@ export default function CTASection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary via-primary to-primary-light p-12 md:p-16 lg:p-20 text-center"
+          className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary via-primary to-primary-light px-4 py-16 md:py-20 md:px-20 lg:py-24 lg:px-24 text-center"
         >
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
@@ -62,7 +62,7 @@ export default function CTASection({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-lg md:text-xl text-white/90 mb-10 leading-relaxed max-w-3xl mx-auto"
+              className="text-md md:text-xl text-white/90 mb-10 leading-relaxed max-w-3xl mx-auto"
             >
               {description}
             </motion.p>

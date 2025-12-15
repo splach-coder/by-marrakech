@@ -61,7 +61,7 @@ export default function AboutPage() {
       <section className="relative h-screen min-h-[700px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/about/marrakech-tower.jpg" // Fallback if specific image not found
+            src="https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=2000&q=80"
             alt="About ByMarrakech"
             fill
             className="object-cover"
@@ -115,7 +115,7 @@ export default function AboutPage() {
               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/images/about/marrakech-souk.jpg"
+                src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=80"
                 alt="Our Story"
                 fill
                 className="object-cover"
@@ -217,15 +217,14 @@ export default function AboutPage() {
       </section>
 
       {/* 4. FOUNDER'S NOTE / CONCLUSION */}
-      {/* 4. FOUNDER'S NOTE / CONCLUSION */}
-      <section className="py-24 px-4 bg-[#faf9f6]">
+      <section className="py-24 px-1 md:px-4 bg-[#faf9f6]">
         <div className="container-custom mx-auto">
           <div className="relative bg-primary text-white rounded-[2.5rem] overflow-hidden p-12 md:p-24 text-center shadow-2xl">
 
             {/* Pattern Overlay */}
             <div className="absolute inset-0 opacity-10 bg-[url('/patterns/moroccan-pattern.png')] bg-repeat" />
 
-            <div className="relative z-10 max-w-4xl mx-auto">
+            <div className="relative z-10 md:max-w-4xl mx-auto">
               <Quote className="w-12 h-12 text-white/30 mx-auto mb-8" />
               <h2 className="text-3xl md:text-5xl font-serif font-medium leading-tight mb-8">
                 &quot;We believe that travel is the only thing you buy that makes you richer. Come, let us show you the richness of Morocco.&quot;
@@ -233,8 +232,12 @@ export default function AboutPage() {
 
               <div className="flex flex-col items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-white/20 overflow-hidden relative border-2 border-white/50">
-                  {/* Placeholder for founder image, or generic profile */}
-                  <div className="absolute inset-0 bg-gray-300"></div>
+                  <Image
+                    src="/images/logo-red.png"
+                    alt="ByMarrakech Logo"
+                    fill
+                    className="object-contain p-2"
+                  />
                 </div>
                 <div>
                   <div className="font-bold text-lg tracking-wide">The ByMarrakech Team</div>

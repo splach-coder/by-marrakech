@@ -62,7 +62,7 @@ export default function ToursSection({
   };
 
   return (
-    <section className="py-24 bg-[#FFFBF5]">
+    <section className="py-8 md:py-24 bg-[#FFFBF5]">
       <div className="container-custom">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">

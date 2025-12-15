@@ -64,8 +64,15 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
     };
 
     return (
-        <main className="min-h-screen bg-[#faf9f6] pt-28 pb-20 px-4 md:px-8">
-            <div className="container-custom mx-auto max-w-7xl">
+        <main className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/10 pt-20 md:pt-28 pb-8 md:pb-20 px-0 md:px-8 relative overflow-hidden">
+            {/* Decorative Background Shapes */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-20 right-10 w-96 h-96 bg-secondary/30 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-20 left-10 w-80 h-80 bg-primary/20 rounded-full blur-3xl"></div>
+                <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-secondary/20 rounded-full blur-2xl"></div>
+            </div>
+
+            <div className="px-4 md:container-custom mx-auto max-w-7xl relative z-10">
 
                 {/* Back Link */}
                 <div className="mb-8">
@@ -80,12 +87,12 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-stone-100 flex flex-col lg:flex-row min-h-[850px]"
+                    className="bg-white rounded-3xl md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-stone-100 flex flex-col lg:flex-row min-h-[850px]"
                 >
                     {/* LEFT SIDE: Visuals & Core Info */}
-                    <div className="w-full lg:w-5/12 bg-stone-50 p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-stone-100 flex flex-col">
-                        <div className="flex flex-col items-center mb-10">
-                            <div className="relative w-56 h-56 rounded-full overflow-hidden border-[6px] border-white shadow-xl mb-8 group cursor-pointer">
+                    <div className="w-full lg:w-5/12 bg-stone-50 px-2 py-6 md:p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-stone-100 flex flex-col">
+                        <div className="flex flex-col items-center mb-6 md:mb-10">
+                            <div className="relative w-40 md:w-56 h-40 md:h-56 rounded-full overflow-hidden border-[6px] border-white shadow-xl mb-6 md:mb-8 group cursor-pointer">
                                 <Image
                                     src={driver.image}
                                     alt={driver.name}
@@ -94,7 +101,7 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
                                     priority
                                 />
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 text-center mb-3">
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 text-center mb-3">
                                 {driver.name}
                             </h1>
                             <div className="flex items-center gap-2 text-sm text-gray-500 mb-8 bg-white px-5 py-2.5 rounded-full shadow-sm border border-stone-100">
@@ -162,11 +169,11 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
                     </div>
 
                     {/* RIGHT SIDE: Details & Booking */}
-                    <div className="w-full lg:w-7/12 p-8 lg:p-12 bg-white flex flex-col">
+                    <div className="w-full lg:w-7/12 p-6 md:p-8 lg:p-12 bg-white flex flex-col">
 
                         <div className="flex flex-col md:flex-row justify-between items-start mb-10 border-b border-stone-100 pb-8">
                             <div>
-                                <h2 className="text-2xl font-bold text-gray-900 mb-2 font-serif">About Your Driver</h2>
+                                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-serif">About Your Driver</h2>
                                 <div className="flex items-center gap-2">
                                     <div className="flex text-amber-500">
                                         {[...Array(5)].map((_, i) => (
@@ -179,15 +186,15 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
                             </div>
                         </div>
 
-                        <div className="prose prose-lg prose-stone mb-12 max-w-none">
-                            <p className="text-gray-600 leading-relaxed font-light text-lg">
+                        <div className="prose prose-lg prose-stone mb-8 md:mb-12 max-w-none">
+                            <p className="text-gray-600 leading-relaxed font-light text-base md:text-lg">
                                 {driver.bio}
                             </p>
                         </div>
 
                         {/* Booking Section */}
                         <div className="mt-auto">
-                            <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wider">
+                            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wider">
                                 <CalendarCheck className="w-5 h-5 text-primary" />
                                 Start Your Journey
                             </h3>
@@ -212,10 +219,10 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
                                     <motion.div
                                         initial={{ opacity: 0, x: -10 }}
                                         animate={{ opacity: 1, x: 0 }}
-                                        className="bg-blue-50/50 rounded-2xl p-8 border border-blue-100 h-full"
+                                        className="bg-blue-50/50 rounded-2xl py-8 px-6 border border-blue-100 h-full"
                                     >
                                         <div className="flex items-start gap-4">
-                                            <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0 shadow-sm">
+                                            <div className="hidden md:flex w-12 h-12 rounded-full bg-blue-100  items-center justify-center text-blue-600 flex-shrink-0 shadow-sm">
                                                 <MapPin className="w-6 h-6" />
                                             </div>
                                             <div>
@@ -292,14 +299,10 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
 
                             <button
                                 onClick={() => handleBookingClick('whatsapp')}
-                                className="flex items-center justify-center gap-3 w-full py-5 bg-[#25D366] text-white font-bold rounded-2xl hover:bg-[#128C7E] transition-all shadow-xl shadow-green-100 hover:-translate-y-1 group"
+                                className="flex items-center justify-center gap-3 w-full py-4 md:py-5 bg-primary text-white font-bold rounded-2xl hover:bg-primary-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-base md:text-lg"
                             >
-                                <MessageCircle className="w-6 h-6" />
-                                <div className="text-left">
-                                    <span className="block text-xs font-medium opacity-90 uppercase tracking-wide">Start Conversation</span>
-                                    <span className="text-lg">Chat via WhatsApp</span>
-                                </div>
-                                <ArrowUpRight className="w-5 h-5 opacity-50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform ml-auto mr-4" />
+                                <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
+                                <span>Book via WhatsApp</span>
                             </button>
                         </div>
                     </div>

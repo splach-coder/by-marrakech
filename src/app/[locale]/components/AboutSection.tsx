@@ -61,7 +61,7 @@ export default function AboutSection({
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={containerVariants}
-          className="text-center mx-auto mb-16"
+          className="text-center mx-auto mb-2 md:mb-16"
         >
           {/* Headline */}
           <motion.h2
@@ -95,7 +95,7 @@ export default function AboutSection({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="relative pt-10 pb-20"
+          className="relative pt-10 pb-10 md:pb-20"
         >
           <div className="grid grid-cols-2 md:flex md:flex-nowrap md:gap-6 gap-3 px-0 md:px-0">
             {images.map((img, index) => (

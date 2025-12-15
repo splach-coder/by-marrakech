@@ -61,7 +61,7 @@ export default function TestimonialsSection({
   const reviews = currentTestimonial.review.split(". ");
 
   return (
-    <section className="py-12 md:py-24 bg-background">
+    <section className="py-8 md:py-24 bg-background">
       <div className="container-custom">
         <div className="mb-8 md:mb-12">
           <div className="flex items-center gap-2 mb-2 md:mb-4">
@@ -74,7 +74,7 @@ export default function TestimonialsSection({
         <div className="relative">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5">
-              <div className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden">
+              <div className="relative h-[300px] md:h-[500px] rounded-lg overflow-hidden group">
                 <AnimatePresence initial={false} custom={direction}>
                   <motion.div
                     key={currentIndex}
@@ -92,6 +92,24 @@ export default function TestimonialsSection({
                     <Image src={currentTestimonial.image} alt={currentTestimonial.name} fill className="object-cover" />
                   </motion.div>
                 </AnimatePresence>
+
+                {/* Mobile Navigation Arrows */}
+                <div className="absolute inset-0 flex items-center justify-between px-4 md:hidden pointer-events-none z-20">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); paginate(-1); }}
+                    className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors pointer-events-auto"
+                    aria-label="Previous testimonial"
+                  >
+                    <ChevronLeft className="w-5 h-5 text-text-primary" />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); paginate(1); }}
+                    className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors pointer-events-auto"
+                    aria-label="Next testimonial"
+                  >
+                    <ChevronRight className="w-5 h-5 text-text-primary" />
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -126,7 +144,8 @@ export default function TestimonialsSection({
             </div>
           </div>
 
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 pointer-events-none">
+          {/* Desktop Navigation Arrows */}
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 pointer-events-none hidden md:block">
             <div className="container-custom flex justify-between pointer-events-auto">
               <button onClick={() => paginate(-1)} className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-background-cream transition-colors -ml-6">
                 <ChevronLeft className="w-6 h-6 text-text-primary" />

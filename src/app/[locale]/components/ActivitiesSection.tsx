@@ -27,7 +27,7 @@ export default function ActivitiesSection({ activities }: ActivitiesSectionProps
     const displayActivities = activities.slice(0, 5);
 
     return (
-        <section className="py-24 bg-gray-50">
+        <section className="py-8 md:py-24 bg-gray-50">
             <div className="container-custom">
                 {/* Header */}
                 <motion.div
@@ -38,10 +38,10 @@ export default function ActivitiesSection({ activities }: ActivitiesSectionProps
                 >
                     <div className="flex items-start justify-between mb-6">
                         <div className="flex-1">
-                            <span className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-4 block">
+                            <span className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-6 block">
                                 Activities
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
+                            <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
                                 Things to Do in Morocco
                             </h2>
                             <p className="text-lg text-gray-600 max-w-2xl">

@@ -67,7 +67,7 @@ export default function EventsPage() {
             <section className="relative h-screen min-h-[700px] overflow-hidden">
                 <div className="absolute inset-0">
                     <Image
-                        src="/images/events-banner.jpg" // Fallback: /images/events-hero.jpg if missing
+                        src="/images/marrakech/hero.jpg"
                         alt="Morocco Events"
                         fill
                         className="object-cover"
@@ -132,7 +132,7 @@ export default function EventsPage() {
                                     transition={{ delay: idx * 0.2 }}
                                     className="group relative"
                                 >
-                                    <Link href={`#`} className="block">
+                                    <Link href={`/events/${event.id}`} className="block">
                                         <div className="aspect-[16/9] relative rounded-2xl overflow-hidden mb-6 shadow-xl">
                                             <Image
                                                 src={event.image}
@@ -233,7 +233,7 @@ export default function EventsPage() {
                                         </div>
 
                                         <Link
-                                            href="#"
+                                            href={`/events/${event.id}`}
                                             className="inline-flex items-center gap-2 text-gray-900 font-medium hover:text-primary transition-colors"
                                         >
                                             <span className="text-sm uppercase tracking-wider">Learn More</span>
@@ -264,7 +264,7 @@ export default function EventsPage() {
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 transition-opacity duration-300">
                             {pastEvents.map((event) => (
-                                <div key={event.id} className="group relative rounded-xl overflow-hidden bg-stone-50">
+                                <Link key={event.id} href={`/events/${event.id}`} className="group relative rounded-xl overflow-hidden bg-stone-50 hover:shadow-lg transition-shadow">
                                     <div className="aspect-[4/3] relative filter transition-all">
                                         <Image
                                             src={event.image}
@@ -277,14 +277,14 @@ export default function EventsPage() {
                                         <div className="px-2 py-1 bg-stone-200 text-stone-600 text-xs font-bold uppercase rounded inline-block mb-3">
                                             Ended {event.date}
                                         </div>
-                                        <h3 className="text-lg font-bold text-stone-700 leading-snug mb-1">
+                                        <h3 className="text-lg font-bold text-stone-700 leading-snug mb-1 group-hover:text-primary transition-colors">
                                             {event.title}
                                         </h3>
                                         <p className="text-xs text-stone-500 flex items-center gap-1">
                                             <MapPin className="w-3 h-3" /> {event.location}
                                         </p>
                                     </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </div>

@@ -69,7 +69,7 @@ export default function TourPage({ params }: TourPageProps) {
   return (
     <main className="min-h-screen bg-white">
       {/* Banner Section */}
-      <section className="relative h-[85vh] min-h-[600px]">
+      <section className="relative h-[60vh] md:h-[85vh] min-h-[500px] md:min-h-[600px]">
         <Image
           src={tour.banner_image?.url || tour.image.url}
           alt={tour.title}
@@ -82,7 +82,7 @@ export default function TourPage({ params }: TourPageProps) {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/80" />
 
         {/* Content */}
-        <div className="absolute inset-0 flex flex-col justify-end pb-24">
+        <div className="absolute inset-0 flex flex-col justify-end pb-8 md:pb-24">
           <div className="container-custom">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -91,7 +91,7 @@ export default function TourPage({ params }: TourPageProps) {
               className="max-w-4xl"
             >
               {/* Breadcrumbs */}
-              <nav className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-6 overflow-x-auto whitespace-nowrap">
+              <nav className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-3 md:mb-6 overflow-x-auto whitespace-nowrap">
                 <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
                   <Home className="w-3.5 h-3.5 mb-0.5" />
                   <span className="uppercase tracking-wider font-semibold">Home</span>
@@ -106,36 +106,36 @@ export default function TourPage({ params }: TourPageProps) {
                 </span>
               </nav>
 
-              <div className="flex flex-wrap items-center gap-4 mb-6">
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30 text-white">
-                  <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  <span className="font-bold">{avgRating}</span>
-                  <span className="text-white/80 text-sm">({tour.reviews?.length || 24} reviews)</span>
+              <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-3 md:mb-6">
+                <div className="flex items-center gap-1.5 md:gap-2 bg-white/20 backdrop-blur-md px-2 md:px-4 py-1 md:py-1.5 rounded-full border border-white/30 text-white">
+                  <Star className="w-3 md:w-4 h-3 md:h-4 fill-amber-400 text-amber-400" />
+                  <span className="font-bold text-xs md:text-base">{avgRating}</span>
+                  <span className="text-white/80 text-xs md:text-sm">({tour.reviews?.length || 24} reviews)</span>
                 </div>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-serif font-bold text-white mb-8 leading-tight drop-shadow-lg">
+              <h1 className="text-3xl md:text-7xl font-serif font-bold text-white mb-4 md:mb-8 leading-tight drop-shadow-lg">
                 {tour.title}
               </h1>
 
-              <div className="flex flex-wrap gap-8 text-white/90 font-medium text-lg">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-white/10 rounded-lg backdrop-blur-sm">
-                    <Clock className="w-6 h-6" />
+              <div className="flex flex-wrap gap-3 md:gap-8 text-white/90 font-medium text-sm md:text-lg">
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="p-1.5 md:p-2 bg-white/10 rounded-lg backdrop-blur-sm">
+                    <Clock className="w-4 md:w-6 h-4 md:h-6" />
                   </div>
-                  <span>{tour.duration}</span>
+                  <span className="text-xs md:text-base">{tour.duration}</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-white/10 rounded-lg backdrop-blur-sm">
-                    <Users className="w-6 h-6" />
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="p-1.5 md:p-2 bg-white/10 rounded-lg backdrop-blur-sm">
+                    <Users className="w-4 md:w-6 h-4 md:h-6" />
                   </div>
-                  <span className="capitalize">{tour.group_size} Group</span>
+                  <span className="capitalize text-xs md:text-base">{tour.group_size} Group</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <div className="p-2 bg-white/10 rounded-lg backdrop-blur-sm">
-                    <MapPin className="w-6 h-6" />
+                <div className="flex items-center gap-2 md:gap-3">
+                  <div className="p-1.5 md:p-2 bg-white/10 rounded-lg backdrop-blur-sm">
+                    <MapPin className="w-4 md:w-6 h-4 md:h-6" />
                   </div>
-                  <span>{tour.locations?.[0]?.name || 'Morocco'}</span>
+                  <span className="text-xs md:text-base">{tour.locations?.[0]?.name || 'Morocco'}</span>
                 </div>
               </div>
             </motion.div>
@@ -144,14 +144,14 @@ export default function TourPage({ params }: TourPageProps) {
       </section>
 
       {/* Main Content */}
-      <div className="container-custom py-16">
+      <div className="px-0 md:container-custom py-8 md:py-16">
         {/* Breadcrumbs */}
 
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
 
           {/* Left Column (Content) */}
-          <div className="lg:col-span-8 space-y-20">
+          <div className="lg:col-span-8 space-y-10 md:space-y-20 px-4 md:px-0">
 
             {/* Overview */}
             <section>
@@ -299,10 +299,10 @@ export default function TourPage({ params }: TourPageProps) {
             onClick={() => setSelectedImage(null)}
           >
             <button
-              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors"
-              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 md:top-6 right-4 md:right-6 text-white/80 hover:text-white transition-colors z-50 bg-black/30 backdrop-blur-sm rounded-full p-2"
+              onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
             >
-              <X className="w-8 h-8" />
+              <X className="w-6 md:w-8 h-6 md:h-8" />
             </button>
 
             <button
@@ -325,14 +325,40 @@ export default function TourPage({ params }: TourPageProps) {
               <ChevronRight className="w-10 h-10" />
             </button>
 
-            <div className="relative w-full h-full max-w-7xl flex items-center justify-center aspect-[16/9]">
-              <Image
-                src={galleryUrls[selectedImage]}
-                alt="Gallery view"
-                fill
-                className="object-contain"
-              />
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 font-medium tracking-widest text-sm">
+            <div className="relative w-full h-full max-w-7xl flex flex-col items-center justify-center">
+              <div className="relative w-full flex-1 flex items-center justify-center">
+                <Image
+                  src={galleryUrls[selectedImage]}
+                  alt="Gallery view"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Thumbnail Navigation */}
+              <div className="w-full max-w-4xl mt-4 px-4">
+                <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide">
+                  {galleryUrls.map((url, idx) => (
+                    <button
+                      key={idx}
+                      onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
+                      className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden snap-center transition-all ${idx === selectedImage
+                          ? 'ring-2 ring-white scale-110'
+                          : 'opacity-50 hover:opacity-100'
+                        }`}
+                    >
+                      <Image
+                        src={url}
+                        alt={`Thumbnail ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 font-medium tracking-widest text-sm bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
                 {selectedImage + 1} / {galleryUrls.length}
               </div>
             </div>

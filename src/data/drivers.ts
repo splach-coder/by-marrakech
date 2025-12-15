@@ -21,7 +21,7 @@ export const driversData: Driver[] = [
     {
         id: '1',
         name: 'Hassan Amrani',
-        image: '/images/drivers/hassan.jpg',
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
         rating: 5.0,
         experienceYears: 12,
         languages: ['English', 'French', 'Arabic', 'Spanish'],
@@ -33,13 +33,16 @@ export const driversData: Driver[] = [
         pricePerDay: 150,
         badges: ['Top Rated', 'History Expert', 'Photographer'],
         availability: true,
-        gallery: ['/images/drivers/car-suv.jpg', '/images/drivers/hassan-driving.jpg'],
+        gallery: [
+            'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80'
+        ],
         features: ['Free Wi-Fi', 'Bottled Water', 'Child Seats', 'USB Charging', 'Local Snacks']
     },
     {
         id: '2',
         name: 'Youssef Benali',
-        image: '/images/drivers/youssef.jpg',
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
         rating: 4.9,
         experienceYears: 8,
         languages: ['English', 'German', 'Arabic'],
@@ -51,13 +54,16 @@ export const driversData: Driver[] = [
         pricePerDay: 140,
         badges: ['Photography Expert', 'Coastal Specialist'],
         availability: true,
-        gallery: ['/images/drivers/car-sedan.jpg', '/images/drivers/youssef-coastal.jpg'],
+        gallery: [
+            'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80'
+        ],
         features: ['Free Wi-Fi', 'Bottled Water', 'Bluetooth Music', 'A/C Control']
     },
     {
         id: '3',
         name: 'Omar Zaid',
-        image: '/images/drivers/omar.jpg',
+        image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80',
         rating: 4.8,
         experienceYears: 15,
         languages: ['English', 'French', 'Italian', 'Arabic'],
@@ -69,13 +75,16 @@ export const driversData: Driver[] = [
         pricePerDay: 180,
         badges: ['Group Specialist', 'History Buff'],
         availability: true,
-        gallery: ['/images/drivers/car-van.jpg', '/images/drivers/omar-road.jpg'],
+        gallery: [
+            'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80'
+        ],
         features: ['Free Wi-Fi', 'Bottled Water', 'Reclining Seats', 'Luggage Assistance', 'First Aid Kit']
     },
     {
         id: '4',
         name: 'Karim Tazi',
-        image: '/images/drivers/karim.jpg',
+        image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80',
         rating: 5.0,
         experienceYears: 6,
         languages: ['English', 'French', 'Arabic'],
@@ -87,7 +96,10 @@ export const driversData: Driver[] = [
         pricePerDay: 130,
         badges: ['Family Friendly', 'Foodie'],
         availability: false,
-        gallery: ['/images/drivers/car-suv-2.jpg', '/images/drivers/karim-food.jpg'],
+        gallery: [
+            'https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=600&q=80',
+            'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80'
+        ],
         features: ['Free Wi-Fi', 'Child Seats', 'Tablet for Kids', 'Snacks']
     }
 ];

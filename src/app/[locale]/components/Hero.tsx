@@ -47,28 +47,43 @@ export default function Hero({
       {/* Background Image with Parallax */}
       <motion.div style={{ y }} className="absolute inset-0 w-full h-full">
         <div className="relative w-full h-full">
+          {/* Mobile Image */}
+          <Image
+            src="/images/marrakech/marrakech1.jpg"
+            alt="Marrakech"
+            fill
+            priority
+            quality={100}
+            sizes="100vw"
+            className="object-cover object-center md:hidden"
+          />
+
+          {/* Desktop Image */}
           <Image
             src={backgroundImage}
             alt="Marrakech doorway"
             fill
             priority
-            quality={90}
+            quality={100}
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center hidden md:block"
           />
 
           {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60 md:bg-gradient-to-b md:from-black/30 md:via-black/20 md:to-black/60" />
+
+          {/* Additional Mobile Bottom Overlay */}
+          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent md:hidden" />
         </div>
       </motion.div>
 
       {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 h-full flex items-center"
+        className="relative z-10 h-full flex items-center pt-40 md:pt-52"
       >
         <div className="container-custom">
-          <div className="max-w-3xl">
+          <div className="max-w-4xl">
             {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -76,7 +91,13 @@ export default function Hero({
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             >
-              {title}
+              {title.includes('ByMarrakech') ? (
+                <>
+                  {title.split('ByMarrakech')[0]}
+                  <span className="text-secondary font-nohemi tracking-tight">ByMarrakech</span>
+                  {title.split('ByMarrakech')[1]}
+                </>
+              ) : title}
             </motion.h1>
 
             {/* Subtitle */}
@@ -84,7 +105,7 @@ export default function Hero({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base sm:text-lg md:text-xl text-white/90 mb-8 md:mb-10 leading-relaxed max-w-2xl"
+              className="text-base sm:text-lg md:text-xl text-white/90 mb-8 md:mb-10 leading-relaxed max-w-xl line-clamp-3 md:line-clamp-none"
             >
               {subtitle}
             </motion.p>
@@ -103,15 +124,6 @@ export default function Hero({
               >
                 <Compass className="w-5 h-5" />
                 <span>{ctaPrimary}</span>
-              </Link>
-
-              {/* Outlined Button */}
-              <Link
-                href={`/${locale}/luxury`}
-                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-white text-white rounded-full font-medium transition-all duration-300 hover:bg-white hover:text-text-primary hover:shadow-lg"
-              >
-                <Gift className="w-5 h-5" />
-                <span>{ctaSecondary}</span>
               </Link>
             </motion.div>
           </div>

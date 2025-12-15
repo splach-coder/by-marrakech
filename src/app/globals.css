@@ -16,33 +16,57 @@ body {
 @theme {
   /* Colors */
   --color-primary: #912b2b;
+  /* Richer red for ByMarrakech */
+  --color-primary-brand: #D91A1A;
+
   --color-primary-dark: #8b2626;
   --color-primary-light: #a63838;
-  
-  --color-secondary: #bfa77b;
-  --color-secondary-light: #c8bba8;
-  --color-secondary-dark: #a68f66;
-  
+
+  /* Updated Secondary to valid gold */
+  --color-secondary: #D4AF37;
+  --color-secondary-light: #F3E5AB;
+  --color-secondary-dark: #C5A028;
+
   --color-background: #f8f6f2;
   --color-background-light: #ffffff;
   --color-background-cream: #eae4d9;
   --color-background-cream-dark: #ebe8e0;
-  
+
   --color-text-primary: #3b2f2f;
   --color-text-secondary: #4a3f35;
   --color-text-tertiary: #5a4a42;
-  
+
   --color-border: #e8e3d8;
   --color-border-light: #f0ede5;
   --color-border-dark: #c8bba8;
 }
 
 @font-face {
-  font-family: 'Tahoma';
-  src: url('/fonts/tahoma.ttf') format('truetype');
-  font-weight: normal;
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-Medium-BF6438cc5883899.ttf') format('truetype');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-Bold-BF6438cc587b5b5.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-Black-BF6438cc58744d4.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-nohemi {
+  font-family: 'Nohemi', sans-serif;
 }
 
 body {
@@ -65,8 +89,13 @@ html {
 }
 
 @keyframes slow-zoom {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
 }
 
 .animate-slow-zoom {
@@ -74,8 +103,13 @@ html {
 }
 
 @keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .animate-spin-slow {
@@ -83,20 +117,68 @@ html {
 }
 
 /* Utility Classes */
-.bg-primary { background-color: var(--color-primary); }
-.bg-primary-dark { background-color: var(--color-primary-dark); }
-.bg-secondary { background-color: var(--color-secondary); }
-.bg-background { background-color: var(--color-background); }
-.bg-background-cream { background-color: var(--color-background-cream); }
+.bg-primary {
+  background-color: var(--color-primary);
+}
 
-.text-primary { color: var(--color-primary); }
-.text-secondary { color: var(--color-secondary); }
-.text-text-primary { color: var(--color-text-primary); }
-.text-text-secondary { color: var(--color-text-secondary); }
-.text-text-tertiary { color: var(--color-text-tertiary); }
+.bg-primary-dark {
+  background-color: var(--color-primary-dark);
+}
 
-.border-border { border-color: var(--color-border); }
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
 
-.hover\:bg-secondary:hover { background-color: var(--color-secondary); }
-.hover\:bg-secondary-dark:hover { background-color: var(--color-secondary-dark); }
-.hover\:text-secondary:hover { color: var(--color-secondary); }
+.bg-background {
+  background-color: var(--color-background);
+}
+
+.bg-background-cream {
+  background-color: var(--color-background-cream);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+.border-border {
+  border-color: var(--color-border);
+}
+
+.hover\:bg-secondary:hover {
+  background-color: var(--color-secondary);
+}
+
+.hover\:bg-secondary-dark:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.hover\:text-secondary:hover {
+  color: var(--color-secondary);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

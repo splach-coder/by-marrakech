@@ -53,7 +53,7 @@ export default function EventsSection({
   };
 
   return (
-    <section className="py-24 bg-[#FFFBF5]">
+    <section className="py-8 md:py-24 bg-[#FFFBF5]">
       <div className="container-custom">
         {/* Header */}
         <motion.div

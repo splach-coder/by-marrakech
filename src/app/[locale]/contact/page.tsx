@@ -39,7 +39,7 @@ export default function ContactPage() {
       <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/contact-hero.jpg" // Fallback: use generate_image or existing
+            src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=2000&q=80"
             alt="Contact Us"
             fill
             className="object-cover"
@@ -66,7 +66,7 @@ export default function ContactPage() {
       </section>
 
       {/* 2. EDITORIAL CONTACT SECTION */}
-      <section className="py-24 px-6 md:px-12">
+      <section className="py-24 px-2 md:px-6 lg:px-12">
         <div className="container-custom mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
 
@@ -134,7 +134,7 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-white p-8 md:p-12 rounded-3xl shadow-xl shadow-gray-100/50"
+              className="bg-white py-8 md:py-12 px-4 md:px-8 rounded-3xl shadow-xl shadow-gray-100/50"
             >
               <h3 className="text-2xl font-serif text-gray-900 mb-8">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -192,7 +192,7 @@ export default function ContactPage() {
       </section>
 
       {/* 3. MAP SECTION (Styled) */}
-      <section className="h-[400px] w-full bg-gray-200 relative grayscale hover:grayscale-0 transition-all duration-700">
+      <section className="h-[400px] w-full bg-gray-200 relative">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108704.22922718712!2d-8.077885489726833!3d31.63474853046036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafee8d96179e51%3A0x5950b6534f87adb8!2sMarrakesh%2C%20Morocco!5e0!3m2!1sen!2sus!4v1709900000000!5m2!1sen!2sus"
           width="100%"

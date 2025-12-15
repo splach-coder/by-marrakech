@@ -43,7 +43,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
     return (
         <main className="min-h-screen bg-white">
             {/* 1. HERO SECTION */}
-            <section className="relative h-[75vh] w-full">
+            <section className="relative h-[60vh] md:h-[75vh] w-full">
                 <Image
                     src={activity.banner_image?.url || activity.image.url}
                     alt={activity.title}
@@ -53,14 +53,14 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
 
-                <div className="absolute inset-0 flex flex-col justify-end pb-16 md:pb-24">
+                <div className="absolute inset-0 flex flex-col justify-end pb-8 md:pb-24">
                     <div className="container-custom mx-auto px-4 md:px-8">
                         {/* Breadcrumbs */}
                         <motion.nav
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-6 overflow-x-auto whitespace-nowrap"
+                            className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-3 md:mb-6 overflow-x-auto whitespace-nowrap"
                         >
                             <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
                                 <Home className="w-3.5 h-3.5" />
@@ -86,11 +86,11 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                 Authentic Experience
                             </span>
 
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-[1.1]">
+                            <h1 className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 md:mb-6 leading-[1.1]">
                                 {activity.title}
                             </h1>
 
-                            <div className="flex flex-wrap gap-6 text-white/90">
+                            <div className="flex flex-wrap gap-3 md:gap-6 text-white/90 text-sm md:text-base">
                                 {activity.locations && activity.locations.length > 0 && (
                                     <div className="flex items-center gap-2">
                                         <MapPin className="w-5 h-5 text-primary" />
@@ -110,8 +110,8 @@ export default function ActivityPage({ params }: ActivityPageProps) {
             </section>
 
             {/* 2. DESCRIPTION & HIGHLIGHTS */}
-            <section className="py-20 bg-white">
-                <div className="container-custom mx-auto px-4 md:px-8 max-w-5xl">
+            <section className="py-8 md:py-20 bg-white">
+                <div className="px-4 md:container-custom md:mx-auto md:px-8 max-w-5xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -197,8 +197,8 @@ export default function ActivityPage({ params }: ActivityPageProps) {
             </section>
 
             {/* 3. GALLERY (Now at the bottom) */}
-            <section className="py-16 bg-[#faf9f6]">
-                <div className="container-custom mx-auto px-4 md:px-8">
+            <section className="py-8 md:py-16 bg-[#faf9f6]">
+                <div className="px-4 md:container-custom md:mx-auto md:px-8">
                     <div className="flex items-center justify-between mb-10 max-w-5xl mx-auto">
                         <h2 className="text-3xl font-serif font-bold text-gray-900">Experience Gallery</h2>
                     </div>
@@ -252,10 +252,10 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                         onClick={() => setSelectedImage(null)}
                     >
                         <button
-                            onClick={() => setSelectedImage(null)}
-                            className="absolute top-6 right-6 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors"
+                            onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
+                            className="absolute top-4 md:top-6 right-4 md:right-6 text-white/80 hover:text-white transition-colors z-50 bg-black/30 backdrop-blur-sm rounded-full p-2"
                         >
-                            <X className="w-6 h-6 text-white" />
+                            <X className="w-6 md:w-8 h-6 md:h-8" />
                         </button>
 
                         <button
@@ -278,17 +278,42 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                             <ChevronRight className="w-6 h-6 text-white" />
                         </button>
 
-                        <div className="relative w-full h-full max-w-6xl max-h-[90vh] p-12" onClick={(e) => e.stopPropagation()}>
-                            <Image
-                                src={galleryImages[selectedImage]}
-                                alt={`${activity.title} ${selectedImage + 1}`}
-                                fill
-                                className="object-contain"
-                            />
-                        </div>
+                        <div className="relative w-full h-full max-w-7xl flex flex-col items-center justify-center">
+                            <div className="relative w-full flex-1 flex items-center justify-center">
+                                <Image
+                                    src={galleryImages[selectedImage]}
+                                    alt={`${activity.title} ${selectedImage + 1}`}
+                                    fill
+                                    className="object-contain"
+                                />
+                            </div>
 
-                        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm">
-                            {selectedImage + 1} / {galleryImages.length}
+                            {/* Thumbnail Navigation */}
+                            <div className="w-full max-w-4xl mt-4 px-4">
+                                <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide">
+                                    {galleryImages.map((url, idx) => (
+                                        <button
+                                            key={idx}
+                                            onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
+                                            className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden snap-center transition-all ${idx === selectedImage
+                                                    ? 'ring-2 ring-white scale-110'
+                                                    : 'opacity-50 hover:opacity-100'
+                                                }`}
+                                        >
+                                            <Image
+                                                src={url}
+                                                alt={`Thumbnail ${idx + 1}`}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 font-medium tracking-widest text-sm bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
+                                {selectedImage + 1} / {galleryImages.length}
+                            </div>
                         </div>
                     </motion.div>
                 )}

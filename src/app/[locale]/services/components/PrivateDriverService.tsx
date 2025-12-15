@@ -165,7 +165,7 @@ export default function PrivateDriverService() {
 
                                     <Link
                                         href={`/drivers/${driver.id}`}
-                                        className="w-full py-3 bg-white border border-gray-200 text-gray-900 font-bold rounded-xl hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all flex items-center justify-center gap-2 text-sm"
+                                        className="w-full py-3 bg-white border border-gray-200 text-gray-900 font-bold rounded-xl hover:bg-primary hover:text-white hover:border-primary transition-all flex items-center justify-center gap-2 text-sm"
                                     >
                                         <span>View Profile</span>
                                         <ArrowRight className="w-4 h-4" />
