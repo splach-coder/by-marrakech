@@ -145,25 +145,69 @@ export default function ServicePage({ params }: ServicePageProps) {
 
                         {/* Description & Details */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                            <div className="lg:col-span-2">
-                                <h2 className="text-xl font-bold text-gray-900 mb-4">Description</h2>
-                                <p className="text-lg text-gray-600 leading-relaxed font-light mb-8">
-                                    {service.description}
-                                </p>
+                            <div className="lg:col-span-2 space-y-8">
+                                <div>
+                                    <h2 className="text-xl font-bold text-gray-900 mb-4">Description</h2>
+                                    <p className="text-lg text-gray-600 leading-relaxed font-light">
+                                        {service.description}
+                                    </p>
+                                </div>
 
-                                <h2 className="text-xl font-bold text-gray-900 mb-4">Service Highlights</h2>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {service.highlights.map((highlight, index) => (
-                                        <div key={index} className="flex items-start gap-3 p-3 bg-stone-50 rounded-lg">
-                                            <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                                            <span className="text-gray-700">{highlight}</span>
+                                <div>
+                                    <h2 className="text-xl font-bold text-gray-900 mb-4">Service Highlights</h2>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {service.highlights.map((highlight, index) => (
+                                            <div key={index} className="flex items-start gap-3 p-3 bg-stone-50 rounded-lg">
+                                                <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                                                <span className="text-gray-700">{highlight}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Why Choose Us - Moved to left with new design */}
+                                <div className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 p-8 rounded-2xl border border-primary/20">
+                                    <div className="flex items-center gap-3 mb-6">
+                                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+                                            <Shield className="w-6 h-6 text-white" />
                                         </div>
-                                    ))}
+                                        <h3 className="text-2xl font-serif font-bold text-gray-900">Why Choose Us</h3>
+                                    </div>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
+                                            <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
+                                            <div>
+                                                <div className="font-bold text-gray-900 mb-1">Professional Drivers</div>
+                                                <p className="text-sm text-gray-600">Experienced and certified</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
+                                            <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
+                                            <div>
+                                                <div className="font-bold text-gray-900 mb-1">Modern Vehicles</div>
+                                                <p className="text-sm text-gray-600">Latest models, well-maintained</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
+                                            <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
+                                            <div>
+                                                <div className="font-bold text-gray-900 mb-1">Fully Insured</div>
+                                                <p className="text-sm text-gray-600">Complete coverage protection</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
+                                            <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
+                                            <div>
+                                                <div className="font-bold text-gray-900 mb-1">Fixed Pricing</div>
+                                                <p className="text-sm text-gray-600">No hidden fees or surprises</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            {/* Sidebar Info & Booking */}
-                            <div id="booking-card-section" className="lg:col-span-1 space-y-6">
+                            {/* Sidebar Booking Card Only */}
+                            <div id="booking-card-section" className="lg:col-span-1">
                                 <BookingCard
                                     id={String(service.id)}
                                     title={service.title}
@@ -173,31 +217,6 @@ export default function ServicePage({ params }: ServicePageProps) {
                                     type="service"
                                     imageUrl={service.image.url}
                                 />
-
-                                <div className="bg-[#faf9f6] p-6 rounded-2xl">
-                                    <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                                        <Shield className="w-5 h-5 text-primary" />
-                                        Why Choose Us
-                                    </h3>
-                                    <ul className="space-y-3">
-                                        <li className="text-sm text-gray-600 flex gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                                            Professional Drivers
-                                        </li>
-                                        <li className="text-sm text-gray-600 flex gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                                            Modern Vehicles
-                                        </li>
-                                        <li className="text-sm text-gray-600 flex gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                                            Fully Insured
-                                        </li>
-                                        <li className="text-sm text-gray-600 flex gap-2">
-                                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" />
-                                            Fix Price
-                                        </li>
-                                    </ul>
-                                </div>
                             </div>
                         </div>
                     </motion.div>

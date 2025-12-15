@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useClickAway } from 'react-use';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
-import CartUpsell from './CartUpsell';
+
 
 export default function CartDrawer() {
     const { isCartOpen, toggleCart, items, removeItem, clearCart } = useCart();
@@ -116,7 +116,7 @@ export default function CartDrawer() {
                                                         {item.title}
                                                     </h3>
                                                     <button
-                                                        onClick={() => removeItem(item.id)}
+                                                        onClick={() => removeItem(item.id, item.type)}
                                                         className="text-gray-300 hover:text-red-500 transition-colors"
                                                     >
                                                         <Trash2 className="w-4 h-4" />
@@ -124,18 +124,16 @@ export default function CartDrawer() {
                                                 </div>
 
                                                 <div className="mt-2 space-y-1">
-                                                    {item.date && (
-                                                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                                                            <Calendar className="w-3 h-3" />
-                                                            <span>{item.date}</span>
-                                                        </div>
-                                                    )}
-                                                    {item.guests && (
-                                                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                                                            <Users className="w-3 h-3" />
-                                                            <span>{item.guests} Guests</span>
-                                                        </div>
-                                                    )}
+                                                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                                                        <Calendar className="w-3 h-3" />
+                                                        <span className={`${!item.date ? 'text-amber-600 font-medium' : ''}`}>
+                                                            {item.date || 'Select date at checkout'}
+                                                        </span>
+                                                    </div>
+                                                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                                                        <Users className="w-3 h-3" />
+                                                        <span>{item.guests || 2} Guests</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </motion.div>
@@ -143,7 +141,7 @@ export default function CartDrawer() {
                                 </div>
                             )}
 
-                            <CartUpsell />
+
                         </div>
 
                         {/* Footer */}
@@ -165,7 +163,7 @@ export default function CartDrawer() {
                                         onClick={handleCheckout}
                                         className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-dark transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                                     >
-                                        <span>Request Booking via WhatsApp</span>
+                                        <span>Complete Your Plan</span>
                                         <ArrowRight className="w-4 h-4" />
                                     </button>
 

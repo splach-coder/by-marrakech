@@ -19,6 +19,7 @@ import {
     Home
 } from 'lucide-react';
 import GalleryGrid from '../../components/GalleryGrid';
+import BookingCard from '../../components/BookingCard';
 
 interface ActivityPageProps {
     params: Promise<{
@@ -208,35 +209,51 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                 </div>
             </section>
 
-            {/* 4. BOOKING CTA */}
-            <section className="py-24 bg-white">
-                <div className="container-custom mx-auto px-4 md:px-8 max-w-4xl">
-                    <div className="bg-primary rounded-3xl p-10 md:p-16 shadow-2xl text-center relative overflow-hidden">
-                        {/* Decorative Circles */}
-                        <div className="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl" />
-                        <div className="absolute bottom-0 right-0 w-64 h-64 bg-white/10 rounded-full translate-x-1/2 translate-y-1/2 blur-2xl" />
-
-                        <div className="relative z-10">
-                            <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">
+            {/* 4. BOOKING CARD */}
+            <section className="py-24 bg-background">
+                <div className="container-custom mx-auto px-4 md:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                        {/* Left: Final CTA */}
+                        <div className="lg:col-span-2 flex flex-col justify-center">
+                            <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
                                 Ready for an Adventure?
                             </h2>
-                            <p className="text-lg text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
-                                Book your <span className="font-bold">{activity.title}</span> experience today.
+                            <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl">
+                                Book your <span className="font-bold text-primary">{activity.title}</span> experience today.
                                 Flexible scheduling and private groups available.
                             </p>
-
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a
-                                    href={`https://wa.me/212600000000?text=I'm interested in: ${activity.title}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 inline-flex items-center justify-center gap-2"
-                                >
-                                    <span>Book via WhatsApp</span>
-                                    <ArrowRight className="w-5 h-5" />
-                                </a>
+                            <div className="flex flex-wrap gap-6 text-gray-600">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                                        <Clock className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <div className="font-bold text-gray-900">Flexible Duration</div>
+                                        <div className="text-sm">Adapt to your schedule</div>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-3">
+                                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                                        <Users className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <div>
+                                        <div className="font-bold text-gray-900">All Group Sizes</div>
+                                        <div className="text-sm">Private or shared</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
+                        {/* Right: Booking Card */}
+                        <BookingCard
+                            id={String(activity.id)}
+                            type="activity"
+                            imageUrl={activity.image.url}
+                            title={activity.title}
+                            price={activity.price || 'From €35'}
+                            duration={activity.duration || 'Flexible'}
+                            groupSize={activity.suitable_for?.[0] || 'All sizes'}
+                        />
                     </div>
                 </div>
             </section>
@@ -296,8 +313,8 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                             key={idx}
                                             onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
                                             className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden snap-center transition-all ${idx === selectedImage
-                                                    ? 'ring-2 ring-white scale-110'
-                                                    : 'opacity-50 hover:opacity-100'
+                                                ? 'ring-2 ring-white scale-110'
+                                                : 'opacity-50 hover:opacity-100'
                                                 }`}
                                         >
                                             <Image

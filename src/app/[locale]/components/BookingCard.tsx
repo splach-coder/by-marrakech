@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Clock, ArrowRight, Calendar, Users, Check } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Clock, ArrowRight, Check } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
 interface BookingCardProps {
@@ -26,25 +25,33 @@ export default function BookingCard({
     groupSize,
     onBook
 }: BookingCardProps) {
-    const { addItem, toggleCart } = useCart();
-    const [date, setDate] = useState('');
-    const [guests, setGuests] = useState(2);
+    const { addItem, toggleCart, items } = useCart();
     const [isAdded, setIsAdded] = useState(false);
 
+    // Check if item is already in cart (check both id and type)
+    const isInCart = items.some(item => item.id === id && item.type === type);
+
+    useEffect(() => {
+        if (isInCart) {
+            setIsAdded(true);
+        }
+    }, [isInCart]);
+
     const handleAddToCart = () => {
+        if (isInCart) {
+            toggleCart();
+            return;
+        }
+
         if (id) {
             addItem({
                 id,
                 title,
                 type,
                 price,
-                date,
-                guests,
                 image: imageUrl
             });
-            setIsAdded(true);
-            setTimeout(() => setIsAdded(false), 2000); // Reset after 2s
-            toggleCart(); // Open cart to show visual confirmation
+            // Visual feedback handled by isInCart effect
         } else if (onBook) {
             onBook();
         }
@@ -81,38 +88,6 @@ export default function BookingCard({
                             </div>
                         </div>
 
-                        {/* Inputs Section */}
-                        <div className="space-y-4 mb-6">
-                            <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">Travel Date</label>
-                                <div className="relative">
-                                    <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                                    <input
-                                        type="date"
-                                        className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-700 font-medium"
-                                        value={date}
-                                        onChange={(e) => setDate(e.target.value)}
-                                    />
-                                </div>
-                            </div>
-
-                            <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">Guests</label>
-                                <div className="relative">
-                                    <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                                    <select
-                                        className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-700 font-medium appearance-none"
-                                        value={guests}
-                                        onChange={(e) => setGuests(parseInt(e.target.value))}
-                                    >
-                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '10+'].map(num => (
-                                            <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
                         {/* Details Grid */}
                         <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-8 pt-6 border-t border-dashed border-gray-200">
                             <div className="space-y-1.5">
@@ -144,13 +119,13 @@ export default function BookingCard({
                         {/* Action Button */}
                         <button
                             onClick={handleAddToCart}
-                            className={`w-full group relative flex items-center justify-center gap-3 py-4 px-6 rounded-xl transition-all duration-300 overflow-hidden shadow-lg ${isAdded ? 'bg-green-600 text-white' : 'bg-primary hover:bg-primary-dark text-white shadow-primary/20'
+                            className={`w-full group relative flex items-center justify-center gap-3 py-4 px-6 rounded-xl transition-all duration-300 overflow-hidden shadow-lg ${isAdded ? 'bg-green-600 text-white cursor-default' : 'bg-primary hover:bg-primary-dark text-white shadow-primary/20'
                                 }`}
                         >
                             {isAdded ? (
                                 <>
                                     <Check className="w-5 h-5" />
-                                    <span className="font-bold tracking-wide">Added to Journey</span>
+                                    <span className="font-bold tracking-wide">Already in Journey</span>
                                 </>
                             ) : (
                                 <>
@@ -161,7 +136,7 @@ export default function BookingCard({
                         </button>
 
                         <div className="mt-4 text-center">
-                            <p className="text-xs text-stone-400">Free cancellation up to 24h before</p>
+                            <p className="text-xs text-stone-400">Configure dates & guests in your cart</p>
                         </div>
                     </div>
                 </div>

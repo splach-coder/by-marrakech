@@ -1,23 +1,25 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useLocalStorage } from 'react-use';
 
 export interface CartItem {
     id: string;
     title: string;
     type: 'tour' | 'experience' | 'activity' | 'service';
-    price?: string; // e.g. "From €50"
+    price?: string;
     date?: string;
     guests?: number;
     image?: string;
     url?: string;
+    quantity?: number;
 }
 
 interface CartContextType {
     items: CartItem[];
     addItem: (item: CartItem) => void;
-    removeItem: (id: string) => void;
+    removeItem: (id: string, type: string) => void;
+    updateItem: (id: string, type: string, updates: Partial<CartItem>) => void;
+    reorderItems: (newOrder: CartItem[]) => void;
     clearCart: () => void;
     isCartOpen: boolean;
     toggleCart: () => void;
@@ -26,48 +28,77 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+const CART_STORAGE_KEY = 'bymarrakech-cart';
+
 export function CartProvider({ children }: { children: React.ReactNode }) {
-    // Persist cart in local storage
-    const [items, setItems] = useLocalStorage<CartItem[]>('bymarrakech-cart', []);
+    const [items, setItems] = useState<CartItem[]>([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
 
+    // Load from localStorage on mount
     useEffect(() => {
         setIsMounted(true);
+        try {
+            const stored = localStorage.getItem(CART_STORAGE_KEY);
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                setItems(parsed);
+            }
+        } catch (error) {
+            console.error('Error loading cart:', error);
+        }
     }, []);
 
-    const addItem = (newItem: CartItem) => {
-        setItems((prevItems) => {
-            const currentItems = prevItems || [];
+    // Save to localStorage whenever items change
+    useEffect(() => {
+        if (isMounted) {
+            try {
+                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+            } catch (error) {
+                console.error('Error saving cart:', error);
+            }
+        }
+    }, [items, isMounted]);
 
-            // Check for duplicate based on ID and Date
-            const existingItemIndex = currentItems.findIndex(
-                (item) => item.id === newItem.id && item.date === newItem.date
+    const addItem = (newItem: CartItem) => {
+        setItems((currentItems) => {
+            // Check for duplicate based on ID and TYPE
+            const exists = currentItems.some(
+                (item) => item.id === newItem.id && item.type === newItem.type
             );
 
-            if (existingItemIndex > -1) {
-                // Update existing item's guest count
-                const updatedItems = [...currentItems];
-                const existingItem = updatedItems[existingItemIndex];
-
-                updatedItems[existingItemIndex] = {
-                    ...existingItem,
-                    guests: (existingItem.guests || 0) + (newItem.guests || 0)
-                };
-
-                return updatedItems;
+            if (exists) {
+                // Already in cart, don't add again
+                console.log('Item already in cart:', newItem.id, newItem.type);
+                return currentItems;
             }
 
-            // Add as new item
-            // Ensure ID is preserved as the product ID, but if we needed a unique row ID we might need a separate field.
-            // For now, ID + Date is logically unique enough for the cart's purpose.
-            return [...currentItems, newItem];
+            // Add new item with default guests
+            console.log('Adding item to cart:', newItem.id, newItem.type);
+            return [...currentItems, { ...newItem, guests: newItem.guests || 2 }];
         });
         setIsCartOpen(true);
     };
 
-    const removeItem = (id: string) => {
-        setItems((prev) => (prev || []).filter((item) => item.id !== id));
+    const removeItem = (id: string, type: string) => {
+        setItems((currentItems) =>
+            currentItems.filter((item) => !(item.id === id && item.type === type))
+        );
+    };
+
+    const updateItem = (id: string, type: string, updates: Partial<CartItem>) => {
+        setItems((currentItems) => {
+            return currentItems.map((item) => {
+                if (item.id === id && item.type === type) {
+                    return { ...item, ...updates };
+                }
+                return item;
+            });
+        });
+    };
+
+    const reorderItems = (newOrder: CartItem[]) => {
+        setItems(newOrder);
     };
 
     const clearCart = () => {
@@ -78,7 +109,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         setIsCartOpen((prev) => !prev);
     };
 
-    // Prevent hydration mismatch by returning empty structure until mounted
+    // Prevent hydration mismatch
     if (!isMounted) {
         return (
             <CartContext.Provider
@@ -86,6 +117,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                     items: [],
                     addItem: () => { },
                     removeItem: () => { },
+                    updateItem: () => { },
+                    reorderItems: () => { },
                     clearCart: () => { },
                     isCartOpen: false,
                     toggleCart: () => { },
@@ -100,13 +133,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return (
         <CartContext.Provider
             value={{
-                items: items || [],
+                items,
                 addItem,
                 removeItem,
+                updateItem,
+                reorderItems,
                 clearCart,
                 isCartOpen,
                 toggleCart,
-                cartTotal: (items || []).length,
+                cartTotal: items.length,
             }}
         >
             {children}

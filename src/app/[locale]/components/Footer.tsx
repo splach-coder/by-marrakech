@@ -102,8 +102,8 @@ export default function Footer() {
               <Link href={`/${locale}/contact`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
                 Contact Us
               </Link>
-              <Link href={`/${locale}/blog`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Travel Blog
+              <Link href={`/${locale}/events`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
+                Events
               </Link>
             </nav>
           </div>
