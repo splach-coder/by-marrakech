@@ -3,8 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from '@/context/CartContext';
 
 interface HeaderProps {
   locale: string;
@@ -24,6 +25,7 @@ interface HeaderProps {
 export default function Header({ locale, translations }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { toggleCart, cartTotal } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,6 +97,7 @@ export default function Header({ locale, translations }: HeaderProps) {
                 { href: `/${locale}/experiences`, label: 'Experiences' },
                 { href: `/${locale}/services`, label: 'Services' },
                 { href: `/${locale}/activities`, label: 'Activities' },
+                { href: `/${locale}/gallery`, label: 'Gallery' },
                 { href: `/${locale}/marrakech`, label: translations.marrakech },
                 { href: `/${locale}/about`, label: translations.about },
                 { href: `/${locale}/contact`, label: translations.contact },
@@ -110,14 +113,30 @@ export default function Header({ locale, translations }: HeaderProps) {
               ))}
             </nav>
 
-            {/* Mobile Menu Trigger Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(true)}
-              className={`xl:hidden p-2 rounded-full transition-colors relative z-50 ${buttonHover} ${textColor}`}
-              aria-label="Open mobile menu"
-            >
-              <Menu className="w-8 h-8" />
-            </button>
+            <div className="flex items-center gap-4">
+              {/* Cart Trigger */}
+              <button
+                onClick={toggleCart}
+                className={`relative p-2 rounded-full transition-colors ${buttonHover} ${textColor}`}
+                aria-label="Open cart"
+              >
+                <ShoppingBag className="w-5 h-5 md:w-6 md:h-6" />
+                {cartTotal > 0 && (
+                  <span className="absolute top-0 right-0 w-4 h-4 bg-primary text-white text-[10px] font-bold flex items-center justify-center rounded-full">
+                    {cartTotal}
+                  </span>
+                )}
+              </button>
+
+              {/* Mobile Menu Trigger Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(true)}
+                className={`xl:hidden p-2 rounded-full transition-colors relative z-50 ${buttonHover} ${textColor}`}
+                aria-label="Open mobile menu"
+              >
+                <Menu className="w-8 h-8" />
+              </button>
+            </div>
           </div>
         </div>
       </header>

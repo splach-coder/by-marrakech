@@ -1,20 +1,57 @@
 'use client';
 
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { MapPin, Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Clock, ArrowRight, Calendar, Users, Check } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 interface BookingCardProps {
+    id?: string;
+    type?: 'tour' | 'experience' | 'activity' | 'service';
+    imageUrl?: string;
     price: string;
     title: string;
     duration: string;
     groupSize: string;
-    onBook: () => void;
+    onBook?: () => void; // Fallback or alternative
 }
 
-export default function BookingCard({ price, title, duration, groupSize, onBook }: BookingCardProps) {
+export default function BookingCard({
+    id,
+    type = 'tour',
+    imageUrl,
+    price,
+    title,
+    duration,
+    groupSize,
+    onBook
+}: BookingCardProps) {
+    const { addItem, toggleCart } = useCart();
+    const [date, setDate] = useState('');
+    const [guests, setGuests] = useState(2);
+    const [isAdded, setIsAdded] = useState(false);
+
+    const handleAddToCart = () => {
+        if (id) {
+            addItem({
+                id,
+                title,
+                type,
+                price,
+                date,
+                guests,
+                image: imageUrl
+            });
+            setIsAdded(true);
+            setTimeout(() => setIsAdded(false), 2000); // Reset after 2s
+            toggleCart(); // Open cart to show visual confirmation
+        } else if (onBook) {
+            onBook();
+        }
+    };
+
     return (
-        <div className="sticky top-8">
+        <div className="sticky top-24">
             <div className="relative group">
                 {/* Decorative Elements */}
                 <div className="absolute -inset-1 bg-gradient-to-r from-amber-200 to-orange-100 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
@@ -36,7 +73,7 @@ export default function BookingCard({ price, title, duration, groupSize, onBook 
 
                     <div className="px-8 pb-8 pt-2">
                         {/* Title Section */}
-                        <div className="mb-8">
+                        <div className="mb-6">
                             <h3 className="font-serif text-2xl text-gray-900 leading-tight mb-2">{title}</h3>
                             <div className="flex items-center gap-2 text-sm text-stone-500">
                                 <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -44,8 +81,40 @@ export default function BookingCard({ price, title, duration, groupSize, onBook 
                             </div>
                         </div>
 
+                        {/* Inputs Section */}
+                        <div className="space-y-4 mb-6">
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">Travel Date</label>
+                                <div className="relative">
+                                    <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                    <input
+                                        type="date"
+                                        className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-700 font-medium"
+                                        value={date}
+                                        onChange={(e) => setDate(e.target.value)}
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-1.5">Guests</label>
+                                <div className="relative">
+                                    <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                    <select
+                                        className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-700 font-medium appearance-none"
+                                        value={guests}
+                                        onChange={(e) => setGuests(parseInt(e.target.value))}
+                                    >
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '10+'].map(num => (
+                                            <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         {/* Details Grid */}
-                        <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-8">
+                        <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-8 pt-6 border-t border-dashed border-gray-200">
                             <div className="space-y-1.5">
                                 <span className="text-xs text-stone-400 uppercase tracking-wider font-semibold">Duration</span>
                                 <div className="flex items-center gap-2 text-stone-800 font-medium">
@@ -63,7 +132,7 @@ export default function BookingCard({ price, title, duration, groupSize, onBook 
                             <div className="col-span-2 pt-4 border-t border-dashed border-stone-200">
                                 <div className="flex justify-between items-end">
                                     <div className="space-y-1">
-                                        <span className="text-xs text-stone-400 uppercase tracking-wider font-semibold">Price</span>
+                                        <span className="text-xs text-stone-400 uppercase tracking-wider font-semibold">Total Price</span>
                                     </div>
                                     <div className="text-right">
                                         <div className="text-2xl font-bold text-gray-900">{price}</div>
@@ -74,12 +143,21 @@ export default function BookingCard({ price, title, duration, groupSize, onBook 
 
                         {/* Action Button */}
                         <button
-                            onClick={onBook}
-                            className="w-full group relative flex items-center justify-center gap-3 bg-primary hover:bg-primary-dark text-white py-4 px-6 rounded-xl transition-all duration-300 overflow-hidden shadow-lg shadow-primary/20"
+                            onClick={handleAddToCart}
+                            className={`w-full group relative flex items-center justify-center gap-3 py-4 px-6 rounded-xl transition-all duration-300 overflow-hidden shadow-lg ${isAdded ? 'bg-green-600 text-white' : 'bg-primary hover:bg-primary-dark text-white shadow-primary/20'
+                                }`}
                         >
-                            <span className="relative z-10 font-bold tracking-wide">Reserve Spot</span>
-                            <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-                            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            {isAdded ? (
+                                <>
+                                    <Check className="w-5 h-5" />
+                                    <span className="font-bold tracking-wide">Added to Journey</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span className="relative z-10 font-bold tracking-wide">Add to Journey</span>
+                                    <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
+                                </>
+                            )}
                         </button>
 
                         <div className="mt-4 text-center">

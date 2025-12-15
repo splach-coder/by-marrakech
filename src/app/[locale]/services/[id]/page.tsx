@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import GalleryGrid from '../../components/GalleryGrid';
 import PrivateDriverService from '../components/PrivateDriverService';
+import BookingCard from '../../components/BookingCard';
 
 interface ServicePageProps {
     params: Promise<{
@@ -124,7 +125,13 @@ export default function ServicePage({ params }: ServicePageProps) {
                             {/* CTAs */}
                             <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
                                 <button
-                                    onClick={handleBook}
+                                    onClick={() => {
+                                        const element = document.getElementById('booking-card-section');
+                                        if (element) {
+                                            const y = element.getBoundingClientRect().top + window.pageYOffset - 100;
+                                            window.scrollTo({ top: y, behavior: 'smooth' });
+                                        }
+                                    }}
                                     className="px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2"
                                 >
                                     <span>Book Now</span>
@@ -155,8 +162,18 @@ export default function ServicePage({ params }: ServicePageProps) {
                                 </div>
                             </div>
 
-                            {/* Sidebar Info */}
-                            <div className="lg:col-span-1 space-y-6">
+                            {/* Sidebar Info & Booking */}
+                            <div id="booking-card-section" className="lg:col-span-1 space-y-6">
+                                <BookingCard
+                                    id={String(service.id)}
+                                    title={service.title}
+                                    price="Contact for price"
+                                    duration="Flexible"
+                                    groupSize="Private transfer"
+                                    type="service"
+                                    imageUrl={service.image.url}
+                                />
+
                                 <div className="bg-[#faf9f6] p-6 rounded-2xl">
                                     <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                                         <Shield className="w-5 h-5 text-primary" />

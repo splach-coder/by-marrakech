@@ -172,6 +172,69 @@ export const testimonialsData = [
         rating: 5,
         review: 'The desert experience was absolutely magical! Sleeping under the stars in Agafay was a dream come true. The camel ride at sunset is a must-do. Highly recommend ByMarrakech for their professionalism.',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: '4',
+        name: 'Isabella Rossi',
+        country: 'Italy',
+        tour: 'Imperial Cities Tour',
+        rating: 5,
+        review: 'Un viaggio straordinario attraverso i palazzi e i souk di Fes, Meknes e Rabat. La guida era appassionata e ci ha fatto vivere la storia come in un libro aperto. Bravi!',
+        image: 'https://images.unsplash.com/photo-1494790108755-2616b612b5bc?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: '5',
+        name: 'David & Karen Miller',
+        country: 'United Kingdom',
+        tour: 'Sahara Luxury Camp',
+        rating: 5,
+        review: 'From the 4×4 transfer to the private tent with en-suite, every detail was flawless. Watching the sunrise over the Erg Chebbi dunes will stay with us forever. Worth every penny.',
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: '6',
+        name: 'Anika van der Berg',
+        country: 'Netherlands',
+        tour: 'Moroccan Cooking Class',
+        rating: 5,
+        review: 'We learned to make real tagines, rolled our own couscous and visited the local market with the chef. The whole family loved it—kids haven’t stopped asking for ras-el-hanout on everything!',
+        image: 'https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: '7',
+        name: 'Juan Carlos Gómez',
+        country: 'Spain',
+        tour: 'Essaouira Coastal Escape',
+        rating: 4,
+        review: 'Un fin de semana perfecto. Essaouira es un pueblo con mucho encanto y el hotel seleccionado tenía vistas directas al mar. Solo le falta una noche más para disfrutar del spa.',
+        image: 'https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: '8',
+        name: 'Emily Watson',
+        country: 'Australia',
+        tour: 'Atlas to Atlantic Trek',
+        rating: 5,
+        review: 'Five days of jaw-dropping scenery, from walnut groves to alpine meadows and finally the crashing waves of Imsouane. The muleteers and cook were legends—best picnic lunches ever!',
+        image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: '9',
+        name: 'Lars Nielsen',
+        country: 'Denmark',
+        tour: 'Marrakech Medina & Spa',
+        rating: 5,
+        review: 'Vibrant souks, mint tea on rooftops and then total bliss at the hammam. The riad you booked was a quiet oasis right in the middle of the chaos. Perfect balance of adventure and relaxation.',
+        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80'
+    },
+    {
+        id: '10',
+        name: 'Priya Sharma',
+        country: 'India',
+        tour: 'Ouzoud Waterfalls Day Trip',
+        rating: 4,
+        review: 'The hike down to the falls was easy even for my parents. We saw Barbary apes and had a tasty riverside lunch. Only wish we had more time to swim—next visit!',
+        image: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80'
     }
 ];
 

@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-body {
-  font-family: 'Tahoma', 'Inter', 'sans-serif' !important;
-}
-
 @font-face {
   font-family: 'Tahoma';
   src: url('/fonts/tahoma.ttf') format('truetype');
@@ -12,7 +8,30 @@ body {
   font-display: swap;
 }
 
-/* Tailwind v4 uses @theme instead of tailwind.config.ts */
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-Medium-BF6438cc5883899.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-Bold-BF6438cc587b5b5.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/fonts/Nohemi-Black-BF6438cc58744d4.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   /* Colors */
   --color-primary: #912b2b;
@@ -39,30 +58,12 @@ body {
   --color-border: #e8e3d8;
   --color-border-light: #f0ede5;
   --color-border-dark: #c8bba8;
-}
 
-@font-face {
-  font-family: 'Nohemi';
-  src: url('/fonts/Nohemi-Medium-BF6438cc5883899.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nohemi';
-  src: url('/fonts/Nohemi-Bold-BF6438cc587b5b5.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nohemi';
-  src: url('/fonts/Nohemi-Black-BF6438cc58744d4.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
+  /* Fonts */
+  --font-serif: "Nohemi", sans-serif;
+  --font-sans: "Tahoma", "Inter", sans-serif;
+  --font-display: "Nohemi", sans-serif;
+  --font-body: "Tahoma", "Inter", sans-serif;
 }
 
 .font-nohemi {

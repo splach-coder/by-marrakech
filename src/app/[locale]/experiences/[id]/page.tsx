@@ -124,7 +124,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
             </section>
 
             {/* Main Content Grid */}
-            <div className="px-0 md:container-custom py-8 md:py-20">
+            <div className="px-0 md:container-custom md:px-20 py-8 md:py-20">
                 {/* Breadcrumbs */}
 
 
@@ -256,7 +256,9 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                             title={experience.title}
                             duration={experience.duration}
                             groupSize={experience.group_size}
-                            onBook={() => window.open(`https://wa.me/212600000000?text=I'm interested in booking: ${experience.title}`, '_blank')}
+                            id={String(experience.id)}
+                            imageUrl={experience.image.url}
+                            type="experience"
                         />
                     </div>
 
@@ -318,8 +320,8 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                                             key={idx}
                                             onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
                                             className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden snap-center transition-all ${idx === selectedImage
-                                                    ? 'ring-2 ring-white scale-110'
-                                                    : 'opacity-50 hover:opacity-100'
+                                                ? 'ring-2 ring-white scale-110'
+                                                : 'opacity-50 hover:opacity-100'
                                                 }`}
                                         >
                                             <Image

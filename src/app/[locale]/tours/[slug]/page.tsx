@@ -144,7 +144,7 @@ export default function TourPage({ params }: TourPageProps) {
       </section>
 
       {/* Main Content */}
-      <div className="px-0 md:container-custom py-8 md:py-16">
+      <div className="px-0 md:container-custom md:px-20 py-8 md:py-16">
         {/* Breadcrumbs */}
 
 
@@ -276,11 +276,13 @@ export default function TourPage({ params }: TourPageProps) {
           <div className="lg:col-span-4 relative">
             <div className="sticky top-24 space-y-8">
               <BookingCard
-                title="Book This Tour"
+                title={tour.title}
                 price="Contact us for price"
                 duration={tour.duration}
                 groupSize="Private Group"
-                onBook={handleBook}
+                id={String(tour.id)}
+                imageUrl={tour.image.url}
+                type="tour"
               />
             </div>
           </div>
@@ -343,8 +345,8 @@ export default function TourPage({ params }: TourPageProps) {
                       key={idx}
                       onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
                       className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden snap-center transition-all ${idx === selectedImage
-                          ? 'ring-2 ring-white scale-110'
-                          : 'opacity-50 hover:opacity-100'
+                        ? 'ring-2 ring-white scale-110'
+                        : 'opacity-50 hover:opacity-100'
                         }`}
                     >
                       <Image

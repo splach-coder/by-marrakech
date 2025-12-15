@@ -8,6 +8,8 @@ import "../globals.css";
 import Script from 'next/script';
 import AnalyticsListener from '@/lib/AnalyticsListener';
 import Footer from './components/Footer';
+import { CartProvider } from '@/context/CartContext';
+import CartDrawer from './components/CartDrawer';
 
 // ---  SEO Metadata
 export const metadata = {
@@ -72,17 +74,21 @@ function HeaderWithTranslations({ locale }: { locale: string }) {
   return <Header locale={locale} translations={translations} />;
 }
 
-export default function LocaleLayout({
+import { getMessages } from 'next-intl/server';
+
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>
@@ -105,11 +111,15 @@ export default function LocaleLayout({
         </Script>
       </head>
       <body>
-        <AnalyticsListener />
-        <SubHeader />
-        <HeaderWithTranslations locale={locale} />
-        <NextIntlClientProvider>{children}
-          <Footer />
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <CartProvider>
+            <AnalyticsListener />
+            <SubHeader />
+            <HeaderWithTranslations locale={locale} />
+            {children}
+            <Footer />
+            <CartDrawer />
+          </CartProvider>
         </NextIntlClientProvider>
       </body>
     </html>

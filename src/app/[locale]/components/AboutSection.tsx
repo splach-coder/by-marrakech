@@ -82,7 +82,7 @@ export default function AboutSection({
           {/* CTA Button */}
           <motion.div variants={itemVariants}>
             <Link
-              href={`/${locale}/tours`}
+              href={`/${locale}/marrakech`}
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-semibold transition-transform hover:scale-105 hover:bg-primary-dark shadow-lg hover:shadow-xl"
             >
               <span>Explore All Destinations</span>
