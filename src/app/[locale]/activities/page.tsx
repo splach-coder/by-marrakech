@@ -36,7 +36,7 @@ export default function ActivitiesPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <Image
-                        src={activities[0]?.image?.url || '/images/marrakech.png'}
+                        src={'/images/hero-imgs/activites.jpg'}
                         alt="Activities in Morocco"
                         fill
                         className="object-cover"

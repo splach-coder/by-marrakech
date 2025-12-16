@@ -252,7 +252,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                     {/* Right Column (Sidebar) */}
                     <div className="lg:col-span-4 h-full">
                         <BookingCard
-                            price="Contact Us"
+                            price={experience.price || "Contact Us"}
                             title={experience.title}
                             duration={experience.duration}
                             groupSize={experience.group_size}

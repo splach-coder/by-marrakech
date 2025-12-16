@@ -58,7 +58,7 @@ export default function MarrakechPage() {
       <section className="relative h-screen min-h-[700px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/marrakech/marrakech1.jpg" // Assuming this exists or falls back
+            src="/images/marrakech/marrakech12.jpg" // Assuming this exists or falls back
             alt="Marrakech Morocco"
             fill
             className="object-cover"
@@ -135,7 +135,7 @@ export default function MarrakechPage() {
           >
             <div className="aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/marrakech/marrakech2.jpg" // Fallback expected
+                src="/images/marrakech/marrakech13.jpg" // Fallback expected
                 alt="Marrakech Riad"
                 fill
                 className="object-cover"

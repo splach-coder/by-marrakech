@@ -35,7 +35,7 @@ export default function ServicesPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <Image
-                        src={services[0]?.banner_image?.url || '/images/services/banner.png'}
+                        src={'/images/hero-imgs/services.png'}
                         alt="Travel Services"
                         fill
                         className="object-cover"

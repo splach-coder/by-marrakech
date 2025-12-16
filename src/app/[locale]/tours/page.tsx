@@ -35,7 +35,7 @@ export default function ToursPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src={tours[0]?.banner_image?.url || '/images/merzouga/merzouga1.jpg'}
+            src={'/images/hero-imgs/tours.jpg'}
             alt="Morocco Tours"
             fill
             className="object-cover"

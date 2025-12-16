@@ -14,6 +14,17 @@ export interface CartItem {
     quantity?: number;
 }
 
+// Helper to parse price string
+export const parsePrice = (priceStr?: string): number => {
+    if (!priceStr) return 0;
+    // Extract first number found (handling potential "From $XX" or "$XX/day")
+    const matches = priceStr.match(/(\d+)/);
+    if (matches && matches[0]) {
+        return parseInt(matches[0], 10);
+    }
+    return 0;
+};
+
 interface CartContextType {
     items: CartItem[];
     addItem: (item: CartItem) => void;
@@ -24,6 +35,7 @@ interface CartContextType {
     isCartOpen: boolean;
     toggleCart: () => void;
     cartTotal: number;
+    totalPrice: number;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -60,6 +72,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         }
     }, [items, isMounted]);
 
+    const totalPrice = items.reduce((acc, item) => {
+        const unitPrice = parsePrice(item.price);
+        return acc + (unitPrice * (item.guests || 1));
+    }, 0);
+
     const addItem = (newItem: CartItem) => {
         setItems((currentItems) => {
             // Check for duplicate based on ID and TYPE
@@ -75,7 +92,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
             // Add new item with default guests
             console.log('Adding item to cart:', newItem.id, newItem.type);
-            return [...currentItems, { ...newItem, guests: newItem.guests || 2 }];
+            return [...currentItems, { ...newItem, guests: newItem.guests || 1 }];
         });
         setIsCartOpen(true);
     };
@@ -123,6 +140,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                     isCartOpen: false,
                     toggleCart: () => { },
                     cartTotal: 0,
+                    totalPrice: 0,
                 }}
             >
                 {children}
@@ -142,6 +160,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
                 isCartOpen,
                 toggleCart,
                 cartTotal: items.length,
+                totalPrice,
             }}
         >
             {children}

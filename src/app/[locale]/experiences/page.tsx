@@ -20,7 +20,7 @@ export default function ExperiencesPage() {
             if (exp.locations && exp.locations.length > 0) {
                 exp.locations.forEach((loc: any) => {
                     const cityName = typeof loc === 'string' ? loc : loc.name;
-                    if (cityName) citySet.add(cityName);
+                    if (cityName) citySet.add(cityName.trim());
                 });
             }
         });
@@ -34,7 +34,7 @@ export default function ExperiencesPage() {
             if (!exp.locations || exp.locations.length === 0) return false;
             return exp.locations.some((loc: any) => {
                 const cityName = typeof loc === 'string' ? loc : loc.name;
-                return cityName === selectedCity;
+                return cityName?.trim() === selectedCity;
             });
         });
     }, [experiences, selectedCity]);
@@ -63,7 +63,7 @@ export default function ExperiencesPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <Image
-                        src={experiences[0]?.banner_image?.url || '/images/experiences-banner.jpg'}
+                        src={'/images/hero-imgs/experiences.jpg'}
                         alt="Morocco Experiences"
                         fill
                         className="object-cover"
@@ -126,8 +126,8 @@ export default function ExperiencesPage() {
                                 key={city}
                                 onClick={() => setSelectedCity(city)}
                                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedCity === city
-                                        ? 'bg-primary text-white shadow-lg shadow-primary/20'
-                                        : 'bg-white text-text-secondary border border-border hover:border-primary hover:text-primary'
+                                    ? 'bg-primary text-white shadow-lg shadow-primary/20'
+                                    : 'bg-white text-text-secondary border border-border hover:border-primary hover:text-primary'
                                     }`}
                             >
                                 {city === 'all' ? 'All Cities' : city}
@@ -141,6 +141,7 @@ export default function ExperiencesPage() {
                         </div>
                     ) : (
                         <motion.div
+                            key={selectedCity}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, margin: "-100px" }}

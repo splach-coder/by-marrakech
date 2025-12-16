@@ -212,9 +212,9 @@ export default function ActivityPage({ params }: ActivityPageProps) {
             {/* 4. BOOKING CARD */}
             <section className="py-24 bg-background">
                 <div className="container-custom mx-auto px-4 md:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+                    <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 max-w-7xl mx-auto">
                         {/* Left: Final CTA */}
-                        <div className="lg:col-span-2 flex flex-col justify-center">
+                        <div className="lg:col-span-4 flex flex-col justify-center">
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
                                 Ready for an Adventure?
                             </h2>
@@ -245,15 +245,17 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                         </div>
 
                         {/* Right: Booking Card */}
-                        <BookingCard
-                            id={String(activity.id)}
-                            type="activity"
-                            imageUrl={activity.image.url}
-                            title={activity.title}
-                            price={activity.price || 'From €35'}
-                            duration={activity.duration || 'Flexible'}
-                            groupSize={activity.suitable_for?.[0] || 'All sizes'}
-                        />
+                        <div className="lg:col-span-3">
+                            <BookingCard
+                                id={String(activity.id)}
+                                type="activity"
+                                imageUrl={activity.image.url}
+                                title={activity.title}
+                                price={activity.price || 'From €35'}
+                                duration={activity.duration || 'Flexible'}
+                                groupSize={activity.suitable_for?.[0] || 'All sizes'}
+                            />
+                        </div>
                     </div>
                 </div>
             </section>

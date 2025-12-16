@@ -93,7 +93,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
             {/* 2. DATA / CONTENT SECTION */}
             <section className="relative -mt-20 z-10 md:px-0 pb-8 md:pb-20">
-                <div className="container-custom max-w-5xl mx-auto">
+                <div className="container-custom max-w-7xl mx-auto">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -211,7 +211,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                                 <BookingCard
                                     id={String(service.id)}
                                     title={service.title}
-                                    price="Contact for price"
+                                    price={service.price || "Contact for price"}
                                     duration="Flexible"
                                     groupSize="Private transfer"
                                     type="service"
@@ -225,7 +225,7 @@ export default function ServicePage({ params }: ServicePageProps) {
 
             {/* 3. SIMPLE GALLERY */}
             <section className="py-8 md:py-12 bg-white">
-                <div className="px-4 md:container-custom max-w-5xl mx-auto">
+                <div className="px-4 md:container-custom max-w-7xl mx-auto">
                     <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">
                         Gallery
                     </h2>
@@ -236,7 +236,7 @@ export default function ServicePage({ params }: ServicePageProps) {
             {/* 4. REVIEWS */}
             {service.reviews && service.reviews.length > 0 && (
                 <section className="py-16 bg-[#faf9f6]">
-                    <div className="container-custom max-w-5xl mx-auto">
+                    <div className="container-custom max-w-7xl mx-auto">
                         <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">
                             Recent Reviews
                         </h2>

@@ -277,7 +277,7 @@ export default function TourPage({ params }: TourPageProps) {
             <div className="sticky top-24 space-y-8">
               <BookingCard
                 title={tour.title}
-                price="Contact us for price"
+                price={tour.price || "Contact us for price"}
                 duration={tour.duration}
                 groupSize="Private Group"
                 id={String(tour.id)}

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { Clock, ArrowRight, Check } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
@@ -27,6 +29,7 @@ export default function BookingCard({
 }: BookingCardProps) {
     const { addItem, toggleCart, items } = useCart();
     const [isAdded, setIsAdded] = useState(false);
+    const locale = useLocale();
 
     // Check if item is already in cart (check both id and type)
     const isInCart = items.some(item => item.id === id && item.type === type);
@@ -57,6 +60,19 @@ export default function BookingCard({
         }
     };
 
+    const getLinkHref = () => {
+        if (!id) return null;
+        const category = {
+            'tour': 'tours',
+            'activity': 'activities',
+            'experience': 'experiences',
+            'service': 'services'
+        }[type] || 'tours';
+        return `/${locale}/${category}/${id}`;
+    };
+
+    const href = getLinkHref();
+
     return (
         <div className="sticky top-24">
             <div className="relative group">
@@ -81,7 +97,13 @@ export default function BookingCard({
                     <div className="px-8 pb-8 pt-2">
                         {/* Title Section */}
                         <div className="mb-6">
-                            <h3 className="font-serif text-2xl text-gray-900 leading-tight mb-2">{title}</h3>
+                            {href ? (
+                                <Link href={href} className="group-hover:text-primary transition-colors">
+                                    <h3 className="font-serif text-2xl text-gray-900 leading-tight mb-2 hover:text-primary transition-colors cursor-pointer">{title}</h3>
+                                </Link>
+                            ) : (
+                                <h3 className="font-serif text-2xl text-gray-900 leading-tight mb-2">{title}</h3>
+                            )}
                             <div className="flex items-center gap-2 text-sm text-stone-500">
                                 <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
                                 Available for booking

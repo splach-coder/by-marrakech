@@ -110,7 +110,7 @@ export default async function LocaleLayout({
           `}
         </Script>
       </head>
-      <body>
+      <body cz-shortcut-listen="true">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <CartProvider>
             <AnalyticsListener />

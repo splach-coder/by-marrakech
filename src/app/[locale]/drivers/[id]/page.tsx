@@ -75,7 +75,7 @@ export default function DriverProfilePage({ params }: DriverPageProps) {
             <div className="px-4 md:container-custom mx-auto max-w-7xl relative z-10">
 
                 {/* Back Link */}
-                <div className="mb-8">
+                <div className="my-8">
                     <Link href="/services/501" className="inline-flex items-center gap-2 text-stone-500 hover:text-primary transition-colors font-medium group">
                         <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                         Back to Drivers

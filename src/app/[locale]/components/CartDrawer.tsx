@@ -12,7 +12,7 @@ import { useLocale } from 'next-intl';
 
 
 export default function CartDrawer() {
-    const { isCartOpen, toggleCart, items, removeItem, clearCart } = useCart();
+    const { isCartOpen, toggleCart, items, removeItem, clearCart, totalPrice } = useCart();
     const drawerRef = useRef(null);
 
     useClickAway(drawerRef, () => {
@@ -84,60 +84,72 @@ export default function CartDrawer() {
                                 </div>
                             ) : (
                                 <div className="space-y-4">
-                                    {items.map((item) => (
-                                        <motion.div
-                                            layout
-                                            key={item.id}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, scale: 0.95 }}
-                                            className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex gap-4 group"
-                                        >
-                                            {/* Image Thumbnail */}
-                                            <div className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100">
-                                                {item.image ? (
-                                                    <Image
-                                                        src={item.image}
-                                                        alt={item.title}
-                                                        fill
-                                                        className="object-cover"
-                                                    />
-                                                ) : (
-                                                    <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300">
-                                                        <ShoppingBag className="w-6 h-6" />
-                                                    </div>
-                                                )}
-                                            </div>
+                                    {items.map((item) => {
+                                        const category = {
+                                            'tour': 'tours',
+                                            'activity': 'activities',
+                                            'experience': 'experiences',
+                                            'service': 'services'
+                                        }[item.type] || 'tours';
+                                        const href = `/${locale}/${category}/${item.id}`;
 
-                                            {/* Content */}
-                                            <div className="flex-1 min-w-0">
-                                                <div className="flex justify-between items-start">
-                                                    <h3 className="font-bold text-gray-900 text-sm leading-tight truncate pr-2">
-                                                        {item.title}
-                                                    </h3>
-                                                    <button
-                                                        onClick={() => removeItem(item.id, item.type)}
-                                                        className="text-gray-300 hover:text-red-500 transition-colors"
-                                                    >
-                                                        <Trash2 className="w-4 h-4" />
-                                                    </button>
-                                                </div>
+                                        return (
+                                            <motion.div
+                                                layout
+                                                key={item.id}
+                                                initial={{ opacity: 0, y: 20 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, scale: 0.95 }}
+                                                className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex gap-4 group"
+                                            >
+                                                {/* Image Thumbnail */}
+                                                <Link href={href} onClick={toggleCart} className="relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-gray-100 block">
+                                                    {item.image ? (
+                                                        <Image
+                                                            src={item.image}
+                                                            alt={item.title}
+                                                            fill
+                                                            className="object-cover"
+                                                        />
+                                                    ) : (
+                                                        <div className="w-full h-full flex items-center justify-center bg-gray-100 text-gray-300">
+                                                            <ShoppingBag className="w-6 h-6" />
+                                                        </div>
+                                                    )}
+                                                </Link>
 
-                                                <div className="mt-2 space-y-1">
-                                                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                                                        <Calendar className="w-3 h-3" />
-                                                        <span className={`${!item.date ? 'text-amber-600 font-medium' : ''}`}>
-                                                            {item.date || 'Select date at checkout'}
-                                                        </span>
+                                                {/* Content */}
+                                                <div className="flex-1 min-w-0">
+                                                    <div className="flex justify-between items-start">
+                                                        <Link href={href} onClick={toggleCart} className="hover:text-primary transition-colors pr-2 min-w-0 flex-1">
+                                                            <h3 className="font-bold text-gray-900 text-sm leading-tight truncate">
+                                                                {item.title}
+                                                            </h3>
+                                                        </Link>
+                                                        <button
+                                                            onClick={() => removeItem(item.id, item.type)}
+                                                            className="text-gray-300 hover:text-red-500 transition-colors flex-shrink-0 ml-2"
+                                                        >
+                                                            <Trash2 className="w-4 h-4" />
+                                                        </button>
                                                     </div>
-                                                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                                                        <Users className="w-3 h-3" />
-                                                        <span>{item.guests || 2} Guests</span>
+
+                                                    <div className="mt-2 space-y-1">
+                                                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                                                            <Calendar className="w-3 h-3" />
+                                                            <span className={`${!item.date ? 'text-amber-600 font-medium' : ''}`}>
+                                                                {item.date || 'Select date at checkout'}
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex items-center gap-2 text-xs text-gray-500">
+                                                            <Users className="w-3 h-3" />
+                                                            <span>{item.guests || 1} Guests</span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </motion.div>
-                                    ))}
+                                            </motion.div>
+                                        );
+                                    })}
                                 </div>
                             )}
 
@@ -154,7 +166,7 @@ export default function CartDrawer() {
                                     </div>
                                     <div className="flex justify-between text-base font-bold text-gray-900">
                                         <span>Estimated Total</span>
-                                        <span>Request Quote</span>
+                                        <span>{totalPrice > 0 ? `€${totalPrice}` : 'Request Quote'}</span>
                                     </div>
                                 </div>
 

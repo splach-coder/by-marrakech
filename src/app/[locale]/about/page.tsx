@@ -115,7 +115,7 @@ export default function AboutPage() {
               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=800&q=80"
+                src="/images/marrakech/marrakech14.jpg"
                 alt="Our Story"
                 fill
                 className="object-cover"

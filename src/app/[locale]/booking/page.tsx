@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, use } from 'react';
-import { useCart, CartItem } from '@/context/CartContext';
+import { useCart, CartItem, parsePrice } from '@/context/CartContext';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Reorder } from 'framer-motion';
 import {
     Calendar,
@@ -28,7 +29,7 @@ interface BookingPageProps {
 export default function BookingPage({ params }: BookingPageProps) {
     const { locale } = use(params);
     const router = useRouter();
-    const { items, removeItem, updateItem, reorderItems, clearCart } = useCart();
+    const { items, removeItem, updateItem, reorderItems, clearCart, totalPrice } = useCart();
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -51,7 +52,7 @@ export default function BookingPage({ params }: BookingPageProps) {
     };
 
     // Calculate total guests just for summary
-    const totalGuests = items.reduce((acc, item) => acc + (item.guests || 2), 0);
+    const totalGuests = items.reduce((acc, item) => acc + (item.guests || 1), 0);
 
     // Check if all items have dates selected
     const allDatesSelected = items.every(item => item.date);
@@ -110,11 +111,17 @@ export default function BookingPage({ params }: BookingPageProps) {
         message += `*Requested Journey Agenda:*\n`;
 
         items.forEach((item, index) => {
+            const itemPrice = parsePrice(item.price);
+            const itemTotal = itemPrice * (item.guests || 1);
             message += `\n*${index + 1}. ${item.title}*\n`;
             message += `   📅 Date: ${item.date}\n`;
-            message += `   👥 Guests: ${item.guests || 2}\n`;
-            message += `   💰 Ref: ${item.price}\n`;
+            message += `   👥 Guests: ${item.guests || 1}\n`;
+            message += `   💰 Price: ${item.price} (Subtotal: €${itemTotal})\n`;
         });
+
+        if (totalPrice > 0) {
+            message += `\n*Estimated Total: €${totalPrice}*\n`;
+        }
 
         if (formData.notes) {
             message += `\n*Special Requests:*\n${formData.notes}\n`;
@@ -208,6 +215,13 @@ export default function BookingPage({ params }: BookingPageProps) {
                             {items.map((item, index) => {
                                 const itemKey = `${item.id}-${item.type}`;
                                 const hasConflict = conflicts.some(c => c.itemIds.includes(itemKey));
+                                const category = {
+                                    'tour': 'tours',
+                                    'activity': 'activities',
+                                    'experience': 'experiences',
+                                    'service': 'services'
+                                }[item.type] || 'tours';
+                                const href = `/${locale}/${category}/${item.id}`;
 
                                 return (
                                     <Reorder.Item
@@ -246,10 +260,22 @@ export default function BookingPage({ params }: BookingPageProps) {
                                             <div className="flex-1 space-y-4">
                                                 <div className="flex justify-between items-start">
                                                     <div>
-                                                        <h3 className="font-bold text-xl text-gray-900 leading-tight mb-1">
-                                                            {item.title}
-                                                        </h3>
+                                                        <Link href={href} className="group-hover:text-primary transition-colors">
+                                                            <h3 className="font-bold text-xl text-gray-900 leading-tight mb-1 hover:text-primary transition-colors">
+                                                                {item.title}
+                                                            </h3>
+                                                        </Link>
                                                         <p className="text-sm text-gray-500 uppercase tracking-wide">{item.type}</p>
+                                                        <div className="flex items-center gap-2 mt-2">
+                                                            <span className="text-sm font-medium text-gray-900 bg-gray-100 px-2 py-0.5 rounded">
+                                                                {item.price || 'Price on request'}
+                                                            </span>
+                                                            {item.price && (
+                                                                <span className="text-sm font-bold text-primary">
+                                                                    Total: €{parsePrice(item.price) * (item.guests || 1)}
+                                                                </span>
+                                                            )}
+                                                        </div>
                                                     </div>
                                                     <button
                                                         onClick={() => removeItem(item.id, item.type)}
@@ -292,7 +318,7 @@ export default function BookingPage({ params }: BookingPageProps) {
                                                             <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                                                             <select
                                                                 className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-800 font-medium appearance-none"
-                                                                value={item.guests || 2}
+                                                                value={item.guests || 1}
                                                                 onChange={(e) => handleItemUpdate(item.id, item.type, 'guests', parseInt(e.target.value))}
                                                             >
                                                                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(num => (
@@ -401,6 +427,10 @@ export default function BookingPage({ params }: BookingPageProps) {
                                     <div className="flex justify-between text-white/80">
                                         <span>Total Guests</span>
                                         <span className="font-bold text-white">{totalGuests}</span>
+                                    </div>
+                                    <div className="flex justify-between text-white/80">
+                                        <span>Estimated Total</span>
+                                        <span className="font-bold text-white">{totalPrice > 0 ? `€${totalPrice}` : 'Request Quote'}</span>
                                     </div>
                                     <div className="pt-4 border-t border-white/20">
                                         <p className="text-xs text-white/70 leading-relaxed mb-2">

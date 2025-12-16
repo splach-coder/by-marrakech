@@ -35,7 +35,7 @@ export default function GalleryPage() {
             {/* Hero Section */}
             <section className="relative h-[60vh] md:h-[70vh] min-h-[500px] overflow-hidden">
                 <Image
-                    src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=2000&q=80"
+                    src="/images/hero-imgs/gallery.jpg"
                     alt="Morocco Gallery"
                     fill
                     className="object-cover"

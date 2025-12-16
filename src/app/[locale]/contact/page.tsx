@@ -35,35 +35,36 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#faf9f6]">
 
-      {/* 1. CINEMA HERO */}
-      <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
+      {/* Full Screen Hero Section */}
+      <div className="relative h-screen w-full overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=2000&q=80"
+            src="/images/hero-imgs/contact.jpg"
             alt="Contact Us"
             fill
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
+        {/* Hero Content */}
+        <div className="relative h-full flex flex-col items-center justify-center text-center px-4 text-white z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="text-white/80 uppercase tracking-[0.2em] text-sm font-medium mb-4 block">Get in Touch</span>
-            <h1 className="text-5xl md:text-7xl font-serif text-white font-medium mb-6">
-              Let&apos;s Plan Your<br />Journey
+            <h1 className="text-5xl md:text-7xl lg:text-8xl !font-serif font-normal tracking-tight mb-6">
+              Contact Us
             </h1>
-            <p className="text-lg text-white/90 font-light max-w-xl mx-auto">
-              We are here to help you craft the perfect Moroccan experience.
+            <p className="text-sm md:text-base lg:text-lg tracking-[0.2em] font-light uppercase text-white/90">
+              We'd Love to Hear From You
             </p>
           </motion.div>
         </div>
-      </section>
+      </div>
 
       {/* 2. EDITORIAL CONTACT SECTION */}
       <section className="py-24 px-2 md:px-6 lg:px-12">
