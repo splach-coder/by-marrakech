@@ -91,10 +91,26 @@ export default function ContactPage() {
                     </div>
                     <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Visit Us</span>
                   </div>
-                  <p className="text-xl text-gray-800 leading-relaxed pl-16 border-l border-gray-100">
+                  <p className="text-xl text-gray-800 leading-relaxed pl-16 border-l border-gray-100 mb-6">
                     123 Medina Avenue<br />
                     Marrakech 40000, Morocco
                   </p>
+
+                  {/* Map Card */}
+                  <div className="pl-16">
+                    <div className="relative h-48 w-full rounded-2xl overflow-hidden shadow-md border border-gray-100 group-hover:shadow-xl transition-all duration-500">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108704.22922718712!2d-8.077885489726833!3d31.63474853046036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafee8d96179e51%3A0x5950b6534f87adb8!2sMarrakesh%2C%20Morocco!5e0!3m2!1sen!2sus!4v1709900000000!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen={true}
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="absolute inset-0 grayscale group-hover:grayscale-0 transition-all duration-700"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Contact */}
@@ -192,20 +208,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 3. MAP SECTION (Styled) */}
-      <section className="h-[400px] w-full bg-gray-200 relative">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108704.22922718712!2d-8.077885489726833!3d31.63474853046036!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafee8d96179e51%3A0x5950b6534f87adb8!2sMarrakesh%2C%20Morocco!5e0!3m2!1sen!2sus!4v1709900000000!5m2!1sen!2sus"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen={true}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="absolute inset-0"
-        />
-        <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.1)]" />
-      </section>
+
 
     </main>
   );
