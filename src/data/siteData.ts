@@ -35,7 +35,7 @@ const siteData = {
             description: "Start your Moroccan journey the right way with a reliable airport transfer. We provide comfortable, air-conditioned vehicles and professional drivers to ensure a smooth arrival.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/transport_from_airport.png",
+                url: "/images/services/luxury_driver_service.png",
                 alt: "Airport Transfer Service"
             },
             banner_image: {
@@ -68,7 +68,7 @@ const siteData = {
             description: "Arriving in a new country can be overwhelming, especially after a long flight. Our hotel transfer service ensures you get to your accommodation safely and comfortably.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/transport_from_hotel.png",
+                url: "/images/services/luxury_driver_service.png",
                 alt: "Hotel Transfer Service"
             },
             banner_image: {
@@ -101,7 +101,7 @@ const siteData = {
             description: "Rent Private Car & Driver in Morocco. Traveling through Morocco at your own pace is the best way to discover the country. Our private car and driver service gives you the freedom to explore.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/car_rental.png",
+                url: "/images/services/luxury_driver_service.png",
                 alt: "Private Car Rental"
             },
             banner_image: {
@@ -144,7 +144,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Experience the Sahara on a 3-day Merzouga desert tour from Marrakech. Visit Ait Ben Haddou, ride camels at sunset, and sleep under the stars.",
             image: {
-                url: "/images/marzouga-v2.png",
+                url: "/images/merzouga/merzouga5.jpg",
                 alt: "Visit Merzouga Morocco"
             },
             banner_image: {
@@ -211,7 +211,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Discover southern Morocco on a 4-day tour from Marrakech to Ouarzazate. Visit Dadès Gorges, ride camels in Merzouga, and explore desert landscapes and ancient kasbahs.",
             image: {
-                url: "/images/marzouga-v2.png",
+                url: "/images/merzouga/merzouga1.jpg",
                 alt: "Visit Merzouga Morocco"
             },
             banner_image: {
@@ -285,7 +285,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Experience Morocco's highlights on a 5-day tour from Marrakech to Merzouga, Fes, Chefchaouen, and Casablanca. Camel rides, historic sites, and stunning landscapes await.",
             image: {
-                url: "/images/marrakech.png",
+                url: "/images/marrakech/marrakech3.jpg",
                 alt: "Visit Marrakech Morocco"
             },
             banner_image: {
@@ -367,7 +367,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Book a two day excursion from Marrakech to Zagora including camel rides, a night in a Berber camp, and visits to Ait Ben Haddou.",
             image: {
-                url: "/images/Zagora.png",
+                url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.jpg",
                 alt: "Visit ZAGORA Morocco"
             },
             banner_image: {
@@ -424,7 +424,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Escape to nature with a full-day trip to Ouzoud Waterfalls from Marrakech. Enjoy scenic hikes, boat rides, and breathtaking views on this relaxing day trip.",
             image: {
-                url: "/images/ouzoud.png",
+                url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.jpg",
                 alt: "visit OUZOUD Waterfalls"
             },
             banner_image: {
@@ -476,7 +476,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Discover the beauty of the Ourika Valley on a 1 day excursion from Marrakech. Enjoy scenic views, Berber villages, waterfalls, and a peaceful escape.",
             image: {
-                url: "/images/Ourika Valley.png",
+                url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.jpg",
                 alt: "visit OURIKA VALLEY MOROCCO"
             },
             banner_image: {
@@ -525,7 +525,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Explore Casablanca on a guided day tour. Visit the Hassan II Mosque, Art Deco landmarks, Habous Quarter, and the Corniche on this cultural day trip.",
             image: {
-                url: "/images/casablanca.png",
+                url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.jpg",
                 alt: "visit Casablanca Morocco"
             },
             banner_image: {
@@ -578,7 +578,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Explore Essaouira on a full-day trip from Marrakech. Visit the medina, enjoy the beach, and discover local crafts in this charming coastal city.",
             image: {
-                url: "/images/Essaouira.png",
+                url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.jpg",
                 alt: "Visit ESSAOUIRA MOROCCO"
             },
             banner_image: {
@@ -631,7 +631,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Visit Morocco's capital on a guided Rabat excursion. Explore Hassan Tower, Kasbah of the Udayas, Chellah ruins, and the Royal Palace in a day.",
             image: {
-                url: "/images/rabat.png",
+                url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.jpg",
                 alt: "visit Rabat Morocco"
             },
             banner_image: {
@@ -682,7 +682,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Explore the cultural heart of Morocco with a guided Fes excursion. Visit Al Quaraouiyine, Chouara Tannery, and the old medina in one unforgettable day.",
             image: {
-                url: "/images/Fes.png",
+                url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.jpg",
                 alt: "Visit Fez Morocco"
             },
             banner_image: {
@@ -734,7 +734,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Join a full-day trip from Marrakech to Ouarzazate and Ait Ben Haddou. Visit film studios, ancient kasbahs, and enjoy scenic views through the Atlas Mountains.",
             image: {
-                url: "/images/ouarzazate.png",
+                url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.jpg",
                 alt: "Ouarzazate Morocco tour"
             },
             banner_image: {
@@ -785,7 +785,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Join a 3 day desert tour from Marrakech to Merzouga. Visit Ait Ben Haddou, ride camels, sleep in a Berber camp, and explore the Sahara.",
             image: {
-                url: "/images/marzouga-v2.png",
+                url: "/images/merzouga/merzouga6.jpg",
                 alt: "Visit Merzouga Morocco"
             },
             banner_image: {
@@ -847,7 +847,7 @@ const siteData = {
             group_size: "unlimited",
             description: "Explore Marrakech in one day with a guided city tour. Visit the medina, Bahia Palace, Majorelle Garden, and Jemaa el-Fnaa for a complete experience.",
             image: {
-                url: "/images/marrakech.png",
+                url: "/images/marrakech/marrakech5.jpg",
                 alt: "Visit Marrakech Morocco"
             },
             banner_image: {
@@ -901,7 +901,7 @@ const siteData = {
             description: "Experiencing Morocco goes far beyond visiting its famous monuments and landscapes. One of the most memorable ways to connect with Moroccan culture is through its food. At Your-Morocco, we invite you to take part in an immersive cooking class that allows you to discover the country's rich culinary heritage in a friendly and authentic atmosphere.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/cookingclass.png",
+                url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.jpg",
                 alt: "Cooking Class Activity In Morocco"
             },
             banner_image: {
@@ -950,7 +950,7 @@ const siteData = {
             description: "If you're looking for excitement, stunning landscapes, and a sense of adventure, quad biking in Morocco is the perfect activity. With Your-Morocco, you can experience the thrill of riding a quad bike across some of the country's most breathtaking terrains from the rocky trails of the Agafay Desert to the golden dunes near Merzouga, and the palm groves just outside Marrakech.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/quad.png",
+                url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.jpg",
                 alt: "Quad Biking Activity In Morocco"
             },
             banner_image: {
@@ -1000,7 +1000,7 @@ const siteData = {
             description: "Camel riding is one of the most iconic and peaceful ways to explore the beauty of Morocco. With Your-Morocco, you can enjoy a guided camel experience across stunning landscapes such as the golden dunes of the Sahara Desert, the rocky Agafay Desert near Marrakech, or the lush palm groves around traditional Berber villages.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/camels.png",
+                url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.jpg",
                 alt: "Camel Riding Activity In Morocco"
             },
             banner_image: {
@@ -1051,7 +1051,7 @@ const siteData = {
             description: "A journey through Morocco is not complete without tasting its incredible street food and regional specialties. At Your-Morocco, we offer curated food tours that allow you to explore the country's culinary landscape while walking through its vibrant medinas, local neighborhoods, and hidden food corners. These tours are designed for curious travelers who want to eat like locals and understand the stories behind every bite.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/foodtour.png",
+                url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.jpg",
                 alt: "Food Tour Activity In Morocco"
             },
             banner_image: {
@@ -1104,7 +1104,7 @@ const siteData = {
             description: "For travelers seeking a breathtaking and peaceful adventure, an air balloon ride over Morocco is an experience like no other. With Your-Morocco, you can soar above beautiful landscapes at sunrise, enjoying panoramic views of red earth hills, scattered Berber villages, and the majestic Atlas Mountains in the distance.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/airballon.png",
+                url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.jpg",
                 alt: "Air Balloon Activity In Morocco"
             },
             banner_image: {
@@ -1203,7 +1203,7 @@ const siteDataFR = {
             description: "Commencez votre voyage marocain du bon pied avec un transfert aéroport fiable. Nous fournissons des véhicules confortables et climatisés avec des chauffeurs professionnels pour assurer une arrivée en douceur.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/transport_from_airport.png",
+                url: "/images/services/luxury_driver_service.png",
                 alt: "Service de Transfert Aéroport"
             },
             banner_image: {
@@ -1236,7 +1236,7 @@ const siteDataFR = {
             description: "Arriver dans un nouveau pays peut être stressant, surtout après un long vol. Notre service de transfert hôtelier vous garantit d'arriver à votre hébergement en toute sécurité et confort.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/transport_from_hotel.png",
+                url: "/images/services/luxury_driver_service.png",
                 alt: "Service de Transfert Hôtelier"
             },
             banner_image: {
@@ -1269,7 +1269,7 @@ const siteDataFR = {
             description: "Voyager à travers le Maroc à votre propre rythme est la meilleure façon de découvrir le pays. Notre service de voiture privée avec chauffeur vous donne la liberté d'explorer.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/car_rental.png",
+                url: "/images/services/luxury_driver_service.png",
                 alt: "Location de Voiture Privée"
             },
             banner_image: {
@@ -1312,7 +1312,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Découvrez le Sahara lors d'un tour de 3 jours dans le désert de Merzouga depuis Marrakech. Visitez Aït Benhaddou, faites une balade à dos de chameau au coucher du soleil et dormez sous les étoiles.",
             image: {
-                url: "/images/marzouga-v2.png",
+                url: "/images/merzouga/merzouga5.jpg",
                 alt: "Visiter Merzouga Maroc"
             },
             banner_image: {
@@ -1379,7 +1379,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Découvrez le sud du Maroc lors d'un tour de 4 jours de Marrakech à Ouarzazate. Visitez les gorges du Dadès, faites une balade à dos de chameau à Merzouga et explorez les paysages désertiques et les kasbahs anciennes.",
             image: {
-                url: "/images/marzouga-v2.png",
+                url: "/images/merzouga/merzouga1.jpg",
                 alt: "Visiter Merzouga Maroc"
             },
             banner_image: {
@@ -1453,7 +1453,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Découvrez les points forts du Maroc lors d'un tour de 5 jours de Marrakech à Merzouga, Fès, Chefchaouen et Casablanca. Balades à chameau, sites historiques et paysages époustouflants vous attendent.",
             image: {
-                url: "/images/marrakech.png",
+                url: "/images/marrakech/marrakech3.jpg",
                 alt: "Visiter Marrakech Maroc"
             },
             banner_image: {
@@ -1535,7 +1535,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Réservez une excursion de deux jours de Marrakech à Zagora incluant des balades à dos de chameau, une nuit dans un campement berbère et des visites d'Aït Benhaddou.",
             image: {
-                url: "/images/Zagora.png",
+                url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.jpg",
                 alt: "Visiter ZAGORA Maroc"
             },
             banner_image: {
@@ -1592,7 +1592,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Échappez-vous dans la nature avec une excursion d'une journée aux cascades d'Ouzoud depuis Marrakech. Profitez de randonnées pittoresques, de promenades en bateau et de vues à couper le souffle lors de cette journée de détente.",
             image: {
-                url: "/images/ouzoud.png",
+                url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.jpg",
                 alt: "Visiter les Cascades d'OUZOUD"
             },
             banner_image: {
@@ -1644,7 +1644,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Découvrez la beauté de la vallée de l'Ourika lors d'une excursion d'une journée depuis Marrakech. Profitez de vues pittoresques, de villages berbères, de cascades et d'une escapade paisible.",
             image: {
-                url: "/images/Ourika Valley.png",
+                url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.jpg",
                 alt: "Visiter la VALLÉE DE L'OURIKA MAROC"
             },
             banner_image: {
@@ -1693,7 +1693,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Explorez Casablanca lors d'une visite guidée d'une journée. Visitez la Mosquée Hassan II, les monuments Art déco, le quartier des Habous et la Corniche lors de cette excursion culturelle.",
             image: {
-                url: "/images/casablanca.png",
+                url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.jpg",
                 alt: "Visiter Casablanca Maroc"
             },
             banner_image: {
@@ -1746,7 +1746,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Explorez Essaouira lors d'une excursion d'une journée depuis Marrakech. Visitez la médina, profitez de la plage et découvrez l'artisanat local dans cette charmante ville côtière.",
             image: {
-                url: "/images/Essaouira.png",
+                url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.jpg",
                 alt: "Visiter ESSAOUIRA MAROC"
             },
             banner_image: {
@@ -1799,7 +1799,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Visitez la capitale du Maroc lors d'une excursion guidée à Rabat. Explorez la Tour Hassan, la Kasbah des Oudayas, les ruines de Chellah et le Palais Royal en une journée.",
             image: {
-                url: "/images/rabat.png",
+                url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.jpg",
                 alt: "Visiter Rabat Maroc"
             },
             banner_image: {
@@ -1850,7 +1850,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Explorez le cœur culturel du Maroc avec une excursion guidée à Fès. Visitez Al Quaraouiyine, la Tannerie Chouara et la vieille médina en une journée inoubliable.",
             image: {
-                url: "/images/Fes.png",
+                url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.jpg",
                 alt: "Visiter Fès Maroc"
             },
             banner_image: {
@@ -1902,7 +1902,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Rejoignez une excursion d'une journée de Marrakech à Ouarzazate et Aït Benhaddou. Visitez les studios de cinéma, les kasbahs anciennes et profitez de vues panoramiques à travers les montagnes de l'Atlas.",
             image: {
-                url: "/images/ouarzazate.png",
+                url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.jpg",
                 alt: "Tour à Ouarzazate Maroc"
             },
             banner_image: {
@@ -1953,7 +1953,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Rejoignez un tour de 3 jours dans le désert depuis Marrakech jusqu'à Merzouga. Visitez Aït Benhaddou, faites une balade à dos de chameau, dormez dans un campement berbère et explorez le Sahara.",
             image: {
-                url: "/images/marzouga-v2.png",
+                url: "/images/merzouga/merzouga6.jpg",
                 alt: "Visiter Merzouga Maroc"
             },
             banner_image: {
@@ -2015,7 +2015,7 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Explorez Marrakech en une journée avec une visite guidée de la ville. Visitez la médina, le Palais Bahia, le Jardin Majorelle et la place Jemaa el-Fnaa pour une expérience complète.",
             image: {
-                url: "/images/marrakech.png",
+                url: "/images/marrakech/marrakech5.jpg",
                 alt: "Visiter Marrakech Maroc"
             },
             banner_image: {
@@ -2069,7 +2069,7 @@ const siteDataFR = {
             description: "Découvrir le Maroc va bien au-delà de la visite de ses monuments et paysages célèbres. L'une des façons les plus mémorables de se connecter à la culture marocaine est à travers sa cuisine. Chez Your-Morocco, nous vous invitons à participer à un atelier de cuisine immersif qui vous permet de découvrir le riche patrimoine culinaire du pays dans une atmosphère chaleureuse et authentique.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/cookingclass.png",
+                url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.jpg",
                 alt: "Atelier de Cuisine au Maroc"
             },
             banner_image: {
@@ -2118,7 +2118,7 @@ const siteDataFR = {
             description: "Si vous cherchez de l'excitation, des paysages à couper le souffle et une sensation d'aventure, le quad au Maroc est l'activité parfaite. Avec Your-Morocco, vous pouvez vivre la sensation de conduire un quad à travers certains des terrains les plus époustouflants du pays, des sentiers rocheux du désert d'Agafay aux dunes dorées près de Merzouga, et les palmeraies juste à l'extérieur de Marrakech.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/quad.png",
+                url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.jpg",
                 alt: "Activité Quad au Maroc"
             },
             banner_image: {
@@ -2168,7 +2168,7 @@ const siteDataFR = {
             description: "La balade à chameau est l'une des façons les plus iconiques et paisibles d'explorer la beauté du Maroc. Avec Your-Morocco, vous pouvez profiter d'une expérience de chameau guidée à travers des paysages époustouflants tels que les dunes dorées du désert du Sahara, le désert rocheux d'Agafay près de Marrakech, ou les palmeraies luxuriantes autour des villages berbères traditionnels.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/camels.png",
+                url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.jpg",
                 alt: "Activité Balade à Chameau au Maroc"
             },
             banner_image: {
@@ -2219,7 +2219,7 @@ const siteDataFR = {
             description: "Un voyage à travers le Maroc n'est pas complet sans goûter à son incroyable street food et ses spécialités régionales. Chez Your-Morocco, nous proposons des tours gastronomiques soigneusement sélectionnés qui vous permettent d'explorer le paysage culinaire du pays tout en vous promenant dans ses médinas vibrantes, ses quartiers locaux et ses coins gastronomiques cachés. Ces visites sont conçues pour les voyageurs curieux qui veulent manger comme des locaux et comprendre les histoires derrière chaque bouchée.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/foodtour.png",
+                url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.jpg",
                 alt: "Tour Gastronomique au Maroc"
             },
             banner_image: {
@@ -2272,7 +2272,7 @@ const siteDataFR = {
             description: "Pour les voyageurs à la recherche d'une aventure époustouflante et paisible, un vol en montgolfière au-dessus du Maroc est une expérience unique en son genre. Avec Your-Morocco, vous pouvez survoler de magnifiques paysages au lever du soleil, profitant de vues panoramiques sur les collines de terre rouge, les villages berbères éparpillés et les majestueuses montagnes de l'Atlas au loin.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/airballon.png",
+                url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.jpg",
                 alt: "Activité Montgolfière au Maroc"
             },
             banner_image: {
