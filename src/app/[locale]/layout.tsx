@@ -91,6 +91,18 @@ export default async function LocaleLayout({
             });
           `}
         </Script>
+
+        {/* Chatling Chatbot */}
+        <Script id="chatling-config" strategy="afterInteractive">
+          {`window.chtlConfig = { chatbotId: "5549145587" }`}
+        </Script>
+        <Script
+          async
+          data-id="5549145587"
+          id="chtl-script"
+          src="https://chatling.ai/js/embed.js"
+          strategy="afterInteractive"
+        />
       </head>
       <body cz-shortcut-listen="true">
         <NextIntlClientProvider locale={locale} messages={messages}>
