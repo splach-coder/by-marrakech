@@ -53,7 +53,7 @@ export default function Header() {
   // Determine logo source and text color based on state
   // If menu is open, always use "colored" theme (dark text, red logo)
   const isDarkTheme = isScrolled || isMobileMenuOpen;
-  const logoSrc = isDarkTheme ? "/images/logo-red.png" : "/images/logo-yellow.png";
+  const logoSrc = isDarkTheme ? "/images/logo-red.png" : "/images/logo-red.png";
   const textColor = isDarkTheme ? "text-text-primary" : "text-white";
   const buttonHover = isDarkTheme ? "hover:bg-gray-100" : "hover:bg-white/10";
 
