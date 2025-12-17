@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { ArrowDown, ChevronLeft, ChevronRight, Globe, MapPin, Star } from 'lucide-react';
 import { testimonialsData } from '@/data/home-data';
 
@@ -23,10 +24,15 @@ interface TestimonialsSectionProps {
 }
 
 export default function TestimonialsSection({
-  label = "CLIENT STORIES",
-  title = "Clients journeys in Marrakech",
+  label,
+  title,
   testimonials = testimonialsData
 }: TestimonialsSectionProps) {
+  const t = useTranslations('testimonials');
+
+  const displayLabel = label || t('label');
+  const displayTitle = title || t('title');
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -58,17 +64,17 @@ export default function TestimonialsSection({
   };
 
   const currentTestimonial = testimonials[currentIndex];
-  const reviews = currentTestimonial.review.split(". ");
+  // const reviews = currentTestimonial.review.split(". "); // Unused variable?
 
   return (
     <section className="py-8 md:py-24 bg-background">
       <div className="container-custom">
         <div className="mb-8 md:mb-12">
           <div className="flex items-center gap-2 mb-2 md:mb-4">
-            <span className="text-xs md:text-sm text-text-tertiary uppercase tracking-wider">{label}</span>
+            <span className="text-xs md:text-sm text-text-tertiary uppercase tracking-wider">{displayLabel}</span>
             <ArrowDown className="w-3 h-3 md:w-4 md:h-4 text-text-tertiary" />
           </div>
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">{title}</h2>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-primary leading-tight">{displayTitle}</h2>
         </div>
 
         <div className="relative">

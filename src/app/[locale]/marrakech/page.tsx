@@ -4,7 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { siteData } from '@/data/siteData';
+import { getSiteData, siteData } from '@/data/siteData';
+import { useLocale, useTranslations } from 'next-intl';
 import {
   ArrowRight,
   MapPin,
@@ -30,25 +31,34 @@ const staggerContainer = {
 };
 
 export default function MarrakechPage() {
+  const locale = useLocale();
+  const t = useTranslations('marrakechPage');
+
+  // Get localized data
+  const localizedSiteData = getSiteData(locale);
+  const toursData = localizedSiteData.tours || siteData.tours;
+  const excursionsData = localizedSiteData.excursions || siteData.excursions;
+  const activitiesData = localizedSiteData.activities || siteData.activities;
+
   // Filter data for Marrakech
-  const marrakechTours = siteData.tours.filter(t =>
-    t.locations?.some(l => l.name === "Marrakech") ||
+  const marrakechTours = toursData.filter(t =>
+    t.locations?.some(l => typeof l === 'string' ? l === "Marrakech" : l.name === "Marrakech") ||
     t.itinerary?.some(day => day.location === "Marrakech" || day.description.includes("Marrakech"))
   ).slice(0, 3); // Top 3 tours
 
-  const marrakechExcursions = siteData.excursions.filter(e =>
-    e.locations?.some(l => l.name === "Marrakech")
+  const marrakechExcursions = excursionsData.filter(e =>
+    e.locations?.some(l => typeof l === 'string' ? l === "Marrakech" : l.name === "Marrakech")
   ).slice(0, 4); // Top 4 excursions
 
-  const marrakechActivities = siteData.activities.filter(a =>
+  const marrakechActivities = activitiesData.filter(a =>
     a.locations?.includes("Marrakech") || a.title.includes("Marrakech")
   ).slice(0, 4);
 
   const highlights = [
-    { icon: Landmark, title: "Ancient Medina", desc: "A UNESCO World Heritage site labyrinth." },
-    { icon: Utensils, title: "Culinary Heaven", desc: "World-famous street food and fine dining." },
-    { icon: Sun, title: "Year-Round Sun", desc: "Over 300 days of sunshine annually." },
-    { icon: Camera, title: "Photographer's Dream", desc: "Vibrant colors and stunning architecture." }
+    { icon: Landmark, title: t('intro.highlights.medina.title'), desc: t('intro.highlights.medina.desc') },
+    { icon: Utensils, title: t('intro.highlights.food.title'), desc: t('intro.highlights.food.desc') },
+    { icon: Sun, title: t('intro.highlights.sun.title'), desc: t('intro.highlights.sun.desc') },
+    { icon: Camera, title: t('intro.highlights.photo.title'), desc: t('intro.highlights.photo.desc') }
   ];
 
   return (
@@ -58,8 +68,8 @@ export default function MarrakechPage() {
       <section className="relative h-screen min-h-[700px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/marrakech/marrakech12.jpg" // Assuming this exists or falls back
-            alt="Marrakech Morocco"
+            src="/images/marrakech/marrakech12.jpg"
+            alt={t('hero.title')}
             fill
             className="object-cover"
             priority
@@ -74,13 +84,13 @@ export default function MarrakechPage() {
             transition={{ duration: 1, ease: "easeOut" as const }}
           >
             <span className="inline-block px-4 py-1.5 border border-white/30 rounded-full text-white/90 text-sm font-medium tracking-[0.2em] mb-6 backdrop-blur-sm bg-white/5 uppercase">
-              The Red City
+              {t('hero.tag')}
             </span>
             <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-white font-medium tracking-tight mb-8">
-              Marrakech
+              {t('hero.title')}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-              Where ancient traditions meet modern luxury in a symphony of colors, scents, and sounds.
+              {t('hero.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -92,7 +102,7 @@ export default function MarrakechPage() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70"
         >
-          <span className="text-xs uppercase tracking-widest">Explore</span>
+          <span className="text-xs uppercase tracking-widest">{t('hero.scroll')}</span>
           <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
         </motion.div>
       </section>
@@ -102,13 +112,15 @@ export default function MarrakechPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div {...fadeInUp}>
             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-8 leading-tight">
-              A City of <span className="italic text-primary">Contrasts</span> & Timeless Beauty
+              {t.rich('intro.title', {
+                span: (chunks) => <span className="italic text-primary">{chunks}</span>
+              })}
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-6 font-light">
-              Marrakech is a sensory overload in the best possible way. From the chaotic charm of the Jemaa el-Fnaa square to the serene silence of the Majorelle Garden, the city offers a diverse palette of experiences.
+              {t('intro.desc1')}
             </p>
             <p className="text-lg text-gray-600 leading-relaxed mb-10 font-light">
-              Whether you seek the thrill of bargaining in the souks, the relaxation of a traditional hammam, or the taste of authentic tagine, Marrakech delivers with unmatched style.
+              {t('intro.desc2')}
             </p>
 
             <div className="grid grid-cols-2 gap-8 mb-8">
@@ -135,7 +147,7 @@ export default function MarrakechPage() {
           >
             <div className="aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/marrakech/marrakech13.jpg" // Fallback expected
+                src="/images/marrakech/marrakech13.jpg"
                 alt="Marrakech Riad"
                 fill
                 className="object-cover"
@@ -144,10 +156,10 @@ export default function MarrakechPage() {
             {/* Playful Floating Card */}
             <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-xl shadow-xl max-w-xs hidden md:block">
               <p className="font-serif text-lg italic text-gray-800">
-                &quot;Marrakech taught me color.&quot;
+                &quot;{t('intro.quote')}&quot;
               </p>
               <p className="text-sm text-gray-500 mt-2 uppercase tracking-wide font-bold">
-                — Yves Saint Laurent
+                — {t('intro.author')}
               </p>
             </div>
           </motion.div>
@@ -159,11 +171,11 @@ export default function MarrakechPage() {
         <div className="container-custom mx-auto px-4 md:px-8">
           <div className="flex justify-between items-end mb-16">
             <motion.div {...fadeInUp}>
-              <span className="text-primary uppercase tracking-widest font-bold text-sm mb-3 block">Journeys</span>
-              <h2 className="text-4xl md:text-5xl font-serif text-gray-900">Departing Marrakech</h2>
+              <span className="text-primary uppercase tracking-widest font-bold text-sm mb-3 block">{t('tours.tag')}</span>
+              <h2 className="text-4xl md:text-5xl font-serif text-gray-900">{t('tours.title')}</h2>
             </motion.div>
             <Link href="/tours" className="hidden md:flex items-center gap-2 text-gray-600 hover:text-primary transition-colors group">
-              <span className="uppercase tracking-wider font-medium text-sm">View All Tours</span>
+              <span className="uppercase tracking-wider font-medium text-sm">{t('tours.viewAll')}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -180,7 +192,7 @@ export default function MarrakechPage() {
                 variants={fadeInUp}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
-                <Link href={`/tours/${tour.id}`} className="block h-full">
+                <Link href={`/${locale}/tours/${tour.id}`} className="block h-full">
                   <div className="relative h-80 overflow-hidden">
                     <Image
                       src={tour.image?.url}
@@ -199,7 +211,7 @@ export default function MarrakechPage() {
                     </h3>
                     <div className="flex items-center gap-2 text-white/80 text-sm mb-6">
                       <MapPin className="w-4 h-4" />
-                      <span>{tour.locations.length} Stops</span>
+                      <span>{tour.locations?.length || 0} {t('tours.stops')}</span>
                     </div>
 
                     <div className="bg-white rounded-xl p-6 shadow-sm border border-stone-100 h-full mt-4">
@@ -216,7 +228,7 @@ export default function MarrakechPage() {
                           <span className="font-bold text-gray-900">5.0</span>
                         </div>
                         <span className="flex items-center gap-1 text-primary font-bold text-sm uppercase tracking-wide group-hover:gap-2 transition-all">
-                          View Details <ArrowRight className="w-4 h-4" />
+                          {t('tours.details')} <ArrowRight className="w-4 h-4" />
                         </span>
                       </div>
                     </div>
@@ -228,7 +240,7 @@ export default function MarrakechPage() {
 
           <div className="mt-12 text-center md:hidden">
             <Link href="/tours" className="btn-primary inline-flex items-center gap-2">
-              View All Tours <ArrowRight className="w-4 h-4" />
+              {t('tours.viewAll')} <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -238,10 +250,10 @@ export default function MarrakechPage() {
       <section className="py-24 bg-white">
         <div className="container-custom mx-auto px-4 md:px-8">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <span className="text-primary uppercase tracking-widest font-bold text-sm mb-3 block">Day Trips</span>
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Escape the City Walls</h2>
+            <span className="text-primary uppercase tracking-widest font-bold text-sm mb-3 block">{t('dayTrips.tag')}</span>
+            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">{t('dayTrips.title')}</h2>
             <p className="text-gray-600 font-light text-lg">
-              Discover the wonders just a short drive from Marrakech. From the refreshing Ouzoud Waterfalls to the historic Ait Ben Haddou.
+              {t('dayTrips.subtitle')}
             </p>
           </div>
 
@@ -255,7 +267,7 @@ export default function MarrakechPage() {
                 transition={{ delay: idx * 0.1 }}
                 className="group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer"
               >
-                <Link href={`/excursions/${excursion.id}`} className="block h-full w-full">
+                <Link href={`/${locale}/excursions/${excursion.id}`} className="block h-full w-full">
                   <Image
                     src={excursion.image?.url}
                     alt={excursion.title}
@@ -271,7 +283,7 @@ export default function MarrakechPage() {
                       {excursion.title}
                     </h3>
                     <div className="flex items-center gap-2 text-white font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                      <span>Discover Experience</span>
+                      <span>{t('dayTrips.discover')}</span>
                       <ArrowRight className="w-5 h-5" />
                     </div>
                   </div>
@@ -287,9 +299,9 @@ export default function MarrakechPage() {
         <div className="container-custom mx-auto px-4 md:px-8">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
-              <h2 className="text-4xl md:text-5xl font-serif mb-4">Unforgettable Moments</h2>
+              <h2 className="text-4xl md:text-5xl font-serif mb-4">{t('activities.title')}</h2>
               <p className="text-white/60 font-light max-w-xl text-lg">
-                Curated activities to immerse you in the local culture, adventure, and relaxation.
+                {t('activities.subtitle')}
               </p>
             </div>
             {/* Decorative element */}
@@ -298,7 +310,7 @@ export default function MarrakechPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {marrakechActivities.map((activity) => (
-              <Link href={`/activities/${activity.id}`} key={activity.id} className="block group">
+              <Link href={`/${locale}/activities/${activity.id}`} key={activity.id} className="block group">
                 <div className="relative aspect-[3/4] rounded-xl overflow-hidden mb-6 transition-all duration-500">
                   <Image
                     src={activity.image?.url}
@@ -330,10 +342,12 @@ export default function MarrakechPage() {
 
         <div className="container-custom mx-auto px-4 text-center relative z-10">
           <h2 className="text-5xl md:text-7xl font-serif font-bold text-gray-900 mb-8 tracking-tight">
-            Your Marrakech Story<br />Starts Here.
+            {t.rich('cta.title', {
+              br: () => <br />
+            })}
           </h2>
           <p className="text-xl text-gray-600 font-light max-w-2xl mx-auto mb-12">
-            Let us craft the perfect itinerary for your Moroccan adventure. From airport pickup to desert sunsets, we handle every detail.
+            {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -342,14 +356,14 @@ export default function MarrakechPage() {
               rel="noopener noreferrer"
               className="px-10 py-5 bg-primary text-white font-bold rounded-full hover:bg-primary-600 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3"
             >
-              <span>Start Planning on WhatsApp</span>
+              <span>{t('cta.whatsapp')}</span>
               <ArrowRight className="w-5 h-5" />
             </a>
             <Link
               href="/contact"
               className="px-10 py-5 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-50 transition-all shadow-md hover:shadow-lg border border-gray-200 flex items-center justify-center gap-3"
             >
-              <span>Contact Us</span>
+              <span>{t('cta.contact')}</span>
             </Link>
           </div>
         </div>

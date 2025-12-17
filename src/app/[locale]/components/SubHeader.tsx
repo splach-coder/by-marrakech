@@ -1,40 +1,48 @@
 'use client';
 
-import { Info } from 'lucide-react';
+import Link from 'next/link';
+import { Phone } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useTranslations } from 'next-intl';
 
 interface SubHeaderProps {
   helpText?: string;
   tagline?: string;
+  name?: string;
 }
 
 export default function SubHeader({
-  helpText = "Can We Help?",
-  tagline = "MEMORIES MADE BY MARRAKECH"
+  helpText,
+  tagline,
+  name
 }: SubHeaderProps) {
+  const t = useTranslations('SubHeader');
+
   return (
     <div className="bg-primary text-white overflow-hidden">
-      <div className="container-custom">
-        <div className="flex items-center justify-between text-xs py-1">
-          {/* Left - Help Text */}
-          <div className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-4 h-4 border border-white rounded-full">
-              <Info className="w-3 h-3" />
-            </div>
-            <span className="font-medium">{helpText}</span>
-          </div>
+      <div className="container-custom mx-auto px-4">
+        <div className="h-8 flex items-center justify-between relative text-sm">
+          {/* Left - Contact */}
+          <Link
+            href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW}`}
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          >
+            <Phone className="w-4 h-4" />
+            <span className="hidden sm:inline">{helpText || t('helpText')}</span>
+          </Link>
 
           {/* Center - Tagline */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
-            <p className="text-xs font-medium tracking-widest uppercase">
-              {tagline}
+            <p className="text-xs font-medium tracking-widest">
+              {tagline || t('tagline')} <span className="text-secondary font-nohemi font-body">
+                {name || 'ByMarrakech'}
+              </span>
             </p>
+
           </div>
 
           {/* Right - Language Switcher */}
-          <div className="flex items-center gap-2">
-            <LanguageSwitcher />
-          </div>
+          <LanguageSwitcher />
         </div>
       </div>
     </div>

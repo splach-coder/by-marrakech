@@ -3,13 +3,16 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
-import { siteData } from '@/data/siteData';
+import { useLocale, useTranslations } from 'next-intl';
+import { getSiteData, siteData } from '@/data/siteData';
 import { Clock, Users, MapPin, Star, Mouse } from 'lucide-react';
 
 export default function ToursPage() {
   const locale = useLocale();
-  const tours = siteData.tours;
+  const t = useTranslations('toursPage');
+
+  const localizedSiteData = getSiteData(locale);
+  const tours = localizedSiteData.tours || siteData.tours;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -36,7 +39,7 @@ export default function ToursPage() {
         <div className="absolute inset-0">
           <Image
             src={'/images/hero-imgs/tours.jpg'}
-            alt="Morocco Tours"
+            alt={t('hero.title')}
             fill
             className="object-cover"
             priority
@@ -52,10 +55,10 @@ export default function ToursPage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h1 className="text-5xl md:text-7xl lg:text-8xl !font-serif font-normal tracking-tight mb-6">
-              Morocco Tours
+              {t('hero.title')}
             </h1>
             <p className="text-sm md:text-base lg:text-lg tracking-[0.2em] font-light uppercase text-white/90">
-              Your Authentic Journey in the Heart of North Africa
+              {t('hero.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -83,11 +86,11 @@ export default function ToursPage() {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl !font-serif font-medium text-text-primary mb-4">
-              Our Curated Tours
+              {t('grid.title')}
             </h2>
             <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
             <p className="mt-4 text-text-secondary max-w-2xl mx-auto">
-              Choose from our selection of expertly planned itineraries designed to show you the real Morocco.
+              {t('grid.subtitle')}
             </p>
           </div>
 
@@ -133,7 +136,7 @@ export default function ToursPage() {
                         {tour.locations && tour.locations.length > 0 && (
                           <div className="flex items-center gap-1.5">
                             <MapPin className="w-3.5 h-3.5" />
-                            <span className="truncate max-w-[100px]">{tour.locations[0].name}</span>
+                            <span className="truncate max-w-[100px]">{typeof tour.locations[0] === 'string' ? tour.locations[0] : (tour.locations[0] as any).name || 'Morocco'}</span>
                           </div>
                         )}
                       </div>

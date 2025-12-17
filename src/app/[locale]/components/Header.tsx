@@ -6,23 +6,12 @@ import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/context/CartContext';
+import { useTranslations, useLocale } from 'next-intl';
 
-interface HeaderProps {
-  locale: string;
-  translations: {
-    home: string;
-    shop: string;
-    marrakech: string;
-    about: string;
-    artisans: string;
-    contact: string;
-    catalog: string;
-    followUs: string;
-    discover: string;
-  };
-}
+export default function Header() {
+  const locale = useLocale();
+  const t = useTranslations('Header');
 
-export default function Header({ locale, translations }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { toggleCart, cartTotal } = useCart();
@@ -38,13 +27,16 @@ export default function Header({ locale, translations }: HeaderProps) {
   }, []);
 
   const navigationLinks = [
-    { href: `/${locale}`, label: translations.home },
-    { href: `/${locale}/marrakech`, label: translations.marrakech },
-    { href: `/${locale}/gallery`, label: 'Gallery' },
-    { href: `/${locale}/about`, label: translations.about },
-    { href: `/${locale}/contact`, label: translations.contact },
+    { href: `/${locale}`, label: t('home') },
+    { href: `/${locale}/tours`, label: t('tours') },
+    { href: `/${locale}/experiences`, label: t('experiences') },
+    { href: `/${locale}/services`, label: t('services') },
+    { href: `/${locale}/activities`, label: t('activities') },
+    { href: `/${locale}/gallery`, label: t('gallery') },
+    { href: `/${locale}/marrakech`, label: t('marrakech') },
+    { href: `/${locale}/about`, label: t('about') },
+    { href: `/${locale}/contact`, label: t('contact') },
   ];
-
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -91,17 +83,7 @@ export default function Header({ locale, translations }: HeaderProps) {
 
             {/* Desktop Navigation */}
             <nav className="hidden xl:flex items-center gap-8">
-              {[
-                { href: `/${locale}`, label: translations.home },
-                { href: `/${locale}/tours`, label: 'Tours' },
-                { href: `/${locale}/experiences`, label: 'Experiences' },
-                { href: `/${locale}/services`, label: 'Services' },
-                { href: `/${locale}/activities`, label: 'Activities' },
-                { href: `/${locale}/gallery`, label: 'Gallery' },
-                { href: `/${locale}/marrakech`, label: translations.marrakech },
-                { href: `/${locale}/about`, label: translations.about },
-                { href: `/${locale}/contact`, label: translations.contact },
-              ].map((link) => (
+              {navigationLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
@@ -176,17 +158,7 @@ export default function Header({ locale, translations }: HeaderProps) {
 
             {/* Links Container */}
             <div className="flex-1 flex flex-col items-center justify-center p-6 space-y-6 overflow-y-auto mt-16">
-              {[
-                { href: `/${locale}`, label: translations.home },
-                { href: `/${locale}/tours`, label: 'Tours' },
-                { href: `/${locale}/experiences`, label: 'Experiences' },
-                { href: `/${locale}/services`, label: 'Services' },
-                { href: `/${locale}/activities`, label: 'Activities' },
-                { href: `/${locale}/gallery`, label: 'Gallery' },
-                { href: `/${locale}/marrakech`, label: translations.marrakech },
-                { href: `/${locale}/about`, label: translations.about },
-                { href: `/${locale}/contact`, label: translations.contact },
-              ].map((link, index) => (
+              {navigationLinks.map((link, index) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 20 }}
@@ -215,7 +187,7 @@ export default function Header({ locale, translations }: HeaderProps) {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="inline-block px-8 py-3 bg-primary text-white font-medium rounded-full hover:bg-primary-dark transition-colors text-lg shadow-lg shadow-primary/30"
                 >
-                  Book Your Trip
+                  {t('bookTrip')}
                 </Link>
               </motion.div>
             </div>

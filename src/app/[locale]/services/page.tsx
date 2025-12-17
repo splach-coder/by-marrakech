@@ -3,13 +3,18 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
-import { siteData } from '@/data/siteData';
+import { useLocale, useTranslations } from 'next-intl';
+import { getSiteData, siteData } from '@/data/siteData';
 import { ArrowRight, Mouse } from 'lucide-react';
 
 export default function ServicesPage() {
     const locale = useLocale();
-    const services = siteData.services;
+    const t = useTranslations('servicesPage');
+
+    // Fetch localized data
+    const localizedSiteData = getSiteData(locale);
+    // Fallback to english data
+    const services = localizedSiteData.services || siteData.services;
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -36,7 +41,7 @@ export default function ServicesPage() {
                 <div className="absolute inset-0">
                     <Image
                         src={'/images/hero-imgs/services.png'}
-                        alt="Travel Services"
+                        alt={t('hero.title')}
                         fill
                         className="object-cover"
                         priority
@@ -52,10 +57,10 @@ export default function ServicesPage() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         <h1 className="text-5xl md:text-7xl lg:text-8xl !font-serif font-normal tracking-tight mb-6">
-                            Travel Services
+                            {t('hero.title')}
                         </h1>
                         <p className="text-sm md:text-base lg:text-lg tracking-[0.2em] font-light uppercase text-white/90">
-                            Professional Transportation & Logistics
+                            {t('hero.subtitle')}
                         </p>
                     </motion.div>
                 </div>
@@ -83,11 +88,11 @@ export default function ServicesPage() {
                     {/* Section Header */}
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl !font-serif font-medium text-text-primary mb-4">
-                            Our Services
+                            {t('grid.title')}
                         </h2>
                         <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
                         <p className="mt-4 text-text-secondary max-w-2xl mx-auto">
-                            Ensure a smooth and comfortable journey with our premium transfer and rental services.
+                            {t('grid.subtitle')}
                         </p>
                     </div>
 
@@ -125,7 +130,7 @@ export default function ServicesPage() {
 
                                             {/* Footer */}
                                             <div className="flex items-center justify-end text-xs text-primary font-medium mt-auto pt-4 border-t border-border/50 group-hover:gap-2 transition-all">
-                                                <span>View Service</span>
+                                                <span>{locale === 'fr' ? 'Voir Service' : 'View Service'}</span>
                                                 <ArrowRight className="w-4 h-4" />
                                             </div>
                                         </div>

@@ -9,13 +9,6 @@ export default function Footer() {
   const locale = useLocale();
   const t = useTranslations('footer');
 
-  const quickLinks = [
-    { label: 'Tours', href: `/${locale}/tours` },
-    { label: 'Experiences', href: `/${locale}/experiences` },
-    { label: 'About Us', href: `/${locale}/about` },
-    { label: 'Contact', href: `/${locale}/contact` },
-  ];
-
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/bymarrakech', label: 'Facebook' },
     { icon: Instagram, href: 'https://www.instagram.com/bymarrakech/', label: 'Instagram' },
@@ -39,8 +32,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-white/80 leading-relaxed mb-8 max-w-sm font-light text-lg">
-              Your trusted Morocco travel agency offering authentic tours, excursions, and experiences.
-              From Marrakech to the Sahara, we create unforgettable journeys.
+              {t('description')}
             </p>
 
             {/* Social Links */}
@@ -66,23 +58,23 @@ export default function Footer() {
           {/* Discover Column (2 cols) */}
           <div className="lg:col-span-2">
             <h3 className="text-secondary-dark font-serif font-bold text-xl mb-8 tracking-wide">
-              Discover
+              {t('discover.title')}
             </h3>
             <nav className="flex flex-col space-y-4">
               <Link href={`/${locale}/tours`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Our Tours
+                {t('discover.tours')}
               </Link>
               <Link href={`/${locale}/experiences`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Experiences
+                {t('discover.experiences')}
               </Link>
               <Link href={`/${locale}/activities`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Activities
+                {t('discover.activities')}
               </Link>
               <Link href={`/${locale}/gallery`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Photo Gallery
+                {t('discover.gallery')}
               </Link>
               <Link href={`/${locale}/marrakech`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Visit Marrakech
+                {t('discover.marrakech')}
               </Link>
             </nav>
           </div>
@@ -90,20 +82,20 @@ export default function Footer() {
           {/* Company Column (2 cols) */}
           <div className="lg:col-span-2">
             <h3 className="text-secondary font-serif font-bold text-xl mb-8 tracking-wide">
-              Company
+              {t('company.title')}
             </h3>
             <nav className="flex flex-col space-y-4">
               <Link href={`/${locale}/about`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                About Us
+                {t('company.about')}
               </Link>
               <Link href={`/${locale}/services`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Our Services
+                {t('company.services')}
               </Link>
               <Link href={`/${locale}/contact`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Contact Us
+                {t('company.contact')}
               </Link>
               <Link href={`/${locale}/events`} className="text-white/70 hover:text-white hover:translate-x-2 transition-all duration-300 inline-flex items-center">
-                Events
+                {t('company.events')}
               </Link>
             </nav>
           </div>
@@ -111,7 +103,7 @@ export default function Footer() {
           {/* Contact Column (3 cols) */}
           <div className="lg:col-span-3">
             <h3 className="text-secondary font-serif font-bold text-xl mb-8 tracking-wide">
-              Get in Touch
+              {t('contact.title')}
             </h3>
             <div className="space-y-6">
               <div className="flex items-start gap-4 text-white/80 group">
@@ -119,8 +111,8 @@ export default function Footer() {
                   <Phone className="w-5 h-5 text-secondary" />
                 </div>
                 <div>
-                  <div className="text-xs text-white/40 uppercase tracking-wider mb-1">Call Us</div>
-                  <div className="font-medium text-lg">+212 600 000 000</div>
+                  <div className="text-xs text-white/40 uppercase tracking-wider mb-1">{t('contact.call')}</div>
+                  <div className="font-medium text-lg">{process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 600 000 000'}</div>
                 </div>
               </div>
 
@@ -129,7 +121,7 @@ export default function Footer() {
                   <Mail className="w-5 h-5 text-secondary" />
                 </div>
                 <div>
-                  <div className="text-xs text-white/40 uppercase tracking-wider mb-1">Email Us</div>
+                  <div className="text-xs text-white/40 uppercase tracking-wider mb-1">{t('contact.email')}</div>
                   <div className="font-medium text-lg">contact@bymarrakech.com</div>
                 </div>
               </div>
@@ -139,8 +131,8 @@ export default function Footer() {
                   <MapPin className="w-5 h-5 text-secondary" />
                 </div>
                 <div>
-                  <div className="text-xs text-white/40 uppercase tracking-wider mb-1">Visit Us</div>
-                  <div className="font-medium">Marrakech, Morocco</div>
+                  <div className="text-xs text-white/40 uppercase tracking-wider mb-1">{t('contact.visit')}</div>
+                  <div className="font-medium">{t('contact.address')}</div>
                 </div>
               </div>
             </div>
@@ -151,17 +143,17 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/50">
             <p className="font-light">
-              © {new Date().getFullYear()} <span className="text-white font-medium">ByMarrakech</span>. All rights reserved.
+              © {new Date().getFullYear()} <span className="text-white font-medium">ByMarrakech</span>. {t('bottom.rights')}
             </p>
             <div className="flex gap-8">
               <Link href={`/${locale}/privacy`} className="hover:text-secondary transition-colors">
-                Privacy Policy
+                {t('bottom.privacy')}
               </Link>
               <Link href={`/${locale}/terms`} className="hover:text-secondary transition-colors">
-                Terms of Service
+                {t('bottom.terms')}
               </Link>
               <Link href={`/${locale}/sitemap`} className="hover:text-secondary transition-colors">
-                Sitemap
+                {t('bottom.sitemap')}
               </Link>
             </div>
           </div>

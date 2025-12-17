@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { aboutData } from '@/data/home-data';
+import { useTranslations } from 'next-intl';
 import {
   Heart,
   Sparkles,
@@ -31,26 +31,28 @@ const staggerContainer = {
 };
 
 export default function AboutPage() {
+  const t = useTranslations('aboutPage');
+
   const values = [
     {
       icon: Heart,
-      title: 'Passion',
-      desc: 'Deeply rooted love for Marrakech and its rich cultural heritage drives every experience we create.'
+      title: t('values.items.passion.title'),
+      desc: t('values.items.passion.desc')
     },
     {
       icon: Sparkles,
-      title: 'Authenticity',
-      desc: 'Showcasing the real Marrakech—genuine cultural immersion over superficial tourist attractions.'
+      title: t('values.items.authenticity.title'),
+      desc: t('values.items.authenticity.desc')
     },
     {
       icon: Users,
-      title: 'Community',
-      desc: 'Working closely with local artisans to ensure our tourism directly benefits the people who make this city special.'
+      title: t('values.items.community.title'),
+      desc: t('values.items.community.desc')
     },
     {
       icon: Leaf,
-      title: 'Sustainability',
-      desc: 'Committed to environmentally responsible practices that preserve our natural beauty for future generations.'
+      title: t('values.items.sustainability.title'),
+      desc: t('values.items.sustainability.desc')
     }
   ];
 
@@ -62,7 +64,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=2000&q=80"
-            alt="About ByMarrakech"
+            alt={t('hero.title')}
             fill
             className="object-cover"
             priority
@@ -78,13 +80,15 @@ export default function AboutPage() {
             className="max-w-4xl"
           >
             <span className="inline-block px-4 py-1.5 border border-white/30 rounded-full text-white/90 text-sm font-medium tracking-[0.2em] mb-8 backdrop-blur-sm bg-white/5 uppercase">
-              Our Philosophy
+              {t('hero.tag')}
             </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white font-medium tracking-tight mb-8 leading-tight">
-              Curators of the<br />Red City
+              {t.rich('hero.title', {
+                br: () => <br />
+              })}
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-              We don't just show you Marrakech. We invite you to become part of its story.
+              {t('hero.subtitle')}
             </p>
           </motion.div>
         </div>
@@ -96,7 +100,7 @@ export default function AboutPage() {
           transition={{ delay: 1.5, duration: 1 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70"
         >
-          <span className="text-xs uppercase tracking-widest">Our Story</span>
+          <span className="text-xs uppercase tracking-widest">{t('hero.scroll')}</span>
           <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
         </motion.div>
       </section>
@@ -122,10 +126,10 @@ export default function AboutPage() {
               />
               <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-xl border border-white/20">
                 <p className="font-serif text-xl italic text-primary">
-                  &quot;To travel is to discover that everyone is wrong about other countries.&quot;
+                  &quot;{t('story.quote')}&quot;
                 </p>
                 <p className="text-sm text-gray-500 mt-2 uppercase tracking-widest font-bold">
-                  — Aldous Huxley
+                  — {t('story.author')}
                 </p>
               </div>
             </motion.div>
@@ -139,21 +143,23 @@ export default function AboutPage() {
             >
               <span className="text-primary uppercase tracking-widest font-bold text-sm mb-4 flex items-center gap-2">
                 <span className="w-8 h-[1px] bg-primary"></span>
-                Since 2014
+                {t('story.since')}
               </span>
               <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-8 leading-tight">
-                Crafting Authentic <br />Moroccan Journeys
+                {t.rich('story.title', {
+                  br: () => <br />
+                })}
               </h2>
 
               <div className="space-y-6 text-gray-600 text-lg leading-relaxed font-light">
                 <p>
-                  {aboutData.description1}
+                  {t('story.description1')}
                 </p>
                 <p>
-                  {aboutData.description2}
+                  {t('story.description2')}
                 </p>
                 <p>
-                  What sets us apart is our deep connection to the land. We are not just guides; we are storytellers, historians, and friends who want to share the hidden gems that only locals know.
+                  {t('story.description3')}
                 </p>
               </div>
 
@@ -161,15 +167,15 @@ export default function AboutPage() {
               <div className="grid grid-cols-3 gap-8 mt-12 pt-12 border-t border-gray-100">
                 <div>
                   <div className="text-3xl font-serif font-bold text-primary mb-1">10+</div>
-                  <div className="text-xs uppercase tracking-widest text-gray-400">Years</div>
+                  <div className="text-xs uppercase tracking-widest text-gray-400">{t('story.stats.years')}</div>
                 </div>
                 <div>
                   <div className="text-3xl font-serif font-bold text-primary mb-1">5k+</div>
-                  <div className="text-xs uppercase tracking-widest text-gray-400">Travelers</div>
+                  <div className="text-xs uppercase tracking-widest text-gray-400">{t('story.stats.travelers')}</div>
                 </div>
                 <div>
                   <div className="text-3xl font-serif font-bold text-primary mb-1">50+</div>
-                  <div className="text-xs uppercase tracking-widest text-gray-400">Tours</div>
+                  <div className="text-xs uppercase tracking-widest text-gray-400">{t('story.stats.tours')}</div>
                 </div>
               </div>
             </motion.div>
@@ -181,10 +187,10 @@ export default function AboutPage() {
       <section className="py-24 bg-[#faf9f6]">
         <div className="container-custom mx-auto px-4 md:px-8">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <span className="text-primary uppercase tracking-widest font-bold text-sm mb-3 block">Our Ethos</span>
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">Guiding Principles</h2>
+            <span className="text-primary uppercase tracking-widest font-bold text-sm mb-3 block">{t('values.tag')}</span>
+            <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-6">{t('values.title')}</h2>
             <p className="text-gray-600 font-light text-lg">
-              Every journey we design is built upon a foundation of respect, quality, and genuine connection.
+              {t('values.subtitle')}
             </p>
           </div>
 
@@ -227,7 +233,7 @@ export default function AboutPage() {
             <div className="relative z-10 md:max-w-4xl mx-auto">
               <Quote className="w-12 h-12 text-white/30 mx-auto mb-8" />
               <h2 className="text-3xl md:text-5xl font-serif font-medium leading-tight mb-8">
-                &quot;We believe that travel is the only thing you buy that makes you richer. Come, let us show you the richness of Morocco.&quot;
+                &quot;{t('cta.quote')}&quot;
               </h2>
 
               <div className="flex flex-col items-center gap-4">
@@ -240,8 +246,8 @@ export default function AboutPage() {
                   />
                 </div>
                 <div>
-                  <div className="font-bold text-lg tracking-wide">The ByMarrakech Team</div>
-                  <div className="text-white/60 text-sm uppercase tracking-widest">Your Local Experts</div>
+                  <div className="font-bold text-lg tracking-wide">{t('cta.team')}</div>
+                  <div className="text-white/60 text-sm uppercase tracking-widest">{t('cta.experts')}</div>
                 </div>
               </div>
 
@@ -250,7 +256,7 @@ export default function AboutPage() {
                   href="/contact"
                   className="inline-flex items-center gap-3 px-8 py-4 bg-white text-primary font-bold rounded-full hover:bg-gray-100 transition-colors shadow-lg hover:shadow-xl hover:scale-105 transform duration-300"
                 >
-                  <span>Start Your Journey</span>
+                  <span>{t('cta.button')}</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

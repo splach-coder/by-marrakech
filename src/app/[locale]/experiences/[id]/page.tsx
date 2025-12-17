@@ -4,11 +4,12 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { siteData } from '@/data/siteData';
+import { getSiteData, siteData } from '@/data/siteData';
 import Itinerary from '../../components/Itinerary';
 import GalleryGrid from '../../components/GalleryGrid';
 import BookingCard from '../../components/BookingCard';
 import { use, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import {
     X,
     ChevronLeft,
@@ -32,7 +33,17 @@ interface ExperiencePageProps {
 
 export default function ExperiencePage({ params }: ExperiencePageProps) {
     const { id } = use(params);
-    const experience = siteData.excursions.find(e => String(e.id) === id);
+    const locale = useLocale();
+    const t = useTranslations('common');
+    const tExp = useTranslations('experienceDetail');
+    const tHeader = useTranslations('Header');
+
+    // We'll use the group pattern from tourDetail if needed, or simple text if distinct
+    const tTour = useTranslations('tourDetail');
+
+    const localizedSiteData = getSiteData(locale);
+    const experience = localizedSiteData.excursions.find(e => String(e.id) === id) || siteData.excursions.find(e => String(e.id) === id);
+
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
     if (!experience) {
@@ -76,11 +87,11 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                             <nav className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-3 md:mb-6 overflow-x-auto whitespace-nowrap">
                                 <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
                                     <Home className="w-3.5 h-3.5 mb-0.5" />
-                                    <span className="uppercase tracking-wider font-semibold">Home</span>
+                                    <span className="uppercase tracking-wider font-semibold">{t('home')}</span>
                                 </Link>
                                 <ChevronRight className="w-3 h-3 text-white/50" />
                                 <Link href="/experiences" className="hover:text-white transition-colors">
-                                    <span className="uppercase tracking-wider font-semibold">Experiences</span>
+                                    <span className="uppercase tracking-wider font-semibold">{tHeader('experiences')}</span>
                                 </Link>
                                 <ChevronRight className="w-3 h-3 text-white/50" />
                                 <span className="text-white font-serif font-medium truncate">
@@ -89,13 +100,13 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                             </nav>
                             <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-6">
                                 <span className="px-4 py-1.5 bg-white/20 backdrop-blur-md text-white border border-white/30 text-sm font-bold rounded-full uppercase tracking-wider">
-                                    Experience
+                                    {tExp('experienceBadge')}
                                 </span>
                                 {experience.reviews && experience.reviews.length > 0 && (
                                     <div className="flex items-center gap-2 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
                                         <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
                                         <span className="font-bold text-white">{avgRating}</span>
-                                        <span className="text-white/70 text-sm">({experience.reviews.length} reviews)</span>
+                                        <span className="text-white/70 text-sm">({t('reviewsCount', { count: experience.reviews.length })})</span>
                                     </div>
                                 )}
                             </div>
@@ -111,11 +122,15 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                                 </div>
                                 <div className="flex items-center gap-2.5">
                                     <Users className="w-5 h-5 text-amber-400" />
-                                    <span className="capitalize">{experience.group_size} group</span>
+                                    <span className="capitalize">{tTour('group', { group_size: experience.group_size })}</span>
                                 </div>
                                 <div className="flex items-center gap-2.5">
                                     <MapPin className="w-5 h-5 text-amber-400" />
-                                    <span>{experience.locations?.[0]?.name || 'Morocco'}</span>
+                                    <span>
+                                        {typeof experience.locations?.[0] === 'string'
+                                            ? experience.locations?.[0]
+                                            : (experience.locations?.[0] as any)?.name || 'Morocco'}
+                                    </span>
                                 </div>
                             </div>
                         </motion.div>
@@ -137,7 +152,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                         <div>
                             <h2 className="text-3xl font-serif font-light text-gray-900 mb-8 flex items-center gap-4">
                                 <span className="w-8 h-[1px] bg-gray-900"></span>
-                                OVERVIEW
+                                {t('overview')}
                             </h2>
                             <p className="text-gray-600 leading-loose text-lg font-light">
                                 {experience.description}
@@ -148,7 +163,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                         <div>
                             <h2 className="text-3xl font-serif font-light text-gray-900 mb-8 flex items-center gap-4">
                                 <span className="w-8 h-[1px] bg-gray-900"></span>
-                                HIGHLIGHTS
+                                {t('highlights')}
                             </h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                                 {experience.highlights.map((highlight, index) => (
@@ -164,14 +179,14 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                         <div>
                             <h2 className="text-3xl font-serif font-light text-gray-900 mb-8 flex items-center gap-4">
                                 <span className="w-8 h-[1px] bg-gray-900"></span>
-                                ITINERARY
+                                {t('itinerary')}
                             </h2>
 
                             {/* Timeline */}
                             {experience.programSteps && experience.programSteps.length > 0 && (
                                 <Itinerary
                                     steps={experience.programSteps}
-                                    title="Detailed Schedule"
+                                    title={tExp('detailedSchedule')}
                                 />
                             )}
                         </div>
@@ -184,7 +199,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                             <div>
                                 <h2 className="text-3xl font-serif font-light text-gray-900 mb-10 flex items-center gap-4">
                                     <span className="w-8 h-[1px] bg-gray-900"></span>
-                                    GUEST STORIES
+                                    {tExp('guestStories')}
                                 </h2>
 
                                 <div className="flex overflow-x-auto pb-8 gap-6 snap-x snap-mandatory scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
@@ -225,23 +240,23 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                                 <AlertCircle className="w-32 h-32 text-stone-400" />
                             </div>
                             <div className="relative z-10">
-                                <h3 className="font-serif text-2xl text-stone-800 mb-6">Essential Travel Notes</h3>
+                                <h3 className="font-serif text-2xl text-stone-800 mb-6">{tExp('essentialTravelNotes')}</h3>
                                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <li className="flex gap-3 text-stone-600">
                                         <Check className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                                        <span>Comfortable walking shoes required</span>
+                                        <span>{tExp('walkingShoes')}</span>
                                     </li>
                                     <li className="flex gap-3 text-stone-600">
                                         <Check className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                                        <span>Sun protection (hat, sunglasses)</span>
+                                        <span>{tExp('sunProtection')}</span>
                                     </li>
                                     <li className="flex gap-3 text-stone-600">
                                         <Check className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                                        <span>Bring water bottle</span>
+                                        <span>{tExp('waterBottle')}</span>
                                     </li>
                                     <li className="flex gap-3 text-stone-600">
                                         <Check className="w-5 h-5 text-amber-600 flex-shrink-0" />
-                                        <span>Camera for photos</span>
+                                        <span>{tExp('camera')}</span>
                                     </li>
                                 </ul>
                             </div>
@@ -252,7 +267,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                     {/* Right Column (Sidebar) */}
                     <div className="lg:col-span-4 h-full">
                         <BookingCard
-                            price={experience.price || "Contact Us"}
+                            price={experience.price || t('contactUs')}
                             title={experience.title}
                             duration={experience.duration}
                             groupSize={experience.group_size}

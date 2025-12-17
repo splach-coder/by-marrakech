@@ -237,8 +237,8 @@ export default function PrivacyPolicyPage() {
                                 </div>
                                 <div className="flex items-center gap-3 text-gray-700">
                                     <Phone className="w-5 h-5 text-primary" />
-                                    <a href="tel:+212600000000" className="hover:text-primary transition-colors">
-                                        +212 600 000 000
+                                    <a href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212600000000'}`} className="hover:text-primary transition-colors">
+                                        {process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 600 000 000'}
                                     </a>
                                 </div>
                                 <div className="flex items-start gap-3 text-gray-700">

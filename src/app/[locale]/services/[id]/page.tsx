@@ -4,8 +4,9 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { siteData } from '@/data/siteData';
+import { getSiteData, siteData } from '@/data/siteData';
 import { use, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import {
     X,
     ChevronRight,
@@ -31,13 +32,22 @@ interface ServicePageProps {
 
 export default function ServicePage({ params }: ServicePageProps) {
     const { id } = use(params);
+    const locale = useLocale();
+    const t = useTranslations('common');
+    const tServ = useTranslations('serviceDetail');
+    const tHeader = useTranslations('Header');
+    const tTour = useTranslations('tourDetail'); // For contactForPrice
+
+    const localizedSiteData = getSiteData(locale);
+
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
+    // Check for special ID 501 (Driver Service)
     if (id === '501') {
         return <PrivateDriverService />;
     }
 
-    const service = siteData.services.find(s => String(s.id) === id);
+    const service = localizedSiteData.services.find(s => String(s.id) === id) || siteData.services.find(s => String(s.id) === id);
 
     if (!service) {
         notFound();
@@ -77,11 +87,11 @@ export default function ServicePage({ params }: ServicePageProps) {
                     <nav className="inline-flex items-center gap-2 text-xs md:text-sm text-white/90 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full">
                         <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
                             <Home className="w-3.5 h-3.5 mb-0.5" />
-                            <span className="uppercase tracking-wider font-semibold">Home</span>
+                            <span className="uppercase tracking-wider font-semibold">{t('home')}</span>
                         </Link>
                         <ChevronRight className="w-3 h-3 text-white/70" />
                         <Link href="/services" className="hover:text-white transition-colors">
-                            <span className="uppercase tracking-wider font-semibold">Services</span>
+                            <span className="uppercase tracking-wider font-semibold">{tHeader('services')}</span>
                         </Link>
                         <ChevronRight className="w-3 h-3 text-white/70" />
                         <span className="text-white font-serif font-medium truncate max-w-[150px] md:max-w-none">
@@ -105,7 +115,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                             <div>
                                 <div className="flex items-center gap-2 text-sm text-primary font-bold uppercase tracking-wider mb-3">
                                     <Star className="w-4 h-4 fill-primary" />
-                                    <span>Premium Service</span>
+                                    <span>{tServ('premiumService')}</span>
                                 </div>
                                 <h1 className="text-2xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
                                     {service.title}
@@ -113,11 +123,11 @@ export default function ServicePage({ params }: ServicePageProps) {
                                 <div className="flex items-center gap-4 text-gray-500">
                                     <div className="flex items-center gap-1.5">
                                         <Clock className="w-4 h-4 text-primary" />
-                                        <span>24/7 Available</span>
+                                        <span>{tServ('available247')}</span>
                                     </div>
                                     <div className="flex items-center gap-1.5">
                                         <MapPin className="w-4 h-4 text-primary" />
-                                        <span>Morocco Wide</span>
+                                        <span>{tServ('moroccoWide')}</span>
                                     </div>
                                 </div>
                             </div>
@@ -134,11 +144,11 @@ export default function ServicePage({ params }: ServicePageProps) {
                                     }}
                                     className="px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2"
                                 >
-                                    <span>Book Now</span>
+                                    <span>{t('bookNow')}</span>
                                     <ArrowRight className="w-4 h-4" />
                                 </button>
                                 <span className="text-sm text-gray-400 font-medium">
-                                    Contact for price
+                                    {tTour('contactForPrice')}
                                 </span>
                             </div>
                         </div>
@@ -147,14 +157,14 @@ export default function ServicePage({ params }: ServicePageProps) {
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                             <div className="lg:col-span-2 space-y-8">
                                 <div>
-                                    <h2 className="text-xl font-bold text-gray-900 mb-4">Description</h2>
+                                    <h2 className="text-xl font-bold text-gray-900 mb-4">{tServ('description')}</h2>
                                     <p className="text-lg text-gray-600 leading-relaxed font-light">
                                         {service.description}
                                     </p>
                                 </div>
 
                                 <div>
-                                    <h2 className="text-xl font-bold text-gray-900 mb-4">Service Highlights</h2>
+                                    <h2 className="text-xl font-bold text-gray-900 mb-4">{tServ('serviceHighlights')}</h2>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {service.highlights.map((highlight, index) => (
                                             <div key={index} className="flex items-start gap-3 p-3 bg-stone-50 rounded-lg">
@@ -171,35 +181,35 @@ export default function ServicePage({ params }: ServicePageProps) {
                                         <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                                             <Shield className="w-6 h-6 text-white" />
                                         </div>
-                                        <h3 className="text-2xl font-serif font-bold text-gray-900">Why Choose Us</h3>
+                                        <h3 className="text-2xl font-serif font-bold text-gray-900">{tServ('whyChooseUs')}</h3>
                                     </div>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
                                             <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                                             <div>
-                                                <div className="font-bold text-gray-900 mb-1">Professional Drivers</div>
-                                                <p className="text-sm text-gray-600">Experienced and certified</p>
+                                                <div className="font-bold text-gray-900 mb-1">{tServ('driversTitle')}</div>
+                                                <p className="text-sm text-gray-600">{tServ('experiencedDrivers')}</p>
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
                                             <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                                             <div>
-                                                <div className="font-bold text-gray-900 mb-1">Modern Vehicles</div>
-                                                <p className="text-sm text-gray-600">Latest models, well-maintained</p>
+                                                <div className="font-bold text-gray-900 mb-1">{tServ('vehiclesTitle')}</div>
+                                                <p className="text-sm text-gray-600">{tServ('modernVehicles')}</p>
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
                                             <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                                             <div>
-                                                <div className="font-bold text-gray-900 mb-1">Fully Insured</div>
-                                                <p className="text-sm text-gray-600">Complete coverage protection</p>
+                                                <div className="font-bold text-gray-900 mb-1">{tServ('insuredTitle')}</div>
+                                                <p className="text-sm text-gray-600">{tServ('fullyInsured')}</p>
                                             </div>
                                         </div>
                                         <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
                                             <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                                             <div>
-                                                <div className="font-bold text-gray-900 mb-1">Fixed Pricing</div>
-                                                <p className="text-sm text-gray-600">No hidden fees or surprises</p>
+                                                <div className="font-bold text-gray-900 mb-1">{tServ('pricingTitle')}</div>
+                                                <p className="text-sm text-gray-600">{tServ('fixedPricing')}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -211,9 +221,9 @@ export default function ServicePage({ params }: ServicePageProps) {
                                 <BookingCard
                                     id={String(service.id)}
                                     title={service.title}
-                                    price={service.price || "Contact for price"}
-                                    duration="Flexible"
-                                    groupSize="Private transfer"
+                                    price={service.price || tTour('contactForPrice')}
+                                    duration={t('flexible')}
+                                    groupSize={tServ('privateTransfer')}
                                     type="service"
                                     imageUrl={service.image.url}
                                 />
@@ -227,7 +237,7 @@ export default function ServicePage({ params }: ServicePageProps) {
             <section className="py-8 md:py-12 bg-white">
                 <div className="px-4 md:container-custom max-w-7xl mx-auto">
                     <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">
-                        Gallery
+                        {t('gallery')}
                     </h2>
                     <GalleryGrid images={galleryImages} onImageClick={setSelectedImage} />
                 </div>
@@ -238,7 +248,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                 <section className="py-16 bg-[#faf9f6]">
                     <div className="container-custom max-w-7xl mx-auto">
                         <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 border-l-4 border-primary pl-4">
-                            Recent Reviews
+                            {tServ('recentReviews')}
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {service.reviews.map((review, index) => (

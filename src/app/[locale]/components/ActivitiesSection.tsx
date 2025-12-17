@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { MapPin, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 
@@ -17,11 +17,27 @@ interface Activity {
 
 interface ActivitiesSectionProps {
     activities: Activity[];
+    label?: string;
+    title?: string;
+    description?: string;
 }
 
-export default function ActivitiesSection({ activities }: ActivitiesSectionProps) {
+export default function ActivitiesSection({
+    activities,
+    label,
+    title,
+    description
+}: ActivitiesSectionProps) {
     const locale = useLocale();
     const [hoveredIndex, setHoveredIndex] = useState<number>(0);
+    const t = useTranslations('experiences'); // Reusing 'experiences' or generic strings if possible
+
+    // Fallbacks
+    const headerLabel = label || (locale === 'fr' ? 'ACTIVITÉS' : 'Activities');
+    const headerTitle = title || (locale === 'fr' ? 'Choses à faire au Maroc' : 'Things to Do in Morocco');
+    const headerDesc = description || (locale === 'fr' ? 'Découvrez des expériences uniques et des activités à travers le Maroc' : 'Discover unique experiences and activities across Morocco');
+    const viewAllText = locale === 'fr' ? 'Voir tout' : 'View All';
+    const exploreText = locale === 'fr' ? 'Explorer' : 'Explore';
 
     // Show only first 5 activities
     const displayActivities = activities.slice(0, 5);
@@ -39,13 +55,13 @@ export default function ActivitiesSection({ activities }: ActivitiesSectionProps
                     <div className="flex items-start justify-between mb-6">
                         <div className="flex-1">
                             <span className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-6 block">
-                                Activities
+                                {headerLabel}
                             </span>
                             <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-                                Things to Do in Morocco
+                                {headerTitle}
                             </h2>
                             <p className="text-lg text-gray-600 max-w-2xl">
-                                Discover unique experiences and activities across Morocco
+                                {headerDesc}
                             </p>
                         </div>
 
@@ -54,7 +70,7 @@ export default function ActivitiesSection({ activities }: ActivitiesSectionProps
                             href={`/${locale}/activities`}
                             className="group flex items-center gap-3 px-6 py-3 text-primary-dark rounded-full transition-all hover:gap-4"
                         >
-                            <span className="text-sm font-medium">View All</span>
+                            <span className="text-sm font-medium">{viewAllText}</span>
                             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                                 <ArrowRight className="w-4 h-4 text-white" />
                             </div>
@@ -99,7 +115,7 @@ export default function ActivitiesSection({ activities }: ActivitiesSectionProps
                                         <div className="md:hidden block">
                                             <h3 className="text-2xl font-bold text-white mb-2">{activity.title}</h3>
                                             <div className="flex items-center gap-2 text-white/90 text-sm">
-                                                <span>Explore</span> <ArrowRight className="w-4 h-4" />
+                                                <span>{exploreText}</span> <ArrowRight className="w-4 h-4" />
                                             </div>
                                         </div>
 
@@ -140,7 +156,7 @@ export default function ActivitiesSection({ activities }: ActivitiesSectionProps
                                                     </p>
                                                     <div className="pt-4">
                                                         <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-semibold hover:bg-gray-100 transition-colors">
-                                                            <span>Explore</span>
+                                                            <span>{exploreText}</span>
                                                             <ArrowRight className="w-4 h-4" />
                                                         </div>
                                                     </div>

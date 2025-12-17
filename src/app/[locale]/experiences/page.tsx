@@ -3,14 +3,20 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
-import { siteData } from '@/data/siteData';
+import { useLocale, useTranslations } from 'next-intl';
+import { getSiteData, siteData } from '@/data/siteData';
 import { Clock, Users, MapPin, Mouse, Filter } from 'lucide-react';
 import { useState, useMemo } from 'react';
 
 export default function ExperiencesPage() {
     const locale = useLocale();
-    const experiences = siteData.excursions;
+    const t = useTranslations('experiencesPage');
+
+    // Fetch localized data
+    const localizedSiteData = getSiteData(locale);
+    // Fallback to english data if localization is missing structure
+    const experiences = localizedSiteData.excursions || siteData.excursions;
+
     const [selectedCity, setSelectedCity] = useState<string>('all');
 
     // Extract unique cities from experiences
@@ -64,7 +70,7 @@ export default function ExperiencesPage() {
                 <div className="absolute inset-0">
                     <Image
                         src={'/images/hero-imgs/experiences.jpg'}
-                        alt="Morocco Experiences"
+                        alt={t('hero.title')}
                         fill
                         className="object-cover"
                         priority
@@ -80,10 +86,10 @@ export default function ExperiencesPage() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         <h1 className="text-5xl md:text-7xl lg:text-8xl !font-serif font-normal tracking-tight mb-6">
-                            Morocco Experiences
+                            {t('hero.title')}
                         </h1>
                         <p className="text-sm md:text-base lg:text-lg tracking-[0.2em] font-light uppercase text-white/90">
-                            Unforgettable Day Trips Across Morocco
+                            {t('hero.subtitle')}
                         </p>
                     </motion.div>
                 </div>
@@ -111,11 +117,11 @@ export default function ExperiencesPage() {
                     {/* Section Header */}
                     <div className="text-center mb-12">
                         <h2 className="text-3xl md:text-4xl !font-serif font-medium text-text-primary mb-4">
-                            Curated Excursions
+                            {t('grid.title')}
                         </h2>
                         <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
                         <p className="mt-4 text-text-secondary max-w-2xl mx-auto">
-                            From bustling medinas to serene deserts, discover authentic Moroccan day trips.
+                            {t('grid.subtitle')}
                         </p>
                     </div>
 
@@ -130,14 +136,14 @@ export default function ExperiencesPage() {
                                     : 'bg-white text-text-secondary border border-border hover:border-primary hover:text-primary'
                                     }`}
                             >
-                                {city === 'all' ? 'All Cities' : city}
+                                {city === 'all' ? t('grid.allCities') : city}
                             </button>
                         ))}
                     </div>
 
                     {filteredExperiences.length === 0 ? (
                         <div className="text-center py-20">
-                            <p className="text-xl text-gray-500">No experiences found in {selectedCity}</p>
+                            <p className="text-xl text-gray-500">{t('grid.notFound', { city: selectedCity })}</p>
                         </div>
                     ) : (
                         <motion.div
@@ -186,7 +192,7 @@ export default function ExperiencesPage() {
                                                             <span className="truncate max-w-[100px]">
                                                                 {typeof experience.locations[0] === 'string'
                                                                     ? experience.locations[0]
-                                                                    : experience.locations[0].name}
+                                                                    : (experience.locations[0] as any).name}
                                                             </span>
                                                         </div>
                                                     )}

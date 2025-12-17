@@ -2,7 +2,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import type { BookingItem } from '@/types/booking';
 import type { Tour } from '@/types/tour';
 
@@ -13,6 +13,7 @@ interface BookNowButtonProps {
 export default function BookNowButton({ tour }: BookNowButtonProps) {
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations('toursPage');
 
   const handleBookNow = () => {
     const bookingItem: BookingItem = {
@@ -37,7 +38,7 @@ export default function BookNowButton({ tour }: BookNowButtonProps) {
       onClick={handleBookNow}
       className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-lg transition-all hover:shadow-lg"
     >
-      Book This Tour
+      {t('bookThisTour')}
     </button>
   );
 }

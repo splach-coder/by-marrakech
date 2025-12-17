@@ -1,72 +1,145 @@
 {
   "SubHeader": {
-    "helpText": "Besoin d'aide?",
-    "tagline": "SOUVENIRS FAITS PAR MARRAKECH"
+    "helpText": "Besoin d'aide ?",
+    "tagline": "SOUVENIRS CRÉÉS PAR "
   },
   "Header": {
     "home": "Accueil",
-    "shop": "Boutique",
-    "collections": "Collections",
+    "tours": "Circuits",
+    "experiences": "Expériences",
+    "services": "Services",
+    "activities": "Activités",
+    "gallery": "Galerie",
+    "marrakech": "Marrakech",
     "about": "À propos",
-    "artisans": "Nos Artisans",
     "contact": "Contact",
+    "bookTrip": "Réserver votre voyage",
+    "shop": "Boutique",
+    "artisans": "Nos Artisans",
     "catalog": "Catalogue",
     "followUs": "Suivez-nous",
-    "discover": "Découvrir Plus"
+    "discover": "Découvrir plus"
   },
   "home": {
     "hero": {
-      "title": "Découvrez la Magie de Marrakech",
-      "subtitle": "Immergez-vous dans les couleurs vibrantes et la riche culture de la ville la plus enchanteresse du Maroc. Des médinas anciennes aux riads luxueux, vivez la magie de Marrakech.",
-      "ctaPrimary": "Explorez Nos Tours",
-      "ctaSecondary": "Essayez une Expérience de Luxe"
+      "title": "Découvrez le Maroc avec ByMarrakech",
+      "subtitle": "Votre agence de confiance pour des circuits authentiques et des voyages inoubliables à travers le Maroc.",
+      "ctaPrimary": "Explorer nos circuits",
+      "ctaSecondary": "Voir les expériences"
     },
     "about": {
-      "label": "À Propos de Marrakech",
-      "title": "Découvrez le cœur de Marrakech avec nos expériences authentiques"
+      "label": "À propos de ByMarrakech",
+      "title": "Votre agence de voyage au Maroc de confiance"
     },
     "features": {
       "weather": {
-        "title": "Météo Parfaite",
+        "title": "Climat idéal",
         "description": "Profitez de plus de 300 jours de soleil par an avec des journées chaudes et des soirées fraîches, parfait pour explorer toute l'année."
       },
       "culture": {
-        "title": "Traditions Intemporelles",
-        "description": "Découvrez des coutumes séculaires, des hammams traditionnels à l'appel à la prière enchanteur résonnant à travers la ville."
+        "title": "Traditions millénaires",
+        "description": "Découvrez des coutumes séculaires, des hammams traditionnels à l'appel envoûtant à la prière résonnant dans la ville."
       },
       "hospitality": {
-        "title": "Hospitalité Chaleureuse",
-        "description": "Ressentez la gentillesse authentique des habitants désireux de partager leur culture et leurs traditions avec les visiteurs."
+        "title": "Hospitalité chaleureuse",
+        "description": "Sentez-vous accueilli par la gentillesse sincère des habitants désireux de partager leur culture et leurs traditions."
       }
     },
     "cta": {
-      "title": "Prêt à Découvrir le Maroc Authentique?",
-      "description": "Laissez nos guides locaux experts créer un voyage personnalisé à travers la magie de Marrakech et au-delà. Des souks vibrants aux paysages désertiques sereins, votre aventure marocaine inoubliable vous attend.",
-      "button": "Commencer la Planification"
+      "title": "Prêt à découvrir le Maroc authentique ?",
+      "description": "Laissez nos guides locaux experts créer un voyage personnalisé à travers la magie de Marrakech et au-delà. Des souks animés aux paysages désertiques sereins, votre aventure marocaine inoubliable vous attend.",
+      "button": "Commencer à planifier"
     }
   },
   "experiences": {
     "label": "DÉCOUVRIR LES ACTIVITÉS",
-    "title": "Explorez les Expériences de Marrakech",
-    "filterText": "Filtrer les Expériences",
-    "viewDetails": "Voir les Détails",
+    "title": "Explorez les expériences de Marrakech",
+    "filterText": "Filtrer les expériences",
+    "viewDetails": "Voir les détails",
     "duration": "DURÉE",
     "price": "PRIX",
     "rating": "Note",
     "guests": "Invités",
     "featured": "À LA UNE",
-    "notForChildren": "Pas pour les enfants"
+    "notForChildren": "Non adapté aux enfants"
   },
   "tours": {
-    "label": "DÉCOUVREZ NOS CIRCUITS",
+    "label": "DÉCOUVRIR NOS CIRCUITS",
     "title": "Découvrez le meilleur du Maroc",
     "days": "Jours",
-    "notForChildren": "PAS POUR LES ENFANTS",
+    "notForChildren": "NON ADAPTÉ AUX ENFANTS",
     "featured": "À LA UNE"
+  },
+  "toursPage": {
+    "hero": {
+      "title": "Circuits au Maroc",
+      "subtitle": "Votre voyage authentique au cœur de l'Afrique du Nord"
+    },
+    "grid": {
+      "title": "Nos circuits sélectionnés",
+      "subtitle": "Choisissez parmi notre sélection d'itinéraires savamment planifiés pour vous faire découvrir le vrai Maroc."
+    },
+    "bookThisTour": "Réserver ce circuit"
+  },
+  "experiencesPage": {
+    "hero": {
+      "title": "Expériences au Maroc",
+      "subtitle": "Excursions inoubliables à travers le Maroc"
+    },
+    "grid": {
+      "title": "Excursions sélectionnées",
+      "subtitle": "Des médinas animées aux déserts sereins, découvrez des excursions authentiques.",
+      "allCities": "Toutes les villes",
+      "notFound": "Aucune expérience trouvée à {city}"
+    }
+  },
+  "activitiesPage": {
+    "hero": {
+      "title": "Activités au Maroc",
+      "subtitle": "Expériences uniques et choses à faire"
+    },
+    "grid": {
+      "title": "Explorer les activités",
+      "subtitle": "Immergez-vous dans la culture locale avec notre sélection d'activités triées sur le volet."
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "title": "Nos services",
+      "subtitle": "Services de qualité pour votre voyage parfait"
+    },
+    "grid": {
+      "title": "Services professionnels",
+      "subtitle": "Tout ce dont vous avez besoin pour une aventure marocaine confortable et sans souci."
+    }
+  },
+  "contactPage": {
+    "hero": {
+      "title": "Contactez-nous",
+      "subtitle": "Nous sommes là pour vous aider à planifier votre voyage de rêve"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "name": "Nom complet",
+      "email": "Adresse email",
+      "subject": "Sujet",
+      "message": "Message",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé avec succès !",
+      "error": "Échec de l'envoi du message. Veuillez réessayer."
+    },
+    "info": {
+      "title": "Informations de contact",
+      "address": "Adresse",
+      "phone": "Téléphone",
+      "email": "Email",
+      "hours": "Heures d'ouverture"
+    }
   },
   "events": {
     "label": "ÉVÉNEMENTS À VENIR",
-    "title": "Découvrez les Événements de Marrakech",
+    "title": "Explorez les événements de Marrakech",
     "liveNow": "EN DIRECT",
     "upcoming": "À VENIR"
   },
@@ -75,44 +148,298 @@
     "title": "Voyages de nos clients à Marrakech"
   },
   "cta": {
-    "title": "Prêt à Découvrir le Maroc Authentique?",
-    "description": "Laissez nos guides locaux experts créer un voyage personnalisé à travers la magie de Marrakech et au-delà. Des souks vibrants aux paysages désertiques sereins, votre aventure marocaine inoubliable vous attend.",
-    "button": "Commencer la Planification"
+    "title": "Prêt à découvrir le Maroc authentique ?",
+    "description": "Laissez nos guides locaux experts créer un voyage personnalisé à travers la magie de Marrakech et au-delà. Des souks animés aux paysages désertiques sereins, votre aventure marocaine inoubliable vous attend.",
+    "button": "Commencer à planifier"
   },
   "footer": {
-    "description": "Découvrez la magie de Marrakech avec nos expériences locales authentiques, visites guidées et services de voyage personnalisés. Votre voyage à travers le Maroc commence ici.",
-    "downloadApp": "Télécharger Notre App",
-    "downloadOn": "Télécharger sur",
-    "getItOn": "Disponible sur",
+    "description": "Votre agence de confiance au Maroc proposant des circuits authentiques, des excursions et des expériences. De Marrakech au Sahara, nous créons des voyages inoubliables.",
+    "discover": {
+      "title": "Découvrir",
+      "tours": "Nos circuits",
+      "experiences": "Expériences",
+      "activities": "Activités",
+      "gallery": "Galerie photo",
+      "marrakech": "Visiter Marrakech"
+    },
     "company": {
       "title": "Entreprise",
-      "aboutUs": "À Propos",
-      "ourStory": "Notre Histoire",
-      "travelBlog": "Blog Voyage",
-      "careers": "Carrières",
-      "pressKit": "Kit Presse"
+      "about": "À propos",
+      "services": "Nos services",
+      "contact": "Nous contacter",
+      "events": "Événements"
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "call": "Appelez-nous",
+      "email": "Envoyez-nous un email",
+      "visit": "Rendez-nous visite",
+      "address": "Marrakech, Maroc"
+    },
+    "bottom": {
+      "rights": "Tous droits réservés.",
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation",
+      "sitemap": "Plan du site"
+    }
+  },
+  "booking": {
+    "title": "Réservez votre expérience",
+    "subtitle": "Facile · Rapide · Sécurisé via WhatsApp",
+    "step1": "Choisissez votre expérience",
+    "step2": "Détails du voyage",
+    "step3": "Vos informations",
+    "step4": "Détails supplémentaires",
+    "submit": "Envoyer via WhatsApp",
+    "name": "Nom complet",
+    "email": "Email",
+    "phone": "Numéro de téléphone",
+    "date": "Date préférée",
+    "travelers": "Nombre de voyageurs",
+    "message": "Demandes spéciales",
+    "preferences": "Préférences"
+  },
+  "common": {
+    "overview": "APERÇU",
+    "highlights": "POINTS FORTS",
+    "itinerary": "ITINÉRAIRE",
+    "guestReviews": "AVIS CLIENTS",
+    "gallery": "GALERIE",
+    "bookNow": "Réserver",
+    "contactUs": "Contactez-nous",
+    "back": "Retour",
+    "home": "Accueil",
+    "duration": "Durée",
+    "groupSize": "Taille du groupe",
+    "rating": "Note",
+    "price": "Prix",
+    "flexible": "Flexible",
+    "from": "À partir de",
+    "viewDetails": "Voir les détails",
+    "allRightsReserved": "Tous droits réservés.",
+    "reviewsCount": "{count} avis",
+    "privateDriverPage": {
+      "details": {
+        "specialties": "Spécialités",
+        "locations": "Régions Maîtrisées",
+        "badges": "Badges"
+      }
+    }
+  },
+  "tourDetail": {
+    "yourJourney": "VOTRE VOYAGE",
+    "travelersNote": "Note aux voyageurs",
+    "perfectFor": "Parfait pour {item}",
+    "freeCancellation": "Annulation gratuite jusqu'à 48h",
+    "contactForPrice": "Contactez-nous pour le prix",
+    "privateGroup": "Groupe privé",
+    "group": "Groupe de {group_size}",
+    "reviewsCount": "{count} avis"
+  },
+  "experienceDetail": {
+    "experienceBadge": "Expérience",
+    "detailedSchedule": "Programme détaillé",
+    "guestStories": "HISTOIRES D'INVITÉS",
+    "essentialTravelNotes": "Notes de voyage essentielles",
+    "walkingShoes": "Chaussures de marche confortables requises",
+    "sunProtection": "Protection solaire (chapeau, lunettes)",
+    "waterBottle": "Apportez une bouteille d'eau",
+    "camera": "Appareil photo pour les souvenirs"
+  },
+  "serviceDetail": {
+    "premiumService": "Service Premium",
+    "available247": "Disponible 24/7",
+    "moroccoWide": "Partout au Maroc",
+    "description": "Description",
+    "serviceHighlights": "Points forts du service",
+    "whyChooseUs": "Pourquoi nous choisir",
+    "experiencedDrivers": "Expérimentés et certifiés",
+    "driversTitle": "Chauffeurs professionnels",
+    "modernVehicles": "Modèles récents, bien entretenus",
+    "vehiclesTitle": "Véhicules modernes",
+    "fullyInsured": "Protection complète",
+    "insuredTitle": "Entièrement assuré",
+    "fixedPricing": "Pas de frais cachés ou de surprises",
+    "pricingTitle": "Prix fixes",
+    "recentReviews": "Avis récents",
+    "privateTransfer": "Transfert privé",
+    "viewService": "Voir le service"
+  },
+  "activityDetail": {
+    "authenticExperience": "Expérience authentique",
+    "photoOpportunities": "Opportunités photos",
+    "aboutExperience": "À propos de l'expérience",
+    "quickFacts": "Faits rapides",
+    "excellentRating": "5.0 (Excellent)",
+    "whatToExpect": "À quoi s'attendre",
+    "authenticVibeTitle": "Ambiance authentique",
+    "authenticVibeDesc": "Immergez-vous dans la culture et les traditions marocaines authentiques.",
+    "scenicViewsTitle": "Vues panoramiques",
+    "scenicViewsDesc": "Capturez des souvenirs époustouflants dans des lieux pittoresques triés sur le volet.",
+    "localExpertsTitle": "Experts locaux",
+    "localExpertsDesc": "Apprenez des histoires fascinantes auprès de guides locaux compétents.",
+    "readyForAdventure": "Prêt pour l'aventure ?",
+    "bookToday": "Réservez votre expérience {title} dès aujourd'hui.",
+    "flexibleDuration": "Durée flexible",
+    "adaptSchedule": "S'adapte à votre emploi du temps",
+    "allGroupSizes": "Toutes tailles de groupe",
+    "privateOrShared": "Privé ou partagé",
+    "privateSmallGroup": "Privé / Petit groupe"
+  },
+  "driverDetail": {
+    "backToDrivers": "Retour aux chauffeurs",
+    "verifiedProfessional": "Professionnel vérifié • {years} ans d'exp.",
+    "vehicleFleet": "Flotte de véhicules",
+    "languages": "Langues",
+    "onboardComforts": "Confort à bord",
+    "aboutDriver": "À propos de votre chauffeur",
+    "ratingScore": "Note {rating} / 5.0",
+    "startJourney": "Commencez votre voyage",
+    "customItinerary": "Itinéraire personnalisé",
+    "bookAgencyTour": "Réserver un circuit",
+    "totalFlexibilityTitle": "Flexibilité totale",
+    "totalFlexibilityDesc": "Engagez {name} pour la journée, la semaine ou un voyage spécifique. Vous décidez de l'itinéraire, des arrêts et du rythme. Parfait pour les explorateurs qui veulent sortir des sentiers battus.",
+    "selectTour": "Sélectionnez un circuit à réserver avec {name} :",
+    "availableCount": "{count} Disponibles",
+    "dayTrip": "Excursion d'une journée",
+    "noToursMatch": "Aucun circuit spécifique ne correspond aux régions principales de ce chauffeur actuellement.",
+    "chooseCustom": "Veuillez choisir \"Itinéraire personnalisé\"",
+    "bookWhatsApp": "Réserver via WhatsApp"
+  },
+  "galleryPage": {
+    "hero": {
+      "tag": "Voyage Visuel",
+      "title": "Le Maroc à travers notre objectif",
+      "subtitle": "Explorez la beauté, la culture et les paysages qui rendent le Maroc inoubliable"
+    }
+  },
+  "aboutPage": {
+    "hero": {
+      "tag": "Notre Philosophie",
+      "title": "Conservateurs de la Ville Rouge",
+      "subtitle": "Nous ne vous montrons pas seulement Marrakech. Nous vous invitons à faire partie de son histoire.",
+      "scroll": "Notre Histoire"
+    },
+    "story": {
+      "since": "Depuis 2014",
+      "title": "Création de voyages marocains authentiques",
+      "description1": "Fondée avec une mission simple : découvrir les différentes facettes du tourisme typique et révéler le cœur battant du Maroc. Nous avons commencé comme une petite équipe de locaux passionnés qui voulaient partager le Maroc que nous connaissons et aimons, celui des riads cachés, des traditions anciennes et de l'hospitalité chaleureuse.",
+      "description2": "Au fil des ans, nous sommes devenus une famille de guides experts, de chauffeurs et d'artisans, tous unis par un seul but : rendre votre visite inoubliable.",
+      "description3": "Ce qui nous distingue, c'est notre lien profond avec la terre. Nous ne sommes pas seulement des guides ; nous sommes des conteurs, des historiens et des amis qui veulent partager les trésors cachés que seuls les locaux connaissent.",
+      "stats": {
+        "years": "Années",
+        "travelers": "Voyageurs",
+        "tours": "Circuits"
+      },
+      "quote": "Voyager, c'est découvrir que tout le monde a tort sur les autres pays.",
+      "author": "Aldous Huxley"
+    },
+    "values": {
+      "tag": "Notre Éthique",
+      "title": "Principes Directeurs",
+      "subtitle": "Chaque voyage que nous concevons repose sur une base de respect, de qualité et de connexion authentique.",
+      "items": {
+        "passion": {
+          "title": "Passion",
+          "desc": "Un amour profondément enraciné pour Marrakech et son riche héritage culturel motive chaque expérience que nous créons."
+        },
+        "authenticity": {
+          "title": "Authenticité",
+          "desc": "Mettre en valeur le vrai Marrakech — une véritable immersion culturelle plutôt que des attractions touristiques superficielles."
+        },
+        "community": {
+          "title": "Communauté",
+          "desc": "Travailler en étroite collaboration avec les artisans locaux pour s'assurer que notre tourisme profite directement aux personnes qui rendent cette ville spéciale."
+        },
+        "sustainability": {
+          "title": "Durabilité",
+          "desc": "Engagés dans des pratiques écologiquement responsables qui préservent notre beauté naturelle pour les générations futures."
+        }
+      }
+    },
+    "cta": {
+      "quote": "Nous croyons que le voyage est la seule chose que vous achetez qui vous rend plus riche. Venez, laissez-nous vous montrer la richesse du Maroc.",
+      "team": "L'équipe ByMarrakech",
+      "experts": "Vos experts locaux",
+      "button": "Commencez votre voyage"
+    }
+  },
+  "marrakechPage": {
+    "hero": {
+      "tag": "La Ville Rouge",
+      "title": "Marrakech",
+      "subtitle": "Où les traditions anciennes rencontrent le luxe moderne dans une symphonie de couleurs, de parfums et de sons.",
+      "scroll": "Explorer"
+    },
+    "intro": {
+      "title": "Une ville de contrastes et de beauté intemporelle",
+      "desc1": "Marrakech est une surcharge sensorielle de la meilleure façon possible. Du charme chaotique de la place Jemaa el-Fna au silence serein du jardin Majorelle, la ville offre une palette variée d'expériences.",
+      "desc2": "Que vous recherchiez le frisson du marchandage dans les souks, la détente d'un hammam traditionnel ou le goût d'un tajine authentique, Marrakech offre un style inégalé.",
+      "quote": "Marrakech m'a appris la couleur.",
+      "author": "Yves Saint Laurent",
+      "highlights": {
+        "medina": { "title": "Ancienne Médina", "desc": "Labyrinthe classé au patrimoine mondial de l'UNESCO." },
+        "food": { "title": "Paradis Culinaire", "desc": "Cuisine de rue de renommée mondiale et gastronomie." },
+        "sun": { "title": "Soleil toute l'année", "desc": "Plus de 300 jours de soleil par an." },
+        "photo": { "title": "Rêve de photographe", "desc": "Couleurs vibrantes et architecture époustoustouflante." }
+      }
     },
     "tours": {
-      "title": "Nos Tours",
-      "cityTours": "Visites de la Ville",
-      "desertExpeditions": "Expéditions Désert",
-      "atlasMountains": "Montagnes de l'Atlas",
-      "cookingClasses": "Cours de Cuisine",
-      "multiDayPackages": "Forfaits Multi-jours"
+      "tag": "Voyages",
+      "title": "Au départ de Marrakech",
+      "viewAll": "Voir tous les circuits",
+      "stops": "Arrêts",
+      "details": "Voir les détails"
     },
-    "support": {
-      "title": "Support",
-      "contactUs": "Contactez-Nous",
-      "faqs": "FAQs",
-      "bookingInfo": "Info Réservation",
-      "privacy": "Confidentialité",
-      "terms": "Conditions Générales"
+    "dayTrips": {
+      "tag": "Excursions d'une journée",
+      "title": "Échappez aux murs de la ville",
+      "subtitle": "Découvrez les merveilles à quelques minutes en voiture de Marrakech. Des rafraîchissantes cascades d'Ouzoud à l'historique Ait Ben Haddou.",
+      "discover": "Découvrir l'expérience"
     },
-    "paySecurely": "Paiement Sécurisé Avec",
-    "paymentDescription": "Toutes les transactions sont cryptées et traitées en toute sécurité avec le protocole SSL.",
-    "copyright": "BYMARRAKECH. Tous droits réservés.",
-    "newsletter": "Abonnez-vous à notre newsletter",
-    "emailPlaceholder": "Votre adresse email",
-    "subscribe": "S'abonner"
+    "activities": {
+      "title": "Moments inoubliables",
+      "subtitle": "Activités organisées pour vous immerger dans la culture locale, l'aventure et la détente."
+    },
+    "cta": {
+      "title": "Votre histoire à Marrakech commence ici.",
+      "subtitle": "Laissez-nous créer l'itinéraire parfait pour votre aventure marocaine. De la prise en charge à l'aéroport aux couchers de soleil dans le désert, nous nous occupons de chaque détail.",
+      "whatsapp": "Commencer à planifier sur WhatsApp",
+      "contact": "Contactez-nous"
+    }
+  },
+  "privateDriverPage": {
+    "hero": {
+      "tag": "Service Premium",
+      "title": "Votre Liberté, Votre Maroc",
+      "subtitle": "Choisissez votre chauffeur personnel, votre véhicule et créez votre propre voyage. Découvrez le luxe d'une flexibilité totale."
+    },
+    "howItWorks": {
+      "title": "Comment ça marche",
+      "subtitle": "Nous croyons que le chauffeur fait le voyage. C'est pourquoi nous vous laissons choisir le partenaire idéal pour votre style de voyage.",
+      "steps": {
+        "browse": {
+          "title": "Parcourir les profils",
+          "desc": "Consultez les portfolios détaillés, lisez les biographies et vérifiez les spécialités pour trouver votre connexion."
+        },
+        "select": {
+          "title": "Sélectionner et connecter",
+          "desc": "Choisissez votre chauffeur et votre véhicule, puis discutez directement pour planifier votre itinéraire parfait."
+        },
+        "enjoy": {
+          "title": "Profitez du trajet",
+          "desc": "Détendez-vous dans le luxe pendant que votre expert local s'occupe de la navigation et de la logistique."
+        }
+      }
+    },
+    "filters": {
+      "label": "Filtrer les chauffeurs :",
+      "allLanguages": "Toutes les langues",
+      "allVehicles": "Tous les véhicules",
+      "speaker": ""
+    },
+    "card": {
+      "viewProfile": "Voir le profil"
+    }
   }
 }

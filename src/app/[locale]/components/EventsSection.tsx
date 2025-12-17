@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Calendar, MapPin, ArrowRight } from 'lucide-react';
 import { eventsData } from '@/data/home-data';
 
@@ -26,11 +26,15 @@ interface EventsSectionProps {
 }
 
 export default function EventsSection({
-  label = "CULTURAL EXPERIENCES",
-  title = "Upcoming Events in Morocco",
+  label,
+  title,
   events = eventsData
 }: EventsSectionProps) {
   const locale = useLocale();
+  const t = useTranslations('events'); // Scope: events
+
+  const displayLabel = label || t('label'); // "UPCOMING EVENTS" or equivalent
+  const displayTitle = title || t('title');
 
   // Show only first 4 events
   const displayEvents = events.slice(0, 4);
@@ -52,6 +56,13 @@ export default function EventsSection({
     }
   };
 
+  // Helper to translate status if it matches known keys, else return as is
+  const getStatusLabel = (status: string, isLive: boolean) => {
+    if (isLive) return t('liveNow');
+    if (status === 'Upcoming') return t('upcoming');
+    return status;
+  };
+
   return (
     <section className="py-8 md:py-24 bg-[#FFFBF5]">
       <div className="container-custom">
@@ -63,13 +74,13 @@ export default function EventsSection({
           className="text-center mb-16"
         >
           <span className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-4 block">
-            {label}
+            {displayLabel}
           </span>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-            {title}
+            {displayTitle}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Experience Morocco's vibrant cultural festivals and events
+            {locale === 'fr' ? 'Vivez les festivals culturels et événements vibrants du Maroc' : 'Experience Morocco\'s vibrant cultural festivals and events'}
           </p>
         </motion.div>
 
@@ -107,7 +118,7 @@ export default function EventsSection({
                           ? 'bg-primary text-white'
                           : 'bg-white/90 text-gray-900'
                           }`}>
-                          {displayEvents[0].status}
+                          {getStatusLabel(displayEvents[0].status, !!displayEvents[0].isLive)}
                         </div>
                       )}
                       <button className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full border-2 border-primary-dark cursor-pointer flex items-center justify-center hover:bg-white/20 transition-colors ml-auto">
@@ -159,7 +170,7 @@ export default function EventsSection({
                           ? 'bg-primary text-white'
                           : 'bg-white/90 text-gray-900'
                           }`}>
-                          {displayEvents[1].status}
+                          {getStatusLabel(displayEvents[1].status, !!displayEvents[1].isLive)}
                         </div>
                       )}
                       <button className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full border-2 border-primary-dark cursor-pointer flex items-center justify-center hover:bg-white/20 transition-colors ml-auto">
@@ -219,7 +230,7 @@ export default function EventsSection({
                           ? 'bg-primary text-white'
                           : 'bg-white/90 text-gray-900'
                           }`}>
-                          {displayEvents[2].status}
+                          {getStatusLabel(displayEvents[2].status, !!displayEvents[2].isLive)}
                         </div>
                       )}
                       <button className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full border-2 border-primary-dark cursor-pointer flex items-center justify-center hover:bg-white/20 transition-colors ml-auto">
@@ -276,7 +287,7 @@ export default function EventsSection({
                           ? 'bg-primary text-white'
                           : 'bg-white/90 text-gray-900'
                           }`}>
-                          {displayEvents[3].status}
+                          {getStatusLabel(displayEvents[3].status, !!displayEvents[3].isLive)}
                         </div>
                       )}
                       <button className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full border-2 border-primary-dark cursor-pointer flex items-center justify-center hover:bg-white/20 transition-colors ml-auto">
@@ -312,7 +323,7 @@ export default function EventsSection({
             href={`/${locale}/events`}
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl"
           >
-            <span>View All Events</span>
+            <span>{locale === 'fr' ? 'Voir tous les événements' : 'View All Events'}</span>
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

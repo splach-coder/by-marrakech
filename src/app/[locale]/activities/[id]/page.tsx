@@ -4,8 +4,9 @@ import { notFound } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { siteData } from '@/data/siteData';
+import { getSiteData, siteData } from '@/data/siteData';
 import { use, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import {
     X,
     ChevronLeft,
@@ -30,7 +31,13 @@ interface ActivityPageProps {
 
 export default function ActivityPage({ params }: ActivityPageProps) {
     const { id } = use(params);
-    const activity = siteData.activities.find(a => String(a.id) === id);
+    const locale = useLocale();
+    const t = useTranslations('common');
+    const tAct = useTranslations('activityDetail');
+    const tHeader = useTranslations('Header');
+
+    const localizedSiteData = getSiteData(locale);
+    const activity = localizedSiteData.activities.find(a => String(a.id) === id) || siteData.activities.find(a => String(a.id) === id);
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
     if (!activity) {
@@ -65,11 +72,11 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                         >
                             <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
                                 <Home className="w-3.5 h-3.5" />
-                                <span className="uppercase tracking-wider font-semibold">Home</span>
+                                <span className="uppercase tracking-wider font-semibold">{t('home')}</span>
                             </Link>
                             <ChevronRight className="w-3 h-3 text-white/50" />
                             <Link href="/activities" className="hover:text-white transition-colors">
-                                <span className="uppercase tracking-wider font-semibold">Activities</span>
+                                <span className="uppercase tracking-wider font-semibold">{tHeader('activities')}</span>
                             </Link>
                             <ChevronRight className="w-3 h-3 text-white/50" />
                             <span className="text-white font-serif font-medium truncate">
@@ -84,7 +91,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                             className="max-w-4xl"
                         >
                             <span className="inline-block px-4 py-1.5 bg-primary/90 text-white font-bold uppercase tracking-wider text-xs rounded-full mb-6 backdrop-blur-sm">
-                                Authentic Experience
+                                {tAct('authenticExperience')}
                             </span>
 
                             <h1 className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 md:mb-6 leading-[1.1]">
@@ -102,7 +109,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                 )}
                                 <div className="flex items-center gap-2">
                                     <Camera className="w-5 h-5 text-primary" />
-                                    <span className="font-medium text-lg">Photo Opportunities</span>
+                                    <span className="font-medium text-lg">{tAct('photoOpportunities')}</span>
                                 </div>
                             </div>
                         </motion.div>
@@ -121,7 +128,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                         <div className="flex flex-col md:flex-row gap-12 items-start">
                             {/* Left: Description */}
                             <div className="w-full md:w-2/3">
-                                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-6">About the Experience</h2>
+                                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-6">{tAct('aboutExperience')}</h2>
                                 <p className="text-xl text-gray-600 leading-relaxed font-light mb-8">
                                     {activity.description}
                                 </p>
@@ -129,15 +136,15 @@ export default function ActivityPage({ params }: ActivityPageProps) {
 
                             {/* Right: Quick Stats Card */}
                             <div className="w-full md:w-1/3 bg-[#faf9f6] p-8 rounded-2xl border border-stone-100">
-                                <h3 className="font-serif font-bold text-gray-900 mb-6 text-xl">Quick Facts</h3>
+                                <h3 className="font-serif font-bold text-gray-900 mb-6 text-xl">{tAct('quickFacts')}</h3>
                                 <ul className="space-y-4">
                                     <li className="flex items-center gap-4 text-gray-700">
                                         <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary shadow-sm">
                                             <Clock className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <div className="text-xs text-gray-400 uppercase tracking-wide">Duration</div>
-                                            <div className="font-medium">Flexible</div>
+                                            <div className="text-xs text-gray-400 uppercase tracking-wide">{t('duration')}</div>
+                                            <div className="font-medium">{t('flexible')}</div>
                                         </div>
                                     </li>
                                     <li className="flex items-center gap-4 text-gray-700">
@@ -145,8 +152,8 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                             <Users className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <div className="text-xs text-gray-400 uppercase tracking-wide">Group Size</div>
-                                            <div className="font-medium">Private / Small Group</div>
+                                            <div className="text-xs text-gray-400 uppercase tracking-wide">{t('groupSize')}</div>
+                                            <div className="font-medium">{tAct('privateSmallGroup')}</div>
                                         </div>
                                     </li>
                                     <li className="flex items-center gap-4 text-gray-700">
@@ -154,8 +161,8 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                             <Star className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <div className="text-xs text-gray-400 uppercase tracking-wide">Rating</div>
-                                            <div className="font-medium">5.0 (Excellent)</div>
+                                            <div className="text-xs text-gray-400 uppercase tracking-wide">{t('rating')}</div>
+                                            <div className="font-medium">{tAct('excellentRating')}</div>
                                         </div>
                                     </li>
                                 </ul>
@@ -164,23 +171,23 @@ export default function ActivityPage({ params }: ActivityPageProps) {
 
                         {/* What to Expect Cards */}
                         <div className="mt-20">
-                            <h2 className="text-3xl font-serif font-bold text-gray-900 mb-10 text-center">What to Expect</h2>
+                            <h2 className="text-3xl font-serif font-bold text-gray-900 mb-10 text-center">{tAct('whatToExpect')}</h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                 {[
                                     {
                                         icon: Camera,
-                                        title: "Authentic Vibe",
-                                        desc: "Immerse yourself in genuine Moroccan culture and traditions."
+                                        title: tAct('authenticVibeTitle'),
+                                        desc: tAct('authenticVibeDesc')
                                     },
                                     {
                                         icon: MapPin,
-                                        title: "Scenic Views",
-                                        desc: "Capture stunning memories in picturesque, hand-picked locations."
+                                        title: tAct('scenicViewsTitle'),
+                                        desc: tAct('scenicViewsDesc')
                                     },
                                     {
                                         icon: Users,
-                                        title: "Local Experts",
-                                        desc: "Learn fascinating stories from knowledgeable local guides."
+                                        title: tAct('localExpertsTitle'),
+                                        desc: tAct('localExpertsDesc')
                                     }
                                 ].map((item, idx) => (
                                     <div key={idx} className="bg-stone-50 rounded-xl p-8 hover:bg-stone-100 transition-all duration-300 group">
@@ -201,7 +208,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
             <section className="py-8 md:py-16 bg-[#faf9f6]">
                 <div className="px-4 md:container-custom md:mx-auto md:px-8">
                     <div className="flex items-center justify-between mb-10 max-w-5xl mx-auto">
-                        <h2 className="text-3xl font-serif font-bold text-gray-900">Experience Gallery</h2>
+                        <h2 className="text-3xl font-serif font-bold text-gray-900">{t('gallery')}</h2>
                     </div>
                     <div className="max-w-5xl mx-auto">
                         <GalleryGrid images={galleryImages} onImageClick={setSelectedImage} />
@@ -216,11 +223,10 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                         {/* Left: Final CTA */}
                         <div className="lg:col-span-4 flex flex-col justify-center">
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-                                Ready for an Adventure?
+                                {tAct('readyForAdventure')}
                             </h2>
                             <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl">
-                                Book your <span className="font-bold text-primary">{activity.title}</span> experience today.
-                                Flexible scheduling and private groups available.
+                                {tAct('bookToday', { title: activity.title })}
                             </p>
                             <div className="flex flex-wrap gap-6 text-gray-600">
                                 <div className="flex items-center gap-3">
@@ -228,8 +234,8 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                         <Clock className="w-6 h-6 text-primary" />
                                     </div>
                                     <div>
-                                        <div className="font-bold text-gray-900">Flexible Duration</div>
-                                        <div className="text-sm">Adapt to your schedule</div>
+                                        <div className="font-bold text-gray-900">{tAct('flexibleDuration')}</div>
+                                        <div className="text-sm">{tAct('adaptSchedule')}</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-3">
@@ -237,8 +243,8 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                         <Users className="w-6 h-6 text-primary" />
                                     </div>
                                     <div>
-                                        <div className="font-bold text-gray-900">All Group Sizes</div>
-                                        <div className="text-sm">Private or shared</div>
+                                        <div className="font-bold text-gray-900">{tAct('allGroupSizes')}</div>
+                                        <div className="text-sm">{tAct('privateOrShared')}</div>
                                     </div>
                                 </div>
                             </div>
@@ -251,8 +257,8 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                 type="activity"
                                 imageUrl={activity.image.url}
                                 title={activity.title}
-                                price={activity.price || 'From €35'}
-                                duration={activity.duration || 'Flexible'}
+                                price={activity.price || `${t('from')} €35`}
+                                duration={activity.duration || t('flexible')}
                                 groupSize={activity.suitable_for?.[0] || 'All sizes'}
                             />
                         </div>

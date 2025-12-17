@@ -4,8 +4,9 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { siteData } from '@/data/siteData';
+import { getSiteData, siteData } from '@/data/siteData';
 import { use, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import {
   MapPin,
   Clock,
@@ -34,7 +35,15 @@ interface TourPageProps {
 
 export default function TourPage({ params }: TourPageProps) {
   const { slug } = use(params);
-  const tour = siteData.tours.find(t => String(t.id) === slug);
+  const locale = useLocale();
+  const t = useTranslations('common');
+  const tTour = useTranslations('tourDetail');
+  const tHeader = useTranslations('Header');
+
+  const localizedSiteData = getSiteData(locale);
+  // Fallback to default English data structure if localized tour not found or incomplete
+  const tour = localizedSiteData.tours.find(t => String(t.id) === slug) || siteData.tours.find(t => String(t.id) === slug);
+
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   if (!tour) {
@@ -94,11 +103,11 @@ export default function TourPage({ params }: TourPageProps) {
               <nav className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-3 md:mb-6 overflow-x-auto whitespace-nowrap">
                 <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
                   <Home className="w-3.5 h-3.5 mb-0.5" />
-                  <span className="uppercase tracking-wider font-semibold">Home</span>
+                  <span className="uppercase tracking-wider font-semibold">{t('home')}</span>
                 </Link>
                 <ChevronRight className="w-3 h-3 text-white/50" />
                 <Link href="/tours" className="hover:text-white transition-colors">
-                  <span className="uppercase tracking-wider font-semibold">Tours</span>
+                  <span className="uppercase tracking-wider font-semibold">{tHeader('tours')}</span>
                 </Link>
                 <ChevronRight className="w-3 h-3 text-white/50" />
                 <span className="text-white font-serif font-medium truncate">
@@ -110,7 +119,7 @@ export default function TourPage({ params }: TourPageProps) {
                 <div className="flex items-center gap-1.5 md:gap-2 bg-white/20 backdrop-blur-md px-2 md:px-4 py-1 md:py-1.5 rounded-full border border-white/30 text-white">
                   <Star className="w-3 md:w-4 h-3 md:h-4 fill-amber-400 text-amber-400" />
                   <span className="font-bold text-xs md:text-base">{avgRating}</span>
-                  <span className="text-white/80 text-xs md:text-sm">({tour.reviews?.length || 24} reviews)</span>
+                  <span className="text-white/80 text-xs md:text-sm">({tTour('reviewsCount', { count: tour.reviews?.length || 24 })})</span>
                 </div>
               </div>
 
@@ -129,13 +138,15 @@ export default function TourPage({ params }: TourPageProps) {
                   <div className="p-1.5 md:p-2 bg-white/10 rounded-lg backdrop-blur-sm">
                     <Users className="w-4 md:w-6 h-4 md:h-6" />
                   </div>
-                  <span className="capitalize text-xs md:text-base">{tour.group_size} Group</span>
+                  <span className="capitalize text-xs md:text-base">{tTour('group', { group_size: tour.group_size })}</span>
                 </div>
                 <div className="flex items-center gap-2 md:gap-3">
                   <div className="p-1.5 md:p-2 bg-white/10 rounded-lg backdrop-blur-sm">
                     <MapPin className="w-4 md:w-6 h-4 md:h-6" />
                   </div>
-                  <span className="text-xs md:text-base">{tour.locations?.[0]?.name || 'Morocco'}</span>
+                  <span className="text-xs md:text-base">
+                    {typeof tour.locations?.[0] === 'string' ? tour.locations?.[0] : (tour.locations?.[0] as any)?.name || 'Morocco'}
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -157,7 +168,7 @@ export default function TourPage({ params }: TourPageProps) {
             <section>
               <h2 className="text-3xl font-serif font-light text-gray-900 mb-8 flex items-center gap-4">
                 <span className="w-8 h-[1px] bg-gray-900"></span>
-                OVERVIEW
+                {t('overview')}
               </h2>
               <p className="text-gray-600 leading-loose text-lg font-light">
                 {tour.description}
@@ -168,7 +179,7 @@ export default function TourPage({ params }: TourPageProps) {
             <section>
               <h2 className="text-3xl font-serif font-light text-gray-900 mb-8 flex items-center gap-4">
                 <span className="w-8 h-[1px] bg-gray-900"></span>
-                HIGHLIGHTS
+                {t('highlights')}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {tour.highlights.map((highlight, index) => (
@@ -192,7 +203,7 @@ export default function TourPage({ params }: TourPageProps) {
             <section>
               <Itinerary
                 days={itineraryDays}
-                title="YOUR JOURNEY"
+                title={tTour('yourJourney')}
                 defaultView={itineraryDays.length > 2 ? 'timeline' : 'timeline'}
               />
             </section>
@@ -202,7 +213,7 @@ export default function TourPage({ params }: TourPageProps) {
               <section>
                 <h2 className="text-3xl font-serif font-light text-gray-900 mb-8 flex items-center gap-4">
                   <span className="w-8 h-[1px] bg-gray-900"></span>
-                  GUEST REVIEWS
+                  {t('guestReviews')}
                 </h2>
 
                 <div className="flex gap-6 overflow-x-auto pb-8 snap-x">
@@ -239,7 +250,7 @@ export default function TourPage({ params }: TourPageProps) {
             <section>
               <GalleryGrid
                 images={galleryUrls}
-                title="Tour Gallery"
+                title={t('gallery')}
                 onImageClick={(idx) => setSelectedImage(idx)}
               />
             </section>
@@ -251,7 +262,7 @@ export default function TourPage({ params }: TourPageProps) {
               <div className="relative z-10">
                 <h3 className="text-2xl font-serif text-gray-900 mb-2 flex items-center gap-3">
                   <AlertCircle className="w-6 h-6 text-amber-600" />
-                  Traveler's Note
+                  {tTour('travelersNote')}
                 </h3>
                 <div className="w-12 h-1 bg-amber-200 mb-6" />
 
@@ -259,12 +270,12 @@ export default function TourPage({ params }: TourPageProps) {
                   {tour.suitable_for?.map((item, i) => (
                     <div key={i} className="flex items-center gap-3 text-gray-700">
                       <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                      <span className="font-medium">Perfect for {item}</span>
+                      <span className="font-medium">{tTour('perfectFor', { item })}</span>
                     </div>
                   ))}
                   <div className="flex items-center gap-3 text-gray-700">
                     <div className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                    <span className="font-medium">Free cancellation up to 48 hours</span>
+                    <span className="font-medium">{tTour('freeCancellation')}</span>
                   </div>
                 </div>
               </div>
@@ -277,9 +288,9 @@ export default function TourPage({ params }: TourPageProps) {
             <div className="sticky top-24 space-y-8">
               <BookingCard
                 title={tour.title}
-                price={tour.price || "Contact us for price"}
+                price={tour.price || tTour('contactForPrice')}
                 duration={tour.duration}
-                groupSize="Private Group"
+                groupSize={tTour('privateGroup')}
                 id={String(tour.id)}
                 imageUrl={tour.image.url}
                 type="tour"

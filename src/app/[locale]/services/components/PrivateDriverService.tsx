@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { driversData } from '@/data/drivers';
-import { Link } from '@/i18n/navigation';
+import { getDriversData } from '@/lib/i18n-data';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 import {
     Star,
     MapPin,
@@ -15,6 +16,10 @@ import {
 } from 'lucide-react';
 
 export default function PrivateDriverService() {
+    const locale = useLocale();
+    const t = useTranslations('privateDriverPage');
+    const driversData = getDriversData(locale as 'en' | 'fr');
+
     const [filterLang, setFilterLang] = useState<string>('All');
     const [filterVehicle, setFilterVehicle] = useState<string>('All');
 
@@ -35,7 +40,7 @@ export default function PrivateDriverService() {
             <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
                 <Image
                     src="/images/services/luxury_driver_service.png"
-                    alt="Luxury Driver Service"
+                    alt={t('hero.title')}
                     fill
                     className="object-cover"
                     priority
@@ -49,14 +54,13 @@ export default function PrivateDriverService() {
                         className="max-w-4xl"
                     >
                         <span className="inline-block px-4 py-1.5 border border-white/30 rounded-full text-white/90 text-sm font-medium tracking-[0.2em] mb-6 backdrop-blur-sm bg-white/5 uppercase">
-                            Premium Service
+                            {t('hero.tag')}
                         </span>
                         <h1 className="text-4xl md:text-6xl font-serif text-white font-medium mb-6">
-                            Your Freedom, Your Morocco
+                            {t('hero.title')}
                         </h1>
                         <p className="text-xl text-white/90 font-light max-w-2xl mx-auto leading-relaxed">
-                            Select your personal driver, choose your vehicle, and craft your own journey.
-                            Experience the luxury of total flexibility.
+                            {t('hero.subtitle')}
                         </p>
                     </motion.div>
                 </div>
@@ -66,17 +70,17 @@ export default function PrivateDriverService() {
             <section className="py-16 bg-white border-b border-stone-100">
                 <div className="container-custom mx-auto px-4 max-w-6xl">
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">How It Works</h2>
+                        <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4">{t('howItWorks.title')}</h2>
                         <p className="text-gray-500 max-w-2xl mx-auto">
-                            We believe the driver makes the journey. That's why we let you choose the perfect match for your travel style.
+                            {t('howItWorks.subtitle')}
                         </p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         {[
-                            { step: "01", title: "Browse Profiles", desc: "View detailed portfolios, read bios, and check specialties to find your connection." },
-                            { step: "02", title: "Select & Connect", desc: "Choose your driver and vehicle, then chat directly to plan your perfect itinerary." },
-                            { step: "03", title: "Enjoy the Ride", desc: "Relax in luxury while your local expert handles the navigation and logistics." }
+                            { step: "01", title: t('howItWorks.steps.browse.title'), desc: t('howItWorks.steps.browse.desc') },
+                            { step: "02", title: t('howItWorks.steps.select.title'), desc: t('howItWorks.steps.select.desc') },
+                            { step: "03", title: t('howItWorks.steps.enjoy.title'), desc: t('howItWorks.steps.enjoy.desc') }
                         ].map((item, i) => (
                             <div key={i} className="p-6 rounded-2xl bg-[#faf9f6]">
                                 <span className="text-5xl font-serif text-gray-200 font-bold block mb-4">{item.step}</span>
@@ -96,7 +100,7 @@ export default function PrivateDriverService() {
                     <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6 bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
                         <div className="flex items-center gap-2">
                             <Filter className="w-5 h-5 text-primary" />
-                            <span className="font-bold text-gray-900">Filter Drivers:</span>
+                            <span className="font-bold text-gray-900">{t('filters.label')}</span>
                         </div>
 
                         <div className="flex flex-wrap gap-4">
@@ -105,7 +109,7 @@ export default function PrivateDriverService() {
                                 value={filterLang}
                                 onChange={(e) => setFilterLang(e.target.value)}
                             >
-                                <option value="All">All Languages</option>
+                                <option value="All">{t('filters.allLanguages')}</option>
                                 {allLanguages.map(l => <option key={l} value={l}>{l}</option>)}
                             </select>
 
@@ -114,7 +118,7 @@ export default function PrivateDriverService() {
                                 value={filterVehicle}
                                 onChange={(e) => setFilterVehicle(e.target.value)}
                             >
-                                <option value="All">All Vehicles</option>
+                                <option value="All">{t('filters.allVehicles')}</option>
                                 {allVehicles.map(v => <option key={v} value={v}>{v}</option>)}
                             </select>
                         </div>
@@ -159,15 +163,15 @@ export default function PrivateDriverService() {
                                         <div className="flex items-center gap-2 text-xs font-bold text-gray-900 uppercase tracking-wide">
                                             <span className="px-2 py-1 bg-gray-100 rounded text-gray-600">{driver.vehicleTypes[0]}</span>
                                             <span className="text-gray-300">•</span>
-                                            <span className="px-2 py-1 bg-gray-100 rounded text-gray-600">{driver.languages[0]} Speaker</span>
+                                            <span className="px-2 py-1 bg-gray-100 rounded text-gray-600">{driver.languages[0]} {t('filters.speaker')}</span>
                                         </div>
                                     </div>
 
                                     <Link
-                                        href={`/drivers/${driver.id}`}
+                                        href={`/${locale}/drivers/${driver.id}`}
                                         className="w-full py-3 bg-white border border-gray-200 text-gray-900 font-bold rounded-xl hover:bg-primary hover:text-white hover:border-primary transition-all flex items-center justify-center gap-2 text-sm"
                                     >
-                                        <span>View Profile</span>
+                                        <span>{t('card.viewProfile')}</span>
                                         <ArrowRight className="w-4 h-4" />
                                     </Link>
                                 </div>
@@ -180,3 +184,4 @@ export default function PrivateDriverService() {
         </main>
     );
 }
+

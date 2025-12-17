@@ -56,24 +56,6 @@ export const metadata = {
   },
 };
 
-function HeaderWithTranslations({ locale }: { locale: string }) {
-  const t = useTranslations('Header');
-
-  const translations = {
-    home: t('home'),
-    shop: t('shop'),
-    marrakech: t('marrakech'),
-    about: t('about'),
-    artisans: t('artisans'),
-    contact: t('contact'),
-    catalog: t('catalog'),
-    followUs: t('followUs'),
-    discover: t('discover'),
-  };
-
-  return <Header locale={locale} translations={translations} />;
-}
-
 import { getMessages } from 'next-intl/server';
 
 export default async function LocaleLayout({
@@ -115,13 +97,13 @@ export default async function LocaleLayout({
           <CartProvider>
             <AnalyticsListener />
             <SubHeader />
-            <HeaderWithTranslations locale={locale} />
+            <Header />
             {children}
             <Footer />
             <CartDrawer />
-          </CartProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+          </CartProvider >
+        </NextIntlClientProvider >
+      </body >
+    </html >
   );
 }

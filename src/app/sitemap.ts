@@ -102,7 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }));
 
     // Dynamic experience pages
-    const experiencePages: MetadataRoute.Sitemap = siteData.experiences.map((experience) => ({
+    const experiencePages: MetadataRoute.Sitemap = siteData.excursions.map((experience) => ({
         url: `${baseUrl}/experiences/${experience.id}`,
         lastModified: currentDate,
         changeFrequency: 'monthly' as const,

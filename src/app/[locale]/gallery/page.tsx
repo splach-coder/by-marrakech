@@ -4,8 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export default function GalleryPage() {
+    const t = useTranslations('galleryPage');
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
     // Gallery images with proper heights for masonry layout - using local images
@@ -36,7 +38,7 @@ export default function GalleryPage() {
             <section className="relative h-[60vh] md:h-[70vh] min-h-[500px] overflow-hidden">
                 <Image
                     src="/images/hero-imgs/gallery.jpg"
-                    alt="Morocco Gallery"
+                    alt={t('hero.title')}
                     fill
                     className="object-cover"
                     priority
@@ -53,13 +55,13 @@ export default function GalleryPage() {
                         >
                             <div className="flex items-center gap-3 mb-4 md:mb-6">
                                 <Camera className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
-                                <span className="text-white/80 uppercase tracking-[0.2em] text-xs md:text-sm font-medium">Visual Journey</span>
+                                <span className="text-white/80 uppercase tracking-[0.2em] text-xs md:text-sm font-medium">{t('hero.tag')}</span>
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
-                                Morocco Through Our Lens
+                                {t('hero.title')}
                             </h1>
                             <p className="text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl font-light leading-relaxed">
-                                Explore the beauty, culture, and landscapes that make Morocco unforgettable
+                                {t('hero.subtitle')}
                             </p>
                         </motion.div>
                     </div>

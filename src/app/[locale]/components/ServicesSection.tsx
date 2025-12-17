@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ArrowRight, Heart, Share2 } from 'lucide-react';
 
 interface Service {
@@ -17,10 +17,30 @@ interface Service {
 
 interface ServicesSectionProps {
     services: Service[];
+    label?: string;
+    title?: string;
+    description?: string;
 }
 
-export default function ServicesSection({ services }: ServicesSectionProps) {
+export default function ServicesSection({
+    services,
+    label,
+    title,
+    description
+}: ServicesSectionProps) {
     const locale = useLocale();
+    const t = useTranslations('home.features'); // using generic or creating specific 'services' scope
+
+    // Fallback static text if not in messages
+    const viewAllText = locale === 'fr' ? 'Voir tout' : 'View All';
+    const viewDetailsText = locale === 'fr' ? 'Voir détails' : 'View Details';
+    const availableText = locale === 'fr' ? 'Disponible' : 'Available';
+    const locationText = locale === 'fr' ? 'Maroc, National' : 'Morocco, Nationwide';
+
+    // Header defaults
+    const headerLabel = label || (locale === 'fr' ? 'NOS SERVICES' : 'Our Services');
+    const headerTitle = title || (locale === 'fr' ? 'Services de voyage au Maroc' : 'Travel Services in Morocco');
+    const headerDesc = description || (locale === 'fr' ? 'Transport et logistique professionnels pour rendre votre voyage fluide' : 'Professional transportation and logistics to make your journey seamless');
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -52,13 +72,13 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                     <div className="flex items-start justify-between mb-6">
                         <div className="flex-1">
                             <span className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-6 block">
-                                Our Services
+                                {headerLabel}
                             </span>
                             <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-                                Travel Services in Morocco
+                                {headerTitle}
                             </h2>
                             <p className="text-lg text-gray-600 max-w-2xl">
-                                Professional transportation and logistics to make your journey seamless
+                                {headerDesc}
                             </p>
                         </div>
 
@@ -67,7 +87,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                             href={`/${locale}/services`}
                             className="group flex items-center gap-3 px-6 py-3 text-primary-dark rounded-full transition-all hover:gap-4"
                         >
-                            <span className="text-sm font-medium">View All</span>
+                            <span className="text-sm font-medium">{viewAllText}</span>
                             <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                                 <ArrowRight className="w-4 h-4 text-white" />
                             </div>
@@ -102,7 +122,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                                 <div className="absolute top-4 left-4">
                                     <div className="flex items-center gap-2 px-2 py-1 bg-primary-dark rounded-full">
                                         <div className="w-1 h-1 bg-green-400 rounded-full" />
-                                        <span className="text-white text-xs ">Available</span>
+                                        <span className="text-white text-xs ">{availableText}</span>
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +135,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                                         {service.title}
                                     </h3>
                                     <p className="text-gray-500">
-                                        Morocco, Nationwide
+                                        {locationText}
                                     </p>
                                 </div>
 
@@ -136,7 +156,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                                 {/* View Details Button */}
                                 <Link href={`/${locale}/services/${service.id}`}>
                                     <button className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-semibold hover:bg-primary-dark transition-colors">
-                                        <span>View Details</span>
+                                        <span>{viewDetailsText}</span>
                                         <ArrowRight className="w-4 h-4" />
                                     </button>
                                 </Link>

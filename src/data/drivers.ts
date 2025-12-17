@@ -103,3 +103,90 @@ export const driversData: Driver[] = [
         features: ['Free Wi-Fi', 'Child Seats', 'Tablet for Kids', 'Snacks']
     }
 ];
+
+export const driversDataFr: Driver[] = [
+    {
+        id: '1',
+        name: 'Hassan Amrani',
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80 ',
+        rating: 5.0,
+        experienceYears: 12,
+        languages: ['Anglais', 'Français', 'Arabe', 'Espagnol'],
+        bio: 'Né dans les montagnes de l’Atlas, j’ai passé plus de dix ans à partager les secrets cachés du Maroc avec les voyageurs. Ma passion : vous connecter avec la culture locale authentique.',
+        vehicleTypes: ['SUV de luxe', 'Monospace'],
+        specialties: ['Montagnes de l’Atlas', 'Expéditions dans le désert', 'Voyages en famille'],
+        locations: ['Marrakech', 'Ouarzazate', 'Merzouga'],
+        preferredTours: ['Vallées de l’Atlas & Cascades', 'Aventure dans le désert du Sahara'],
+        pricePerDay: 150,
+        badges: ['Meilleur note', 'Expert en histoire', 'Photographe'],
+        availability: true,
+        gallery: [
+            'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=600&q=80 ',
+            'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80 '
+        ],
+        features: ['Wi-Fi gratuit', 'Eau embouteillée', 'Sièges bébé', 'Chargeurs USB', 'En-cas locaux']
+    },
+    {
+        id: '2',
+        name: 'Youssef Benali',
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80 ',
+        rating: 4.9,
+        experienceYears: 8,
+        languages: ['Anglais', 'Allemand', 'Arabe'],
+        bio: 'Je crée des itinéraires détendus et flexibles pour les couples et les photographes. Je connais les meilleurs moments pour visiter les sites populaires en évitant les foules.',
+        vehicleTypes: ['Berline de luxe', 'SUV'],
+        specialties: ['Routes côtières', 'Visites de ville', 'Photographie'],
+        locations: ['Essaouira', 'Agadir', 'Marrakech'],
+        preferredTours: ['Évasion côtière à Essaouira', 'Visite de la ville de Marrakech'],
+        pricePerDay: 140,
+        badges: ['Expert en photo', 'Spécialiste côte'],
+        availability: true,
+        gallery: [
+            'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80 ',
+            'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&q=80 '
+        ],
+        features: ['Wi-Fi gratuit', 'Eau embouteillée', 'Musique Bluetooth', 'Climatisation']
+    },
+    {
+        id: '3',
+        name: 'Omar Zaid',
+        image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80 ',
+        rating: 4.8,
+        experienceYears: 15,
+        languages: ['Anglais', 'Français', 'Italien', 'Arabe'],
+        bio: 'Chauffeur vétéran passionné par les longs trajets. Que ce soit les villes impériales ou le Sahara profond, je garantis confort et sécurité à chaque kilomètre.',
+        vehicleTypes: ['Van de luxe', 'Minibus'],
+        specialties: ['Villes impériales', 'Grands circuits', 'Groupes'],
+        locations: ['Fès', 'Meknès', 'Rabat', 'Casablanca'],
+        preferredTours: ['Circuit des villes impériales', 'Découverte de la médina de Fès'],
+        pricePerDay: 180,
+        badges: ['Spécialiste groupes', 'Passionné d’histoire'],
+        availability: true,
+        gallery: [
+            'https://images.unsplash.com/photo-1464219789935-c2d9d9aba644?auto=format&fit=crop&w=600&q=80 ',
+            'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=600&q=80 '
+        ],
+        features: ['Wi-Fi gratuit', 'Eau embouteillée', 'Sièges inclinables', 'Aide aux bagages', 'Trousse de secours']
+    },
+    {
+        id: '4',
+        name: 'Karim Tazi',
+        image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80 ',
+        rating: 5.0,
+        experienceYears: 6,
+        languages: ['Anglais', 'Français', 'Arabe'],
+        bio: 'Jeune, dynamique et plein de bons plans locaux. J’adore montrer le Maroc moderne aux côtés de ses traditions millénaires. Parfait avec les familles et les enfants.',
+        vehicleTypes: ['SUV', 'Berline de luxe'],
+        specialties: ['Circuits gourmands', 'Maroc moderne', 'Familles'],
+        locations: ['Marrakech', 'Casablanca'],
+        preferredTours: ['Circuit gourmand Marrakech', 'Incontournables Casablanca'],
+        pricePerDay: 130,
+        badges: ['Familles bienvenues', 'Gourmand'],
+        availability: false,
+        gallery: [
+            'https://images.unsplash.com/photo-1581540222194-0def2dda95b8?auto=format&fit=crop&w=600&q=80 ',
+            'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80 '
+        ],
+        features: ['Wi-Fi gratuit', 'Sièges bébé', 'Tablette pour enfants', 'En-cas']
+    }
+];

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ArrowRight } from 'lucide-react';
 
 interface CTASectionProps {
@@ -13,12 +13,17 @@ interface CTASectionProps {
 }
 
 export default function CTASection({
-  title = "Ready to Experience Authentic Morocco?",
-  description = "Let our expert local guides create a personalized journey through the magic of Marrakech and beyond. From vibrant souks to serene desert landscapes, your unforgettable Moroccan adventure awaits.",
-  buttonText = "Start Planning",
+  title,
+  description,
+  buttonText,
   buttonLink = "/contact"
 }: CTASectionProps) {
   const locale = useLocale();
+  const t = useTranslations('home.cta');
+
+  const displayTitle = title || t('title');
+  const displayDesc = description || t('description');
+  const displayButton = buttonText || t('button');
 
   return (
     <section className="py-16 md:py-24 bg-[#FFFBF5]">
@@ -46,7 +51,7 @@ export default function CTASection({
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight"
             >
-              {title}
+              {displayTitle}
             </motion.h2>
 
             <motion.div
@@ -64,7 +69,7 @@ export default function CTASection({
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-md md:text-xl text-white/90 mb-10 leading-relaxed max-w-3xl mx-auto"
             >
-              {description}
+              {displayDesc}
             </motion.p>
 
             <motion.div
@@ -77,7 +82,7 @@ export default function CTASection({
                 href={`/${locale}${buttonLink}`}
                 className="group inline-flex items-center gap-3 px-10 py-4 bg-white text-primary rounded-full font-semibold text-lg transition-all duration-300 hover:bg-background-cream hover:shadow-xl hover:scale-105"
               >
-                <span>{buttonText}</span>
+                <span>{displayButton}</span>
                 <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </motion.div>

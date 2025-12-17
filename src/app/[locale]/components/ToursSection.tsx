@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ArrowUpRight } from 'lucide-react';
 import { siteData } from '@/data/siteData';
 
@@ -26,13 +26,19 @@ interface ToursSectionProps {
 }
 
 export default function ToursSection({
-  label = "OUR SIGNATURE TRIPS",
-  title = "Discover Morocco's Best Kept Secrets",
+  label,
+  title,
   tours
 }: ToursSectionProps) {
   const locale = useLocale();
+  const t = useTranslations('tours');
 
-  // Use provided tours or default to first 2 from siteData
+  // Defaults if not provided
+  const headerLabel = label || t('label');
+  const headerTitle = title || t('title');
+
+  // Use provided tours or default to first 2 from siteData (fallback)
+  // Note: ideally siteData.tours should be localized too via props
   const displayTours = tours || siteData.tours.slice(0, 2).map(tour => ({
     id: String(tour.id),
     slug: String(tour.id),
@@ -68,10 +74,10 @@ export default function ToursSection({
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">
             <span className="block text-primary font-bold tracking-[0.2em] text-sm uppercase mb-4">
-              {label}
+              {headerLabel}
             </span>
             <h2 className="text-4xl md:text-6xl font-serif text-[#2C2C2C] leading-none">
-              {title}
+              {headerTitle}
             </h2>
           </div>
           <motion.div
@@ -121,7 +127,7 @@ export default function ToursSection({
                     </span>
                     {tour.featured && (
                       <span className="text-[10px] bg-primary text-white px-2 py-0.5 rounded uppercase font-bold tracking-wider">
-                        Featured
+                        {t('featured')}
                       </span>
                     )}
                   </div>
@@ -132,7 +138,7 @@ export default function ToursSection({
 
                   <div className="flex justify-between items-center pt-4 border-t border-gray-100">
                     <span className="text-sm font-medium text-text-tertiary group-hover:text-primary transition-colors">
-                      View Itinerary
+                      {locale === 'fr' ? 'Voir l\'itinéraire' : 'View Itinerary'}
                     </span>
                     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-300">
                       <ArrowUpRight className="w-4 h-4" />
@@ -150,7 +156,7 @@ export default function ToursSection({
             href={`/${locale}/tours`}
             className="inline-block px-8 py-4 border border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transition-colors"
           >
-            View All Tours
+            {locale === 'fr' ? 'Voir tous les circuits' : 'View All Tours'}
           </Link>
         </div>
       </div>

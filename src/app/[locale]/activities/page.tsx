@@ -3,14 +3,18 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
-import { siteData } from '@/data/siteData';
+import { useLocale, useTranslations } from 'next-intl';
+import { getSiteData, siteData } from '@/data/siteData';
 import { MapPin, Mouse } from 'lucide-react';
 
 export default function ActivitiesPage() {
     const locale = useLocale();
-    // Use optional chaining or fallback if activities is not strictly defined in the type yet, though it was used in the previous file.
-    const activities = siteData.activities || [];
+    const t = useTranslations('activitiesPage');
+
+    // Fetch localized data
+    const localizedSiteData = getSiteData(locale);
+    // Fallback to english data if localized data structure is incomplete
+    const activities = localizedSiteData.activities || siteData.activities || [];
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -37,7 +41,7 @@ export default function ActivitiesPage() {
                 <div className="absolute inset-0">
                     <Image
                         src={'/images/hero-imgs/activites.jpg'}
-                        alt="Activities in Morocco"
+                        alt={t('hero.title')}
                         fill
                         className="object-cover"
                         priority
@@ -53,10 +57,10 @@ export default function ActivitiesPage() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                     >
                         <h1 className="text-5xl md:text-7xl lg:text-8xl !font-serif font-normal tracking-tight mb-6">
-                            Morocco Activities
+                            {t('hero.title')}
                         </h1>
                         <p className="text-sm md:text-base lg:text-lg tracking-[0.2em] font-light uppercase text-white/90">
-                            Unique Experiences & Things to Do
+                            {t('hero.subtitle')}
                         </p>
                     </motion.div>
                 </div>
@@ -84,11 +88,11 @@ export default function ActivitiesPage() {
                     {/* Section Header */}
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl !font-serif font-medium text-text-primary mb-4">
-                            Explore Activities
+                            {t('grid.title')}
                         </h2>
                         <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
                         <p className="mt-4 text-text-secondary max-w-2xl mx-auto">
-                            Immerse yourself in local culture with our hand-picked selection of activities.
+                            {t('grid.subtitle')}
                         </p>
                     </div>
 

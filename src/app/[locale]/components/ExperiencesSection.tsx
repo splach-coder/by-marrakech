@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ArrowRight, Clock, Star } from 'lucide-react';
 import { experiencesPreviewData } from '@/data/home-data';
 
@@ -26,14 +26,23 @@ interface ExperiencesSectionProps {
 }
 
 export default function ExperiencesSection({
-  label = "UNFORGETTABLE MOMENTS",
-  title = "Curated Experiences in Marrakech",
-  experiences = experiencesPreviewData
+  label,
+  title,
+  experiences
 }: ExperiencesSectionProps) {
   const locale = useLocale();
+  const t = useTranslations('experiences');
+
+  // Defaults if not provided
+  const headerLabel = label || t('label');
+  const headerTitle = title || t('title');
+
+  // Default data fallback could be English or French data depending on implementation
+  // ideally this component always receives data
+  const data = experiences || experiencesPreviewData;
 
   // Show only 4 items
-  const displayExperiences = experiences.slice(0, 4);
+  const displayExperiences = data.slice(0, 4);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -67,10 +76,10 @@ export default function ExperiencesSection({
           className="mb-16 text-center max-w-3xl mx-auto"
         >
           <motion.span variants={cardVariants} className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-4 block">
-            {label}
+            {headerLabel}
           </motion.span>
           <motion.h2 variants={cardVariants} className="text-4xl md:text-5xl font-bold text-[#3D322C] font-serif">
-            {title}
+            {headerTitle}
           </motion.h2>
         </motion.div>
 
@@ -111,7 +120,9 @@ export default function ExperiencesSection({
                   </h3>
 
                   <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                    <span className="text-white font-medium text-sm border-b border-white pb-0.5">Discover Experience</span>
+                    <span className="text-white font-medium text-sm border-b border-white pb-0.5">
+                      {locale === 'fr' ? 'Découvrir l\'expérience' : 'Discover Experience'}
+                    </span>
                     <ArrowRight className="w-4 h-4 text-white" />
                   </div>
                 </div>
