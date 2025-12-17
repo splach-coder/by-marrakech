@@ -248,7 +248,7 @@ export const eventsData = [
         endDate: '2025-12-07',
         location: 'Marrakech',
         description: 'Premiere international film festival celebrating cinema from Morocco and around the world with screenings, masterclasses, and red-carpet events at venues across the city.',
-        image: 'https://images.unsplash.com/photo-1478720568477-152d9b164e63?auto=format&fit=crop&w=800&q=80',
+        image: '/images/events/cinema.jpg',
         size: 'large'
     },
     {
@@ -260,7 +260,7 @@ export const eventsData = [
         endDate: '2025-07-16',
         location: 'El Badi Palace',
         description: "Morocco's oldest folklore festival featuring traditional music, dance, and cultural performances by troupes from across the country in the stunning ruins of El Badi Palace.",
-        image: 'https://images.unsplash.com/photo-1514525253440-b393452e8d26?auto=format&fit=crop&w=800&q=80',
+        image: '/images/events/music.jpg',
         size: 'medium'
     },
     {
@@ -272,7 +272,7 @@ export const eventsData = [
         endDate: '2025-09-14',
         location: 'The Source, Marrakech',
         description: 'Three-day electronic music festival featuring international DJs and producers, pool parties, and immersive experiences in a luxury resort setting.',
-        image: 'https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&w=800&q=80',
+        image: '/images/events/fires.jpg',
         size: 'medium'
     },
     {

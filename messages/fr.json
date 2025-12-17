@@ -288,6 +288,7 @@
   },
   "driverDetail": {
     "backToDrivers": "Retour aux chauffeurs",
+    "yourDriver": "Votre Chauffeur",
     "verifiedProfessional": "Professionnel vérifié • {years} ans d'exp.",
     "vehicleFleet": "Flotte de véhicules",
     "languages": "Langues",

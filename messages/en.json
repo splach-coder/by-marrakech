@@ -288,6 +288,7 @@
   },
   "driverDetail": {
     "backToDrivers": "Back to Drivers",
+    "yourDriver": "Your Driver",
     "verifiedProfessional": "Verified Professional • {years} Years Exp.",
     "vehicleFleet": "Vehicle Fleet",
     "languages": "Languages",
