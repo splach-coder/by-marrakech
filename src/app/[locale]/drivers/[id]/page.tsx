@@ -118,7 +118,7 @@ export default function DriverPage({ params }: DriverPageProps) {
                                     initial={{ opacity: 0, scale: 0.8 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{ duration: 0.5 }}
-                                    className="w-28 h-28 md:w-40 md:h-40 bg-white rounded-2xl p-4 shadow-2xl flex-shrink-0"
+                                    className="w-28 h-28 md:w-40 md:h-40 bg-white rounded-2xl p-4 shadow-2xl flex-shrink-0 me-auto"
                                 >
                                     <div className="relative w-full h-full">
                                         <Image
