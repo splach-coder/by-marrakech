@@ -35,7 +35,7 @@
 @theme {
   /* Colors */
   --color-primary: #912b2b;
-  /* Richer red for ByMarrakech */
+  /* Richer red for Xhosen */
   --color-primary-brand: #D91A1A;
 
   --color-primary-dark: #8b2626;
@@ -96,6 +96,15 @@ html {
 
   100% {
     transform: scale(1.1);
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 

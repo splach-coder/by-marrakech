@@ -2,7 +2,7 @@
 export const aboutData = {
     label: "ABOUT MARRAKECH",
     title: "Discover the heart of Marrakech with our authentic experiences",
-    description1: "Founded in the heart of Marrakech, ByMarrakech began with a simple mission: to share the magic of our city with the world. What started as a small team of local guides has grown into a premier travel agency specializing in authentic Moroccan experiences.",
+    description1: "Founded in the heart of Marrakech, Xhosen began with a simple mission: to share the magic of our city with the world. What started as a small team of local guides has grown into a premier travel agency specializing in authentic Moroccan experiences.",
     description2: "Over the past decade, we've curated unforgettable journeys for thousands of travelers, always staying true to our roots and commitment to exceptional service.",
     stats: {
         stat1: { number: "10+", label: "Years of Experience" },
@@ -10,10 +10,10 @@ export const aboutData = {
         stat3: { number: "50+", label: "Unique Experiences" }
     },
     images: {
-        image1: "/images/marrakech/marrakech1.jpg",
-        image2: "/images/marrakech/marrakech2.jpg",
-        image3: "/images/marrakech/marrakech3.jpg",
-        image4: "/images/marrakech/marrakech4.jpg"
+        image1: "/images/marrakech/marrakech1.webp",
+        image2: "/images/marrakech/marrakech2.webp",
+        image3: "/images/marrakech/marrakech3.webp",
+        image4: "/images/marrakech/marrakech4.webp"
     },
     cta: {
         title: "Ready to Experience the Magic of Marrakech?",
@@ -29,7 +29,7 @@ export const toursPreviewData = [
         title: 'Atlas Valleys & Waterfalls',
         days: '5 Days',
         date: 'Daily',
-        image: '/images/atlas-valleys.jpg'
+        image: '/images/atlas-valleys.webp'
     },
     {
         id: '2',
@@ -37,7 +37,7 @@ export const toursPreviewData = [
         title: 'Essaouira Coastal Escape',
         days: '2 Days',
         date: 'Daily',
-        image: '/images/essaouira.jpg'
+        image: '/images/essaouira.webp'
     },
     {
         id: '3',
@@ -45,7 +45,7 @@ export const toursPreviewData = [
         title: 'High Atlas Berber Villages Trek',
         days: '3 Days',
         date: 'Weekly',
-        image: '/images/berber-villages.jpg'
+        image: '/images/berber-villages.webp'
     },
     {
         id: '4',
@@ -53,7 +53,7 @@ export const toursPreviewData = [
         title: 'Blue City of Chefchaouen',
         days: '1 Day',
         date: 'Daily',
-        image: '/images/chefchaouen.jpg'
+        image: '/images/chefchaouen.webp'
     },
     {
         id: '5',
@@ -61,7 +61,7 @@ export const toursPreviewData = [
         title: 'Luxury Agafay Desert Retreat',
         days: '1 Day',
         date: 'Daily',
-        image: '/images/agafay-retreat.jpg'
+        image: '/images/agafay-retreat.webp'
     },
     {
         id: '6',
@@ -69,7 +69,7 @@ export const toursPreviewData = [
         title: 'Marrakech City Tour',
         days: '1/2 Day',
         date: 'Daily',
-        image: '/images/marrakech-city.jpg'
+        image: '/images/marrakech-city.webp'
     },
     {
         id: '7',
@@ -77,7 +77,7 @@ export const toursPreviewData = [
         title: 'Imperial Cities Tour',
         days: '7 Days',
         date: 'Monthly',
-        image: '/images/imperial-cities.jpg'
+        image: '/images/imperial-cities.webp'
     },
     {
         id: '8',
@@ -85,7 +85,7 @@ export const toursPreviewData = [
         title: 'Sahara Desert Adventure',
         days: '4 Days',
         date: 'Daily',
-        image: '/images/sahara.jpg'
+        image: '/images/sahara.webp'
     },
     {
         id: '9',
@@ -93,7 +93,7 @@ export const toursPreviewData = [
         title: 'Fes Medina Discovery',
         days: '2 Days',
         date: 'Weekly',
-        image: '/images/fes.jpg'
+        image: '/images/fes.webp'
     }
 ];
 
@@ -101,7 +101,7 @@ export const experiencesPreviewData = [
     {
         id: '1',
         title: 'Atlas Mountains Trek',
-        image: '/images/atlas-trek.jpg',
+        image: '/images/atlas-trek.webp',
         duration: '8 hours',
         price: '450 MAD',
         rating: 4.8,
@@ -110,7 +110,7 @@ export const experiencesPreviewData = [
     {
         id: '2',
         title: 'Camel Ride at Sunset',
-        image: '/images/camel-ride.jpg',
+        image: '/images/camel-ride.webp',
         duration: '2 hours',
         price: '250 MAD',
         rating: 4.5,
@@ -119,7 +119,7 @@ export const experiencesPreviewData = [
     {
         id: '3',
         title: 'Hot Air Balloon Ride',
-        image: '/images/balloon.jpg',
+        image: '/images/balloon.webp',
         duration: '4 hours',
         price: '2000 MAD',
         rating: 4.7,
@@ -128,7 +128,7 @@ export const experiencesPreviewData = [
     {
         id: '4',
         title: 'Moroccan Cooking Class',
-        image: '/images/cooking.jpg',
+        image: '/images/cooking.webp',
         duration: '4 hours',
         price: '350 MAD',
         rating: 4.9,
@@ -137,7 +137,7 @@ export const experiencesPreviewData = [
     {
         id: '5',
         title: 'Quad Biking in Agafay Desert',
-        image: '/images/quad-biking.jpg',
+        image: '/images/quad-biking.webp',
         duration: '3 hours',
         price: '550 MAD',
         rating: 4.7,
@@ -161,7 +161,7 @@ export const testimonialsData = [
         country: 'France',
         tour: 'Marrakech Film Festival',
         rating: 5,
-        review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à ByMarrakech. L\'organisation était parfaite, et nous avons découvert des endroits que nous n\'aurions jamais trouvés seuls. Merci pour tout!',
+        review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à Xhosen. L\'organisation était parfaite, et nous avons découvert des endroits que nous n\'aurions jamais trouvés seuls. Merci pour tout!',
         image: 'https://images.unsplash.com/photo-1542596594-649edbc13630?auto=format&fit=crop&w=800&q=80'
     },
     {
@@ -170,7 +170,7 @@ export const testimonialsData = [
         country: 'Canada',
         tour: 'Desert Safari',
         rating: 5,
-        review: 'The desert experience was absolutely magical! Sleeping under the stars in Agafay was a dream come true. The camel ride at sunset is a must-do. Highly recommend ByMarrakech for their professionalism.',
+        review: 'The desert experience was absolutely magical! Sleeping under the stars in Agafay was a dream come true. The camel ride at sunset is a must-do. Highly recommend Xhosen for their professionalism.',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'
     },
     {
@@ -248,7 +248,7 @@ export const eventsData = [
         endDate: '2025-12-07',
         location: 'Marrakech',
         description: 'Premiere international film festival celebrating cinema from Morocco and around the world with screenings, masterclasses, and red-carpet events at venues across the city.',
-        image: '/images/events/cinema.jpg',
+        image: '/images/events/cinema.webp',
         size: 'large'
     },
     {
@@ -260,7 +260,7 @@ export const eventsData = [
         endDate: '2025-07-16',
         location: 'El Badi Palace',
         description: "Morocco's oldest folklore festival featuring traditional music, dance, and cultural performances by troupes from across the country in the stunning ruins of El Badi Palace.",
-        image: '/images/events/music.jpg',
+        image: '/images/events/music.webp',
         size: 'medium'
     },
     {
@@ -272,7 +272,7 @@ export const eventsData = [
         endDate: '2025-09-14',
         location: 'The Source, Marrakech',
         description: 'Three-day electronic music festival featuring international DJs and producers, pool parties, and immersive experiences in a luxury resort setting.',
-        image: '/images/events/fires.jpg',
+        image: '/images/events/fires.webp',
         size: 'medium'
     },
     {
@@ -340,7 +340,7 @@ export const eventsData = [
 export const aboutDataFr = {
     label: "À PROPOS DE MARRAKECH",
     title: "Découvrez le cœur de Marrakech avec nos expériences authentiques",
-    description1: "Fondée au cœur de Marrakech, ByMarrakech a commencé avec une mission simple : partager la magie de notre ville avec le monde. Ce qui a commencé comme une petite équipe de guides locaux est devenu une agence de voyage de premier plan spécialisée dans des expériences marocaines authentiques.",
+    description1: "Fondée au cœur de Marrakech, Xhosen a commencé avec une mission simple : partager la magie de notre ville avec le monde. Ce qui a commencé comme une petite équipe de guides locaux est devenu une agence de voyage de premier plan spécialisée dans des expériences marocaines authentiques.",
     description2: "Au cours de la dernière décennie, nous avons organisé des voyages inoubliables pour des milliers de voyageurs, tout en restant fidèles à nos racines et à notre engagement envers un service exceptionnel.",
     stats: {
         stat1: { number: "10+", label: "Années d'expérience" },
@@ -348,10 +348,10 @@ export const aboutDataFr = {
         stat3: { number: "50+", label: "Expériences uniques" }
     },
     images: {
-        image1: "/images/marrakech/marrakech1.jpg",
-        image2: "/images/marrakech/marrakech2.jpg",
-        image3: "/images/marrakech/marrakech3.jpg",
-        image4: "/images/marrakech/marrakech4.jpg"
+        image1: "/images/marrakech/marrakech1.webp",
+        image2: "/images/marrakech/marrakech2.webp",
+        image3: "/images/marrakech/marrakech3.webp",
+        image4: "/images/marrakech/marrakech4.webp"
     },
     cta: {
         title: "Prêt à vivre la magie de Marrakech ?",
@@ -367,7 +367,7 @@ export const toursPreviewDataFr = [
         title: 'Vallées de l’Atlas & Cascades',
         days: '5 jours',
         date: 'Tous les jours',
-        image: '/images/atlas-valleys.jpg'
+        image: '/images/atlas-valleys.webp'
     },
     {
         id: '2',
@@ -375,7 +375,7 @@ export const toursPreviewDataFr = [
         title: 'Évasion côtière à Essaouira',
         days: '2 jours',
         date: 'Tous les jours',
-        image: '/images/essaouira.jpg'
+        image: '/images/essaouira.webp'
     },
     {
         id: '3',
@@ -383,7 +383,7 @@ export const toursPreviewDataFr = [
         title: 'Trek dans les villages berbères du Haut Atlas',
         days: '3 jours',
         date: 'Hebdomadaire',
-        image: '/images/berber-villages.jpg'
+        image: '/images/berber-villages.webp'
     },
     {
         id: '4',
@@ -391,7 +391,7 @@ export const toursPreviewDataFr = [
         title: 'La ville bleue de Chefchaouen',
         days: '1 jour',
         date: 'Tous les jours',
-        image: '/images/chefchaouen.jpg'
+        image: '/images/chefchaouen.webp'
     },
     {
         id: '5',
@@ -399,7 +399,7 @@ export const toursPreviewDataFr = [
         title: 'Retraite de luxe dans le désert d’Agafay',
         days: '1 jour',
         date: 'Tous les jours',
-        image: '/images/agafay-retreat.jpg'
+        image: '/images/agafay-retreat.webp'
     },
     {
         id: '6',
@@ -407,7 +407,7 @@ export const toursPreviewDataFr = [
         title: 'Visite de la ville de Marrakech',
         days: '1/2 jour',
         date: 'Tous les jours',
-        image: '/images/marrakech-city.jpg'
+        image: '/images/marrakech-city.webp'
     },
     {
         id: '7',
@@ -415,7 +415,7 @@ export const toursPreviewDataFr = [
         title: 'Circuit des villes impériales',
         days: '7 jours',
         date: 'Mensuel',
-        image: '/images/imperial-cities.jpg'
+        image: '/images/imperial-cities.webp'
     },
     {
         id: '8',
@@ -423,7 +423,7 @@ export const toursPreviewDataFr = [
         title: 'Aventure dans le désert du Sahara',
         days: '4 jours',
         date: 'Tous les jours',
-        image: '/images/sahara.jpg'
+        image: '/images/sahara.webp'
     },
     {
         id: '9',
@@ -431,7 +431,7 @@ export const toursPreviewDataFr = [
         title: 'Découverte de la médina de Fès',
         days: '2 jours',
         date: 'Hebdomadaire',
-        image: '/images/fes.jpg'
+        image: '/images/fes.webp'
     }
 ];
 
@@ -439,7 +439,7 @@ export const experiencesPreviewDataFr = [
     {
         id: '1',
         title: 'Trek dans les montagnes de l’Atlas',
-        image: '/images/atlas-trek.jpg',
+        image: '/images/atlas-trek.webp',
         duration: '8 heures',
         price: '450 MAD',
         rating: 4.8,
@@ -448,7 +448,7 @@ export const experiencesPreviewDataFr = [
     {
         id: '2',
         title: 'Balade à chameau au coucher du soleil',
-        image: '/images/camel-ride.jpg',
+        image: '/images/camel-ride.webp',
         duration: '2 heures',
         price: '250 MAD',
         rating: 4.5,
@@ -457,7 +457,7 @@ export const experiencesPreviewDataFr = [
     {
         id: '3',
         title: 'Vol en montgolfière',
-        image: '/images/balloon.jpg',
+        image: '/images/balloon.webp',
         duration: '4 heures',
         price: '2000 MAD',
         rating: 4.7,
@@ -466,7 +466,7 @@ export const experiencesPreviewDataFr = [
     {
         id: '4',
         title: 'Cours de cuisine marocaine',
-        image: '/images/cooking.jpg',
+        image: '/images/cooking.webp',
         duration: '4 heures',
         price: '350 MAD',
         rating: 4.9,
@@ -475,7 +475,7 @@ export const experiencesPreviewDataFr = [
     {
         id: '5',
         title: 'Quad dans le désert d’Agafay',
-        image: '/images/quad-biking.jpg',
+        image: '/images/quad-biking.webp',
         duration: '3 heures',
         price: '550 MAD',
         rating: 4.7,
@@ -499,7 +499,7 @@ export const testimonialsDataFr = [
         country: 'France',
         tour: 'Festival du film de Marrakech',
         rating: 5,
-        review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à ByMarrakech. L’organisation était parfaite et nous avons découvert des endroits que nous n’aurions jamais trouvés seuls. Merci pour tout !',
+        review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à Xhosen. L’organisation était parfaite et nous avons découvert des endroits que nous n’aurions jamais trouvés seuls. Merci pour tout !',
         image: 'https://images.unsplash.com/photo-1542596594-649edbc13630?auto=format&fit=crop&w=800&q=80 '
     },
     {
@@ -508,7 +508,7 @@ export const testimonialsDataFr = [
         country: 'Canada',
         tour: 'Safari dans le désert',
         rating: 5,
-        review: 'L’expérience dans le désert était absolument magique ! Dormir sous les étoiles à Agafay était un rêve devenu réalité. La balade à chameau au coucher du soleil est un incontournable. Je recommande vivement ByMarrakech pour leur professionnalisme.',
+        review: 'L’expérience dans le désert était absolument magique ! Dormir sous les étoiles à Agafay était un rêve devenu réalité. La balade à chameau au coucher du soleil est un incontournable. Je recommande vivement Xhosen pour leur professionnalisme.',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80 '
     },
     {

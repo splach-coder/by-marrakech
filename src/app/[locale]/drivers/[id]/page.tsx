@@ -50,6 +50,7 @@ export default function DriverPage({ params }: DriverPageProps) {
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
     const [bookingMode, setBookingMode] = useState<'custom' | 'tour'>('custom');
     const [selectedTourId, setSelectedTourId] = useState<string | null>(null);
+    const [selectedVehicle, setSelectedVehicle] = useState<string>(driver?.vehicleTypes?.[0] || '');
 
     // Fetch localized data for suggestions
     const localizedSiteData = getSiteData(locale);
@@ -75,14 +76,15 @@ export default function DriverPage({ params }: DriverPageProps) {
 
     const handleBook = () => {
         let message = '';
+        const nameToUse = driver.brandInfo?.companyName || driver.name;
+        const vehicleInfo = `Vehicle: ${selectedVehicle}`;
+
         if (bookingMode === 'custom') {
-            const nameToUse = driver.brandInfo?.companyName || driver.name;
-            message = `I'm interested in booking a custom itinerary with ${nameToUse}.`;
+            message = `I'm interested in booking a custom itinerary with ${nameToUse}. \n\n${vehicleInfo}`;
         } else {
             const selectedItem = allSuggested.find(i => String(i.id) === selectedTourId);
             const tourName = selectedItem ? selectedItem.title : 'a tour';
-            const nameToUse = driver.brandInfo?.companyName || driver.name;
-            message = `I'm interested in booking the tour "${tourName}" with ${nameToUse}.`;
+            message = `I'm interested in booking the tour "${tourName}" with ${nameToUse}. \n\n${vehicleInfo}`;
         }
         const url = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
@@ -189,6 +191,8 @@ export default function DriverPage({ params }: DriverPageProps) {
                 </div>
             )}
 
+            {/* BRANDED GALLERY SECTION REMOVED FROM TOP */}
+
             {/* MAIN CONTENT */}
             <div className={`container-custom ${isBranded ? '-mt-16 md:-mt-20 relative z-10 mb-12' : 'py-8 md:py-12'}`}>
                 {/* Main Profile Card */}
@@ -239,15 +243,15 @@ export default function DriverPage({ params }: DriverPageProps) {
                         )}
 
                         <div className="w-full space-y-6">
-                            {/* Vehicle Info - Condensed for Branded, Expanded for Non-Brand */}
+                            {/* Vehicle Selection */}
                             <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
                                 <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
                                     <Car className="w-4 h-4 text-primary" /> {tDriv('vehicleFleet')}
                                 </h4>
 
-                                {!isBranded && (
-                                    <div className="grid grid-cols-2 gap-3 mb-4">
-                                        {driver.gallery.slice(0, 2).map((img, i) => (
+                                <div className="space-y-4">
+                                    <div className="grid grid-cols-2 gap-3">
+                                        {driver.gallery.map((img, i) => (
                                             <div
                                                 key={i}
                                                 className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 border border-stone-100 group cursor-pointer"
@@ -263,12 +267,26 @@ export default function DriverPage({ params }: DriverPageProps) {
                                             </div>
                                         ))}
                                     </div>
-                                )}
 
-                                <div className="flex flex-wrap gap-2">
-                                    {driver.vehicleTypes.map((v) => (
-                                        <span key={v} className="text-xs bg-stone-100 text-stone-600 px-3 py-1.5 rounded-lg font-bold uppercase tracking-wider border border-stone-200">{v}</span>
-                                    ))}
+                                    <div className="flex flex-col gap-2">
+                                        <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">Select Your Vehicle</p>
+                                        <div className="grid grid-cols-1 gap-2">
+                                            {driver.vehicleTypes.map((v) => (
+                                                <button
+                                                    key={v}
+                                                    onClick={() => setSelectedVehicle(v)}
+                                                    className={`text-left px-4 py-3 rounded-xl border-2 transition-all flex items-center justify-between group ${selectedVehicle === v
+                                                        ? 'border-primary bg-primary/5 text-primary'
+                                                        : 'border-stone-100 text-stone-600 hover:border-primary/20 hover:bg-stone-50'}`}
+                                                >
+                                                    <span className="text-xs font-bold uppercase tracking-wider">{v}</span>
+                                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedVehicle === v ? 'border-primary bg-primary' : 'border-stone-200'}`}>
+                                                        {selectedVehicle === v && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                                                    </div>
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -458,41 +476,6 @@ export default function DriverPage({ params }: DriverPageProps) {
                 </motion.div>
             </div>
 
-            {/* BRANDED GALLERY SECTION (Large Masonry/Grid) */}
-            {isBranded && (
-                <section className="container-custom pb-20 md:pb-32">
-                    <div className="flex items-center gap-4 mb-8 md:mb-12">
-                        <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
-                            <Camera className="w-6 h-6" />
-                        </div>
-                        <div>
-                            <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900">{tGallery('hero.title')}</h2>
-                            <p className="text-gray-500">{tGallery('hero.subtitle')}</p>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                        {galleryImages.map((img, i) => (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                key={i}
-                                onClick={() => setSelectedImage(i)}
-                                className="relative aspect-video md:aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group shadow-lg"
-                            >
-                                <Image
-                                    src={img}
-                                    alt={`Portfolio image ${i + 1}`}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                />
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
-                            </motion.div>
-                        ))}
-                    </div>
-                </section>
-            )}
 
             {/* Lightbox Gallery */}
             <AnimatePresence>

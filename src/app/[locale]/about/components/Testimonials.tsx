@@ -23,7 +23,7 @@ export default function Testimonials() {
       id: '1',
       name: 'Thomas & Emma Laurent',
       location: 'Paris, France',
-      text: 'Nous avons passé une semaine inoubliable à Marrakech grâce à l\'équipe de BYMARRAKECH. Fatima a créé un itinéraire parfaitement adapté à nos intérêts, combinant culture, gastronomie et aventure. Le niveau de personnalisation et d\'attention aux détails était exceptionnel. C\'était notre troisième visite au Maroc, mais de loin la meilleure!',
+      text: 'Nous avons passé une semaine inoubliable à Marrakech grâce à l\'équipe de Xhosen. Fatima a créé un itinéraire parfaitement adapté à nos intérêts, combinant culture, gastronomie et aventure. Le niveau de personnalisation et d\'attention aux détails était exceptionnel. C\'était notre troisième visite au Maroc, mais de loin la meilleure!',
       rating: 5,
       image: '/images/testimonials/thomas-emma.jpg',
     },
@@ -119,16 +119,15 @@ export default function Testimonials() {
                 >
                   <ChevronRight className="w-6 h-6 text-white" />
                 </button>
-                
+
                 {/* Dots */}
                 <div className="flex gap-2 ml-4">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentIndex(index)}
-                      className={`h-2 rounded-full transition-all ${
-                        index === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-border'
-                      }`}
+                      className={`h-2 rounded-full transition-all ${index === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-border'
+                        }`}
                     />
                   ))}
                 </div>

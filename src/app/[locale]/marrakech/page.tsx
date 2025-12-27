@@ -68,7 +68,7 @@ export default function MarrakechPage() {
       <section className="relative h-screen min-h-[700px] overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/marrakech/marrakech12.jpg"
+            src="/images/marrakech/marrakech12.webp"
             alt={t('hero.title')}
             fill
             className="object-cover"
@@ -147,7 +147,7 @@ export default function MarrakechPage() {
           >
             <div className="aspect-[4/5] relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/images/marrakech/marrakech13.jpg"
+                src="/images/marrakech/marrakech13.webp"
                 alt="Marrakech Riad"
                 fill
                 className="object-cover"

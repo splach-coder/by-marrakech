@@ -14,13 +14,13 @@ import CartDrawer from './components/CartDrawer';
 // ---  SEO Metadata
 export const metadata = {
   title: {
-    default: 'ByMarrakech | Authentic Marrakech Experiences & Tours',
-    template: '%s | ByMarrakech',
+    default: 'Xhosen | Authentic Marrakech Experiences & Tours',
+    template: '%s | Xhosen',
   },
   description:
-    'Discover ByMarrakech — your guide to authentic Moroccan experiences, guided tours, desert adventures, and cultural journeys through Marrakech and beyond.',
+    'Discover Xhosen — your guide to authentic Moroccan experiences, guided tours, desert adventures, and cultural journeys through Marrakech and beyond.',
   keywords: [
-    'ByMarrakech',
+    'Xhosen',
     'Marrakech tours',
     'Morocco travel',
     'Desert tours',
@@ -29,14 +29,14 @@ export const metadata = {
     'Marrakech guide',
   ],
   openGraph: {
-    title: 'ByMarrakech | Authentic Marrakech Experiences & Tours',
+    title: 'Xhosen | Authentic Marrakech Experiences & Tours',
     description:
       'Experience the magic of Marrakech with expert local guides. From vibrant souks to serene desert landscapes.',
-    url: 'https://www.bymarrakech.com',
-    siteName: 'ByMarrakech',
+    url: 'https://www.xhosen.com',
+    siteName: 'Xhosen',
     images: [
       {
-        url: 'https://www.bymarrakech.com/og-image.jpg',
+        url: 'https://www.xhosen.com/og-image.jpg',
         width: 1200,
         height: 630,
       },
@@ -46,10 +46,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ByMarrakech | Authentic Marrakech Experiences & Tours',
+    title: 'Xhosen | Authentic Marrakech Experiences & Tours',
     description:
       'Discover authentic Moroccan experiences with expert local guides through Marrakech and beyond.',
-    site: '@bymarrakech',
+    site: '@xhosen',
   },
   icons: {
     icon: '/icons/Artboard 1.ico',

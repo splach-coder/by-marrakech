@@ -42,7 +42,7 @@ export default function ContactPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-imgs/contact.jpg"
+            src="/images/hero-imgs/contact.webp"
             alt={t('hero.title')}
             fill
             className="object-cover"
@@ -109,7 +109,7 @@ export default function ContactPage() {
                   </div>
                   <div className="pl-16 border-l border-gray-100 space-y-2">
                     <p className="text-xl text-gray-800 hover:text-primary transition-colors cursor-pointer">
-                      {process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@bymarrakech.com'}
+                      {process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@xhosen.com'}
                     </p>
                     <p className="text-xl text-gray-800 hover:text-primary transition-colors cursor-pointer">
                       {process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 600 000 000'}

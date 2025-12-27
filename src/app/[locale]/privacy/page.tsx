@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Shield, Lock, Mail, Phone, MapPin } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Privacy Policy | ByMarrakech',
-    description: 'Privacy Policy for ByMarrakech - Learn how we protect and handle your personal information.',
+    title: 'Privacy Policy | Xhosen',
+    description: 'Privacy Policy for Xhosen - Learn how we protect and handle your personal information.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
                         {/* Introduction */}
                         <div className="mb-12">
                             <p className="text-gray-600 text-lg leading-relaxed">
-                                At ByMarrakech, we are committed to protecting your privacy and ensuring the security of your personal information.
+                                At Xhosen, we are committed to protecting your privacy and ensuring the security of your personal information.
                                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website
                                 or use our services.
                             </p>
@@ -231,8 +231,8 @@ export default function PrivacyPolicyPage() {
                             <div className="space-y-3">
                                 <div className="flex items-center gap-3 text-gray-700">
                                     <Mail className="w-5 h-5 text-primary" />
-                                    <a href="mailto:privacy@bymarrakech.com" className="hover:text-primary transition-colors">
-                                        privacy@bymarrakech.com
+                                    <a href="mailto:privacy@xhosen.com" className="hover:text-primary transition-colors">
+                                        privacy@xhosen.com
                                     </a>
                                 </div>
                                 <div className="flex items-center gap-3 text-gray-700">

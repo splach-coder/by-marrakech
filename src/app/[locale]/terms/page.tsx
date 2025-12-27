@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { FileText, Scale, AlertCircle, Mail, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Terms of Service | ByMarrakech',
-    description: 'Terms and Conditions for using ByMarrakech travel services.',
+    title: 'Terms of Service | Xhosen',
+    description: 'Terms and Conditions for using Xhosen travel services.',
 };
 
 export default function TermsOfServicePage() {
@@ -30,7 +30,7 @@ export default function TermsOfServicePage() {
                         {/* Introduction */}
                         <div className="mb-12 bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
                             <p className="text-gray-700 leading-relaxed">
-                                These Terms of Service ("Terms") govern your use of ByMarrakech's website and services. By accessing our website
+                                These Terms of Service ("Terms") govern your use of Xhosen's website and services. By accessing our website
                                 or booking our services, you agree to be bound by these Terms. Please read them carefully before making a booking.
                             </p>
                         </div>
@@ -59,7 +59,7 @@ export default function TermsOfServicePage() {
                             </h2>
 
                             <div className="space-y-4">
-                                <p className="text-gray-600">ByMarrakech provides:</p>
+                                <p className="text-gray-600">Xhosen provides:</p>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="bg-gray-50 p-4 rounded-xl">
                                         <h3 className="font-bold text-gray-900 mb-2">🗺️ Guided Tours</h3>
@@ -233,7 +233,7 @@ export default function TermsOfServicePage() {
                             </h2>
                             <div className="bg-gray-100 border-l-4 border-gray-900 p-6 rounded-r-xl">
                                 <p className="text-gray-700 leading-relaxed mb-4">
-                                    ByMarrakech acts as an intermediary between travelers and service providers. While we carefully select our partners,
+                                    Xhosen acts as an intermediary between travelers and service providers. While we carefully select our partners,
                                     we are not liable for:
                                 </p>
                                 <ul className="space-y-2 text-gray-600">
@@ -269,7 +269,7 @@ export default function TermsOfServicePage() {
                                 Intellectual Property
                             </h2>
                             <p className="text-gray-600 leading-relaxed">
-                                All content on this website, including text, graphics, logos, images, and software, is the property of ByMarrakech
+                                All content on this website, including text, graphics, logos, images, and software, is the property of Xhosen
                                 and protected by copyright laws. You may not reproduce, distribute, or use any content without our written permission.
                             </p>
                         </div>
@@ -297,8 +297,8 @@ export default function TermsOfServicePage() {
                             <div className="space-y-3">
                                 <div className="flex items-center gap-3">
                                     <Mail className="w-5 h-5 text-primary" />
-                                    <a href="mailto:info@bymarrakech.com" className="hover:text-primary transition-colors">
-                                        info@bymarrakech.com
+                                    <a href="mailto:info@xhosen.com" className="hover:text-primary transition-colors">
+                                        info@xhosen.com
                                     </a>
                                 </div>
                                 <div className="flex items-center gap-3">

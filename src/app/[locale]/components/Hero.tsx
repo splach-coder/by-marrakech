@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,40 +19,34 @@ export default function Hero({
   subtitle = 'Experience the vibrant colors, rich culture, and warm hospitality of Morocco\'s most enchanting city. From ancient medinas to luxurious riads, Marrakech offers an unforgettable journey into the heart of North Africa.',
   ctaPrimary = 'Explore Our Tours',
   ctaSecondary = 'Try a Luxury Experience',
-  backgroundImage = '/images/marrakech/hero.jpg',
+  backgroundImage = '/images/marrakech/hero.webp',
 }: HeroProps) {
   const locale = useLocale();
-  const [mounted, setMounted] = useState(false);
   const { scrollY } = useScroll();
 
   // Parallax effect
   const y = useTransform(scrollY, [0, 1000], [0, 200]);
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <section className="relative w-full h-screen flex items-center justify-center bg-background">
-        <div className="animate-pulse text-text-primary">Loading...</div>
-      </section>
-    );
-  }
-
   return (
-    <section className="relative w-full h-screen overflow-hidden">
-      {/* Background Image with Parallax */}
-      <motion.div style={{ y }} className="absolute inset-0 w-full h-full">
+    <section className="relative w-full h-screen overflow-hidden bg-background">
+      {/* Background Image with Parallax and Entry Animation */}
+      <motion.div
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        style={{ y }}
+        className="absolute inset-0 w-full h-full"
+      >
         <div className="relative w-full h-full">
           {/* Mobile Image */}
           <Image
-            src="/images/marrakech/marrakech1.jpg"
+            src="/images/marrakech/marrakech1.webp"
             alt="Marrakech"
             fill
             priority
-            quality={100}
+            fetchPriority="high"
+            quality={80}
             sizes="100vw"
             className="object-cover object-center md:hidden"
           />
@@ -64,7 +57,8 @@ export default function Hero({
             alt="Marrakech doorway"
             fill
             priority
-            quality={100}
+            fetchPriority="high"
+            quality={80}
             sizes="100vw"
             className="object-cover object-center hidden md:block"
           />
@@ -80,22 +74,22 @@ export default function Hero({
       {/* Content */}
       <motion.div
         style={{ opacity }}
-        className="relative z-10 h-full flex items-center pt-40 md:pt-52"
+        className="relative z-10 h-full flex items-center justify-center pt-20"
       >
         <div className="container-custom">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
             {/* Title */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             >
-              {title.includes('ByMarrakech') ? (
+              {title.includes('Xhosen') ? (
                 <>
-                  {title.split('ByMarrakech')[0]}
-                  <span className="text-secondary font-nohemi tracking-tight">ByMarrakech</span>
-                  {title.split('ByMarrakech')[1]}
+                  {title.split('Xhosen')[0]}
+                  <span className="text-secondary font-nohemi tracking-tight">Xhosen</span>
+                  {title.split('Xhosen')[1]}
                 </>
               ) : title}
             </motion.h1>
@@ -104,8 +98,8 @@ export default function Hero({
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-base sm:text-lg md:text-xl text-white/90 mb-8 md:mb-10 leading-relaxed max-w-xl line-clamp-3 md:line-clamp-none"
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-base sm:text-lg md:text-xl text-white/90 mb-8 md:mb-10 leading-relaxed max-w-2xl line-clamp-3 md:line-clamp-none"
             >
               {subtitle}
             </motion.p>
@@ -114,10 +108,9 @@ export default function Hero({
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-              {/* Red Button */}
               <Link
                 href={`/${locale}/tours`}
                 className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-full font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:scale-105"

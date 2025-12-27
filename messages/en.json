@@ -22,13 +22,13 @@
   },
   "home": {
     "hero": {
-      "title": "Discover Morocco with ByMarrakech",
+      "title": "Discover Morocco with Xhosen",
       "subtitle": "Your trusted agency for authentic tours and unforgettable journeys across Morocco.",
       "ctaPrimary": "Explore Our Tours",
       "ctaSecondary": "View Experiences"
     },
     "about": {
-      "label": "About ByMarrakech",
+      "label": "About Xhosen",
       "title": "Your Trusted Morocco Travel Agency"
     },
     "features": {
@@ -360,7 +360,7 @@
     },
     "cta": {
       "quote": "We believe that travel is the only thing you buy that makes you richer. Come, let us show you the richness of Morocco.",
-      "team": "The ByMarrakech Team",
+      "team": "The Xhosen Team",
       "experts": "Your Local Experts",
       "button": "Start Your Journey"
     }

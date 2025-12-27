@@ -28,8 +28,8 @@ export default function ThankYouPage() {
                     {/* Logo */}
                     <div className="mb-4 flex justify-center">
                         <Image
-                            src="/images/logo-red.png"
-                            alt="ByMarrakech"
+                            src="/images/logo-red.webp"
+                            alt="Xhosen"
                             width={120}
                             height={60}
                             className="object-contain"

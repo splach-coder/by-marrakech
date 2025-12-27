@@ -7,15 +7,15 @@ const siteData = {
             description: "Experience Morocco your way with our exclusive private driver service. Choose your personal driver from our curated selection of experienced, multilingual professionals, each with their own portfolio showcasing their expertise, preferred routes, and fleet of premium vehicles. Whether you're looking to explore our handpicked tours and excursions with a driver who knows every hidden gem, or simply need the freedom to wander the city at your own pace, our drivers are at your service. Browse through detailed profiles featuring photo galleries, language capabilities, vehicle options, and specialty routes to find your perfect match. Once you've selected your driver, you can either choose from our carefully designed tours or create your own adventure – the choice is entirely yours. Contact your chosen driver directly to discuss your plans and preferences, ensuring a personalized experience tailored to your unique travel vision. From sunrise in the Sahara to sunset in Marrakech's medinas, your dedicated driver becomes your local expert, guide, and companion on the journey.",
             categories: ["Services", "Luxury"],
             image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Private Luxury Driver in Morocco"
             },
             banner_image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Private Luxury Driver Service"
             },
             gallery: [
-                { url: "/images/services/luxury_driver_service.png", alt: "Private Chauffeur" },
+                { url: "/images/services/luxury_driver_service.webp", alt: "Private Chauffeur" },
             ],
             highlights: [
                 "Curated selection of multilingual professionals",
@@ -35,17 +35,17 @@ const siteData = {
             description: "Start your Moroccan journey the right way with a reliable airport transfer. We provide comfortable, air-conditioned vehicles and professional drivers to ensure a smooth arrival.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Airport Transfer Service"
             },
             banner_image: {
-                url: "/images/services/banner.png",
+                url: "/images/services/banner.webp",
                 alt: "Airport Transfer Service"
             },
             gallery: [
-                { url: "/images/services/transport_from_airport.png", alt: "Comfortable Transfer" },
-                { url: "/images/casablanca/casablanca.png", alt: "Casablanca Airport Transfer" },
-                { url: "/images/marrakech/marrakech.png", alt: "Marrakech Arrival" }
+                { url: "/images/services/transport_from_airport.webp", alt: "Comfortable Transfer" },
+                { url: "/images/casablanca/casablanca.webp", alt: "Casablanca Airport Transfer" },
+                { url: "/images/marrakech/marrakech.webp", alt: "Marrakech Arrival" }
             ],
             highlights: [
                 "24/7 availability",
@@ -68,17 +68,17 @@ const siteData = {
             description: "Arriving in a new country can be overwhelming, especially after a long flight. Our hotel transfer service ensures you get to your accommodation safely and comfortably.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Hotel Transfer Service"
             },
             banner_image: {
-                url: "/images/services/banner.png",
+                url: "/images/services/banner.webp",
                 alt: "Hotel Transfer Service"
             },
             gallery: [
-                { url: "/images/services/transport_from_hotel.png", alt: "Hotel Pickup" },
-                { url: "/images/rabat/rabat.png", alt: "City Transfer" },
-                { url: "/images/fes/Fes.png", alt: "Comfortable Ride" }
+                { url: "/images/services/transport_from_hotel.webp", alt: "Hotel Pickup" },
+                { url: "/images/rabat/rabat.webp", alt: "City Transfer" },
+                { url: "/images/fes/Fes.webp", alt: "Comfortable Ride" }
             ],
             highlights: [
                 "Door-to-door service",
@@ -101,17 +101,17 @@ const siteData = {
             description: "Rent Private Car & Driver in Morocco. Traveling through Morocco at your own pace is the best way to discover the country. Our private car and driver service gives you the freedom to explore.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Private Car Rental"
             },
             banner_image: {
-                url: "/images/services/banner.png",
+                url: "/images/services/banner.webp",
                 alt: "Private Car Rental"
             },
             gallery: [
-                { url: "/images/services/car_rental.png", alt: "Luxury Car Rental" },
-                { url: "/images/ouarzazate/ouarzazate.png", alt: "Road Trip" },
-                { url: "/images/merzouga/merzouga1.jpg", alt: "Desert Driving" }
+                { url: "/images/services/car_rental.webp", alt: "Luxury Car Rental" },
+                { url: "/images/ouarzazate/ouarzazate.webp", alt: "Road Trip" },
+                { url: "/images/merzouga/merzouga1.webp", alt: "Desert Driving" }
             ],
             highlights: [
                 "Flexible itinerary",
@@ -144,20 +144,20 @@ const siteData = {
             group_size: "unlimited",
             description: "Experience the Sahara on a 3-day Merzouga desert tour from Marrakech. Visit Ait Ben Haddou, ride camels at sunset, and sleep under the stars.",
             image: {
-                url: "/images/merzouga/merzouga5.jpg",
+                url: "/images/merzouga/merzouga5.webp",
                 alt: "Visit Merzouga Morocco"
             },
             banner_image: {
-                url: "/images/merzouga/merzouga1.jpg",
+                url: "/images/merzouga/merzouga1.webp",
                 alt: "Visit Merzouga Morocco"
             },
             gallery: [
-                { url: "/images/merzouga/merzouga2.jpg", alt: "Merzouga Camel Trek" },
-                { url: "/images/merzouga/merzouga3.jpg", alt: "Desert Camp" },
-                { url: "/images/merzouga/merzouga4.jpg", alt: "Sahara Dunes" },
-                { url: "/images/merzouga/merzouga5.jpg", alt: "Merzouga Sunset" },
-                { url: "/images/merzouga/merzouga6.jpg", alt: "Desert Landscape" },
-                { url: "/images/merzouga/merzouga7.jpg", alt: "Berber Life" }
+                { url: "/images/merzouga/merzouga2.webp", alt: "Merzouga Camel Trek" },
+                { url: "/images/merzouga/merzouga3.webp", alt: "Desert Camp" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Sahara Dunes" },
+                { url: "/images/merzouga/merzouga5.webp", alt: "Merzouga Sunset" },
+                { url: "/images/merzouga/merzouga6.webp", alt: "Desert Landscape" },
+                { url: "/images/merzouga/merzouga7.webp", alt: "Berber Life" }
             ],
             highlights: [
                 "Scenic drive through the Atlas Mountains",
@@ -211,20 +211,20 @@ const siteData = {
             group_size: "unlimited",
             description: "Discover southern Morocco on a 4-day tour from Marrakech to Ouarzazate. Visit Dadès Gorges, ride camels in Merzouga, and explore desert landscapes and ancient kasbahs.",
             image: {
-                url: "/images/merzouga/merzouga1.jpg",
+                url: "/images/merzouga/merzouga1.webp",
                 alt: "Visit Merzouga Morocco"
             },
             banner_image: {
-                url: "/images/merzouga/merzouga2.jpg",
+                url: "/images/merzouga/merzouga2.webp",
                 alt: "Visit Merzouga Morocco"
             },
             gallery: [
-                { url: "/images/merzouga/merzouga1.jpg", alt: "Sahara Dunes" },
-                { url: "/images/merzouga/merzouga3.jpg", alt: "Desert Camp" },
-                { url: "/images/merzouga/merzouga4.jpg", alt: "Camel Trekking" },
-                { url: "/images/merzouga/merzouga5.jpg", alt: "Merzouga Landscape" },
-                { url: "/images/merzouga/merzouga6.jpg", alt: "Desert Adventure" },
-                { url: "/images/merzouga/merzouga7.jpg", alt: "Berber Tent" }
+                { url: "/images/merzouga/merzouga1.webp", alt: "Sahara Dunes" },
+                { url: "/images/merzouga/merzouga3.webp", alt: "Desert Camp" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Camel Trekking" },
+                { url: "/images/merzouga/merzouga5.webp", alt: "Merzouga Landscape" },
+                { url: "/images/merzouga/merzouga6.webp", alt: "Desert Adventure" },
+                { url: "/images/merzouga/merzouga7.webp", alt: "Berber Tent" }
             ],
             highlights: [
                 "Cross the High Atlas Mountains via Tizi n'Tichka pass",
@@ -285,20 +285,20 @@ const siteData = {
             group_size: "unlimited",
             description: "Experience Morocco's highlights on a 5-day tour from Marrakech to Merzouga, Fes, Chefchaouen, and Casablanca. Camel rides, historic sites, and stunning landscapes await.",
             image: {
-                url: "/images/marrakech/marrakech3.jpg",
+                url: "/images/marrakech/marrakech3.webp",
                 alt: "Visit Marrakech Morocco"
             },
             banner_image: {
-                url: "/images/marrakech/marrakech.jpg",
+                url: "/images/marrakech/marrakech.webp",
                 alt: "Visit Marrakech Morocco"
             },
             gallery: [
-                { url: "/images/marrakech/marrakech1.jpg", alt: "Marrakech City" },
-                { url: "/images/marrakech/marrakech2.jpg", alt: "Medina Streets" },
-                { url: "/images/marrakech/marrakech3.jpg", alt: "Traditional Architecture" },
-                { url: "/images/marrakech/marrakech4.jpg", alt: "Busy Souks" },
-                { url: "/images/marrakech/marrakech5.jpg", alt: "Moroccan Design" },
-                { url: "/images/marrakech/marrakech6.jpg", alt: "City Views" }
+                { url: "/images/marrakech/marrakech1.webp", alt: "Marrakech City" },
+                { url: "/images/marrakech/marrakech2.webp", alt: "Medina Streets" },
+                { url: "/images/marrakech/marrakech3.webp", alt: "Traditional Architecture" },
+                { url: "/images/marrakech/marrakech4.webp", alt: "Busy Souks" },
+                { url: "/images/marrakech/marrakech5.webp", alt: "Moroccan Design" },
+                { url: "/images/marrakech/marrakech6.webp", alt: "City Views" }
             ],
             highlights: [
                 "Comprehensive tour of Morocco's imperial cities",
@@ -367,19 +367,19 @@ const siteData = {
             group_size: "unlimited",
             description: "Book a two day excursion from Marrakech to Zagora including camel rides, a night in a Berber camp, and visits to Ait Ben Haddou.",
             image: {
-                url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.jpg",
+                url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.webp",
                 alt: "Visit ZAGORA Morocco"
             },
             banner_image: {
-                url: "/images/Zagoura/marvin-meyer-X0XRRXSVLU4-unsplash.jpg",
+                url: "/images/Zagoura/marvin-meyer-X0XRRXSVLU4-unsplash.webp",
                 alt: "Visit ZAGORA Morocco"
             },
             gallery: [
-                { url: "/images/Zagoura/darolti-dan-GJw9zRK_VBs-unsplash.jpg", alt: "Zagora Desert" },
-                { url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.jpg", alt: "Camel Trek" },
-                { url: "/images/Zagoura/ismail-el-youssefi-geeSPCxnKzU-unsplash.jpg", alt: "Desert Landscape" },
-                { url: "/images/Zagoura/kristijan-nikodinovski-RfK4AQchykw-unsplash.jpg", alt: "Berber Camp" },
-                { url: "/images/Zagoura/raul-mermans-garcia-oWzVpeYyJ-w-unsplash.jpg", alt: "Zagora Sunset" }
+                { url: "/images/Zagoura/darolti-dan-GJw9zRK_VBs-unsplash.webp", alt: "Zagora Desert" },
+                { url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.webp", alt: "Camel Trek" },
+                { url: "/images/Zagoura/ismail-el-youssefi-geeSPCxnKzU-unsplash.webp", alt: "Desert Landscape" },
+                { url: "/images/Zagoura/kristijan-nikodinovski-RfK4AQchykw-unsplash.webp", alt: "Berber Camp" },
+                { url: "/images/Zagoura/raul-mermans-garcia-oWzVpeYyJ-w-unsplash.webp", alt: "Zagora Sunset" }
             ],
             highlights: [
                 "Drive through the Draa Valley",
@@ -424,19 +424,19 @@ const siteData = {
             group_size: "unlimited",
             description: "Escape to nature with a full-day trip to Ouzoud Waterfalls from Marrakech. Enjoy scenic hikes, boat rides, and breathtaking views on this relaxing day trip.",
             image: {
-                url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.jpg",
+                url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.webp",
                 alt: "visit OUZOUD Waterfalls"
             },
             banner_image: {
-                url: "/images/ouzoud/rihards-sarma-mJGl8l1SiJk-unsplash.jpg",
+                url: "/images/ouzoud/rihards-sarma-mJGl8l1SiJk-unsplash.webp",
                 alt: "visit OUZOUD Waterfalls"
             },
             gallery: [
-                { url: "/images/ouzoud/danai-tsoutreli-tqLc6On9KIA-unsplash.jpg", alt: "Ouzoud Falls" },
-                { url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.jpg", alt: "Waterfalls Nature" },
-                { url: "/images/ouzoud/sergio-teixeira-svdabxVg7-4-unsplash.jpg", alt: "Scenic View" },
-                { url: "/images/ouzoud/tobias-pfeifer-F8TGlff-qks-unsplash.jpg", alt: "Barbary Macaque" },
-                { url: "/images/ouzoud/tobias-pfeifer-IBT7zZDTtNg-unsplash.jpg", alt: "Ouzoud Landscape" }
+                { url: "/images/ouzoud/danai-tsoutreli-tqLc6On9KIA-unsplash.webp", alt: "Ouzoud Falls" },
+                { url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.webp", alt: "Waterfalls Nature" },
+                { url: "/images/ouzoud/sergio-teixeira-svdabxVg7-4-unsplash.webp", alt: "Scenic View" },
+                { url: "/images/ouzoud/tobias-pfeifer-F8TGlff-qks-unsplash.webp", alt: "Barbary Macaque" },
+                { url: "/images/ouzoud/tobias-pfeifer-IBT7zZDTtNg-unsplash.webp", alt: "Ouzoud Landscape" }
             ],
             highlights: [
                 "See the highest waterfalls in North Africa",
@@ -476,17 +476,17 @@ const siteData = {
             group_size: "unlimited",
             description: "Discover the beauty of the Ourika Valley on a 1 day excursion from Marrakech. Enjoy scenic views, Berber villages, waterfalls, and a peaceful escape.",
             image: {
-                url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.jpg",
+                url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.webp",
                 alt: "visit OURIKA VALLEY MOROCCO"
             },
             banner_image: {
-                url: "/images/ourika/hassan-ahrouch-CfmIZwBvxNY-unsplash.jpg",
+                url: "/images/ourika/hassan-ahrouch-CfmIZwBvxNY-unsplash.webp",
                 alt: "visit OURIKA VALLEY MOROCCO"
             },
             gallery: [
-                { url: "/images/ourika/abdelhamid-azoui-BGU0uaY0tJs-unsplash.jpg", alt: "Ourika Valley" },
-                { url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.jpg", alt: "River Side" },
-                { url: "/images/ourika/matthew-fainman-3yonP2JaGTU-unsplash.jpg", alt: "Atlas Mountains" }
+                { url: "/images/ourika/abdelhamid-azoui-BGU0uaY0tJs-unsplash.webp", alt: "Ourika Valley" },
+                { url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.webp", alt: "River Side" },
+                { url: "/images/ourika/matthew-fainman-3yonP2JaGTU-unsplash.webp", alt: "Atlas Mountains" }
             ],
             highlights: [
                 "Visit a traditional Berber house",
@@ -525,20 +525,20 @@ const siteData = {
             group_size: "unlimited",
             description: "Explore Casablanca on a guided day tour. Visit the Hassan II Mosque, Art Deco landmarks, Habous Quarter, and the Corniche on this cultural day trip.",
             image: {
-                url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.jpg",
+                url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.webp",
                 alt: "visit Casablanca Morocco"
             },
             banner_image: {
-                url: "/images/casablanca/oussama-rahib-NNECQHl9bJc-unsplash.jpg",
+                url: "/images/casablanca/oussama-rahib-NNECQHl9bJc-unsplash.webp",
                 alt: "visit Casablanca Morocco"
             },
             gallery: [
-                { url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.jpg", alt: "Hassan II Mosque" },
-                { url: "/images/casablanca/imad-ghazal-gRE6Be-o_Hw-unsplash.jpg", alt: "Casablanca Streets" },
-                { url: "/images/casablanca/kristijan-nikodinovski-nkav4Pi-UwY-unsplash.jpg", alt: "City Architecture" },
-                { url: "/images/casablanca/mannie-nami-_aNm8TMzbUI-unsplash.jpg", alt: "Urban View" },
-                { url: "/images/casablanca/mehdi-sakout-54nOsVV1xI4-unsplash.jpg", alt: "Casablanca Life" },
-                { url: "/images/casablanca/zakaria-zayane-aBywMnV7ibk-unsplash.jpg", alt: "Corniche" }
+                { url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.webp", alt: "Hassan II Mosque" },
+                { url: "/images/casablanca/imad-ghazal-gRE6Be-o_Hw-unsplash.webp", alt: "Casablanca Streets" },
+                { url: "/images/casablanca/kristijan-nikodinovski-nkav4Pi-UwY-unsplash.webp", alt: "City Architecture" },
+                { url: "/images/casablanca/mannie-nami-_aNm8TMzbUI-unsplash.webp", alt: "Urban View" },
+                { url: "/images/casablanca/mehdi-sakout-54nOsVV1xI4-unsplash.webp", alt: "Casablanca Life" },
+                { url: "/images/casablanca/zakaria-zayane-aBywMnV7ibk-unsplash.webp", alt: "Corniche" }
             ],
             highlights: [
                 "Visit the magnificent Hassan II Mosque",
@@ -578,21 +578,21 @@ const siteData = {
             group_size: "unlimited",
             description: "Explore Essaouira on a full-day trip from Marrakech. Visit the medina, enjoy the beach, and discover local crafts in this charming coastal city.",
             image: {
-                url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.jpg",
+                url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.webp",
                 alt: "Visit ESSAOUIRA MOROCCO"
             },
             banner_image: {
-                url: "/images/essaouira/rigel-ibisQEDxODo-unsplash.jpg",
+                url: "/images/essaouira/rigel-ibisQEDxODo-unsplash.webp",
                 alt: "Visit ESSAOUIRA MOROCCO"
             },
             gallery: [
-                { url: "/images/essaouira/hamza-omlacho-M9GO4Gsd2SM-unsplash.jpg", alt: "Essaouira Port" },
-                { url: "/images/essaouira/mostapha-abidour-h9L1GfDgp0s-unsplash.jpg", alt: "Blue Boats" },
-                { url: "/images/essaouira/pete-bread-4eZeMUKdV-8-unsplash.jpg", alt: "Medina Walls" },
-                { url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.jpg", alt: "Essaouira Beach" },
-                { url: "/images/essaouira/rigel-No_Y3bn4lNQ-unsplash.jpg", alt: "Coastal View" },
-                { url: "/images/essaouira/rigel-QWJjSOB9t0Y-unsplash.jpg", alt: "Skala de la Ville" },
-                { url: "/images/essaouira/youssef-aboutaleb-ad1FM2Xj0QQ-unsplash.jpg", alt: "Essaouira Streets" }
+                { url: "/images/essaouira/hamza-omlacho-M9GO4Gsd2SM-unsplash.webp", alt: "Essaouira Port" },
+                { url: "/images/essaouira/mostapha-abidour-h9L1GfDgp0s-unsplash.webp", alt: "Blue Boats" },
+                { url: "/images/essaouira/pete-bread-4eZeMUKdV-8-unsplash.webp", alt: "Medina Walls" },
+                { url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.webp", alt: "Essaouira Beach" },
+                { url: "/images/essaouira/rigel-No_Y3bn4lNQ-unsplash.webp", alt: "Coastal View" },
+                { url: "/images/essaouira/rigel-QWJjSOB9t0Y-unsplash.webp", alt: "Skala de la Ville" },
+                { url: "/images/essaouira/youssef-aboutaleb-ad1FM2Xj0QQ-unsplash.webp", alt: "Essaouira Streets" }
             ],
             highlights: [
                 "Walk through the historic Medina (UNESCO site)",
@@ -631,19 +631,19 @@ const siteData = {
             group_size: "unlimited",
             description: "Visit Morocco's capital on a guided Rabat excursion. Explore Hassan Tower, Kasbah of the Udayas, Chellah ruins, and the Royal Palace in a day.",
             image: {
-                url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.jpg",
+                url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp",
                 alt: "visit Rabat Morocco"
             },
             banner_image: {
-                url: "/images/rabat/niklas-VqouWpsuziE-unsplash.jpg",
+                url: "/images/rabat/niklas-VqouWpsuziE-unsplash.webp",
                 alt: "visit Rabat Morocco"
             },
             gallery: [
-                { url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.jpg", alt: "Hassan Tower" },
-                { url: "/images/rabat/hamza-nouasria-7zVLZu5twJs-unsplash.jpg", alt: "Kasbah of the Udayas" },
-                { url: "/images/rabat/mehdi-lamaaffar-PqX7EELWjh0-unsplash.jpg", alt: "Rabat Architecture" },
-                { url: "/images/rabat/soulaymane-elyoussfi-oDSEPEtrQFo-unsplash.jpg", alt: "Mausoleum of Mohammed V" },
-                { url: "/images/rabat/yous-gil-2Kyh6kB5Yh8-unsplash.jpg", alt: "Rabat City View" }
+                { url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp", alt: "Hassan Tower" },
+                { url: "/images/rabat/hamza-nouasria-7zVLZu5twJs-unsplash.webp", alt: "Kasbah of the Udayas" },
+                { url: "/images/rabat/mehdi-lamaaffar-PqX7EELWjh0-unsplash.webp", alt: "Rabat Architecture" },
+                { url: "/images/rabat/soulaymane-elyoussfi-oDSEPEtrQFo-unsplash.webp", alt: "Mausoleum of Mohammed V" },
+                { url: "/images/rabat/yous-gil-2Kyh6kB5Yh8-unsplash.webp", alt: "Rabat City View" }
             ],
             highlights: [
                 "See the Hassan Tower and Mausoleum of Mohammed V",
@@ -682,19 +682,19 @@ const siteData = {
             group_size: "unlimited",
             description: "Explore the cultural heart of Morocco with a guided Fes excursion. Visit Al Quaraouiyine, Chouara Tannery, and the old medina in one unforgettable day.",
             image: {
-                url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.jpg",
+                url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp",
                 alt: "Visit Fez Morocco"
             },
             banner_image: {
-                url: "/images/fes/mauro-lima-buvA1ofvTMY-unsplash.jpg",
+                url: "/images/fes/mauro-lima-buvA1ofvTMY-unsplash.webp",
                 alt: "Visit Fez Morocco"
             },
             gallery: [
-                { url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.jpg", alt: "Fes Tannery" },
-                { url: "/images/fes/hamza-demnati-CJ_DC8Nd2Fk-unsplash.jpg", alt: "Fes Medina" },
-                { url: "/images/fes/hazy-momo-YSTtLgsvRa8-unsplash.jpg", alt: "Medina Streets" },
-                { url: "/images/fes/mauro-lima-mPD9BJ_QGXw-unsplash.jpg", alt: "Bab Bou Jeloud" },
-                { url: "/images/fes/toni-DBNhQdCG-XA-unsplash.jpg", alt: "Traditional Crafts" }
+                { url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp", alt: "Fes Tannery" },
+                { url: "/images/fes/hamza-demnati-CJ_DC8Nd2Fk-unsplash.webp", alt: "Fes Medina" },
+                { url: "/images/fes/hazy-momo-YSTtLgsvRa8-unsplash.webp", alt: "Medina Streets" },
+                { url: "/images/fes/mauro-lima-mPD9BJ_QGXw-unsplash.webp", alt: "Bab Bou Jeloud" },
+                { url: "/images/fes/toni-DBNhQdCG-XA-unsplash.webp", alt: "Traditional Crafts" }
             ],
             highlights: [
                 "Get lost in the Medina of Fes el-Bali",
@@ -734,20 +734,20 @@ const siteData = {
             group_size: "unlimited",
             description: "Join a full-day trip from Marrakech to Ouarzazate and Ait Ben Haddou. Visit film studios, ancient kasbahs, and enjoy scenic views through the Atlas Mountains.",
             image: {
-                url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.jpg",
+                url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.webp",
                 alt: "Ouarzazate Morocco tour"
             },
             banner_image: {
-                url: "/images/ouarzazate/hassan-ouajbir-INcADDyMwwo-unsplash.jpg",
+                url: "/images/ouarzazate/hassan-ouajbir-INcADDyMwwo-unsplash.webp",
                 alt: "Ouarzazate Morocco tour"
             },
             gallery: [
-                { url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.jpg", alt: "Ait Ben Haddou" },
-                { url: "/images/ouarzazate/abdou-faiz-mBo2EUfJ7sY-unsplash.jpg", alt: "Kasbah Taourirt" },
-                { url: "/images/ouarzazate/abdou-faiz-wGy7RhTKODg-unsplash.jpg", alt: "Film Studios" },
-                { url: "/images/ouarzazate/cristiano-pinto-knB5iCogf5Q-unsplash.jpg", alt: "Desert Architecture" },
-                { url: "/images/ouarzazate/laurent-gence-UMEcD4j--_I-unsplash.jpg", alt: "Ouarzazate Landscape" },
-                { url: "/images/ouarzazate/sergio-otoya--3uyPo-2cOE-unsplash.jpg", alt: "Atlas Views" }
+                { url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.webp", alt: "Ait Ben Haddou" },
+                { url: "/images/ouarzazate/abdou-faiz-mBo2EUfJ7sY-unsplash.webp", alt: "Kasbah Taourirt" },
+                { url: "/images/ouarzazate/abdou-faiz-wGy7RhTKODg-unsplash.webp", alt: "Film Studios" },
+                { url: "/images/ouarzazate/cristiano-pinto-knB5iCogf5Q-unsplash.webp", alt: "Desert Architecture" },
+                { url: "/images/ouarzazate/laurent-gence-UMEcD4j--_I-unsplash.webp", alt: "Ouarzazate Landscape" },
+                { url: "/images/ouarzazate/sergio-otoya--3uyPo-2cOE-unsplash.webp", alt: "Atlas Views" }
             ],
             highlights: [
                 "Cross the Tizi n'Tichka pass",
@@ -785,20 +785,20 @@ const siteData = {
             group_size: "unlimited",
             description: "Join a 3 day desert tour from Marrakech to Merzouga. Visit Ait Ben Haddou, ride camels, sleep in a Berber camp, and explore the Sahara.",
             image: {
-                url: "/images/merzouga/merzouga6.jpg",
+                url: "/images/merzouga/merzouga6.webp",
                 alt: "Visit Merzouga Morocco"
             },
             banner_image: {
-                url: "/images/merzouga/merzouga3.jpg",
+                url: "/images/merzouga/merzouga3.webp",
                 alt: "Visit Merzouga Morocco"
             },
             gallery: [
-                { url: "/images/merzouga/merzouga1.jpg", alt: "Camel Trek" },
-                { url: "/images/merzouga/merzouga2.jpg", alt: "Desert Camp Night" },
-                { url: "/images/merzouga/merzouga4.jpg", alt: "Merzouga Dunes" },
-                { url: "/images/merzouga/merzouga5.jpg", alt: "Sahara Sunset" },
-                { url: "/images/merzouga/merzouga6.jpg", alt: "Desert Life" },
-                { url: "/images/merzouga/merzouga7.jpg", alt: "Berber Traditions" }
+                { url: "/images/merzouga/merzouga1.webp", alt: "Camel Trek" },
+                { url: "/images/merzouga/merzouga2.webp", alt: "Desert Camp Night" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Merzouga Dunes" },
+                { url: "/images/merzouga/merzouga5.webp", alt: "Sahara Sunset" },
+                { url: "/images/merzouga/merzouga6.webp", alt: "Desert Life" },
+                { url: "/images/merzouga/merzouga7.webp", alt: "Berber Traditions" }
             ],
             highlights: [
                 "Experience the Sahara Desert",
@@ -847,23 +847,23 @@ const siteData = {
             group_size: "unlimited",
             description: "Explore Marrakech in one day with a guided city tour. Visit the medina, Bahia Palace, Majorelle Garden, and Jemaa el-Fnaa for a complete experience.",
             image: {
-                url: "/images/marrakech/marrakech5.jpg",
+                url: "/images/marrakech/marrakech5.webp",
                 alt: "Visit Marrakech Morocco"
             },
             banner_image: {
-                url: "/images/marrakech/marrakech1.jpg",
+                url: "/images/marrakech/marrakech1.webp",
                 alt: "Visit Marrakech Morocco"
             },
             gallery: [
-                { url: "/images/marrakech/marrakech2.jpg", alt: "Marrakech Streets" },
-                { url: "/images/marrakech/marrakech3.jpg", alt: "Majorelle Garden" },
-                { url: "/images/marrakech/marrakech4.jpg", alt: "Jemaa el-Fnaa" },
-                { url: "/images/marrakech/marrakech5.jpg", alt: "Koutoubia Mosque" },
-                { url: "/images/marrakech/marrakech6.jpg", alt: "Souks" },
-                { url: "/images/marrakech/marrakech7.jpg", alt: "Bahia Palace" },
-                { url: "/images/marrakech/marrakech8.jpg", alt: "Medina" },
-                { url: "/images/marrakech/marrakech9.jpg", alt: "Moroccan Architecture" },
-                { url: "/images/marrakech/marrakech10.jpg", alt: "Traditional Crafts" }
+                { url: "/images/marrakech/marrakech2.webp", alt: "Marrakech Streets" },
+                { url: "/images/marrakech/marrakech3.webp", alt: "Majorelle Garden" },
+                { url: "/images/marrakech/marrakech4.webp", alt: "Jemaa el-Fnaa" },
+                { url: "/images/marrakech/marrakech5.webp", alt: "Koutoubia Mosque" },
+                { url: "/images/marrakech/marrakech6.webp", alt: "Souks" },
+                { url: "/images/marrakech/marrakech7.webp", alt: "Bahia Palace" },
+                { url: "/images/marrakech/marrakech8.webp", alt: "Medina" },
+                { url: "/images/marrakech/marrakech9.webp", alt: "Moroccan Architecture" },
+                { url: "/images/marrakech/marrakech10.webp", alt: "Traditional Crafts" }
             ],
             highlights: [
                 "Visit the Koutoubia Mosque",
@@ -901,18 +901,18 @@ const siteData = {
             description: "Experiencing Morocco goes far beyond visiting its famous monuments and landscapes. One of the most memorable ways to connect with Moroccan culture is through its food. At Your-Morocco, we invite you to take part in an immersive cooking class that allows you to discover the country's rich culinary heritage in a friendly and authentic atmosphere.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.jpg",
+                url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.webp",
                 alt: "Cooking Class Activity In Morocco"
             },
             banner_image: {
-                url: "/images/cooking-class/aziz-acharki-UBEcFUvkrcc-unsplash.jpg",
+                url: "/images/cooking-class/aziz-acharki-UBEcFUvkrcc-unsplash.webp",
                 alt: "Cooking Class Activity In Morocco"
             },
             gallery: [
-                { url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.jpg", alt: "Fresh Ingredients" },
-                { url: "/images/cooking-class/hamza-nouasria-q11NM0cFFzY-unsplash.jpg", alt: "Cooking Process" },
-                { url: "/images/cooking-class/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.jpg", alt: "Moroccan Spices" },
-                { url: "/images/cooking-class/sour-moha-4Tgjeh1fWCc-unsplash.jpg", alt: "Traditional Tagine" }
+                { url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.webp", alt: "Fresh Ingredients" },
+                { url: "/images/cooking-class/hamza-nouasria-q11NM0cFFzY-unsplash.webp", alt: "Cooking Process" },
+                { url: "/images/cooking-class/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.webp", alt: "Moroccan Spices" },
+                { url: "/images/cooking-class/sour-moha-4Tgjeh1fWCc-unsplash.webp", alt: "Traditional Tagine" }
             ],
             highlights: [
                 "Learn to prepare iconic dishes like tagine, couscous, pastilla, and traditional pastries",
@@ -950,18 +950,18 @@ const siteData = {
             description: "If you're looking for excitement, stunning landscapes, and a sense of adventure, quad biking in Morocco is the perfect activity. With Your-Morocco, you can experience the thrill of riding a quad bike across some of the country's most breathtaking terrains from the rocky trails of the Agafay Desert to the golden dunes near Merzouga, and the palm groves just outside Marrakech.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.jpg",
+                url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.webp",
                 alt: "Quad Biking Activity In Morocco"
             },
             banner_image: {
-                url: "/images/quad-biking/adrien-delforge-VH2HRylVsiM-unsplash.jpg",
+                url: "/images/quad-biking/adrien-delforge-VH2HRylVsiM-unsplash.webp",
                 alt: "Quad Biking Activity In Morocco"
             },
             gallery: [
-                { url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.jpg", alt: "Desert Adventure" },
-                { url: "/images/quad-biking/haris-khan-v40H7tLOZII-unsplash.jpg", alt: "Quad Biking Group" },
-                { url: "/images/quad-biking/mayar-zidan-LVNcykwlDEg-unsplash.jpg", alt: "Scenic Route" },
-                { url: "/images/quad-biking/nils-5RfEgsnxeHo-unsplash.jpg", alt: "Off-road Fun" }
+                { url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.webp", alt: "Desert Adventure" },
+                { url: "/images/quad-biking/haris-khan-v40H7tLOZII-unsplash.webp", alt: "Quad Biking Group" },
+                { url: "/images/quad-biking/mayar-zidan-LVNcykwlDEg-unsplash.webp", alt: "Scenic Route" },
+                { url: "/images/quad-biking/nils-5RfEgsnxeHo-unsplash.webp", alt: "Off-road Fun" }
             ],
             highlights: [
                 "Ride across diverse terrains: Agafay Desert, Merzouga dunes, palm groves",
@@ -1000,20 +1000,20 @@ const siteData = {
             description: "Camel riding is one of the most iconic and peaceful ways to explore the beauty of Morocco. With Your-Morocco, you can enjoy a guided camel experience across stunning landscapes such as the golden dunes of the Sahara Desert, the rocky Agafay Desert near Marrakech, or the lush palm groves around traditional Berber villages.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.jpg",
+                url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.webp",
                 alt: "Camel Riding Activity In Morocco"
             },
             banner_image: {
-                url: "/images/camel-riding/dan-calderwood-7CPopIsaCkc-unsplash.jpg",
+                url: "/images/camel-riding/dan-calderwood-7CPopIsaCkc-unsplash.webp",
                 alt: "Camel Riding Activity In Morocco"
             },
             gallery: [
-                { url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.jpg", alt: "Desert Trek" },
-                { url: "/images/camel-riding/oussama-rahib-f7F8URbIx08-unsplash.jpg", alt: "Sunset Ride" },
-                { url: "/images/camel-riding/peter-thomas-PotqZeNaUZ4-unsplash.jpg", alt: "Camel Caravan" },
-                { url: "/images/camel-riding/peter-thomas-nF8-ekoE0qw-unsplash.jpg", alt: "Sahara Experience" },
-                { url: "/images/camel-riding/sheila-c-KuXu8rx_1-8-unsplash.jpg", alt: "Golden Dunes" },
-                { url: "/images/camel-riding/tamar-dCMvzMV1jfc-unsplash.jpg", alt: "Camel Close-up" }
+                { url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.webp", alt: "Desert Trek" },
+                { url: "/images/camel-riding/oussama-rahib-f7F8URbIx08-unsplash.webp", alt: "Sunset Ride" },
+                { url: "/images/camel-riding/peter-thomas-PotqZeNaUZ4-unsplash.webp", alt: "Camel Caravan" },
+                { url: "/images/camel-riding/peter-thomas-nF8-ekoE0qw-unsplash.webp", alt: "Sahara Experience" },
+                { url: "/images/camel-riding/sheila-c-KuXu8rx_1-8-unsplash.webp", alt: "Golden Dunes" },
+                { url: "/images/camel-riding/tamar-dCMvzMV1jfc-unsplash.webp", alt: "Camel Close-up" }
             ],
             highlights: [
                 "Ride through golden Sahara dunes, Agafay Desert, or palm groves",
@@ -1051,22 +1051,22 @@ const siteData = {
             description: "A journey through Morocco is not complete without tasting its incredible street food and regional specialties. At Your-Morocco, we offer curated food tours that allow you to explore the country's culinary landscape while walking through its vibrant medinas, local neighborhoods, and hidden food corners. These tours are designed for curious travelers who want to eat like locals and understand the stories behind every bite.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.jpg",
+                url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.webp",
                 alt: "Food Tour Activity In Morocco"
             },
             banner_image: {
-                url: "/images/food-tour/adil-elouardii-_fcZ5jncgAw-unsplash.jpg",
+                url: "/images/food-tour/adil-elouardii-_fcZ5jncgAw-unsplash.webp",
                 alt: "Food Tour Activity In Morocco"
             },
             gallery: [
-                { url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.jpg", alt: "Local Delicacies" },
-                { url: "/images/food-tour/annie-spratt-wGzO3Qvp98Q-unsplash.jpg", alt: "Street Food" },
-                { url: "/images/food-tour/florian-d-bazac-PitkCiuzigI-unsplash.jpg", alt: "Traditional Dish" },
-                { url: "/images/food-tour/il-vagabiondo-SW7mMXu12Ws-unsplash.jpg", alt: "Market Spices" },
-                { url: "/images/food-tour/louis-hansel-k2ZCm7LCj8E-unsplash.jpg", alt: "Fresh Bread" },
-                { url: "/images/food-tour/rigel-Zsw9CvJIeiw-unsplash.jpg", alt: "Moroccan Tea" },
-                { url: "/images/food-tour/sour-moha-4Tgjeh1fWCc-unsplash.jpg", alt: "Tagine" },
-                { url: "/images/food-tour/sour-moha-5t2SP3vQz28-unsplash.jpg", alt: "Culinary Art" }
+                { url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.webp", alt: "Local Delicacies" },
+                { url: "/images/food-tour/annie-spratt-wGzO3Qvp98Q-unsplash.webp", alt: "Street Food" },
+                { url: "/images/food-tour/florian-d-bazac-PitkCiuzigI-unsplash.webp", alt: "Traditional Dish" },
+                { url: "/images/food-tour/il-vagabiondo-SW7mMXu12Ws-unsplash.webp", alt: "Market Spices" },
+                { url: "/images/food-tour/louis-hansel-k2ZCm7LCj8E-unsplash.webp", alt: "Fresh Bread" },
+                { url: "/images/food-tour/rigel-Zsw9CvJIeiw-unsplash.webp", alt: "Moroccan Tea" },
+                { url: "/images/food-tour/sour-moha-4Tgjeh1fWCc-unsplash.webp", alt: "Tagine" },
+                { url: "/images/food-tour/sour-moha-5t2SP3vQz28-unsplash.webp", alt: "Culinary Art" }
             ],
             highlights: [
                 "Explore vibrant medinas and hidden food corners",
@@ -1104,22 +1104,22 @@ const siteData = {
             description: "For travelers seeking a breathtaking and peaceful adventure, an air balloon ride over Morocco is an experience like no other. With Your-Morocco, you can soar above beautiful landscapes at sunrise, enjoying panoramic views of red earth hills, scattered Berber villages, and the majestic Atlas Mountains in the distance.",
             categories: ["Activities", "Blog"],
             image: {
-                url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.jpg",
+                url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.webp",
                 alt: "Air Balloon Activity In Morocco"
             },
             banner_image: {
-                url: "/images/airballon/danai-tsoutreli-3NAlBV5PlmE-unsplash.jpg",
+                url: "/images/airballon/danai-tsoutreli-3NAlBV5PlmE-unsplash.webp",
                 alt: "Air Balloon Activity In Morocco"
             },
             gallery: [
-                { url: "/images/airballon/danai-tsoutreli-hqeYq7qSI7c-unsplash.jpg", alt: "Balloon View" },
-                { url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.jpg", alt: "Sunrise Flight" },
-                { url: "/images/airballon/manoa-angelo-w7jeZ5NFSvQ-unsplash.jpg", alt: "Atlas Mountains" },
-                { url: "/images/airballon/matthieu-gouiffes-6JZhmw5VhsA-unsplash.jpg", alt: "Aerial Landscape" },
-                { url: "/images/airballon/mengyu-xu-Hu3DS4Rx4ts-unsplash.jpg", alt: "Desert From Above" },
-                { url: "/images/airballon/paul-lucyk-b_ZJPTbpUJw-unsplash.jpg", alt: "Balloon Shadow" },
-                { url: "/images/airballon/wouter-groote-veldman-6NDiNzFdOyI-unsplash.jpg", alt: "Preparing Flight" },
-                { url: "/images/airballon/wouter-groote-veldman-hGGyMkSSTZY-unsplash.jpg", alt: "Sky High" }
+                { url: "/images/airballon/danai-tsoutreli-hqeYq7qSI7c-unsplash.webp", alt: "Balloon View" },
+                { url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.webp", alt: "Sunrise Flight" },
+                { url: "/images/airballon/manoa-angelo-w7jeZ5NFSvQ-unsplash.webp", alt: "Atlas Mountains" },
+                { url: "/images/airballon/matthieu-gouiffes-6JZhmw5VhsA-unsplash.webp", alt: "Aerial Landscape" },
+                { url: "/images/airballon/mengyu-xu-Hu3DS4Rx4ts-unsplash.webp", alt: "Desert From Above" },
+                { url: "/images/airballon/paul-lucyk-b_ZJPTbpUJw-unsplash.webp", alt: "Balloon Shadow" },
+                { url: "/images/airballon/wouter-groote-veldman-6NDiNzFdOyI-unsplash.webp", alt: "Preparing Flight" },
+                { url: "/images/airballon/wouter-groote-veldman-hGGyMkSSTZY-unsplash.webp", alt: "Sky High" }
             ],
             highlights: [
                 "Sunrise balloon ride with panoramic views",
@@ -1175,15 +1175,15 @@ const siteDataFR = {
             description: "Découvrez le Maroc à votre façon avec notre service exclusif de chauffeur privé. Choisissez votre chauffeur personnel parmi notre sélection de professionnels expérimentés et multilingues, chacun possédant son propre portfolio mettant en valeur son expertise, ses itinéraires préférés et sa flotte de véhicules haut de gamme. Que vous souhaitiez explorer nos circuits et excursions triés sur le volet avec un chauffeur connaissant chaque trésor caché, ou simplement avoir la liberté de flâner dans la ville à votre rythme, nos chauffeurs sont à votre service. Parcourez des profils détaillés comprenant des galeries photos, les langues parlées, les options de véhicules et les itinéraires spécialisés pour trouver votre partenaire idéal. Une fois votre chauffeur sélectionné, vous pouvez choisir parmi nos circuits soigneusement conçus ou créer votre propre aventure – le choix vous appartient entièrement. Contactez directement votre chauffeur choisi pour discuter de vos plans et préférences, assurant une expérience personnalisée adaptée à votre vision unique du voyage. Du lever de soleil dans le Sahara au coucher de soleil dans les médinas de Marrakech, votre chauffeur dévoué devient votre expert local, guide et compagnon de route.",
             categories: ["Services", "Luxe"],
             image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Chauffeur Privé de Luxe au Maroc"
             },
             banner_image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Service de Chauffeur Privé de Luxe"
             },
             gallery: [
-                { url: "/images/services/luxury_driver_service.png", alt: "Chauffeur Privé" },
+                { url: "/images/services/luxury_driver_service.webp", alt: "Chauffeur Privé" },
             ],
             highlights: [
                 "Sélection de professionnels multilingues",
@@ -1203,17 +1203,17 @@ const siteDataFR = {
             description: "Commencez votre voyage marocain du bon pied avec un transfert aéroport fiable. Nous fournissons des véhicules confortables et climatisés avec des chauffeurs professionnels pour assurer une arrivée en douceur.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Service de Transfert Aéroport"
             },
             banner_image: {
-                url: "/images/services/banner.png",
+                url: "/images/services/banner.webp",
                 alt: "Service de Transfert Aéroport"
             },
             gallery: [
-                { url: "/images/services/transport_from_airport.png", alt: "Transfert Confortable" },
-                { url: "/images/casablanca/casablanca.png", alt: "Transfert Aéroport Casablanca" },
-                { url: "/images/marrakech/marrakech.png", alt: "Arrivée à Marrakech" }
+                { url: "/images/services/transport_from_airport.webp", alt: "Transfert Confortable" },
+                { url: "/images/casablanca/casablanca.webp", alt: "Transfert Aéroport Casablanca" },
+                { url: "/images/marrakech/marrakech.webp", alt: "Arrivée à Marrakech" }
             ],
             highlights: [
                 "Disponibilité 24h/24 et 7j/7",
@@ -1236,17 +1236,17 @@ const siteDataFR = {
             description: "Arriver dans un nouveau pays peut être stressant, surtout après un long vol. Notre service de transfert hôtelier vous garantit d'arriver à votre hébergement en toute sécurité et confort.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Service de Transfert Hôtelier"
             },
             banner_image: {
-                url: "/images/services/banner.png",
+                url: "/images/services/banner.webp",
                 alt: "Service de Transfert Hôtelier"
             },
             gallery: [
-                { url: "/images/services/transport_from_hotel.png", alt: "Prise en charge à l'hôtel" },
-                { url: "/images/rabat/rabat.png", alt: "Transfert en ville" },
-                { url: "/images/fes/Fes.png", alt: "Trajet Confortable" }
+                { url: "/images/services/transport_from_hotel.webp", alt: "Prise en charge à l'hôtel" },
+                { url: "/images/rabat/rabat.webp", alt: "Transfert en ville" },
+                { url: "/images/fes/Fes.webp", alt: "Trajet Confortable" }
             ],
             highlights: [
                 "Service porte-à-porte",
@@ -1269,17 +1269,17 @@ const siteDataFR = {
             description: "Voyager à travers le Maroc à votre propre rythme est la meilleure façon de découvrir le pays. Notre service de voiture privée avec chauffeur vous donne la liberté d'explorer.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.png",
+                url: "/images/services/luxury_driver_service.webp",
                 alt: "Location de Voiture Privée"
             },
             banner_image: {
-                url: "/images/services/banner.png",
+                url: "/images/services/banner.webp",
                 alt: "Location de Voiture Privée"
             },
             gallery: [
-                { url: "/images/services/car_rental.png", alt: "Location de Voiture de Luxe" },
-                { url: "/images/ouarzazate/ouarzazate.png", alt: "Road Trip" },
-                { url: "/images/merzouga/merzouga1.jpg", alt: "Conduite dans le désert" }
+                { url: "/images/services/car_rental.webp", alt: "Location de Voiture de Luxe" },
+                { url: "/images/ouarzazate/ouarzazate.webp", alt: "Road Trip" },
+                { url: "/images/merzouga/merzouga1.webp", alt: "Conduite dans le désert" }
             ],
             highlights: [
                 "Itinéraire flexible",
@@ -1312,20 +1312,20 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Découvrez le Sahara lors d'un tour de 3 jours dans le désert de Merzouga depuis Marrakech. Visitez Aït Benhaddou, faites une balade à dos de chameau au coucher du soleil et dormez sous les étoiles.",
             image: {
-                url: "/images/merzouga/merzouga5.jpg",
+                url: "/images/merzouga/merzouga5.webp",
                 alt: "Visiter Merzouga Maroc"
             },
             banner_image: {
-                url: "/images/merzouga/merzouga1.jpg",
+                url: "/images/merzouga/merzouga1.webp",
                 alt: "Visiter Merzouga Maroc"
             },
             gallery: [
-                { url: "/images/merzouga/merzouga2.jpg", alt: "Randonnée à chameau à Merzouga" },
-                { url: "/images/merzouga/merzouga3.jpg", alt: "Campement dans le désert" },
-                { url: "/images/merzouga/merzouga4.jpg", alt: "Dunes du Sahara" },
-                { url: "/images/merzouga/merzouga5.jpg", alt: "Coucher de soleil à Merzouga" },
-                { url: "/images/merzouga/merzouga6.jpg", alt: "Paysage désertique" },
-                { url: "/images/merzouga/merzouga7.jpg", alt: "Vie Berbère" }
+                { url: "/images/merzouga/merzouga2.webp", alt: "Randonnée à chameau à Merzouga" },
+                { url: "/images/merzouga/merzouga3.webp", alt: "Campement dans le désert" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Dunes du Sahara" },
+                { url: "/images/merzouga/merzouga5.webp", alt: "Coucher de soleil à Merzouga" },
+                { url: "/images/merzouga/merzouga6.webp", alt: "Paysage désertique" },
+                { url: "/images/merzouga/merzouga7.webp", alt: "Vie Berbère" }
             ],
             highlights: [
                 "Trajet pittoresque à travers les montagnes de l'Atlas",
@@ -1379,20 +1379,20 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Découvrez le sud du Maroc lors d'un tour de 4 jours de Marrakech à Ouarzazate. Visitez les gorges du Dadès, faites une balade à dos de chameau à Merzouga et explorez les paysages désertiques et les kasbahs anciennes.",
             image: {
-                url: "/images/merzouga/merzouga1.jpg",
+                url: "/images/merzouga/merzouga1.webp",
                 alt: "Visiter Merzouga Maroc"
             },
             banner_image: {
-                url: "/images/merzouga/merzouga2.jpg",
+                url: "/images/merzouga/merzouga2.webp",
                 alt: "Visiter Merzouga Maroc"
             },
             gallery: [
-                { url: "/images/merzouga/merzouga1.jpg", alt: "Dunes du Sahara" },
-                { url: "/images/merzouga/merzouga3.jpg", alt: "Campement dans le désert" },
-                { url: "/images/merzouga/merzouga4.jpg", alt: "Randonnée à chameau" },
-                { url: "/images/merzouga/merzouga5.jpg", alt: "Paysage de Merzouga" },
-                { url: "/images/merzouga/merzouga6.jpg", alt: "Aventure dans le désert" },
-                { url: "/images/merzouga/merzouga7.jpg", alt: "Tente Berbère" }
+                { url: "/images/merzouga/merzouga1.webp", alt: "Dunes du Sahara" },
+                { url: "/images/merzouga/merzouga3.webp", alt: "Campement dans le désert" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Randonnée à chameau" },
+                { url: "/images/merzouga/merzouga5.webp", alt: "Paysage de Merzouga" },
+                { url: "/images/merzouga/merzouga6.webp", alt: "Aventure dans le désert" },
+                { url: "/images/merzouga/merzouga7.webp", alt: "Tente Berbère" }
             ],
             highlights: [
                 "Traversée des Haut-Atlas via le col de Tizi n'Tichka",
@@ -1453,20 +1453,20 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Découvrez les points forts du Maroc lors d'un tour de 5 jours de Marrakech à Merzouga, Fès, Chefchaouen et Casablanca. Balades à chameau, sites historiques et paysages époustouflants vous attendent.",
             image: {
-                url: "/images/marrakech/marrakech3.jpg",
+                url: "/images/marrakech/marrakech3.webp",
                 alt: "Visiter Marrakech Maroc"
             },
             banner_image: {
-                url: "/images/marrakech/marrakech.jpg",
+                url: "/images/marrakech/marrakech.webp",
                 alt: "Visiter Marrakech Maroc"
             },
             gallery: [
-                { url: "/images/marrakech/marrakech1.jpg", alt: "Ville de Marrakech" },
-                { url: "/images/marrakech/marrakech2.jpg", alt: "Ruelles de la Médina" },
-                { url: "/images/marrakech/marrakech3.jpg", alt: "Architecture Traditionnelle" },
-                { url: "/images/marrakech/marrakech4.jpg", alt: "Souks Animés" },
-                { url: "/images/marrakech/marrakech5.jpg", alt: "Design Marocain" },
-                { url: "/images/marrakech/marrakech6.jpg", alt: "Vues sur la Ville" }
+                { url: "/images/marrakech/marrakech1.webp", alt: "Ville de Marrakech" },
+                { url: "/images/marrakech/marrakech2.webp", alt: "Ruelles de la Médina" },
+                { url: "/images/marrakech/marrakech3.webp", alt: "Architecture Traditionnelle" },
+                { url: "/images/marrakech/marrakech4.webp", alt: "Souks Animés" },
+                { url: "/images/marrakech/marrakech5.webp", alt: "Design Marocain" },
+                { url: "/images/marrakech/marrakech6.webp", alt: "Vues sur la Ville" }
             ],
             highlights: [
                 "Tour complet des villes impériales du Maroc",
@@ -1535,19 +1535,19 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Réservez une excursion de deux jours de Marrakech à Zagora incluant des balades à dos de chameau, une nuit dans un campement berbère et des visites d'Aït Benhaddou.",
             image: {
-                url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.jpg",
+                url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.webp",
                 alt: "Visiter ZAGORA Maroc"
             },
             banner_image: {
-                url: "/images/Zagoura/marvin-meyer-X0XRRXSVLU4-unsplash.jpg",
+                url: "/images/Zagoura/marvin-meyer-X0XRRXSVLU4-unsplash.webp",
                 alt: "Visiter ZAGORA Maroc"
             },
             gallery: [
-                { url: "/images/Zagoura/darolti-dan-GJw9zRK_VBs-unsplash.jpg", alt: "Désert de Zagora" },
-                { url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.jpg", alt: "Randonnée à chameau" },
-                { url: "/images/Zagoura/ismail-el-youssefi-geeSPCxnKzU-unsplash.jpg", alt: "Paysage désertique" },
-                { url: "/images/Zagoura/kristijan-nikodinovski-RfK4AQchykw-unsplash.jpg", alt: "Campement Berbère" },
-                { url: "/images/Zagoura/raul-mermans-garcia-oWzVpeYyJ-w-unsplash.jpg", alt: "Coucher de soleil à Zagora" }
+                { url: "/images/Zagoura/darolti-dan-GJw9zRK_VBs-unsplash.webp", alt: "Désert de Zagora" },
+                { url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.webp", alt: "Randonnée à chameau" },
+                { url: "/images/Zagoura/ismail-el-youssefi-geeSPCxnKzU-unsplash.webp", alt: "Paysage désertique" },
+                { url: "/images/Zagoura/kristijan-nikodinovski-RfK4AQchykw-unsplash.webp", alt: "Campement Berbère" },
+                { url: "/images/Zagoura/raul-mermans-garcia-oWzVpeYyJ-w-unsplash.webp", alt: "Coucher de soleil à Zagora" }
             ],
             highlights: [
                 "Trajet à travers la vallée du Draâ",
@@ -1592,19 +1592,19 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Échappez-vous dans la nature avec une excursion d'une journée aux cascades d'Ouzoud depuis Marrakech. Profitez de randonnées pittoresques, de promenades en bateau et de vues à couper le souffle lors de cette journée de détente.",
             image: {
-                url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.jpg",
+                url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.webp",
                 alt: "Visiter les Cascades d'OUZOUD"
             },
             banner_image: {
-                url: "/images/ouzoud/rihards-sarma-mJGl8l1SiJk-unsplash.jpg",
+                url: "/images/ouzoud/rihards-sarma-mJGl8l1SiJk-unsplash.webp",
                 alt: "Visiter les Cascades d'OUZOUD"
             },
             gallery: [
-                { url: "/images/ouzoud/danai-tsoutreli-tqLc6On9KIA-unsplash.jpg", alt: "Cascades d'Ouzoud" },
-                { url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.jpg", alt: "Nature des Cascades" },
-                { url: "/images/ouzoud/sergio-teixeira-svdabxVg7-4-unsplash.jpg", alt: "Vue Scénique" },
-                { url: "/images/ouzoud/tobias-pfeifer-F8TGlff-qks-unsplash.jpg", alt: "Macaque de Barbarie" },
-                { url: "/images/ouzoud/tobias-pfeifer-IBT7zZDTtNg-unsplash.jpg", alt: "Paysage d'Ouzoud" }
+                { url: "/images/ouzoud/danai-tsoutreli-tqLc6On9KIA-unsplash.webp", alt: "Cascades d'Ouzoud" },
+                { url: "/images/ouzoud/selina-bubendorfer-jP51Ai2tQGE-unsplash.webp", alt: "Nature des Cascades" },
+                { url: "/images/ouzoud/sergio-teixeira-svdabxVg7-4-unsplash.webp", alt: "Vue Scénique" },
+                { url: "/images/ouzoud/tobias-pfeifer-F8TGlff-qks-unsplash.webp", alt: "Macaque de Barbarie" },
+                { url: "/images/ouzoud/tobias-pfeifer-IBT7zZDTtNg-unsplash.webp", alt: "Paysage d'Ouzoud" }
             ],
             highlights: [
                 "Découvrez les plus hautes cascades d'Afrique du Nord",
@@ -1644,17 +1644,17 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Découvrez la beauté de la vallée de l'Ourika lors d'une excursion d'une journée depuis Marrakech. Profitez de vues pittoresques, de villages berbères, de cascades et d'une escapade paisible.",
             image: {
-                url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.jpg",
+                url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.webp",
                 alt: "Visiter la VALLÉE DE L'OURIKA MAROC"
             },
             banner_image: {
-                url: "/images/ourika/hassan-ahrouch-CfmIZwBvxNY-unsplash.jpg",
+                url: "/images/ourika/hassan-ahrouch-CfmIZwBvxNY-unsplash.webp",
                 alt: "Visiter la VALLÉE DE L'OURIKA MAROC"
             },
             gallery: [
-                { url: "/images/ourika/abdelhamid-azoui-BGU0uaY0tJs-unsplash.jpg", alt: "Vallée de l'Ourika" },
-                { url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.jpg", alt: "Bord de rivière" },
-                { url: "/images/ourika/matthew-fainman-3yonP2JaGTU-unsplash.jpg", alt: "Montagnes de l'Atlas" }
+                { url: "/images/ourika/abdelhamid-azoui-BGU0uaY0tJs-unsplash.webp", alt: "Vallée de l'Ourika" },
+                { url: "/images/ourika/abderrahman-kamal-MilM52Qj32g-unsplash.webp", alt: "Bord de rivière" },
+                { url: "/images/ourika/matthew-fainman-3yonP2JaGTU-unsplash.webp", alt: "Montagnes de l'Atlas" }
             ],
             highlights: [
                 "Visite d'une maison berbère traditionnelle",
@@ -1693,20 +1693,20 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Explorez Casablanca lors d'une visite guidée d'une journée. Visitez la Mosquée Hassan II, les monuments Art déco, le quartier des Habous et la Corniche lors de cette excursion culturelle.",
             image: {
-                url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.jpg",
+                url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.webp",
                 alt: "Visiter Casablanca Maroc"
             },
             banner_image: {
-                url: "/images/casablanca/oussama-rahib-NNECQHl9bJc-unsplash.jpg",
+                url: "/images/casablanca/oussama-rahib-NNECQHl9bJc-unsplash.webp",
                 alt: "Visiter Casablanca Maroc"
             },
             gallery: [
-                { url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.jpg", alt: "Mosquée Hassan II" },
-                { url: "/images/casablanca/imad-ghazal-gRE6Be-o_Hw-unsplash.jpg", alt: "Rues de Casablanca" },
-                { url: "/images/casablanca/kristijan-nikodinovski-nkav4Pi-UwY-unsplash.jpg", alt: "Architecture de la ville" },
-                { url: "/images/casablanca/mannie-nami-_aNm8TMzbUI-unsplash.jpg", alt: "Vue urbaine" },
-                { url: "/images/casablanca/mehdi-sakout-54nOsVV1xI4-unsplash.jpg", alt: "Vie à Casablanca" },
-                { url: "/images/casablanca/zakaria-zayane-aBywMnV7ibk-unsplash.jpg", alt: "Corniche" }
+                { url: "/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.webp", alt: "Mosquée Hassan II" },
+                { url: "/images/casablanca/imad-ghazal-gRE6Be-o_Hw-unsplash.webp", alt: "Rues de Casablanca" },
+                { url: "/images/casablanca/kristijan-nikodinovski-nkav4Pi-UwY-unsplash.webp", alt: "Architecture de la ville" },
+                { url: "/images/casablanca/mannie-nami-_aNm8TMzbUI-unsplash.webp", alt: "Vue urbaine" },
+                { url: "/images/casablanca/mehdi-sakout-54nOsVV1xI4-unsplash.webp", alt: "Vie à Casablanca" },
+                { url: "/images/casablanca/zakaria-zayane-aBywMnV7ibk-unsplash.webp", alt: "Corniche" }
             ],
             highlights: [
                 "Visite de la magnifique Mosquée Hassan II",
@@ -1746,21 +1746,21 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Explorez Essaouira lors d'une excursion d'une journée depuis Marrakech. Visitez la médina, profitez de la plage et découvrez l'artisanat local dans cette charmante ville côtière.",
             image: {
-                url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.jpg",
+                url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.webp",
                 alt: "Visiter ESSAOUIRA MAROC"
             },
             banner_image: {
-                url: "/images/essaouira/rigel-ibisQEDxODo-unsplash.jpg",
+                url: "/images/essaouira/rigel-ibisQEDxODo-unsplash.webp",
                 alt: "Visiter ESSAOUIRA MAROC"
             },
             gallery: [
-                { url: "/images/essaouira/hamza-omlacho-M9GO4Gsd2SM-unsplash.jpg", alt: "Port d'Essaouira" },
-                { url: "/images/essaouira/mostapha-abidour-h9L1GfDgp0s-unsplash.jpg", alt: "Bateaux bleus" },
-                { url: "/images/essaouira/pete-bread-4eZeMUKdV-8-unsplash.jpg", alt: "Remparts de la médina" },
-                { url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.jpg", alt: "Plage d'Essaouira" },
-                { url: "/images/essaouira/rigel-No_Y3bn4lNQ-unsplash.jpg", alt: "Vue côtière" },
-                { url: "/images/essaouira/rigel-QWJjSOB9t0Y-unsplash.jpg", alt: "Skala de la Ville" },
-                { url: "/images/essaouira/youssef-aboutaleb-ad1FM2Xj0QQ-unsplash.jpg", alt: "Rues d'Essaouira" }
+                { url: "/images/essaouira/hamza-omlacho-M9GO4Gsd2SM-unsplash.webp", alt: "Port d'Essaouira" },
+                { url: "/images/essaouira/mostapha-abidour-h9L1GfDgp0s-unsplash.webp", alt: "Bateaux bleus" },
+                { url: "/images/essaouira/pete-bread-4eZeMUKdV-8-unsplash.webp", alt: "Remparts de la médina" },
+                { url: "/images/essaouira/peter-schulz--leOF2nzJQ8-unsplash.webp", alt: "Plage d'Essaouira" },
+                { url: "/images/essaouira/rigel-No_Y3bn4lNQ-unsplash.webp", alt: "Vue côtière" },
+                { url: "/images/essaouira/rigel-QWJjSOB9t0Y-unsplash.webp", alt: "Skala de la Ville" },
+                { url: "/images/essaouira/youssef-aboutaleb-ad1FM2Xj0QQ-unsplash.webp", alt: "Rues d'Essaouira" }
             ],
             highlights: [
                 "Promenade dans la médina historique (site UNESCO)",
@@ -1799,19 +1799,19 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Visitez la capitale du Maroc lors d'une excursion guidée à Rabat. Explorez la Tour Hassan, la Kasbah des Oudayas, les ruines de Chellah et le Palais Royal en une journée.",
             image: {
-                url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.jpg",
+                url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp",
                 alt: "Visiter Rabat Maroc"
             },
             banner_image: {
-                url: "/images/rabat/niklas-VqouWpsuziE-unsplash.jpg",
+                url: "/images/rabat/niklas-VqouWpsuziE-unsplash.webp",
                 alt: "Visiter Rabat Maroc"
             },
             gallery: [
-                { url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.jpg", alt: "Tour Hassan" },
-                { url: "/images/rabat/hamza-nouasria-7zVLZu5twJs-unsplash.jpg", alt: "Kasbah des Oudayas" },
-                { url: "/images/rabat/mehdi-lamaaffar-PqX7EELWjh0-unsplash.jpg", alt: "Architecture de Rabat" },
-                { url: "/images/rabat/soulaymane-elyoussfi-oDSEPEtrQFo-unsplash.jpg", alt: "Mausolée de Mohammed V" },
-                { url: "/images/rabat/yous-gil-2Kyh6kB5Yh8-unsplash.jpg", alt: "Vue sur la ville de Rabat" }
+                { url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp", alt: "Tour Hassan" },
+                { url: "/images/rabat/hamza-nouasria-7zVLZu5twJs-unsplash.webp", alt: "Kasbah des Oudayas" },
+                { url: "/images/rabat/mehdi-lamaaffar-PqX7EELWjh0-unsplash.webp", alt: "Architecture de Rabat" },
+                { url: "/images/rabat/soulaymane-elyoussfi-oDSEPEtrQFo-unsplash.webp", alt: "Mausolée de Mohammed V" },
+                { url: "/images/rabat/yous-gil-2Kyh6kB5Yh8-unsplash.webp", alt: "Vue sur la ville de Rabat" }
             ],
             highlights: [
                 "Visite de la Tour Hassan et du Mausolée de Mohammed V",
@@ -1850,19 +1850,19 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Explorez le cœur culturel du Maroc avec une excursion guidée à Fès. Visitez Al Quaraouiyine, la Tannerie Chouara et la vieille médina en une journée inoubliable.",
             image: {
-                url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.jpg",
+                url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp",
                 alt: "Visiter Fès Maroc"
             },
             banner_image: {
-                url: "/images/fes/mauro-lima-buvA1ofvTMY-unsplash.jpg",
+                url: "/images/fes/mauro-lima-buvA1ofvTMY-unsplash.webp",
                 alt: "Visiter Fès Maroc"
             },
             gallery: [
-                { url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.jpg", alt: "Tannerie de Fès" },
-                { url: "/images/fes/hamza-demnati-CJ_DC8Nd2Fk-unsplash.jpg", alt: "Médina de Fès" },
-                { url: "/images/fes/hazy-momo-YSTtLgsvRa8-unsplash.jpg", alt: "Ruelles de la médina" },
-                { url: "/images/fes/mauro-lima-mPD9BJ_QGXw-unsplash.jpg", alt: "Bab Bou Jeloud" },
-                { url: "/images/fes/toni-DBNhQdCG-XA-unsplash.jpg", alt: "Artisanat traditionnel" }
+                { url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp", alt: "Tannerie de Fès" },
+                { url: "/images/fes/hamza-demnati-CJ_DC8Nd2Fk-unsplash.webp", alt: "Médina de Fès" },
+                { url: "/images/fes/hazy-momo-YSTtLgsvRa8-unsplash.webp", alt: "Ruelles de la médina" },
+                { url: "/images/fes/mauro-lima-mPD9BJ_QGXw-unsplash.webp", alt: "Bab Bou Jeloud" },
+                { url: "/images/fes/toni-DBNhQdCG-XA-unsplash.webp", alt: "Artisanat traditionnel" }
             ],
             highlights: [
                 "Perdez-vous dans la Médina de Fès el-Bali",
@@ -1902,20 +1902,20 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Rejoignez une excursion d'une journée de Marrakech à Ouarzazate et Aït Benhaddou. Visitez les studios de cinéma, les kasbahs anciennes et profitez de vues panoramiques à travers les montagnes de l'Atlas.",
             image: {
-                url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.jpg",
+                url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.webp",
                 alt: "Tour à Ouarzazate Maroc"
             },
             banner_image: {
-                url: "/images/ouarzazate/hassan-ouajbir-INcADDyMwwo-unsplash.jpg",
+                url: "/images/ouarzazate/hassan-ouajbir-INcADDyMwwo-unsplash.webp",
                 alt: "Tour à Ouarzazate Maroc"
             },
             gallery: [
-                { url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.jpg", alt: "Aït Benhaddou" },
-                { url: "/images/ouarzazate/abdou-faiz-mBo2EUfJ7sY-unsplash.jpg", alt: "Kasbah Taourirt" },
-                { url: "/images/ouarzazate/abdou-faiz-wGy7RhTKODg-unsplash.jpg", alt: "Studios de cinéma" },
-                { url: "/images/ouarzazate/cristiano-pinto-knB5iCogf5Q-unsplash.jpg", alt: "Architecture désertique" },
-                { url: "/images/ouarzazate/laurent-gence-UMEcD4j--_I-unsplash.jpg", alt: "Paysage d'Ouarzazate" },
-                { url: "/images/ouarzazate/sergio-otoya--3uyPo-2cOE-unsplash.jpg", alt: "Vues sur l'Atlas" }
+                { url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.webp", alt: "Aït Benhaddou" },
+                { url: "/images/ouarzazate/abdou-faiz-mBo2EUfJ7sY-unsplash.webp", alt: "Kasbah Taourirt" },
+                { url: "/images/ouarzazate/abdou-faiz-wGy7RhTKODg-unsplash.webp", alt: "Studios de cinéma" },
+                { url: "/images/ouarzazate/cristiano-pinto-knB5iCogf5Q-unsplash.webp", alt: "Architecture désertique" },
+                { url: "/images/ouarzazate/laurent-gence-UMEcD4j--_I-unsplash.webp", alt: "Paysage d'Ouarzazate" },
+                { url: "/images/ouarzazate/sergio-otoya--3uyPo-2cOE-unsplash.webp", alt: "Vues sur l'Atlas" }
             ],
             highlights: [
                 "Traversée du col de Tizi n'Tichka",
@@ -1953,20 +1953,20 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Rejoignez un tour de 3 jours dans le désert depuis Marrakech jusqu'à Merzouga. Visitez Aït Benhaddou, faites une balade à dos de chameau, dormez dans un campement berbère et explorez le Sahara.",
             image: {
-                url: "/images/merzouga/merzouga6.jpg",
+                url: "/images/merzouga/merzouga6.webp",
                 alt: "Visiter Merzouga Maroc"
             },
             banner_image: {
-                url: "/images/merzouga/merzouga3.jpg",
+                url: "/images/merzouga/merzouga3.webp",
                 alt: "Visiter Merzouga Maroc"
             },
             gallery: [
-                { url: "/images/merzouga/merzouga1.jpg", alt: "Randonnée à chameau" },
-                { url: "/images/merzouga/merzouga2.jpg", alt: "Nuit au campement du désert" },
-                { url: "/images/merzouga/merzouga4.jpg", alt: "Dunes de Merzouga" },
-                { url: "/images/merzouga/merzouga5.jpg", alt: "Coucher de soleil dans le Sahara" },
-                { url: "/images/merzouga/merzouga6.jpg", alt: "Vie dans le désert" },
-                { url: "/images/merzouga/merzouga7.jpg", alt: "Traditions berbères" }
+                { url: "/images/merzouga/merzouga1.webp", alt: "Randonnée à chameau" },
+                { url: "/images/merzouga/merzouga2.webp", alt: "Nuit au campement du désert" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Dunes de Merzouga" },
+                { url: "/images/merzouga/merzouga5.webp", alt: "Coucher de soleil dans le Sahara" },
+                { url: "/images/merzouga/merzouga6.webp", alt: "Vie dans le désert" },
+                { url: "/images/merzouga/merzouga7.webp", alt: "Traditions berbères" }
             ],
             highlights: [
                 "Expérience du désert du Sahara",
@@ -2015,23 +2015,23 @@ const siteDataFR = {
             group_size: "illimité",
             description: "Explorez Marrakech en une journée avec une visite guidée de la ville. Visitez la médina, le Palais Bahia, le Jardin Majorelle et la place Jemaa el-Fnaa pour une expérience complète.",
             image: {
-                url: "/images/marrakech/marrakech5.jpg",
+                url: "/images/marrakech/marrakech5.webp",
                 alt: "Visiter Marrakech Maroc"
             },
             banner_image: {
-                url: "/images/marrakech/marrakech1.jpg",
+                url: "/images/marrakech/marrakech1.webp",
                 alt: "Visiter Marrakech Maroc"
             },
             gallery: [
-                { url: "/images/marrakech/marrakech2.jpg", alt: "Rues de Marrakech" },
-                { url: "/images/marrakech/marrakech3.jpg", alt: "Jardin Majorelle" },
-                { url: "/images/marrakech/marrakech4.jpg", alt: "Jemaa el-Fnaa" },
-                { url: "/images/marrakech/marrakech5.jpg", alt: "Mosquée Koutoubia" },
-                { url: "/images/marrakech/marrakech6.jpg", alt: "Souks" },
-                { url: "/images/marrakech/marrakech7.jpg", alt: "Palais Bahia" },
-                { url: "/images/marrakech/marrakech8.jpg", alt: "Médina" },
-                { url: "/images/marrakech/marrakech9.jpg", alt: "Architecture marocaine" },
-                { url: "/images/marrakech/marrakech10.jpg", alt: "Artisanat traditionnel" }
+                { url: "/images/marrakech/marrakech2.webp", alt: "Rues de Marrakech" },
+                { url: "/images/marrakech/marrakech3.webp", alt: "Jardin Majorelle" },
+                { url: "/images/marrakech/marrakech4.webp", alt: "Jemaa el-Fnaa" },
+                { url: "/images/marrakech/marrakech5.webp", alt: "Mosquée Koutoubia" },
+                { url: "/images/marrakech/marrakech6.webp", alt: "Souks" },
+                { url: "/images/marrakech/marrakech7.webp", alt: "Palais Bahia" },
+                { url: "/images/marrakech/marrakech8.webp", alt: "Médina" },
+                { url: "/images/marrakech/marrakech9.webp", alt: "Architecture marocaine" },
+                { url: "/images/marrakech/marrakech10.webp", alt: "Artisanat traditionnel" }
             ],
             highlights: [
                 "Visite de la Mosquée Koutoubia",
@@ -2069,18 +2069,18 @@ const siteDataFR = {
             description: "Découvrir le Maroc va bien au-delà de la visite de ses monuments et paysages célèbres. L'une des façons les plus mémorables de se connecter à la culture marocaine est à travers sa cuisine. Chez Your-Morocco, nous vous invitons à participer à un atelier de cuisine immersif qui vous permet de découvrir le riche patrimoine culinaire du pays dans une atmosphère chaleureuse et authentique.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.jpg",
+                url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.webp",
                 alt: "Atelier de Cuisine au Maroc"
             },
             banner_image: {
-                url: "/images/cooking-class/aziz-acharki-UBEcFUvkrcc-unsplash.jpg",
+                url: "/images/cooking-class/aziz-acharki-UBEcFUvkrcc-unsplash.webp",
                 alt: "Atelier de Cuisine au Maroc"
             },
             gallery: [
-                { url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.jpg", alt: "Ingrédients frais" },
-                { url: "/images/cooking-class/hamza-nouasria-q11NM0cFFzY-unsplash.jpg", alt: "Processus de cuisson" },
-                { url: "/images/cooking-class/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.jpg", alt: "Épices marocaines" },
-                { url: "/images/cooking-class/sour-moha-4Tgjeh1fWCc-unsplash.jpg", alt: "Tagine traditionnel" }
+                { url: "/images/cooking-class/florian-d-bazac-PitkCiuzigI-unsplash.webp", alt: "Ingrédients frais" },
+                { url: "/images/cooking-class/hamza-nouasria-q11NM0cFFzY-unsplash.webp", alt: "Processus de cuisson" },
+                { url: "/images/cooking-class/maarten-van-den-heuvel-EzH46XCDQRY-unsplash.webp", alt: "Épices marocaines" },
+                { url: "/images/cooking-class/sour-moha-4Tgjeh1fWCc-unsplash.webp", alt: "Tagine traditionnel" }
             ],
             highlights: [
                 "Apprenez à préparer des plats emblématiques comme le tagine, le couscous, la pastilla et les pâtisseries traditionnelles",
@@ -2118,18 +2118,18 @@ const siteDataFR = {
             description: "Si vous cherchez de l'excitation, des paysages à couper le souffle et une sensation d'aventure, le quad au Maroc est l'activité parfaite. Avec Your-Morocco, vous pouvez vivre la sensation de conduire un quad à travers certains des terrains les plus époustouflants du pays, des sentiers rocheux du désert d'Agafay aux dunes dorées près de Merzouga, et les palmeraies juste à l'extérieur de Marrakech.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.jpg",
+                url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.webp",
                 alt: "Activité Quad au Maroc"
             },
             banner_image: {
-                url: "/images/quad-biking/adrien-delforge-VH2HRylVsiM-unsplash.jpg",
+                url: "/images/quad-biking/adrien-delforge-VH2HRylVsiM-unsplash.webp",
                 alt: "Activité Quad au Maroc"
             },
             gallery: [
-                { url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.jpg", alt: "Aventure dans le désert" },
-                { url: "/images/quad-biking/haris-khan-v40H7tLOZII-unsplash.jpg", alt: "Groupe de quad" },
-                { url: "/images/quad-biking/mayar-zidan-LVNcykwlDEg-unsplash.jpg", alt: "Route panoramique" },
-                { url: "/images/quad-biking/nils-5RfEgsnxeHo-unsplash.jpg", alt: "Fun hors route" }
+                { url: "/images/quad-biking/devon-janse-van-rensburg-08HCHS7EULI-unsplash.webp", alt: "Aventure dans le désert" },
+                { url: "/images/quad-biking/haris-khan-v40H7tLOZII-unsplash.webp", alt: "Groupe de quad" },
+                { url: "/images/quad-biking/mayar-zidan-LVNcykwlDEg-unsplash.webp", alt: "Route panoramique" },
+                { url: "/images/quad-biking/nils-5RfEgsnxeHo-unsplash.webp", alt: "Fun hors route" }
             ],
             highlights: [
                 "Conduisez à travers des terrains variés : désert d'Agafay, dunes de Merzouga, palmeraies",
@@ -2168,20 +2168,20 @@ const siteDataFR = {
             description: "La balade à chameau est l'une des façons les plus iconiques et paisibles d'explorer la beauté du Maroc. Avec Your-Morocco, vous pouvez profiter d'une expérience de chameau guidée à travers des paysages époustouflants tels que les dunes dorées du désert du Sahara, le désert rocheux d'Agafay près de Marrakech, ou les palmeraies luxuriantes autour des villages berbères traditionnels.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.jpg",
+                url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.webp",
                 alt: "Activité Balade à Chameau au Maroc"
             },
             banner_image: {
-                url: "/images/camel-riding/dan-calderwood-7CPopIsaCkc-unsplash.jpg",
+                url: "/images/camel-riding/dan-calderwood-7CPopIsaCkc-unsplash.webp",
                 alt: "Activité Balade à Chameau au Maroc"
             },
             gallery: [
-                { url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.jpg", alt: "Randonnée dans le désert" },
-                { url: "/images/camel-riding/oussama-rahib-f7F8URbIx08-unsplash.jpg", alt: "Balade au coucher du soleil" },
-                { url: "/images/camel-riding/peter-thomas-PotqZeNaUZ4-unsplash.jpg", alt: "Caravane de chameaux" },
-                { url: "/images/camel-riding/peter-thomas-nF8-ekoE0qw-unsplash.jpg", alt: "Expérience du Sahara" },
-                { url: "/images/camel-riding/sheila-c-KuXu8rx_1-8-unsplash.jpg", alt: "Dunes dorées" },
-                { url: "/images/camel-riding/tamar-dCMvzMV1jfc-unsplash.jpg", alt: "Gros plan sur chameau" }
+                { url: "/images/camel-riding/dave-meckler-ZzVc3uZXnr8-unsplash.webp", alt: "Randonnée dans le désert" },
+                { url: "/images/camel-riding/oussama-rahib-f7F8URbIx08-unsplash.webp", alt: "Balade au coucher du soleil" },
+                { url: "/images/camel-riding/peter-thomas-PotqZeNaUZ4-unsplash.webp", alt: "Caravane de chameaux" },
+                { url: "/images/camel-riding/peter-thomas-nF8-ekoE0qw-unsplash.webp", alt: "Expérience du Sahara" },
+                { url: "/images/camel-riding/sheila-c-KuXu8rx_1-8-unsplash.webp", alt: "Dunes dorées" },
+                { url: "/images/camel-riding/tamar-dCMvzMV1jfc-unsplash.webp", alt: "Gros plan sur chameau" }
             ],
             highlights: [
                 "Balade à travers les dunes dorées du Sahara, le désert d'Agafay ou les palmeraies",
@@ -2219,22 +2219,22 @@ const siteDataFR = {
             description: "Un voyage à travers le Maroc n'est pas complet sans goûter à son incroyable street food et ses spécialités régionales. Chez Your-Morocco, nous proposons des tours gastronomiques soigneusement sélectionnés qui vous permettent d'explorer le paysage culinaire du pays tout en vous promenant dans ses médinas vibrantes, ses quartiers locaux et ses coins gastronomiques cachés. Ces visites sont conçues pour les voyageurs curieux qui veulent manger comme des locaux et comprendre les histoires derrière chaque bouchée.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.jpg",
+                url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.webp",
                 alt: "Tour Gastronomique au Maroc"
             },
             banner_image: {
-                url: "/images/food-tour/adil-elouardii-_fcZ5jncgAw-unsplash.jpg",
+                url: "/images/food-tour/adil-elouardii-_fcZ5jncgAw-unsplash.webp",
                 alt: "Tour Gastronomique au Maroc"
             },
             gallery: [
-                { url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.jpg", alt: "Délices locaux" },
-                { url: "/images/food-tour/annie-spratt-wGzO3Qvp98Q-unsplash.jpg", alt: "Street food" },
-                { url: "/images/food-tour/florian-d-bazac-PitkCiuzigI-unsplash.jpg", alt: "Plat traditionnel" },
-                { url: "/images/food-tour/il-vagabiondo-SW7mMXu12Ws-unsplash.jpg", alt: "Épices du marché" },
-                { url: "/images/food-tour/louis-hansel-k2ZCm7LCj8E-unsplash.jpg", alt: "Pain frais" },
-                { url: "/images/food-tour/rigel-Zsw9CvJIeiw-unsplash.jpg", alt: "Thé marocain" },
-                { url: "/images/food-tour/sour-moha-4Tgjeh1fWCc-unsplash.jpg", alt: "Tagine" },
-                { url: "/images/food-tour/sour-moha-5t2SP3vQz28-unsplash.jpg", alt: "Art culinaire" }
+                { url: "/images/food-tour/annie-spratt-_V4v7BbG338-unsplash.webp", alt: "Délices locaux" },
+                { url: "/images/food-tour/annie-spratt-wGzO3Qvp98Q-unsplash.webp", alt: "Street food" },
+                { url: "/images/food-tour/florian-d-bazac-PitkCiuzigI-unsplash.webp", alt: "Plat traditionnel" },
+                { url: "/images/food-tour/il-vagabiondo-SW7mMXu12Ws-unsplash.webp", alt: "Épices du marché" },
+                { url: "/images/food-tour/louis-hansel-k2ZCm7LCj8E-unsplash.webp", alt: "Pain frais" },
+                { url: "/images/food-tour/rigel-Zsw9CvJIeiw-unsplash.webp", alt: "Thé marocain" },
+                { url: "/images/food-tour/sour-moha-4Tgjeh1fWCc-unsplash.webp", alt: "Tagine" },
+                { url: "/images/food-tour/sour-moha-5t2SP3vQz28-unsplash.webp", alt: "Art culinaire" }
             ],
             highlights: [
                 "Explorez les médinas vibrantes et les coins gastronomiques cachés",
@@ -2272,22 +2272,22 @@ const siteDataFR = {
             description: "Pour les voyageurs à la recherche d'une aventure époustouflante et paisible, un vol en montgolfière au-dessus du Maroc est une expérience unique en son genre. Avec Your-Morocco, vous pouvez survoler de magnifiques paysages au lever du soleil, profitant de vues panoramiques sur les collines de terre rouge, les villages berbères éparpillés et les majestueuses montagnes de l'Atlas au loin.",
             categories: ["Activités", "Blog"],
             image: {
-                url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.jpg",
+                url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.webp",
                 alt: "Activité Montgolfière au Maroc"
             },
             banner_image: {
-                url: "/images/airballon/danai-tsoutreli-3NAlBV5PlmE-unsplash.jpg",
+                url: "/images/airballon/danai-tsoutreli-3NAlBV5PlmE-unsplash.webp",
                 alt: "Activité Montgolfière au Maroc"
             },
             gallery: [
-                { url: "/images/airballon/danai-tsoutreli-hqeYq7qSI7c-unsplash.jpg", alt: "Vue depuis la montgolfière" },
-                { url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.jpg", alt: "Vol au lever du soleil" },
-                { url: "/images/airballon/manoa-angelo-w7jeZ5NFSvQ-unsplash.jpg", alt: "Montagnes de l'Atlas" },
-                { url: "/images/airballon/matthieu-gouiffes-6JZhmw5VhsA-unsplash.jpg", alt: "Paysage aérien" },
-                { url: "/images/airballon/mengyu-xu-Hu3DS4Rx4ts-unsplash.jpg", alt: "Désert vu d'en haut" },
-                { url: "/images/airballon/paul-lucyk-b_ZJPTbpUJw-unsplash.jpg", alt: "Ombre de la montgolfière" },
-                { url: "/images/airballon/wouter-groote-veldman-6NDiNzFdOyI-unsplash.jpg", alt: "Préparation du vol" },
-                { url: "/images/airballon/wouter-groote-veldman-hGGyMkSSTZY-unsplash.jpg", alt: "Dans les hauteurs" }
+                { url: "/images/airballon/danai-tsoutreli-hqeYq7qSI7c-unsplash.webp", alt: "Vue depuis la montgolfière" },
+                { url: "/images/airballon/justyna-jozefowicz-hZig-RKimQM-unsplash.webp", alt: "Vol au lever du soleil" },
+                { url: "/images/airballon/manoa-angelo-w7jeZ5NFSvQ-unsplash.webp", alt: "Montagnes de l'Atlas" },
+                { url: "/images/airballon/matthieu-gouiffes-6JZhmw5VhsA-unsplash.webp", alt: "Paysage aérien" },
+                { url: "/images/airballon/mengyu-xu-Hu3DS4Rx4ts-unsplash.webp", alt: "Désert vu d'en haut" },
+                { url: "/images/airballon/paul-lucyk-b_ZJPTbpUJw-unsplash.webp", alt: "Ombre de la montgolfière" },
+                { url: "/images/airballon/wouter-groote-veldman-6NDiNzFdOyI-unsplash.webp", alt: "Préparation du vol" },
+                { url: "/images/airballon/wouter-groote-veldman-hGGyMkSSTZY-unsplash.webp", alt: "Dans les hauteurs" }
             ],
             highlights: [
                 "Vol en montgolfière au lever du soleil avec vues panoramiques",

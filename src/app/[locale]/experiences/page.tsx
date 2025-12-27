@@ -69,7 +69,7 @@ export default function ExperiencesPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <Image
-                        src={'/images/hero-imgs/experiences.jpg'}
+                        src={'/images/hero-imgs/experiences.webp'}
                         alt={t('hero.title')}
                         fill
                         className="object-cover"

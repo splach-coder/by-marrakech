@@ -30,7 +30,7 @@ export const driversData: Driver[] = [
     {
         id: 'fetah',
         name: 'Fetah',
-        image: '/images/drivers/fetah/driver.jpeg',
+        image: '/images/drivers/fetah/driver.webp',
         rating: 5.0,
         experienceYears: 15,
         languages: ['English', 'French', 'Arabic', 'Spanish'],
@@ -45,22 +45,22 @@ export const driversData: Driver[] = [
         hasBrand: true,
         brandInfo: {
             companyName: 'Prestige Morocco Travels',
-            banner: '/images/drivers/fetah/brand2.jpeg',
-            logo: '/images/drivers/fetah/brand1.jpeg',
+            banner: '/images/drivers/fetah/brand2.webp',
+            logo: '/images/drivers/fetah/brand1.webp',
             description: 'Experience the pinnacle of Moroccan hospitality with Fetah’s exclusive transport service.'
         },
         gallery: [
-            '/images/drivers/fetah/car1.jpeg',
-            '/images/drivers/fetah/car2.jpeg',
-            '/images/drivers/fetah/car3.jpeg',
-            '/images/drivers/fetah/car4.jpeg'
+            '/images/drivers/fetah/car1.webp',
+            '/images/drivers/fetah/car2.webp',
+            '/images/drivers/fetah/car3.webp',
+            '/images/drivers/fetah/car4.webp'
         ],
         features: ['Premium Wi-Fi', 'Refreshments', 'Concierge Service', 'Luxury Interiors', 'Massage Seats']
     },
     {
         id: 'ayoub',
         name: 'Ayoub',
-        image: '/images/drivers/ayoub/driver.jpeg',
+        image: '/images/drivers/ayoub/driver.webp',
         rating: 4.9,
         experienceYears: 8,
         languages: ['English', 'French', 'Arabic'],
@@ -74,8 +74,8 @@ export const driversData: Driver[] = [
         availability: true,
         hasBrand: false,
         gallery: [
-            '/images/drivers/ayoub/car1.jpeg',
-            '/images/drivers/ayoub/car2.jpeg'
+            '/images/drivers/ayoub/car1.webp',
+            '/images/drivers/ayoub/car2.webp'
         ],
         features: ['Free Wi-Fi', 'Child Seats', 'Bottled Water', 'USB Charging']
     }
@@ -85,7 +85,7 @@ export const driversDataFr: Driver[] = [
     {
         id: 'fetah',
         name: 'Fetah',
-        image: '/images/drivers/fetah/driver.jpeg',
+        image: '/images/drivers/fetah/driver.webp',
         rating: 5.0,
         experienceYears: 15,
         languages: ['Anglais', 'Français', 'Arabe', 'Espagnol'],
@@ -100,22 +100,22 @@ export const driversDataFr: Driver[] = [
         hasBrand: true,
         brandInfo: {
             companyName: 'Prestige Morocco Travels',
-            banner: '/images/drivers/fetah/brand2.jpeg',
-            logo: '/images/drivers/fetah/brand1.jpeg',
+            banner: '/images/drivers/fetah/brand2.webp',
+            logo: '/images/drivers/fetah/brand1.webp',
             description: 'Vivez le summum de l’hospitalité marocaine avec le service de transport exclusif de Fetah.'
         },
         gallery: [
-            '/images/drivers/fetah/car1.jpeg',
-            '/images/drivers/fetah/car2.jpeg',
-            '/images/drivers/fetah/car3.jpeg',
-            '/images/drivers/fetah/car4.jpeg'
+            '/images/drivers/fetah/car1.webp',
+            '/images/drivers/fetah/car2.webp',
+            '/images/drivers/fetah/car3.webp',
+            '/images/drivers/fetah/car4.webp'
         ],
         features: ['Wi-Fi Premium', 'Rafraîchissements', 'Service Conciergerie', 'Intérieurs de Luxe', 'Sièges Massants']
     },
     {
         id: 'ayoub',
         name: 'Ayoub',
-        image: '/images/drivers/ayoub/driver.jpeg',
+        image: '/images/drivers/ayoub/driver.webp',
         rating: 4.9,
         experienceYears: 8,
         languages: ['Anglais', 'Français', 'Arabe'],
@@ -129,8 +129,8 @@ export const driversDataFr: Driver[] = [
         availability: true,
         hasBrand: false,
         gallery: [
-            '/images/drivers/ayoub/car1.jpeg',
-            '/images/drivers/ayoub/car2.jpeg'
+            '/images/drivers/ayoub/car1.webp',
+            '/images/drivers/ayoub/car2.webp'
         ],
         features: ['Wi-Fi gratuit', 'Sièges bébé', 'Eau embouteillée', 'Chargeurs USB']
     }

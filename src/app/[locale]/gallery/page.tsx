@@ -12,24 +12,24 @@ export default function GalleryPage() {
 
     // Gallery images with proper heights for masonry layout - using local images
     const galleryItems = [
-        { id: '1', img: '/images/marrakech/marrakech.jpg', url: '#', height: 600 },
-        { id: '2', img: '/images/casablanca/oussama-rahib-NNECQHl9bJc-unsplash.jpg', url: '#', height: 800 },
-        { id: '3', img: '/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.jpg', url: '#', height: 700 },
-        { id: '4', img: '/images/merzouga/merzouga1.jpg', url: '#', height: 650 },
-        { id: '5', img: '/images/essaouira/hamza-omlacho-M9GO4Gsd2SM-unsplash.jpg', url: '#', height: 750 },
-        { id: '6', img: '/images/ouarzazate/cristiano-pinto-knB5iCogf5Q-unsplash.jpg', url: '#', height: 700 },
-        { id: '7', img: '/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.jpg', url: '#', height: 800 },
-        { id: '8', img: '/images/merzouga/merzouga2.jpg', url: '#', height: 650 },
-        { id: '9', img: '/images/rabat/framopia-EZqHkkyc0wg-unsplash.jpg', url: '#', height: 700 },
-        { id: '10', img: '/images/ouarzazate/hassan-ouajbir-INcADDyMwwo-unsplash.jpg', url: '#', height: 750 },
-        { id: '11', img: '/images/casablanca/kristijan-nikodinovski-nkav4Pi-UwY-unsplash.jpg', url: '#', height: 600 },
-        { id: '12', img: '/images/merzouga/merzouga3.jpg', url: '#', height: 800 },
-        { id: '13', img: '/images/essaouira/rigel-No_Y3bn4lNQ-unsplash.jpg', url: '#', height: 700 },
-        { id: '14', img: '/images/ouarzazate/sergio-otoya--3uyPo-2cOE-unsplash.jpg', url: '#', height: 650 },
-        { id: '15', img: '/images/casablanca/imad-ghazal-gRE6Be-o_Hw-unsplash.jpg', url: '#', height: 750 },
-        { id: '16', img: '/images/merzouga/merzouga4.jpg', url: '#', height: 700 },
-        { id: '17', img: '/images/rabat/hamza-nouasria-7zVLZu5twJs-unsplash.jpg', url: '#', height: 600 },
-        { id: '18', img: '/images/ouarzazate/abdou-faiz-mBo2EUfJ7sY-unsplash.jpg', url: '#', height: 800 },
+        { id: '1', img: '/images/marrakech/marrakech.webp', url: '#', height: 600 },
+        { id: '2', img: '/images/casablanca/oussama-rahib-NNECQHl9bJc-unsplash.webp', url: '#', height: 800 },
+        { id: '3', img: '/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp', url: '#', height: 700 },
+        { id: '4', img: '/images/merzouga/merzouga1.webp', url: '#', height: 650 },
+        { id: '5', img: '/images/essaouira/hamza-omlacho-M9GO4Gsd2SM-unsplash.webp', url: '#', height: 750 },
+        { id: '6', img: '/images/ouarzazate/cristiano-pinto-knB5iCogf5Q-unsplash.webp', url: '#', height: 700 },
+        { id: '7', img: '/images/casablanca/eka-maitri-viryani-qL3_NSPo9o8-unsplash.webp', url: '#', height: 800 },
+        { id: '8', img: '/images/merzouga/merzouga2.webp', url: '#', height: 650 },
+        { id: '9', img: '/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp', url: '#', height: 700 },
+        { id: '10', img: '/images/ouarzazate/hassan-ouajbir-INcADDyMwwo-unsplash.webp', url: '#', height: 750 },
+        { id: '11', img: '/images/casablanca/kristijan-nikodinovski-nkav4Pi-UwY-unsplash.webp', url: '#', height: 600 },
+        { id: '12', img: '/images/merzouga/merzouga3.webp', url: '#', height: 800 },
+        { id: '13', img: '/images/essaouira/rigel-No_Y3bn4lNQ-unsplash.webp', url: '#', height: 700 },
+        { id: '14', img: '/images/ouarzazate/sergio-otoya--3uyPo-2cOE-unsplash.webp', url: '#', height: 650 },
+        { id: '15', img: '/images/casablanca/imad-ghazal-gRE6Be-o_Hw-unsplash.webp', url: '#', height: 750 },
+        { id: '16', img: '/images/merzouga/merzouga4.webp', url: '#', height: 700 },
+        { id: '17', img: '/images/rabat/hamza-nouasria-7zVLZu5twJs-unsplash.webp', url: '#', height: 600 },
+        { id: '18', img: '/images/ouarzazate/abdou-faiz-mBo2EUfJ7sY-unsplash.webp', url: '#', height: 800 },
     ];
 
     return (
@@ -37,7 +37,7 @@ export default function GalleryPage() {
             {/* Hero Section */}
             <section className="relative h-[60vh] md:h-[70vh] min-h-[500px] overflow-hidden">
                 <Image
-                    src="/images/hero-imgs/gallery.jpg"
+                    src="/images/hero-imgs/gallery.webp"
                     alt={t('hero.title')}
                     fill
                     className="object-cover"

@@ -38,7 +38,7 @@ export default function ToursPage() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src={'/images/hero-imgs/tours.jpg'}
+            src={'/images/hero-imgs/tours.webp'}
             alt={t('hero.title')}
             fill
             className="object-cover"

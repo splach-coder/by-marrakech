@@ -40,7 +40,7 @@ export default function ActivitiesPage() {
                 {/* Background Image */}
                 <div className="absolute inset-0">
                     <Image
-                        src={'/images/hero-imgs/activites.jpg'}
+                        src={'/images/hero-imgs/activites.webp'}
                         alt={t('hero.title')}
                         fill
                         className="object-cover"

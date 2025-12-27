@@ -119,7 +119,7 @@ export default function AboutPage() {
               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
             >
               <Image
-                src="/images/marrakech/marrakech14.jpg"
+                src="/images/marrakech/marrakech14.webp"
                 alt="Our Story"
                 fill
                 className="object-cover"
@@ -239,8 +239,8 @@ export default function AboutPage() {
               <div className="flex flex-col items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-white/20 overflow-hidden relative border-2 border-white/50">
                   <Image
-                    src="/images/logo-red.png"
-                    alt="ByMarrakech Logo"
+                    src="/images/logo-red.webp"
+                    alt="Xhosen Logo"
                     fill
                     className="object-contain p-2"
                   />

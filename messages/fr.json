@@ -22,13 +22,13 @@
   },
   "home": {
     "hero": {
-      "title": "Découvrez le Maroc avec ByMarrakech",
+      "title": "Découvrez le Maroc avec Xhosen",
       "subtitle": "Votre agence de confiance pour des circuits authentiques et des voyages inoubliables à travers le Maroc.",
       "ctaPrimary": "Explorer nos circuits",
       "ctaSecondary": "Voir les expériences"
     },
     "about": {
-      "label": "À propos de ByMarrakech",
+      "label": "À propos de Xhosen",
       "title": "Votre agence de voyage au Maroc de confiance"
     },
     "features": {
@@ -360,7 +360,7 @@
     },
     "cta": {
       "quote": "Nous croyons que le voyage est la seule chose que vous achetez qui vous rend plus riche. Venez, laissez-nous vous montrer la richesse du Maroc.",
-      "team": "L'équipe ByMarrakech",
+      "team": "L'équipe Xhosen",
       "experts": "Vos experts locaux",
       "button": "Commencez votre voyage"
     }

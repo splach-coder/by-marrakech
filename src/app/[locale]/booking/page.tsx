@@ -17,8 +17,14 @@ import {
     Phone,
     MapPin,
     AlertCircle,
-    GripVertical
+    GripVertical,
+    Plane,
+    Hotel,
+    Car,
+    Plus,
+    PlusCircle
 } from 'lucide-react';
+import { siteData } from '@/data/siteData';
 
 interface BookingPageProps {
     params: Promise<{
@@ -29,7 +35,7 @@ interface BookingPageProps {
 export default function BookingPage({ params }: BookingPageProps) {
     const { locale } = use(params);
     const router = useRouter();
-    const { items, removeItem, updateItem, reorderItems, clearCart, totalPrice } = useCart();
+    const { items, removeItem, updateItem, reorderItems, clearCart, totalPrice, addItem } = useCart();
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -41,6 +47,9 @@ export default function BookingPage({ params }: BookingPageProps) {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [touched, setTouched] = useState(false);
+    const [showTransportUpsell, setShowTransportUpsell] = useState(false);
+
+    const TRANSPORT_IDS = ['421', '419', '501'];
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -97,11 +106,20 @@ export default function BookingPage({ params }: BookingPageProps) {
         setTouched(true);
 
         if (!allDatesSelected) {
-            // Scroll to top or show error toast
             window.scrollTo({ top: 0, behavior: 'smooth' });
             return;
         }
 
+        const hasTransport = items.some(item => TRANSPORT_IDS.includes(item.id));
+        if (!hasTransport) {
+            setShowTransportUpsell(true);
+            return;
+        }
+
+        processSubmission();
+    };
+
+    const processSubmission = () => {
         setIsSubmitting(true);
 
         // Construct WhatsApp Message
@@ -127,14 +145,11 @@ export default function BookingPage({ params }: BookingPageProps) {
             message += `\n*Special Requests:*\n${formData.notes}\n`;
         }
 
-        message += `\n--------------------------------\nSent via ByMarrakech Website`;
+        message += `\n--------------------------------\nSent via Xhosen Website`;
 
-        // Prepare WhatsApp URL
-        // TODO: Replace with the actual business WhatsApp number
         const whatsappNumber = '212600000000';
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-        // Clear cart and redirect to confetti page with WhatsApp URL
         clearCart();
         router.push(`/${locale}/confetti?whatsappUrl=${encodeURIComponent(whatsappUrl)}`);
     };
@@ -190,6 +205,68 @@ export default function BookingPage({ params }: BookingPageProps) {
                                 </div>
                             </div>
                         </div>
+
+                        {(() => {
+                            const allGuestsSame = items.length > 0 && items.every(item => (item.guests || 1) === (items[0].guests || 1));
+                            const activeGuestCount = allGuestsSame ? (items[0].guests || 1) : null;
+
+                            return (
+                                <div className="bg-white rounded-3xl p-4 md:p-6 border border-gray-100 shadow-sm mb-6 flex flex-col lg:flex-row items-center justify-between gap-4 md:gap-6">
+                                    <div className="flex items-center gap-3 md:gap-4 w-full lg:w-auto">
+                                        <div className="p-2.5 md:p-3 bg-primary/10 rounded-2xl flex-shrink-0">
+                                            <Users className="w-5 h-5 md:w-6 md:h-6 text-primary" />
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <h4 className="font-bold text-gray-900 leading-tight">Travel Party</h4>
+                                            <p className="text-[10px] text-gray-400 uppercase tracking-widest font-black md:mt-0.5">Global Settings</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex flex-col md:flex-row items-center gap-3 w-full lg:w-auto">
+                                        <span className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-tighter hidden sm:inline">Set all experiences to:</span>
+                                        <div className="relative w-full sm:w-auto">
+                                            <div className="flex items-center bg-gray-50/100 rounded-2xl p-1 border border-gray-100/80 w-full overflow-hidden">
+                                                <div className="flex items-center gap-1 overflow-x-auto no-scrollbar scroll-smooth px-1 py-0.5">
+                                                    {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                                                        <button
+                                                            key={num}
+                                                            onClick={() => {
+                                                                items.forEach(item => updateItem(item.id, item.type, { guests: num }));
+                                                            }}
+                                                            className={`w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-xl text-sm font-bold transition-all active:scale-90 flex-shrink-0 ${activeGuestCount === num
+                                                                ? 'bg-primary text-white shadow-lg shadow-primary/30 active:shadow-inner'
+                                                                : 'text-gray-400 hover:bg-white hover:text-primary bg-white/40'
+                                                                }`}
+                                                        >
+                                                            {num}
+                                                        </button>
+                                                    ))}
+                                                    <div className="w-px h-6 bg-gray-200/60 mx-1 flex-shrink-0" />
+                                                    <div className="relative flex-shrink-0">
+                                                        <input
+                                                            type="number"
+                                                            min="9"
+                                                            placeholder="9+"
+                                                            value={activeGuestCount && activeGuestCount >= 9 ? activeGuestCount : ''}
+                                                            className={`w-14 h-10 md:h-11 bg-transparent text-center text-sm font-bold focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none rounded-xl transition-all ${activeGuestCount && activeGuestCount >= 9
+                                                                ? 'bg-primary text-white shadow-lg shadow-primary/30'
+                                                                : 'text-gray-400 placeholder:text-gray-300 hover:bg-white bg-white/40'
+                                                                }`}
+                                                            onChange={(e) => {
+                                                                const val = parseInt(e.target.value);
+                                                                if (val > 0) {
+                                                                    items.forEach(item => updateItem(item.id, item.type, { guests: val }));
+                                                                }
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })()}
 
                         {/* Conflict Warnings */}
                         {hasConflicts && (
@@ -461,28 +538,186 @@ export default function BookingPage({ params }: BookingPageProps) {
 
                 </div>
 
-                {/* Smart Recommendations */}
-                <div className="mt-20 border-t border-gray-200">
-                    <div className="max-w-7xl mx-auto">
-                        {/* Contact CTA */}
-                        <div className="mt-12 text-center bg-gray-50 rounded-2xl p-8">
-                            <h3 className="font-serif font-bold text-2xl text-gray-900 mb-3">Need Help Planning?</h3>
-                            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-                                Our travel experts can help customize your itinerary, suggest the best combinations, and ensure everything runs smoothly.
+                {/* Smart Recommendations - Transport Suggestions */}
+                {/* Smart Recommendations - Transport Suggestions */}
+                {(() => {
+                    const anyTransportSelected = items.some(item => TRANSPORT_IDS.includes(item.id));
+
+                    if (anyTransportSelected) return null;
+
+                    const availableSuggestions = [
+                        {
+                            id: '421',
+                            icon: Plane,
+                            title: "Airport Transfer",
+                            desc: "Stress-free arrival with meet & greet and flight tracking.",
+                            price: "€25",
+                            label: "Recommended",
+                            service: siteData.services.find(s => s.id === 421)
+                        },
+                        {
+                            id: '419',
+                            icon: Hotel,
+                            title: "Hotel Transfer",
+                            desc: "Seamless door-to-door comfort between your stays.",
+                            price: "€30",
+                            label: "Popular",
+                            service: siteData.services.find(s => s.id === 419)
+                        },
+                        {
+                            id: '501',
+                            icon: Car,
+                            title: "Private Driver",
+                            desc: "Premium vehicle with a professional local chauffeur.",
+                            price: "Request Quote",
+                            label: "Premium",
+                            service: siteData.services.find(s => s.id === 501)
+                        }
+                    ].filter(suggestion => !items.some(item => item.id === suggestion.id && item.type === 'service'));
+
+                    if (availableSuggestions.length === 0) return null;
+
+                    return (
+                        <div className="mt-20">
+                            <div className="max-w-7xl mx-auto px-4 md:px-0">
+                                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                                    <div>
+                                        <h2 className="text-3xl font-serif text-gray-900 mb-2">Complete Your Journey</h2>
+                                        <p className="text-gray-500">Essential transport services for a seamless Moroccan experience.</p>
+                                    </div>
+                                    <Link href={`/${locale}/services`} className="text-primary font-bold flex items-center gap-1 hover:underline">
+                                        View All Services <ChevronRight className="w-4 h-4" />
+                                    </Link>
+                                </div>
+
+                                <div className={`grid grid-cols-1 md:grid-cols-${Math.min(availableSuggestions.length, 3)} gap-6 max-w-${availableSuggestions.length === 1 ? 'md' : availableSuggestions.length === 2 ? '4xl' : '7xl'} mx-auto overflow-visible`}>
+                                    {availableSuggestions.map((suggestion) => {
+                                        if (!suggestion.service) return null;
+
+                                        return (
+                                            <div
+                                                key={suggestion.id}
+                                                className="relative group bg-white rounded-[2rem] p-8 border border-gray-100 transition-all duration-700 hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2 flex flex-col h-full"
+                                            >
+                                                {/* Status Badge */}
+                                                <div className="absolute top-6 right-6">
+                                                    <div className="bg-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-full">
+                                                        {suggestion.label}
+                                                    </div>
+                                                </div>
+
+                                                <div className="mb-8">
+                                                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 relative overflow-hidden bg-gray-50 text-primary group-hover:bg-primary group-hover:text-white group-hover:shadow-2xl group-hover:shadow-primary/40">
+                                                        <suggestion.icon className="w-8 h-8 relative z-10 transition-transform duration-500 group-hover:scale-110" />
+                                                        <div className="absolute inset-0 bg-gradient-to-br from-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                                    </div>
+                                                </div>
+
+                                                <div className="space-y-3 mb-8">
+                                                    <h3 className="text-2xl font-bold text-gray-900 font-serif leading-tight">{suggestion.title}</h3>
+                                                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-2">
+                                                        {suggestion.desc}
+                                                    </p>
+                                                    <div className="flex items-center gap-2 pt-2 text-primary font-bold">
+                                                        <span className="text-xs uppercase tracking-widest text-gray-400">Starting from</span>
+                                                        <span className="text-lg">{suggestion.price}</span>
+                                                    </div>
+                                                </div>
+
+                                                <div className="mt-auto flex items-center gap-3">
+                                                    <button
+                                                        onClick={() => {
+                                                            if (suggestion.service) {
+                                                                addItem({
+                                                                    id: suggestion.id,
+                                                                    title: suggestion.service.title,
+                                                                    type: 'service',
+                                                                    price: suggestion.service.price,
+                                                                    image: suggestion.service.image.url,
+                                                                    guests: 1
+                                                                });
+                                                            }
+                                                        }}
+                                                        className="flex-1 py-4 bg-primary text-white rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 group/btn hover:bg-primary-dark shadow-xl shadow-primary/20 active:scale-[0.98]"
+                                                    >
+                                                        <Plus className="w-4 h-4 transition-transform duration-300 group-hover/btn:rotate-90" />
+                                                        <span>Secure Transport</span>
+                                                    </button>
+                                                    <Link
+                                                        href={`/${locale}/services/${suggestion.id}`}
+                                                        className="p-4 rounded-xl border border-gray-100 hover:border-primary/20 hover:bg-gray-50 transition-all text-gray-400 hover:text-primary flex items-center justify-center group/info"
+                                                        title="View Details"
+                                                    >
+                                                        <PlusCircle className="w-5 h-5 transition-all duration-300 group-hover/info:rotate-90 group-hover/info:scale-110" />
+                                                    </Link>
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+
+                                {/* Contact CTA */}
+                                <div className="mt-16 text-center bg-white border border-gray-100 rounded-[2.5rem] p-10 shadow-xl shadow-gray-200/50">
+                                    <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                                        <MessageSquare className="w-8 h-8 text-primary" />
+                                    </div>
+                                    <h3 className="font-serif font-bold text-3xl text-gray-900 mb-4">Need a Custom Transport Plan?</h3>
+                                    <p className="text-gray-600 mb-8 max-w-2xl mx-auto text-lg leading-relaxed">
+                                        Our travel experts can coordinate complex transfers, group transport, and VIP logistics for your entire Moroccan journey.
+                                    </p>
+                                    <a
+                                        href="https://wa.me/212600000000?text=I need help with my transport coordination"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-3 px-10 py-5 bg-green-500 text-white rounded-2xl font-bold hover:bg-green-600 transition-all shadow-xl hover:shadow-green-500/20 hover:-translate-y-1"
+                                    >
+                                        <span className="bg-white/20 p-1 rounded-full"><MessageSquare className="w-5 h-5" /></span>
+                                        Chat with Travel Expert
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })()}
+            </div>
+
+            {/* Transport Upsell Modal */}
+            {showTransportUpsell && (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+                    <div
+                        className="absolute inset-0 bg-gray-900/60 backdrop-blur-sm transition-opacity"
+                        onClick={() => setShowTransportUpsell(false)}
+                    />
+                    <div className="relative bg-white rounded-[2.5rem] w-full max-w-lg overflow-hidden shadow-2xl animate-in fade-in zoom-in duration-300">
+                        <div className="p-8 md:p-12 text-center">
+                            <div className="w-20 h-20 bg-primary/10 rounded-3xl flex items-center justify-center mx-auto mb-8 text-primary">
+                                <Car className="w-10 h-10" />
+                            </div>
+                            <h3 className="text-3xl font-serif font-bold text-gray-900 mb-4">Wait, No Transport?</h3>
+                            <p className="text-gray-600 text-lg leading-relaxed mb-10">
+                                Arriving and navigating Morocco can be tricky. Are you sure you want to proceed without a professional driver or transfer?
                             </p>
-                            <a
-                                href="https://wa.me/212600000000?text=I need help planning my trip"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full font-bold hover:bg-green-600 transition-all shadow-lg hover:shadow-xl"
-                            >
-                                <MessageSquare className="w-5 h-5" />
-                                Chat with Travel Expert
-                            </a>
+                            <div className="flex flex-col sm:flex-row gap-4 font-bold">
+                                <button
+                                    onClick={() => setShowTransportUpsell(false)}
+                                    className="flex-1 px-8 py-4 border-2 border-gray-100 rounded-2xl text-gray-900 hover:bg-gray-50 transition-all"
+                                >
+                                    Let me check
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        setShowTransportUpsell(false);
+                                        processSubmission();
+                                    }}
+                                    className="flex-1 px-8 py-4 bg-primary text-white rounded-2xl shadow-xl shadow-primary/20 hover:bg-primary-dark transition-all"
+                                >
+                                    Yes, I'm sure
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
         </main>
     );
 }

@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { siteData } from '@/data/siteData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://bymarrakech.com';
+    const baseUrl = 'https://xhosen.com';
     const currentDate = new Date();
 
     // Static pages

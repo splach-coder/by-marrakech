@@ -28,7 +28,7 @@ export default function OurStory() {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-primary leading-tight mb-8">
             Discover what makes<br />
-            ByMarrakech the premier choice<br />
+            Xhosen the premier choice<br />
             for authentic experiences
           </h2>
 
@@ -63,7 +63,7 @@ export default function OurStory() {
           className="bg-gradient-to-r from-primary via-[#a63333] to-[#b84a3a] rounded-2xl p-12 md:p-16 text-center"
         >
           <p className="text-white text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
-            Discover the journey that shaped ByMarrakech into Morocco's premier travel agency.
+            Discover the journey that shaped Xhosen into Morocco's premier travel agency.
           </p>
         </motion.div>
       </div>
