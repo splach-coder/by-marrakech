@@ -25,6 +25,7 @@ import {
 import Itinerary from '@/app/[locale]/components/Itinerary';
 import BookingCard from '@/app/[locale]/components/BookingCard';
 import GalleryGrid from '@/app/[locale]/components/GalleryGrid';
+import MobileBookingWidget from '@/app/[locale]/components/MobileBookingWidget';
 
 interface TourPageProps {
   params: Promise<{
@@ -378,6 +379,15 @@ export default function TourPage({ params }: TourPageProps) {
           </motion.div>
         )}
       </AnimatePresence>
-    </main>
+
+
+      <MobileBookingWidget
+        id={String(tour.id)}
+        type="tour"
+        title={tour.title}
+        price={tour.price || tTour('contactForPrice')}
+        imageUrl={tour.image.url}
+      />
+    </main >
   );
 }

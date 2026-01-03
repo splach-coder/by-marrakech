@@ -22,6 +22,7 @@ import {
 import GalleryGrid from '../../components/GalleryGrid';
 import PrivateDriverService from '../components/PrivateDriverService';
 import BookingCard from '../../components/BookingCard';
+import MobileBookingWidget from '../../components/MobileBookingWidget';
 
 interface ServicePageProps {
     params: Promise<{
@@ -324,6 +325,14 @@ export default function ServicePage({ params }: ServicePageProps) {
                     </motion.div>
                 )}
             </AnimatePresence>
+            {/* Mobile Booking Widget */}
+            <MobileBookingWidget
+                id={String(service.id)}
+                type="service"
+                title={service.title}
+                price={service.price || tTour('contactForPrice')}
+                imageUrl={service.image.url}
+            />
         </main>
     );
 }

@@ -8,6 +8,7 @@ import { getSiteData, siteData } from '@/data/siteData';
 import Itinerary from '../../components/Itinerary';
 import GalleryGrid from '../../components/GalleryGrid';
 import BookingCard from '../../components/BookingCard';
+import MobileBookingWidget from '../../components/MobileBookingWidget';
 import { use, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
@@ -357,6 +358,13 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </main>
+            <MobileBookingWidget
+                id={String(experience.id)}
+                type="experience"
+                title={experience.title}
+                price={experience.price || tTour('contactForPrice')}
+                imageUrl={experience.image.url}
+            />
+        </main >
     );
 }

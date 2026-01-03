@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import GalleryGrid from '../../components/GalleryGrid';
 import BookingCard from '../../components/BookingCard';
+import MobileBookingWidget from '../../components/MobileBookingWidget';
 
 interface ActivityPageProps {
     params: Promise<{
@@ -343,6 +344,13 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </main>
+            <MobileBookingWidget
+                id={String(activity.id)}
+                type="activity"
+                title={activity.title}
+                price={activity.price || `${t('from')} €35`}
+                imageUrl={activity.image.url}
+            />
+        </main >
     );
 }
