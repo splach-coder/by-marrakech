@@ -2,7 +2,7 @@
 export const aboutData = {
     label: "ABOUT MARRAKECH",
     title: "Discover the heart of Marrakech with our authentic experiences",
-    description1: "Founded in the heart of Marrakech, Xhosen began with a simple mission: to share the magic of our city with the world. What started as a small team of local guides has grown into a premier travel agency specializing in authentic Moroccan experiences.",
+    description1: "Founded in the heart of Marrakech, Xhosen Gate began with a simple mission: to share the magic of our city with the world. What started as a small team of local guides has grown into a premier travel agency specializing in authentic Moroccan experiences.",
     description2: "Over the past decade, we've curated unforgettable journeys for thousands of travelers, always staying true to our roots and commitment to exceptional service.",
     stats: {
         stat1: { number: "10+", label: "Years of Experience" },
@@ -161,7 +161,7 @@ export const testimonialsData = [
         country: 'France',
         tour: 'Marrakech Film Festival',
         rating: 5,
-        review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à Xhosen. L\'organisation était parfaite, et nous avons découvert des endroits que nous n\'aurions jamais trouvés seuls. Merci pour tout!',
+        review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à Xhosen Gate. L\'organisation était parfaite, et nous avons découvert des endroits que nous n\'aurions jamais trouvés seuls. Merci pour tout!',
         image: 'https://images.unsplash.com/photo-1542596594-649edbc13630?auto=format&fit=crop&w=800&q=80'
     },
     {
@@ -170,7 +170,7 @@ export const testimonialsData = [
         country: 'Canada',
         tour: 'Desert Safari',
         rating: 5,
-        review: 'The desert experience was absolutely magical! Sleeping under the stars in Agafay was a dream come true. The camel ride at sunset is a must-do. Highly recommend Xhosen for their professionalism.',
+        review: 'The desert experience was absolutely magical! Sleeping under the stars in Agafay was a dream come true. The camel ride at sunset is a must-do. Highly recommend Xhosen Gate for their professionalism.',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'
     },
     {
@@ -340,7 +340,7 @@ export const eventsData = [
 export const aboutDataFr = {
     label: "À PROPOS DE MARRAKECH",
     title: "Découvrez le cœur de Marrakech avec nos expériences authentiques",
-    description1: "Fondée au cœur de Marrakech, Xhosen a commencé avec une mission simple : partager la magie de notre ville avec le monde. Ce qui a commencé comme une petite équipe de guides locaux est devenu une agence de voyage de premier plan spécialisée dans des expériences marocaines authentiques.",
+    description1: "Fondée au cœur de Marrakech, Xhosen Gate a commencé avec une mission simple : partager la magie de notre ville avec le monde. Ce qui a commencé comme une petite équipe de guides locaux est devenu une agence de voyage de premier plan spécialisée dans des expériences marocaines authentiques.",
     description2: "Au cours de la dernière décennie, nous avons organisé des voyages inoubliables pour des milliers de voyageurs, tout en restant fidèles à nos racines et à notre engagement envers un service exceptionnel.",
     stats: {
         stat1: { number: "10+", label: "Années d'expérience" },
@@ -499,7 +499,7 @@ export const testimonialsDataFr = [
         country: 'France',
         tour: 'Festival du film de Marrakech',
         rating: 5,
-        review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à Xhosen. L’organisation était parfaite et nous avons découvert des endroits que nous n’aurions jamais trouvés seuls. Merci pour tout !',
+        review: 'Nous avons passé une semaine inoubliable à Marrakech grâce à Xhosen Gate. L\'organisation était parfaite et nous avons découvert des endroits que nous n\'aurions jamais trouvés seuls. Merci pour tout !',
         image: 'https://images.unsplash.com/photo-1542596594-649edbc13630?auto=format&fit=crop&w=800&q=80 '
     },
     {
@@ -508,7 +508,7 @@ export const testimonialsDataFr = [
         country: 'Canada',
         tour: 'Safari dans le désert',
         rating: 5,
-        review: 'L’expérience dans le désert était absolument magique ! Dormir sous les étoiles à Agafay était un rêve devenu réalité. La balade à chameau au coucher du soleil est un incontournable. Je recommande vivement Xhosen pour leur professionnalisme.',
+        review: 'L\'expérience dans le désert était absolument magique ! Dormir sous les étoiles à Agafay était un rêve devenu réalité. La balade à chameau au coucher du soleil est un incontournable. Je recommande vivement Xhosen Gate pour leur professionnalisme.',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80 '
     },
     {

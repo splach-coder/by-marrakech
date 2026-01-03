@@ -10,9 +10,9 @@ export default function Footer() {
   const t = useTranslations('footer');
 
   const socialLinks = [
-    { icon: Facebook, href: 'https://www.facebook.com/xhosen', label: 'Facebook' },
-    { icon: Instagram, href: 'https://www.instagram.com/xhosen/', label: 'Instagram' },
-    { icon: Youtube, href: 'https://www.youtube.com/@xhosen', label: 'YouTube' },
+    { icon: Facebook, href: 'https://www.facebook.com/chosengate', label: 'Facebook' },
+    { icon: Instagram, href: 'https://www.instagram.com/chosengate/', label: 'Instagram' },
+    { icon: Youtube, href: 'https://www.youtube.com/@xhosengate', label: 'YouTube' },
   ];
 
   return (
@@ -25,7 +25,7 @@ export default function Footer() {
             <Link href={`/${locale}`} className="inline-block mb-2">
               <Image
                 src="/images/logo-red.webp"
-                alt="Xhosen"
+                alt="Xhosen Gate"
                 width={220}
                 height={70}
                 className="object-contain h-32 w-auto"
@@ -122,7 +122,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <div className="text-xs text-white/40 uppercase tracking-wider mb-1">{t('contact.email')}</div>
-                  <div className="font-medium text-lg">contact@xhosen.com</div>
+                  <div className="font-medium text-lg">contact@xhosengate.com</div>
                 </div>
               </div>
 
@@ -143,7 +143,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-white/50">
             <p className="font-light">
-              © {new Date().getFullYear()} <span className="text-white font-medium">Xhosen</span>. {t('bottom.rights')}
+              © {new Date().getFullYear()} <span className="text-white font-medium">Xhosen Gate</span>. {t('bottom.rights')}
             </p>
             <div className="flex gap-8">
               <Link href={`/${locale}/privacy`} className="hover:text-secondary transition-colors">

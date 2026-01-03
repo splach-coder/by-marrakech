@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { siteData } from '@/data/siteData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://xhosen.com';
+    const baseUrl = 'https://xhosengate.com';
     const currentDate = new Date();
 
     // Static pages

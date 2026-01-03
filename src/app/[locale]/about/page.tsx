@@ -240,7 +240,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 rounded-full bg-white/20 overflow-hidden relative border-2 border-white/50">
                   <Image
                     src="/images/logo-red.webp"
-                    alt="Xhosen Logo"
+                    alt="Xhosen Gate Logo"
                     fill
                     className="object-contain p-2"
                   />

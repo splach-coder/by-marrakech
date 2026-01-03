@@ -76,7 +76,7 @@ export default function HomePage({ params }: HomePageProps) {
         ctaSecondary={t('hero.ctaSecondary')}
       />
 
-      {/* About Xhosen Section */}
+      {/* About Xhosen Gate Section */}
       <AboutSection
         label={homeData.about.label}
         title={homeData.about.title}

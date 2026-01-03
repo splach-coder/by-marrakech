@@ -10,7 +10,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <Image
           src="/images/about/hero-bg.jpg"
-          alt="About Xhosen"
+          alt="About Xhosen Gate"
           fill
           priority
           fetchPriority="high"

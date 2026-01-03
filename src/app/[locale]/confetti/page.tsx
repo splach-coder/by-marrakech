@@ -29,7 +29,7 @@ export default function ThankYouPage() {
                     <div className="mb-4 flex justify-center">
                         <Image
                             src="/images/logo-red.webp"
-                            alt="Xhosen"
+                            alt="Xhosen Gate"
                             width={120}
                             height={60}
                             className="object-contain"

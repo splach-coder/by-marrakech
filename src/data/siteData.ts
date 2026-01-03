@@ -35,17 +35,15 @@ const siteData = {
             description: "Start your Moroccan journey the right way with a reliable airport transfer. We provide comfortable, air-conditioned vehicles and professional drivers to ensure a smooth arrival.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.webp",
+                url: "/images/services/airport.png",
                 alt: "Airport Transfer Service"
             },
             banner_image: {
-                url: "/images/services/banner.webp",
+                url: "/images/services/banner.png",
                 alt: "Airport Transfer Service"
             },
             gallery: [
-                { url: "/images/services/transport_from_airport.webp", alt: "Comfortable Transfer" },
-                { url: "/images/casablanca/casablanca.webp", alt: "Casablanca Airport Transfer" },
-                { url: "/images/marrakech/marrakech.webp", alt: "Marrakech Arrival" }
+                { url: "/images/services/airport.png", alt: "Marrakech Arrival" }
             ],
             highlights: [
                 "24/7 availability",
@@ -68,17 +66,15 @@ const siteData = {
             description: "Arriving in a new country can be overwhelming, especially after a long flight. Our hotel transfer service ensures you get to your accommodation safely and comfortably.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.webp",
+                url: "/images/services/hotel_driver.png",
                 alt: "Hotel Transfer Service"
             },
             banner_image: {
-                url: "/images/services/banner.webp",
+                url: "/images/services/banner.png",
                 alt: "Hotel Transfer Service"
             },
             gallery: [
-                { url: "/images/services/transport_from_hotel.webp", alt: "Hotel Pickup" },
-                { url: "/images/rabat/rabat.webp", alt: "City Transfer" },
-                { url: "/images/fes/Fes.webp", alt: "Comfortable Ride" }
+                { url: "/images/services/hotel_driver.png", alt: "Hotel Pickup" },
             ],
             highlights: [
                 "Door-to-door service",
@@ -101,17 +97,15 @@ const siteData = {
             description: "Rent Private Car & Driver in Morocco. Traveling through Morocco at your own pace is the best way to discover the country. Our private car and driver service gives you the freedom to explore.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.webp",
+                url: "/images/services/car_rental.jpeg",
                 alt: "Private Car Rental"
             },
             banner_image: {
-                url: "/images/services/banner.webp",
+                url: "/images/services/banner.png",
                 alt: "Private Car Rental"
             },
             gallery: [
-                { url: "/images/services/car_rental.webp", alt: "Luxury Car Rental" },
-                { url: "/images/ouarzazate/ouarzazate.webp", alt: "Road Trip" },
-                { url: "/images/merzouga/merzouga1.webp", alt: "Desert Driving" }
+                { url: "/images/services/car_rental.jpeg", alt: "Luxury Car Rental" },
             ],
             highlights: [
                 "Flexible itinerary",
@@ -1203,17 +1197,15 @@ const siteDataFR = {
             description: "Commencez votre voyage marocain du bon pied avec un transfert aéroport fiable. Nous fournissons des véhicules confortables et climatisés avec des chauffeurs professionnels pour assurer une arrivée en douceur.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.webp",
+                url: "/images/services/airport.png",
                 alt: "Service de Transfert Aéroport"
             },
             banner_image: {
-                url: "/images/services/banner.webp",
+                url: "/images/services/banner.png",
                 alt: "Service de Transfert Aéroport"
             },
             gallery: [
-                { url: "/images/services/transport_from_airport.webp", alt: "Transfert Confortable" },
-                { url: "/images/casablanca/casablanca.webp", alt: "Transfert Aéroport Casablanca" },
-                { url: "/images/marrakech/marrakech.webp", alt: "Arrivée à Marrakech" }
+                { url: "/images/services/airport.png", alt: "Arrivée à Marrakech" }
             ],
             highlights: [
                 "Disponibilité 24h/24 et 7j/7",
@@ -1236,17 +1228,15 @@ const siteDataFR = {
             description: "Arriver dans un nouveau pays peut être stressant, surtout après un long vol. Notre service de transfert hôtelier vous garantit d'arriver à votre hébergement en toute sécurité et confort.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.webp",
+                url: "/images/services/hotel_driver.png",
                 alt: "Service de Transfert Hôtelier"
             },
             banner_image: {
-                url: "/images/services/banner.webp",
+                url: "/images/services/banner.png",
                 alt: "Service de Transfert Hôtelier"
             },
             gallery: [
-                { url: "/images/services/transport_from_hotel.webp", alt: "Prise en charge à l'hôtel" },
-                { url: "/images/rabat/rabat.webp", alt: "Transfert en ville" },
-                { url: "/images/fes/Fes.webp", alt: "Trajet Confortable" }
+                { url: "/images/services/hotel_driver.png", alt: "Prise en charge à l'hôtel" },
             ],
             highlights: [
                 "Service porte-à-porte",
@@ -1269,17 +1259,15 @@ const siteDataFR = {
             description: "Voyager à travers le Maroc à votre propre rythme est la meilleure façon de découvrir le pays. Notre service de voiture privée avec chauffeur vous donne la liberté d'explorer.",
             categories: ["Blog", "Services"],
             image: {
-                url: "/images/services/luxury_driver_service.webp",
+                url: "/images/services/car_rental.jpeg",
                 alt: "Location de Voiture Privée"
             },
             banner_image: {
-                url: "/images/services/banner.webp",
+                url: "/images/services/banner.png",
                 alt: "Location de Voiture Privée"
             },
             gallery: [
-                { url: "/images/services/car_rental.webp", alt: "Location de Voiture de Luxe" },
-                { url: "/images/ouarzazate/ouarzazate.webp", alt: "Road Trip" },
-                { url: "/images/merzouga/merzouga1.webp", alt: "Conduite dans le désert" }
+                { url: "/images/services/car_rental.jpeg", alt: "Location de Voiture de Luxe" },
             ],
             highlights: [
                 "Itinéraire flexible",

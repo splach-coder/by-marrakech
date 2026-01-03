@@ -35,7 +35,7 @@ export default function SubHeader({
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
             <p className="text-xs font-medium tracking-widest">
               {tagline || t('tagline')} <span className="text-secondary font-nohemi font-body">
-                {name || 'Xhosen'}
+                {name || 'Xhosen Gate'}
               </span>
             </p>
 

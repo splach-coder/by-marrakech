@@ -19,7 +19,7 @@ export default function Hero({
   subtitle = 'Experience the vibrant colors, rich culture, and warm hospitality of Morocco\'s most enchanting city. From ancient medinas to luxurious riads, Marrakech offers an unforgettable journey into the heart of North Africa.',
   ctaPrimary = 'Explore Our Tours',
   ctaSecondary = 'Try a Luxury Experience',
-  backgroundImage = '/images/marrakech/hero.webp',
+  backgroundImage = '/images/hero.jpeg',
 }: HeroProps) {
   const locale = useLocale();
   const { scrollY } = useScroll();
@@ -41,7 +41,7 @@ export default function Hero({
         <div className="relative w-full h-full">
           {/* Mobile Image */}
           <Image
-            src="/images/marrakech/marrakech1.webp"
+            src="/images/hero.jpeg"
             alt="Marrakech"
             fill
             priority
@@ -85,10 +85,16 @@ export default function Hero({
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
             >
-              {title.includes('Xhosen') ? (
+              {title.includes('Xhosen Gate') ? (
+                <>
+                  {title.split('Xhosen Gate')[0]}
+                  <span className="text-secondary font-nohemi tracking-tight">Xhosen Gate</span>
+                  {title.split('Xhosen Gate')[1]}
+                </>
+              ) : title.includes('Xhosen') ? (
                 <>
                   {title.split('Xhosen')[0]}
-                  <span className="text-secondary font-nohemi tracking-tight">Xhosen</span>
+                  <span className="text-secondary font-nohemi tracking-tight">Xhosen Gate</span>
                   {title.split('Xhosen')[1]}
                 </>
               ) : title}

@@ -5,7 +5,7 @@ import { useCart, CartItem, parsePrice } from '@/context/CartContext';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Reorder } from 'framer-motion';
+import { Reorder, useDragControls } from 'framer-motion';
 import {
     Calendar,
     Users,
@@ -30,6 +30,158 @@ interface BookingPageProps {
     params: Promise<{
         locale: string;
     }>;
+}
+
+// Separate component for draggable item to use hooks properly
+function DraggableBookingItem({
+    item,
+    index,
+    itemKey,
+    hasConflict,
+    href,
+    touched,
+    handleItemUpdate,
+    removeItem
+}: {
+    item: CartItem;
+    index: number;
+    itemKey: string;
+    hasConflict: boolean;
+    href: string;
+    touched: boolean;
+    handleItemUpdate: (id: string, type: string, field: keyof CartItem, value: any) => void;
+    removeItem: (id: string, type: string) => void;
+}) {
+    const dragControls = useDragControls();
+
+    return (
+        <Reorder.Item
+            key={itemKey}
+            value={item}
+            dragListener={false}
+            dragControls={dragControls}
+            className={`relative bg-white rounded-2xl p-6 shadow-sm border transition-all duration-300 md:cursor-grab md:active:cursor-grabbing ${!item.date && touched
+                ? 'border-red-300 ring-2 ring-red-100'
+                : hasConflict
+                    ? 'border-amber-300 ring-2 ring-amber-100'
+                    : 'border-gray-100 hover:shadow-md'
+                }`}
+        >
+            {/* Mobile Drag Handle */}
+            <div
+                className="md:hidden absolute top-2 right-2 z-20 cursor-grab active:cursor-grabbing"
+                onPointerDown={(e) => dragControls.start(e)}
+            >
+                <div className="bg-primary/90 backdrop-blur text-white p-3 rounded-xl shadow-lg active:scale-95 transition-transform">
+                    <GripVertical className="w-5 h-5" />
+                </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row gap-6" onPointerDown={(e) => {
+                // On desktop, allow dragging from anywhere
+                if (window.innerWidth >= 768) {
+                    dragControls.start(e);
+                }
+            }}>
+
+                {/* Image */}
+                <div className="relative w-full md:w-32 h-48 md:h-32 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0">
+                    {item.image && (
+                        <Image
+                            src={item.image}
+                            alt={item.title}
+                            fill
+                            className="object-cover"
+                        />
+                    )}
+                    <div className="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold text-gray-800 flex items-center gap-1">
+                        <GripVertical className="w-3 h-3 text-gray-400 hidden md:inline" />
+                        #{index + 1}
+                    </div>
+                    {hasConflict && (
+                        <div className="absolute top-2 right-2 bg-amber-500 text-white p-1.5 rounded-full shadow-lg" title="Date conflict">
+                            <AlertCircle className="w-3 h-3" />
+                        </div>
+                    )}
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 space-y-4">
+                    <div className="flex justify-between items-start">
+                        <div>
+                            <Link href={href} className="group-hover:text-primary transition-colors">
+                                <h3 className="font-bold text-xl text-gray-900 leading-tight mb-1 hover:text-primary transition-colors">
+                                    {item.title}
+                                </h3>
+                            </Link>
+                            <p className="text-sm text-gray-500 uppercase tracking-wide">{item.type}</p>
+                            <div className="flex items-center gap-2 mt-2">
+                                <span className="text-sm font-medium text-gray-900 bg-gray-100 px-2 py-0.5 rounded">
+                                    {item.price || 'Price on request'}
+                                </span>
+                                {item.price && (
+                                    <span className="text-sm font-bold text-primary">
+                                        Total: €{parsePrice(item.price) * (item.guests || 1)}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                        <button
+                            onClick={() => removeItem(item.id, item.type)}
+                            className="text-gray-300 hover:text-red-500 transition-colors p-2 hover:bg-red-50 rounded-full"
+                            title="Remove"
+                        >
+                            <Trash2 className="w-5 h-5" />
+                        </button>
+                    </div>
+
+                    {/* Configuration Inputs */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div className="space-y-1.5">
+                            <label className="text-xs font-bold uppercase tracking-wider text-gray-500 flex items-center gap-1">
+                                Date <span className="text-red-500">*</span>
+                            </label>
+                            <div className="relative">
+                                <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                <input
+                                    type="date"
+                                    required
+                                    className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-gray-800 font-medium ${!item.date && touched ? 'border-red-300 bg-red-50' : 'border-gray-200 focus:border-primary'}`}
+                                    value={item.date || ''}
+                                    onChange={(e) => handleItemUpdate(item.id, item.type, 'date', e.target.value)}
+                                    min={new Date().toISOString().split('T')[0]}
+                                />
+                            </div>
+                            {!item.date && touched && (
+                                <p className="text-xs text-red-500 flex items-center gap-1">
+                                    <AlertCircle className="w-3 h-3" /> Please select a date
+                                </p>
+                            )}
+                        </div>
+
+                        <div className="space-y-1.5">
+                            <label className="text-xs font-bold uppercase tracking-wider text-gray-500">
+                                Guests
+                            </label>
+                            <div className="relative">
+                                <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                <select
+                                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-800 font-medium appearance-none"
+                                    value={item.guests || 1}
+                                    onChange={(e) => handleItemUpdate(item.id, item.type, 'guests', parseInt(e.target.value))}
+                                >
+                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(num => (
+                                        <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
+                                    ))}
+                                    <option value="20">20+ Group</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Reorder.Item>
+    );
 }
 
 export default function BookingPage({ params }: BookingPageProps) {
@@ -145,7 +297,7 @@ export default function BookingPage({ params }: BookingPageProps) {
             message += `\n*Special Requests:*\n${formData.notes}\n`;
         }
 
-        message += `\n--------------------------------\nSent via Xhosen Website`;
+        message += `\n--------------------------------\nSent via Xhosen Gate Website`;
 
         const whatsappNumber = '212600000000';
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
@@ -288,7 +440,12 @@ export default function BookingPage({ params }: BookingPageProps) {
                             </div>
                         )}
 
-                        <Reorder.Group axis="y" values={items} onReorder={reorderItems} className="space-y-6">
+                        <Reorder.Group
+                            axis="y"
+                            values={items}
+                            onReorder={reorderItems}
+                            className="space-y-6"
+                        >
                             {items.map((item, index) => {
                                 const itemKey = `${item.id}-${item.type}`;
                                 const hasConflict = conflicts.some(c => c.itemIds.includes(itemKey));
@@ -301,114 +458,17 @@ export default function BookingPage({ params }: BookingPageProps) {
                                 const href = `/${locale}/${category}/${item.id}`;
 
                                 return (
-                                    <Reorder.Item
+                                    <DraggableBookingItem
                                         key={itemKey}
-                                        value={item}
-                                        className={`bg-white rounded-2xl p-6 shadow-sm border transition-all duration-300 cursor-grab active:cursor-grabbing ${!item.date && touched
-                                            ? 'border-red-300 ring-2 ring-red-100'
-                                            : hasConflict
-                                                ? 'border-amber-300 ring-2 ring-amber-100'
-                                                : 'border-gray-100 hover:shadow-md'
-                                            }`}
-                                    >
-                                        <div className="flex flex-col md:flex-row gap-6">
-                                            {/* Image */}
-                                            <div className="relative w-full md:w-32 h-48 md:h-32 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0">
-                                                {item.image && (
-                                                    <Image
-                                                        src={item.image}
-                                                        alt={item.title}
-                                                        fill
-                                                        className="object-cover"
-                                                    />
-                                                )}
-                                                <div className="absolute top-2 left-2 bg-white/90 backdrop-blur px-2 py-1 rounded text-xs font-bold text-gray-800 flex items-center gap-1">
-                                                    <GripVertical className="w-3 h-3 text-gray-400" />
-                                                    #{index + 1}
-                                                </div>
-                                                {hasConflict && (
-                                                    <div className="absolute top-2 right-2 bg-amber-500 text-white p-1.5 rounded-full shadow-lg" title="Date conflict">
-                                                        <AlertCircle className="w-3 h-3" />
-                                                    </div>
-                                                )}
-                                            </div>
-
-                                            {/* Content */}
-                                            <div className="flex-1 space-y-4">
-                                                <div className="flex justify-between items-start">
-                                                    <div>
-                                                        <Link href={href} className="group-hover:text-primary transition-colors">
-                                                            <h3 className="font-bold text-xl text-gray-900 leading-tight mb-1 hover:text-primary transition-colors">
-                                                                {item.title}
-                                                            </h3>
-                                                        </Link>
-                                                        <p className="text-sm text-gray-500 uppercase tracking-wide">{item.type}</p>
-                                                        <div className="flex items-center gap-2 mt-2">
-                                                            <span className="text-sm font-medium text-gray-900 bg-gray-100 px-2 py-0.5 rounded">
-                                                                {item.price || 'Price on request'}
-                                                            </span>
-                                                            {item.price && (
-                                                                <span className="text-sm font-bold text-primary">
-                                                                    Total: €{parsePrice(item.price) * (item.guests || 1)}
-                                                                </span>
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                    <button
-                                                        onClick={() => removeItem(item.id, item.type)}
-                                                        className="text-gray-300 hover:text-red-500 transition-colors p-2 hover:bg-red-50 rounded-full"
-                                                        title="Remove"
-                                                    >
-                                                        <Trash2 className="w-5 h-5" />
-                                                    </button>
-                                                </div>
-
-                                                {/* Configuration Inputs */}
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                                                    <div className="space-y-1.5">
-                                                        <label className="text-xs font-bold uppercase tracking-wider text-gray-500 flex items-center gap-1">
-                                                            Date <span className="text-red-500">*</span>
-                                                        </label>
-                                                        <div className="relative">
-                                                            <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                                                            <input
-                                                                type="date"
-                                                                required
-                                                                className={`w-full pl-10 pr-4 py-2.5 bg-gray-50 border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all text-gray-800 font-medium ${!item.date && touched ? 'border-red-300 bg-red-50' : 'border-gray-200 focus:border-primary'}`}
-                                                                value={item.date || ''}
-                                                                onChange={(e) => handleItemUpdate(item.id, item.type, 'date', e.target.value)}
-                                                                min={new Date().toISOString().split('T')[0]}
-                                                            />
-                                                        </div>
-                                                        {!item.date && touched && (
-                                                            <p className="text-xs text-red-500 flex items-center gap-1">
-                                                                <AlertCircle className="w-3 h-3" /> Please select a date
-                                                            </p>
-                                                        )}
-                                                    </div>
-
-                                                    <div className="space-y-1.5">
-                                                        <label className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                                                            Guests
-                                                        </label>
-                                                        <div className="relative">
-                                                            <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                                                            <select
-                                                                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-gray-800 font-medium appearance-none"
-                                                                value={item.guests || 1}
-                                                                onChange={(e) => handleItemUpdate(item.id, item.type, 'guests', parseInt(e.target.value))}
-                                                            >
-                                                                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(num => (
-                                                                    <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
-                                                                ))}
-                                                                <option value="20">20+ Group</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Reorder.Item>
+                                        item={item}
+                                        index={index}
+                                        itemKey={itemKey}
+                                        hasConflict={hasConflict}
+                                        href={href}
+                                        touched={touched}
+                                        handleItemUpdate={handleItemUpdate}
+                                        removeItem={removeItem}
+                                    />
                                 );
                             })}
                         </Reorder.Group>
@@ -543,7 +603,8 @@ export default function BookingPage({ params }: BookingPageProps) {
                 {(() => {
                     const anyTransportSelected = items.some(item => TRANSPORT_IDS.includes(item.id));
 
-                    if (anyTransportSelected) return null;
+                    // Don't show suggestions section at all if transport is selected
+                    // if (anyTransportSelected) return null;
 
                     const availableSuggestions = [
                         {
@@ -573,7 +634,7 @@ export default function BookingPage({ params }: BookingPageProps) {
                             label: "Premium",
                             service: siteData.services.find(s => s.id === 501)
                         }
-                    ].filter(suggestion => !items.some(item => item.id === suggestion.id && item.type === 'service'));
+                    ];
 
                     if (availableSuggestions.length === 0) return null;
 

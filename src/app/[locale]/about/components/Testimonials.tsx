@@ -23,7 +23,7 @@ export default function Testimonials() {
       id: '1',
       name: 'Thomas & Emma Laurent',
       location: 'Paris, France',
-      text: 'Nous avons passé une semaine inoubliable à Marrakech grâce à l\'équipe de Xhosen. Fatima a créé un itinéraire parfaitement adapté à nos intérêts, combinant culture, gastronomie et aventure. Le niveau de personnalisation et d\'attention aux détails était exceptionnel. C\'était notre troisième visite au Maroc, mais de loin la meilleure!',
+      text: 'Nous avons passé une semaine inoubliable à Marrakech grâce à l\'équipe de Xhosen Gate. Fatima a créé un itinéraire parfaitement adapté à nos intérêts, combinant culture, gastronomie et aventure. Le niveau de personnalisation et d\'attention aux détails était exceptionnel. C\'était notre troisième visite au Maroc, mais de loin la meilleure!',
       rating: 5,
       image: '/images/testimonials/thomas-emma.jpg',
     },

@@ -39,7 +39,7 @@ export function formatWhatsAppMessage(data: BookingFormData): string {
 
   message += `\n`;
   message += `---\n`;
-  message += `Sent from: Xhosen.com`;
+  message += `Sent from: XhosenGate.com`;
 
   return message;
 }

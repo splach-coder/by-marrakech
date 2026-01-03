@@ -14,8 +14,8 @@ import {
 import { siteData } from '@/data/siteData';
 
 export const metadata: Metadata = {
-    title: 'Sitemap | Xhosen',
-    description: 'Navigate through all pages and services offered by Xhosen.',
+    title: 'Sitemap | Xhosen Gate',
+    description: 'Navigate through all pages and services offered by Xhosen Gate.',
 };
 
 export default function SitemapPage() {

@@ -71,7 +71,7 @@ export default function Header() {
             <Link href={`/${locale}`} className="flex-shrink-0 relative z-[70]">
               <Image
                 src={logoSrc}
-                alt="Xhosen"
+                alt="Xhosen Gate"
                 width={200}
                 height={60}
                 className={`object-contain transition-all duration-500 ${isScrolled ? 'h-10 md:h-12 w-auto' : 'h-12 md:h-20 lg:h-24 w-auto'
@@ -86,7 +86,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-[12px] font-nohemi font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:text-primary hover:tracking-[0.25em] ${isScrolled ? 'text-text-primary' : 'text-white'
+                  className={`text-[12px] font-sans font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:text-primary hover:tracking-[0.25em] ${isScrolled ? 'text-text-primary' : 'text-white'
                     }`}
                 >
                   {link.label}
@@ -140,7 +140,7 @@ export default function Header() {
               <Link href={`/${locale}`} onClick={() => setIsMobileMenuOpen(false)}>
                 <Image
                   src="/images/logo-red.webp"
-                  alt="Xhosen"
+                  alt="Xhosen Gate"
                   width={130}
                   height={40}
                   className="w-auto h-10 object-contain"
