@@ -3,7 +3,8 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Camera, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import PageBanner from '../components/PageBanner';
 import { useTranslations } from 'next-intl';
 
 export default function GalleryPage() {
@@ -34,39 +35,13 @@ export default function GalleryPage() {
 
     return (
         <main className="min-h-screen bg-white">
-            {/* Hero Section */}
-            <section className="relative h-[60vh] md:h-[70vh] min-h-[500px] overflow-hidden">
-                <Image
-                    src="/images/hero-imgs/gallery.webp"
-                    alt={t('hero.title')}
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-
-                <div className="absolute inset-0 flex flex-col justify-end pb-12 md:pb-20">
-                    <div className="container-custom px-4 md:px-8">
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.8 }}
-                            className="max-w-4xl"
-                        >
-                            <div className="flex items-center gap-3 mb-4 md:mb-6">
-                                <Camera className="w-5 h-5 md:w-6 md:h-6 text-secondary" />
-                                <span className="text-white/80 uppercase tracking-[0.2em] text-xs md:text-sm font-medium">{t('hero.tag')}</span>
-                            </div>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 md:mb-6 leading-tight">
-                                {t('hero.title')}
-                            </h1>
-                            <p className="text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl font-light leading-relaxed">
-                                {t('hero.subtitle')}
-                            </p>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
+            {/* Standard full-width page banner */}
+            <PageBanner
+                image="/images/hero-imgs/gallery.webp"
+                kicker={t('hero.tag')}
+                title={t('hero.title')}
+                subtitle={t('hero.subtitle')}
+            />
 
             {/* Gallery Masonry */}
             <section className="py-12 md:py-20 bg-[#faf9f6]">

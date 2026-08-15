@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import PageBanner from '../components/PageBanner';
 import {
   Heart,
   Sparkles,
@@ -59,51 +60,13 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-[#faf9f6]">
 
-      {/* 1. CINEMA HERO */}
-      <section className="relative h-screen min-h-[700px] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=2000&q=80"
-            alt={t('hero.title')}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" as const }}
-            className="max-w-4xl"
-          >
-            <span className="inline-block px-4 py-1.5 border border-white/30 rounded-full text-white/90 text-sm font-medium tracking-[0.2em] mb-8 backdrop-blur-sm bg-white/5 uppercase">
-              {t('hero.tag')}
-            </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white font-medium tracking-tight mb-8 leading-tight">
-              {t.rich('hero.title', {
-                br: () => <br />
-              })}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-              {t('hero.subtitle')}
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70"
-        >
-          <span className="text-xs uppercase tracking-widest">{t('hero.scroll')}</span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
-        </motion.div>
-      </section>
+      {/* Standard full-width page banner */}
+      <PageBanner
+        image="https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=2000&q=80"
+        kicker={t('hero.tag')}
+        title={t.rich('hero.title', { br: () => ' ' })}
+        subtitle={t('hero.subtitle')}
+      />
 
       {/* 2. OUR STORY (Editorial) */}
       <section className="py-24 px-6 md:px-12 bg-white">

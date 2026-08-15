@@ -31,9 +31,11 @@ export default function Header() {
     { href: `/${locale}/tours`, label: t('tours') },
     { href: `/${locale}/experiences`, label: t('experiences') },
     { href: `/${locale}/services`, label: t('services') },
+    { href: `/${locale}/fleet`, label: t('fleet') },
+    { href: `/${locale}/drivers`, label: t('drivers') },
     { href: `/${locale}/activities`, label: t('activities') },
     { href: `/${locale}/gallery`, label: t('gallery') },
-    { href: `/${locale}/marrakech`, label: t('marrakech') },
+    { href: `/${locale}/guides`, label: t('guides') },
     { href: `/${locale}/about`, label: t('about') },
     { href: `/${locale}/contact`, label: t('contact') },
   ];

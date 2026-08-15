@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
-import { Check, ArrowRight, ShoppingBag } from 'lucide-react';
+import { Check, ShoppingBag, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { whatsappLink } from '@/data/transferData';
 
 interface MobileBookingWidgetProps {
     id: string;
@@ -79,33 +80,46 @@ export default function MobileBookingWidget({
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         className="fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-lg border-t border-gray-100 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] px-4 py-4 md:hidden pb-safe safe-area-bottom"
                     >
-                        <div className="flex items-center justify-between gap-4 max-w-md mx-auto pr-20 md:pr-0">
-                            <div className="flex flex-col">
-                                <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Total Price</span>
-                                <div className="flex items-baseline gap-1">
-                                    <span className="text-xl font-serif font-bold text-gray-900">{price}</span>
+                        <div className="max-w-md mx-auto">
+                            <div className="flex items-center justify-between gap-4 pr-20 md:pr-0">
+                                <div className="flex flex-col">
+                                    <span className="text-[9px] text-gray-400 uppercase tracking-widest font-bold">Total Price</span>
+                                    <div className="flex items-baseline gap-1">
+                                        <span className="text-lg font-serif font-bold text-gray-900">{price}</span>
+                                    </div>
                                 </div>
+
+                                <button
+                                    onClick={handleAddToCart}
+                                    className={`flex-1 flex items-center justify-center gap-2 py-3 px-6 rounded-sm font-bold text-[13px] transition-all shadow-xl active:scale-95 ${isAdded
+                                        ? 'bg-green-600 text-white shadow-green-500/20'
+                                        : 'bg-primary text-white shadow-primary/25'
+                                        }`}
+                                >
+                                    {isAdded ? (
+                                        <>
+                                            <Check className="w-4 h-4" />
+                                            <span>In Journey</span>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <ShoppingBag className="w-4 h-4" />
+                                            <span>Add to Journey</span>
+                                        </>
+                                    )}
+                                </button>
                             </div>
 
-                            <button
-                                onClick={handleAddToCart}
-                                className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-bold text-sm transition-all shadow-xl active:scale-95 ${isAdded
-                                    ? 'bg-green-500 text-white shadow-green-500/20'
-                                    : 'bg-primary text-white shadow-primary/25'
-                                    }`}
+                            {/* WhatsApp booking below the confirm action */}
+                            <a
+                                href={whatsappLink(`Hello Xhosen Gate! I would like to book: ${title} (${price})`)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-2 flex items-center justify-center gap-2 py-2.5 rounded-sm bg-[#25D366] text-white font-bold text-[12px] uppercase tracking-wider active:scale-95 transition-all"
                             >
-                                {isAdded ? (
-                                    <>
-                                        <Check className="w-4 h-4" />
-                                        <span>In Journey</span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <ShoppingBag className="w-4 h-4" />
-                                        <span>Add to Journey</span>
-                                    </>
-                                )}
-                            </button>
+                                <MessageCircle className="w-4 h-4" />
+                                <span>Book on WhatsApp</span>
+                            </a>
                         </div>
                     </motion.div>
                 </>

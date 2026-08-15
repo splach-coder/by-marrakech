@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { siteData } from '@/data/siteData';
+import { getGuides } from '@/data/guidesData';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://xhosengate.com';
@@ -60,6 +61,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Category pages
     const categoryPages: MetadataRoute.Sitemap = [
         {
+            url: `${baseUrl}/fleet`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/guides`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/drivers`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/drivers/fetah`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/drivers/ayoub`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
             url: `${baseUrl}/tours`,
             lastModified: currentDate,
             changeFrequency: 'weekly',
@@ -117,6 +148,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
     }));
 
+    // Guide article pages
+    const guidePages: MetadataRoute.Sitemap = getGuides().map((guide) => ({
+        url: `${baseUrl}/guides/${guide.slug}`,
+        lastModified: currentDate,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }));
+
     // Combine all pages
     return [
         ...staticPages,
@@ -125,5 +164,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...activityPages,
         ...experiencePages,
         ...servicePages,
+        ...guidePages,
     ];
 }

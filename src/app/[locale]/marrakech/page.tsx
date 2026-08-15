@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import PageBanner from '../components/PageBanner';
 import { getSiteData, siteData } from '@/data/siteData';
 import { useLocale, useTranslations } from 'next-intl';
 import {
@@ -64,48 +65,13 @@ export default function MarrakechPage() {
   return (
     <main className="min-h-screen bg-[#faf9f6]">
 
-      {/* 1. CINEMA HERO */}
-      <section className="relative h-screen min-h-[700px] overflow-hidden">
-        <div className="absolute inset-0">
-          <Image
-            src="/images/marrakech/marrakech12.webp"
-            alt={t('hero.title')}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
-        </div>
-
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" as const }}
-          >
-            <span className="inline-block px-4 py-1.5 border border-white/30 rounded-full text-white/90 text-sm font-medium tracking-[0.2em] mb-6 backdrop-blur-sm bg-white/5 uppercase">
-              {t('hero.tag')}
-            </span>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-serif text-white font-medium tracking-tight mb-8">
-              {t('hero.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
-              {t('hero.subtitle')}
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/70"
-        >
-          <span className="text-xs uppercase tracking-widest">{t('hero.scroll')}</span>
-          <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent" />
-        </motion.div>
-      </section>
+      {/* Standard full-width page banner */}
+      <PageBanner
+        image="/images/marrakech/marrakech12.webp"
+        kicker={t('hero.tag')}
+        title={t('hero.title')}
+        subtitle={t('hero.subtitle')}
+      />
 
       {/* 2. INTRODUCTORY EDITORIAL */}
       <section className="py-24 px-6 md:px-12 bg-white">

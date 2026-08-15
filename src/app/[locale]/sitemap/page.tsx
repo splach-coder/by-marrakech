@@ -25,7 +25,7 @@ export default function SitemapPage() {
             <section className="relative h-[50vh] overflow-hidden">
                 {/* Background Image */}
                 <Image
-                    src="/images/marrakech/marrakech.jpg"
+                    src="/images/marrakech/marrakech.webp"
                     alt="Morocco Travel Destinations"
                     fill
                     className="object-cover"

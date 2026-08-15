@@ -76,7 +76,7 @@ export default function DriverPage({ params }: DriverPageProps) {
 
     const handleBook = () => {
         let message = '';
-        const nameToUse = driver.brandInfo?.companyName || driver.name;
+        const nameToUse = driver.name;
         const vehicleInfo = `Vehicle: ${selectedVehicle}`;
 
         if (bookingMode === 'custom') {
@@ -90,157 +90,60 @@ export default function DriverPage({ params }: DriverPageProps) {
         window.open(url, '_blank');
     };
 
-    const isBranded = driver.hasBrand;
-
     return (
-        <main className={`min-h-screen bg-stone-50 ${isBranded ? '' : ''}`}>
+        <main className="min-h-screen bg-stone-50">
 
-            {/* HEADER AREA - Conditional */}
-            {isBranded ? (
-                // BRANDED HERO
-                <div className="relative h-[85vh] min-h-[600px] w-full overflow-hidden">
-                    {driver.brandInfo?.banner && (
-                        <>
-                            <Image
-                                src={driver.brandInfo.banner}
-                                alt={driver.brandInfo.companyName || driver.name}
-                                fill
-                                className="object-cover"
-                                priority
-                            />
-                            <div className="absolute inset-0 bg-black/40" />
-                        </>
-                    )}
-
-                    <div className="absolute inset-0 flex flex-col justify-end pb-24 md:pb-32 container-custom px-4 md:px-8">
-                        <div className="flex flex-col md:flex-row items-end gap-6 md:gap-8">
-                            {/* Brand Logo */}
-                            {driver.brandInfo?.logo && (
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ duration: 0.5 }}
-                                    className="w-28 h-28 md:w-40 md:h-40 bg-white rounded-2xl p-4 shadow-2xl flex-shrink-0 me-auto"
-                                >
-                                    <div className="relative w-full h-full">
-                                        <Image
-                                            src={driver.brandInfo.logo}
-                                            alt="Brand Logo"
-                                            fill
-                                            className="object-contain"
-                                        />
-                                    </div>
-                                </motion.div>
-                            )}
-
-                            <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.2 }}
-                                className="text-white pb-2 flex-1"
-                            >
-                                <div className="flex items-center gap-3 mb-3">
-                                    <Shield className="w-5 h-5 text-primary" />
-                                    <span className="uppercase tracking-widest text-xs md:text-sm font-medium text-white/90">
-                                        {tDriv('verifiedProfessional', { years: driver.experienceYears })}
-                                    </span>
-                                </div>
-                                <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-4 shadow-black drop-shadow-md">
-                                    {driver.brandInfo?.companyName || driver.name}
-                                </h1>
-                                {driver.brandInfo?.description && (
-                                    <p className="text-white/90 text-lg md:text-xl max-w-2xl font-light leading-relaxed drop-shadow-sm border-l-4 border-primary pl-4">
-                                        {driver.brandInfo.description}
-                                    </p>
-                                )}
-                            </motion.div>
-                        </div>
-
-                        {/* Breadcrumbs inside Hero for Branded */}
-                        <nav className="flex items-center gap-2 text-xs md:text-sm text-white/60 mt-8">
-                            <Link href={`/${locale}`} className="hover:text-white transition-colors flex items-center gap-1">
-                                <Home className="w-3.5 h-3.5 mb-0.5" />
-                                <span>{t('home')}</span>
-                            </Link>
-                            <ChevronRight className="w-3 h-3" />
-                            <Link href={`/${locale}/services/501`} className="hover:text-white transition-colors capitalize">
-                                {tDriv('backToDrivers')}
-                            </Link>
-                            <ChevronRight className="w-3 h-3" />
-                            <span className="text-white font-medium">{driver.brandInfo?.companyName || driver.name}</span>
-                        </nav>
-                    </div>
+            {/* HEADER */}
+            <div className="bg-white border-b border-stone-100 pt-24 md:pt-32">
+                <div className="container-custom py-4">
+                    <nav className="flex items-center gap-2 text-xs md:text-sm text-gray-500">
+                        <Link href={`/${locale}`} className="hover:text-primary transition-colors flex items-center gap-1">
+                            <Home className="w-3.5 h-3.5 mb-0.5" />
+                            <span>{t('home')}</span>
+                        </Link>
+                        <ChevronRight className="w-3 h-3" />
+                        <Link href={`/${locale}/drivers`} className="hover:text-primary transition-colors capitalize">
+                            {tDriv('backToDrivers')}
+                        </Link>
+                        <ChevronRight className="w-3 h-3" />
+                        <span className="text-gray-900 font-medium">{driver.name}</span>
+                    </nav>
                 </div>
-            ) : (
-                // STANDARD HEADER
-                <div className="bg-white border-b border-stone-100 pt-24 md:pt-32">
-                    <div className="container-custom py-4">
-                        <nav className="flex items-center gap-2 text-xs md:text-sm text-gray-500">
-                            <Link href={`/${locale}`} className="hover:text-primary transition-colors flex items-center gap-1">
-                                <Home className="w-3.5 h-3.5 mb-0.5" />
-                                <span>{t('home')}</span>
-                            </Link>
-                            <ChevronRight className="w-3 h-3" />
-                            <Link href={`/${locale}/services/501`} className="hover:text-primary transition-colors capitalize">
-                                {tDriv('backToDrivers')}
-                            </Link>
-                            <ChevronRight className="w-3 h-3" />
-                            <span className="text-gray-900 font-medium">{driver.name}</span>
-                        </nav>
-                    </div>
-                </div>
-            )}
-
-            {/* BRANDED GALLERY SECTION REMOVED FROM TOP */}
+            </div>
 
             {/* MAIN CONTENT */}
-            <div className={`container-custom ${isBranded ? '-mt-16 md:-mt-20 relative z-10 mb-12' : 'py-8 md:py-12'}`}>
+            <div className="container-custom py-8 md:py-12">
                 {/* Main Profile Card */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className={`bg-white rounded-3xl md:rounded-[2.5rem] shadow-2xl overflow-hidden border border-stone-100 flex flex-col lg:flex-row ${isBranded ? 'shadow-stone-200/50' : 'min-h-[850px]'}`}
+                    className="bg-white rounded-md shadow-2xl overflow-hidden border border-stone-100 flex flex-col lg:flex-row min-h-[850px]"
                 >
                     {/* LEFT SIDE: Visuals & Core Info */}
                     <div className="w-full lg:w-5/12 bg-stone-50 px-4 py-8 md:p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-stone-100 flex flex-col">
 
-                        {/* For non-branded, show profile image prominently here */}
-                        {!isBranded && (
-                            <div className="flex flex-col items-center mb-8">
-                                <div className="relative w-40 md:w-56 h-40 md:h-56 rounded-full overflow-hidden border-[6px] border-white shadow-xl mb-6 cursor-pointer group">
-                                    <Image
-                                        src={driver.image}
-                                        alt={driver.name}
-                                        fill
-                                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                        priority
-                                    />
-                                </div>
-                                <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 text-center mb-3">
-                                    {driver.name}
-                                </h1>
-                                <div className="flex items-center gap-2 text-sm text-gray-500 mb-6 bg-white px-5 py-2.5 rounded-full shadow-sm border border-stone-100">
-                                    <Shield className="w-4 h-4 text-primary" />
-                                    <span className="font-semibold tracking-wide uppercase text-xs">
-                                        {tDriv('verifiedProfessional', { years: driver.experienceYears })}
-                                    </span>
-                                </div>
+                        {/* Driver profile */}
+                        <div className="flex flex-col items-center mb-8">
+                            <div className="relative w-40 md:w-56 h-40 md:h-56 rounded-full overflow-hidden border-[6px] border-white shadow-xl mb-6 cursor-pointer group">
+                                <Image
+                                    src={driver.image}
+                                    alt={driver.name}
+                                    fill
+                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                    priority
+                                />
                             </div>
-                        )}
-
-                        {/* For Branded, show a smaller profile card/intro */}
-                        {isBranded && (
-                            <div className="flex items-center gap-4 mb-8 bg-white p-4 rounded-2xl shadow-sm border border-stone-100">
-                                <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-primary/20">
-                                    <Image src={driver.image} alt={driver.name} fill className="object-cover" />
-                                </div>
-                                <div>
-                                    <p className="text-xs text-gray-400 uppercase tracking-wider font-bold mb-1">{tDriv('yourDriver')}</p>
-                                    <h3 className="text-xl font-bold text-gray-900 leading-none">{driver.name}</h3>
-                                </div>
+                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 text-center mb-3">
+                                {driver.name}
+                            </h1>
+                            <div className="flex items-center gap-2 text-sm text-gray-500 mb-6 bg-white px-5 py-2.5 rounded-full shadow-sm border border-stone-100">
+                                <Shield className="w-4 h-4 text-primary" />
+                                <span className="font-semibold tracking-wide uppercase text-xs">
+                                    {tDriv('verifiedProfessional', { years: driver.experienceYears })}
+                                </span>
                             </div>
-                        )}
+                        </div>
 
                         <div className="w-full space-y-6">
                             {/* Vehicle Selection */}
@@ -249,44 +152,39 @@ export default function DriverPage({ params }: DriverPageProps) {
                                     <Car className="w-4 h-4 text-primary" /> {tDriv('vehicleFleet')}
                                 </h4>
 
-                                <div className="space-y-4">
-                                    <div className="grid grid-cols-2 gap-3">
-                                        {driver.gallery.map((img, i) => (
-                                            <div
-                                                key={i}
-                                                className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 border border-stone-100 group cursor-pointer"
-                                                onClick={() => setSelectedImage(i)}
-                                            >
+                                {/* The driver's own vehicles — selectable fleet cards */}
+                                <div className="space-y-3">
+                                    {driver.fleet.map((vehicle) => (
+                                        <button
+                                            key={vehicle.name}
+                                            onClick={() => setSelectedVehicle(vehicle.name)}
+                                            className={`w-full text-left rounded-sm border-2 overflow-hidden transition-all group ${selectedVehicle === vehicle.name
+                                                ? 'border-primary bg-primary/5'
+                                                : 'border-stone-100 hover:border-primary/20 hover:bg-stone-50'}`}
+                                        >
+                                            <div className="relative aspect-[16/8] overflow-hidden bg-gray-100">
                                                 <Image
-                                                    src={img}
-                                                    alt="Vehicle"
+                                                    src={vehicle.image}
+                                                    alt={vehicle.name}
                                                     fill
                                                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                                                 />
-                                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                                             </div>
-                                        ))}
-                                    </div>
-
-                                    <div className="flex flex-col gap-2">
-                                        <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-1">Select Your Vehicle</p>
-                                        <div className="grid grid-cols-1 gap-2">
-                                            {driver.vehicleTypes.map((v) => (
-                                                <button
-                                                    key={v}
-                                                    onClick={() => setSelectedVehicle(v)}
-                                                    className={`text-left px-4 py-3 rounded-xl border-2 transition-all flex items-center justify-between group ${selectedVehicle === v
-                                                        ? 'border-primary bg-primary/5 text-primary'
-                                                        : 'border-stone-100 text-stone-600 hover:border-primary/20 hover:bg-stone-50'}`}
-                                                >
-                                                    <span className="text-xs font-bold uppercase tracking-wider">{v}</span>
-                                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedVehicle === v ? 'border-primary bg-primary' : 'border-stone-200'}`}>
-                                                        {selectedVehicle === v && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
-                                                    </div>
-                                                </button>
-                                            ))}
-                                        </div>
-                                    </div>
+                                            <div className="px-4 py-3 flex items-center justify-between gap-3">
+                                                <div>
+                                                    <span className={`block text-xs font-bold uppercase tracking-wider ${selectedVehicle === vehicle.name ? 'text-primary' : 'text-stone-700'}`}>
+                                                        {vehicle.name}
+                                                    </span>
+                                                    <span className="block text-[11px] text-stone-500 mt-0.5">
+                                                        {vehicle.pax} pax · {vehicle.luggage} {locale === 'fr' ? 'bagages' : 'bags'}
+                                                    </span>
+                                                </div>
+                                                <div className={`w-5 h-5 shrink-0 rounded-full border-2 flex items-center justify-center ${selectedVehicle === vehicle.name ? 'border-primary bg-primary' : 'border-stone-200'}`}>
+                                                    {selectedVehicle === vehicle.name && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                                                </div>
+                                            </div>
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
 
@@ -396,7 +294,7 @@ export default function DriverPage({ params }: DriverPageProps) {
                                             <div>
                                                 <h4 className="font-bold text-gray-900 text-lg mb-2">{tDriv('totalFlexibilityTitle')}</h4>
                                                 <p className="text-gray-600 leading-relaxed">
-                                                    {tDriv('totalFlexibilityDesc', { name: isBranded ? (driver.brandInfo?.companyName || driver.name) : driver.name.split(' ')[0] })}
+                                                    {tDriv('totalFlexibilityDesc', { name: driver.name.split(' ')[0] })}
                                                 </p>
                                             </div>
                                         </div>

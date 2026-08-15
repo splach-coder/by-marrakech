@@ -5,7 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { getSiteData, siteData } from '@/data/siteData';
-import { MapPin, Mouse } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import PageBanner from '../components/PageBanner';
 
 export default function ActivitiesPage() {
     const locale = useLocale();
@@ -35,52 +36,12 @@ export default function ActivitiesPage() {
 
     return (
         <main className="min-h-screen bg-white">
-            {/* Full Screen Hero Section */}
-            <div className="relative h-screen w-full overflow-hidden">
-                {/* Background Image */}
-                <div className="absolute inset-0">
-                    <Image
-                        src={'/images/hero-imgs/activites.webp'}
-                        alt={t('hero.title')}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-black/40" />
-                </div>
-
-                {/* Hero Content */}
-                <div className="relative h-full flex flex-col items-center justify-center text-center px-4 text-white z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl !font-serif font-normal tracking-tight mb-6">
-                            {t('hero.title')}
-                        </h1>
-                        <p className="text-sm md:text-base lg:text-lg tracking-[0.2em] font-light uppercase text-white/90">
-                            {t('hero.subtitle')}
-                        </p>
-                    </motion.div>
-                </div>
-
-                {/* Scroll Indicator */}
-                <motion.div
-                    className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white z-10 cursor-pointer"
-                    initial={{ opacity: 1 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1, duration: 1 }}
-                    onClick={() => {
-                        const nextSection = document.getElementById('activities-grid');
-                        nextSection?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                >
-                    <div className="flex flex-col items-center gap-2">
-                        <Mouse className="w-8 h-8 opacity-80" strokeWidth={1.5} />
-                    </div>
-                </motion.div>
-            </div>
+            {/* Standard full-width page banner */}
+            <PageBanner
+                image="/images/hero-imgs/activites.webp"
+                title={t('hero.title')}
+                subtitle={t('hero.subtitle')}
+            />
 
             {/* Activities Grid */}
             <section id="activities-grid" className="py-24 bg-background">

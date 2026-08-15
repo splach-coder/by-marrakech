@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
+import PageBanner from '../components/PageBanner';
 import {
   MapPin,
   Phone,
@@ -37,36 +38,12 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#faf9f6]">
 
-      {/* Full Screen Hero Section */}
-      <div className="relative h-screen w-full overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero-imgs/contact.webp"
-            alt={t('hero.title')}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative h-full flex flex-col items-center justify-center text-center px-4 text-white z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl !font-serif font-normal tracking-tight mb-6">
-              {t('hero.title')}
-            </h1>
-            <p className="text-sm md:text-base lg:text-lg tracking-[0.2em] font-light uppercase text-white/90">
-              {t('hero.subtitle')}
-            </p>
-          </motion.div>
-        </div>
-      </div>
+      {/* Standard full-width page banner */}
+      <PageBanner
+        image="/images/hero-imgs/contact.webp"
+        title={t('hero.title')}
+        subtitle={t('hero.subtitle')}
+      />
 
       {/* 2. EDITORIAL CONTACT SECTION */}
       <section className="py-24 px-2 md:px-6 lg:px-12">

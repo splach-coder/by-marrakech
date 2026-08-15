@@ -18,12 +18,15 @@
     "artisans": "Our Artisans",
     "catalog": "Catalog",
     "followUs": "Follow Us",
-    "discover": "Discover More"
+    "discover": "Discover More",
+    "fleet": "Fleet",
+    "guides": "Guides",
+    "drivers": "Drivers"
   },
   "home": {
     "hero": {
-      "title": "Discover Morocco with Xhosen",
-      "subtitle": "Your trusted agency for authentic tours and unforgettable journeys across Morocco.",
+      "title": "Premium Private Transfers & Trips in Marrakech",
+      "subtitle": "From Marrakech Menara Airport arrivals to Atlas excursions and desert adventures — private chauffeurs, fixed prices and five-star care with Xhosen Gate.",
       "ctaPrimary": "Explore Our Tours",
       "ctaSecondary": "View Experiences"
     },
@@ -49,6 +52,117 @@
       "title": "Ready to Experience Authentic Morocco?",
       "description": "Let our expert local guides create a personalized journey through the magic of Marrakech and beyond. From vibrant souks to serene desert landscapes, your unforgettable Moroccan adventure awaits.",
       "button": "Start Planning"
+    },
+    "quote": {
+      "tabTransfers": "Transfers",
+      "tabExcursions": "Excursions",
+      "route": "Your route",
+      "excursionLabel": "Experience",
+      "selectExcursion": "Choose your experience…",
+      "date": "Date",
+      "time": "Time",
+      "guests": "Guests",
+      "priceFrom": "From",
+      "perVehicle": "/ vehicle",
+      "cta": "See Prices",
+      "trustFixed": "Fixed all-in prices",
+      "trustFlight": "Flight delays covered",
+      "trustCancel": "Free cancellation",
+      "waTransferIntro": "Hello Xhosen Gate! I would like to book a private transfer:",
+      "waExcursionIntro": "Hello Xhosen Gate! I would like to book an excursion:",
+      "waPax": "passengers",
+      "from": "From",
+      "to": "To",
+      "fromPlaceholder": "Where are you coming from?",
+      "toPlaceholder": "Where are you going?",
+      "addReturn": "Add return",
+      "removeReturn": "Remove return",
+      "return": "Return",
+      "returnDate": "Return date",
+      "trustGoogle": "on Google"
+    },
+    "journey": {
+      "label": "Our Services",
+      "title": "Choose Your Journey",
+      "subtitle": "Three ways to travel Morocco in comfort — airport transfers, a premium fleet with private drivers, and curated excursions from Marrakech.",
+      "transfers": {
+        "title": "Airport Transfers",
+        "description": "Punctual, professional pickups from Marrakech Menara Airport to your riad, hotel or any destination in Morocco.",
+        "cta": "Book a transfer",
+        "kicker": "Transfers"
+      },
+      "fleet": {
+        "title": "Our Fleet",
+        "description": "From executive sedans to 17-seat minibuses — every vehicle chauffeur-driven, air-conditioned and immaculate.",
+        "cta": "Explore the fleet",
+        "kicker": "Excellence"
+      },
+      "excursions": {
+        "title": "Private Excursions",
+        "description": "Atlas valleys, Essaouira, waterfalls and the desert — bespoke day trips designed around you.",
+        "cta": "View excursions",
+        "kicker": "Discovery"
+      },
+      "titleStart": "Choose Your",
+      "titleAccent": "Journey"
+    },
+    "routes": {
+      "label": "Fixed Prices",
+      "title": "Popular Transfer Routes",
+      "subtitle": "Fixed prices per vehicle — meet & greet, flight tracking and 60 minutes of free waiting on every airport route.",
+      "priceFrom": "From",
+      "perVehicle": "/ vehicle",
+      "book": "Book",
+      "note": "All prices are per vehicle, not per person. Child seats free of charge. Pay cash or by bank transfer.",
+      "waIntro": "Hello Xhosen Gate! I would like a quote for the route:",
+      "titleStart": "Popular Transfer",
+      "titleAccent": "Routes",
+      "startingFrom": "Starting from"
+    },
+    "fleetSection": {
+      "label": "The Collection",
+      "title": "Our Elite Fleet",
+      "subtitle": "Chauffeur-driven, air-conditioned and spotless — choose the vehicle that fits your journey.",
+      "upTo": "Up to",
+      "pax": "pax",
+      "bags": "bags",
+      "from": "From",
+      "details": "Details",
+      "viewAll": "Explore Our Full Fleet",
+      "titleStart": "Our Elite",
+      "titleAccent": "Fleet"
+    },
+    "whyUs": {
+      "label": "The Xhosen Standard",
+      "title": "Why Choose Us",
+      "items": {
+        "licensed": {
+          "title": "Licensed & Insured",
+          "description": "Full compliance with Moroccan transport regulations for your safety and peace of mind."
+        },
+        "punctual": {
+          "title": "Punctual Arrival",
+          "description": "Flight tracking and local traffic knowledge mean your driver is always there before you are."
+        },
+        "drivers": {
+          "title": "Expert Chauffeurs",
+          "description": "Professional, multilingual drivers who know every road from the medina to the mountain passes."
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "A real human on WhatsApp around the clock — before, during and after your journey."
+        }
+      }
+    },
+    "faq": {
+      "label": "Good to Know",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything travellers ask us before booking a transfer or excursion in Marrakech."
+    },
+    "heroExtras": {
+      "googleReviews": "Google reviews",
+      "ctaBook": "Book Your Journey",
+      "ctaTransfers": "Marrakech Airport Transfers"
     }
   },
   "experiences": {
@@ -61,7 +175,9 @@
     "rating": "Rating",
     "guests": "Guests",
     "featured": "FEATURED",
-    "notForChildren": "Not for children"
+    "notForChildren": "Not for children",
+    "explore": "Explore Experience",
+    "viewAll": "View All Experiences"
   },
   "tours": {
     "label": "DISCOVER OUR TOURS",
@@ -174,13 +290,39 @@
       "call": "Call Us",
       "email": "Email Us",
       "visit": "Visit Us",
-      "address": "Marrakech, Morocco"
+      "address": "Marrakech, Morocco",
+      "hours": "24/7 — flight tracking included"
     },
     "bottom": {
       "rights": "All rights reserved.",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
       "sitemap": "Sitemap"
+    },
+    "nav": {
+      "title": "Navigation",
+      "home": "Home",
+      "transfers": "Transfers",
+      "fleet": "Fleet",
+      "excursions": "Excursions",
+      "tours": "Tours",
+      "privateDriver": "Private Driver",
+      "guides": "Guides",
+      "about": "About",
+      "contact": "Contact",
+      "drivers": "Our Drivers"
+    },
+    "routes": {
+      "title": "Airport & Transfer Routes",
+      "all": "All transfers"
+    },
+    "excursions": {
+      "title": "Excursions from Marrakech",
+      "all": "All excursions"
+    },
+    "payment": {
+      "secure": "Secure booking",
+      "methods": "Or cash to the driver (EUR / MAD)"
     }
   },
   "booking": {
@@ -297,7 +439,7 @@
     "ratingScore": "{rating} / 5.0 Rating",
     "startJourney": "Start Your Journey",
     "customItinerary": "Custom Itinerary",
-    "bookAgencyTour": "Book Agency Tour",
+    "bookAgencyTour": "Book a Tour",
     "totalFlexibilityTitle": "Total Flexibility",
     "totalFlexibilityDesc": "Hire {name} for the day, week, or specific trip. You decide the route, stops, and pace. Perfect for explorers who want to go off the beaten path.",
     "selectTour": "Select a tour to book with {name}:",
@@ -379,10 +521,22 @@
       "quote": "Marrakech taught me color.",
       "author": "Yves Saint Laurent",
       "highlights": {
-        "medina": { "title": "Ancient Medina", "desc": "A UNESCO World Heritage site labyrinth." },
-        "food": { "title": "Culinary Heaven", "desc": "World-famous street food and fine dining." },
-        "sun": { "title": "Year-Round Sun", "desc": "Over 300 days of sunshine annually." },
-        "photo": { "title": "Photographer's Dream", "desc": "Vibrant colors and stunning architecture." }
+        "medina": {
+          "title": "Ancient Medina",
+          "desc": "A UNESCO World Heritage site labyrinth."
+        },
+        "food": {
+          "title": "Culinary Heaven",
+          "desc": "World-famous street food and fine dining."
+        },
+        "sun": {
+          "title": "Year-Round Sun",
+          "desc": "Over 300 days of sunshine annually."
+        },
+        "photo": {
+          "title": "Photographer's Dream",
+          "desc": "Vibrant colors and stunning architecture."
+        }
       }
     },
     "tours": {
@@ -442,5 +596,83 @@
     "card": {
       "viewProfile": "View Profile"
     }
+  },
+  "reviews": {
+    "label": "Google Reviews",
+    "title": "What Our Clients Say",
+    "onGoogle": "reviews on Google",
+    "seeAll": "See all on Google Maps"
+  },
+  "fleetPage": {
+    "heroTitle": "Our Elite Fleet",
+    "heroSubtitle": "Every journey deserves the right vehicle — chauffeur-driven sedans, vans, minibuses and desert-ready 4x4s, all air-conditioned and immaculately kept.",
+    "gridLabel": "The Collection",
+    "gridTitle": "Select Your Vehicle",
+    "glanceLabel": "Compare",
+    "glanceTitle": "At a Glance",
+    "colVehicle": "Vehicle",
+    "colCategory": "Category",
+    "colPax": "Passengers",
+    "colLuggage": "Luggage",
+    "colPrice": "From",
+    "bookVehicle": "Book this vehicle",
+    "whatsapp": "WhatsApp",
+    "waIntro": "Hello Xhosen Gate! I would like to book the vehicle:",
+    "notSureTitle": "Not Sure Which Vehicle?",
+    "notSureText": "Tell us how many you are, where you are going and what you want to see — our team will match you with the perfect vehicle in minutes.",
+    "notSureCta": "Ask on WhatsApp"
+  },
+  "guidesPage": {
+    "heroTitle": "Travel Guides",
+    "heroSubtitle": "Insider guides to Marrakech airport transfers, intercity routes and the finest excursions across Morocco — from the Xhosen Gate team.",
+    "featuredKicker": "City Guide",
+    "featuredTitle": "The Marrakech City Guide",
+    "featuredText": "Our complete guide to the Red City — signature tours, day trips, food, and the experiences that make Marrakech unforgettable.",
+    "featuredCta": "Explore Marrakech",
+    "allGuides": "All Guides",
+    "readGuide": "Read Guide",
+    "backToGuides": "All Guides",
+    "relatedTitle": "Keep Reading",
+    "ctaTitle": "Ready to Put This Guide Into Action?",
+    "ctaText": "Fixed prices per vehicle, flight tracking, free child seats and a real human on WhatsApp 24/7 — tell us your plan and we will handle the road.",
+    "ctaButton": "Plan on WhatsApp",
+    "ctaWa": "Hello Xhosen Gate! I read one of your guides and I would like to plan a trip:"
+  },
+  "bookingCard": {
+    "book": "Book",
+    "type_tour": "Tour",
+    "type_experience": "Experience",
+    "type_activity": "Activity",
+    "type_service": "Service",
+    "guests": "Number of Guests",
+    "departureTime": "Departure Time",
+    "departureAt": "Departure at",
+    "availableDaily": "Available daily",
+    "departureDate": "Departure Date",
+    "pickupHotel": "Pickup Hotel / Riad",
+    "pickupPlaceholder": "Your hotel or accommodation",
+    "privateTitle": "Private Excursion",
+    "privateSub": "Dedicated fleet & guide",
+    "total": "Total",
+    "trustLine": "on Google · Fixed price per vehicle · Flight tracking · Meet & greet",
+    "confirm": "Confirm Booking",
+    "whatsapp": "Book on WhatsApp",
+    "inCart": "Already in Journey",
+    "waIntro": "Hello Xhosen Gate! I would like to book:",
+    "waGuests": "guests",
+    "note": "{duration} · Group size: {groupSize}"
+  },
+  "driversPage": {
+    "heroTitle": "Our Private Drivers",
+    "heroSubtitle": "Meet the professionals behind the wheel — every driver verified, experienced and driving his own immaculate vehicles.",
+    "label": "The Team",
+    "titleStart": "Choose Your",
+    "titleAccent": "Driver",
+    "subtitle": "Each driver has his own page, his own fleet and his own way of showing you Morocco. Pick the one that fits your trip.",
+    "years": "{years}+ years experience",
+    "hisFleet": "His fleet",
+    "from": "From",
+    "perDay": "/ day",
+    "viewProfile": "View Profile"
   }
 }

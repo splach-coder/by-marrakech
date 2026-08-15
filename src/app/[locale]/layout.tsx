@@ -8,6 +8,7 @@ import "../globals.css";
 import Script from 'next/script';
 import AnalyticsListener from '@/lib/AnalyticsListener';
 import Footer from './components/Footer';
+import GoogleReviewsSection from './components/GoogleReviewsSection';
 import { CartProvider } from '@/context/CartContext';
 import CartDrawer from './components/CartDrawer';
 
@@ -111,6 +112,8 @@ export default async function LocaleLayout({
             <SubHeader />
             <Header />
             {children}
+            {/* Google Reviews band on every page (self-excludes checkout/legal routes) */}
+            <GoogleReviewsSection />
             <Footer />
             <CartDrawer />
           </CartProvider >

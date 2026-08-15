@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { useLocale } from 'next-intl';
-import { Clock, ArrowRight, Check } from 'lucide-react';
-import { useCart } from '@/context/CartContext';
+import { useLocale, useTranslations } from 'next-intl';
+import { Clock, Check, Minus, Plus, Calendar, Hotel, MessageCircle, CalendarCheck, Star } from 'lucide-react';
+import { useCart, parsePrice } from '@/context/CartContext';
+import { whatsappLink, googleReviewsConfig } from '@/data/transferData';
 
 interface BookingCardProps {
     id?: string;
@@ -14,9 +14,14 @@ interface BookingCardProps {
     title: string;
     duration: string;
     groupSize: string;
-    onBook?: () => void; // Fallback or alternative
+    onBook?: () => void;
 }
 
+const TIME_SLOTS = ['07:30', '09:00', '14:00'];
+
+// Booking card modeled on the reference site's "BOOK EXPERIENCE" sidebar:
+// guests stepper → departure time → date → pickup hotel → private toggle →
+// total → trust line → Confirm + WhatsApp buttons.
 export default function BookingCard({
     id,
     type = 'tour',
@@ -30,137 +35,198 @@ export default function BookingCard({
     const { addItem, toggleCart, items } = useCart();
     const [isAdded, setIsAdded] = useState(false);
     const locale = useLocale();
+    const t = useTranslations('bookingCard');
 
-    // Check if item is already in cart (check both id and type)
+    const [guests, setGuests] = useState(2);
+    const [time, setTime] = useState(TIME_SLOTS[0]);
+    const [date, setDate] = useState('');
+    const [hotel, setHotel] = useState('');
+    const [isPrivate, setIsPrivate] = useState(false);
+
     const isInCart = items.some(item => item.id === id && item.type === type);
 
     useEffect(() => {
-        if (isInCart) {
-            setIsAdded(true);
-        }
+        if (isInCart) setIsAdded(true);
     }, [isInCart]);
 
-    const handleAddToCart = () => {
+    const basePrice = parsePrice(price);
+    const total = basePrice > 0 ? basePrice * guests : 0;
+
+    const handleConfirm = () => {
         if (isInCart) {
             toggleCart();
             return;
         }
-
         if (id) {
-            addItem({
-                id,
-                title,
-                type,
-                price,
-                image: imageUrl
-            });
-            // Visual feedback handled by isInCart effect
+            addItem({ id, title, type, price, image: imageUrl });
         } else if (onBook) {
             onBook();
         }
     };
 
-    const getLinkHref = () => {
-        if (!id) return null;
-        const category = {
-            'tour': 'tours',
-            'activity': 'activities',
-            'experience': 'experiences',
-            'service': 'services'
-        }[type] || 'tours';
-        return `/${locale}/${category}/${id}`;
-    };
+    const waMessage =
+        `${t('waIntro')} ${title}\n` +
+        `👥 ${guests} ${t('waGuests')}\n` +
+        `🕐 ${time} · 📅 ${date || '—'}\n` +
+        `🏨 ${hotel || '—'}\n` +
+        (isPrivate ? `⭐ ${t('privateTitle')}\n` : '') +
+        (total > 0 ? `💶 ${t('total')}: €${total}` : `💶 ${price}`);
 
-    const href = getLinkHref();
+    const label = 'block text-[10px] font-black uppercase tracking-[0.2em] text-text-tertiary mb-2';
+    const row = 'py-4 border-b border-border-light';
 
     return (
         <div className="sticky top-24">
-            <div className="relative group">
-                {/* Decorative Elements */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-amber-200 to-orange-100 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+            <div className="bg-white border border-border rounded-md shadow-xl overflow-hidden">
+                <div className="px-6 pt-6 pb-1">
+                    <h3 className="text-xl font-bold text-text-primary uppercase tracking-tight">
+                        {t('book')} <span className="text-secondary-dark font-serif italic">{t(`type_${type}`)}</span>
+                    </h3>
+                </div>
 
-                <div className="relative bg-white rounded-[1.5rem] shadow-2xl overflow-hidden border border-stone-100">
-                    {/* Top Decorative Header */}
-                    <div className="h-24 bg-primary relative overflow-hidden">
-                        <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_2px_2px,rgba(255,255,255,0.15)_1px,transparent_0)] bg-[size:16px_16px]"></div>
-                        <div className="absolute bottom-0 left-0 right-0 h-4 bg-white rounded-t-[1.5rem]"></div>
-                        <div className="absolute top-6 left-8 right-8 flex justify-between items-center text-white/90">
-                            <span className="text-xs font-bold tracking-[0.2em] uppercase">Boarding Pass</span>
-                            <div className="flex gap-1">
-                                <div className="w-1.5 h-1.5 rounded-full bg-white/40"></div>
-                                <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
-                                <div className="w-1.5 h-1.5 rounded-full bg-white/20"></div>
-                            </div>
+                <div className="px-6 pb-6">
+                    {/* Guests stepper */}
+                    <div className={row}>
+                        <span className={label}>{t('guests')}</span>
+                        <div className="flex items-center justify-between bg-background border border-border rounded-sm px-3 py-2.5">
+                            <button
+                                type="button"
+                                onClick={() => setGuests(Math.max(1, guests - 1))}
+                                className="w-8 h-8 flex items-center justify-center rounded-full border border-border-dark text-text-primary hover:bg-secondary/20 hover:border-secondary transition-colors"
+                                aria-label="Fewer guests"
+                            >
+                                <Minus className="w-3.5 h-3.5" />
+                            </button>
+                            <span className="font-bold text-text-primary text-lg">{guests}</span>
+                            <button
+                                type="button"
+                                onClick={() => setGuests(Math.min(17, guests + 1))}
+                                className="w-8 h-8 flex items-center justify-center rounded-full bg-secondary text-[#3b2f2f] hover:bg-secondary-dark transition-colors"
+                                aria-label="More guests"
+                            >
+                                <Plus className="w-3.5 h-3.5" />
+                            </button>
                         </div>
                     </div>
 
-                    <div className="px-8 pb-8 pt-2">
-                        {/* Title Section */}
-                        <div className="mb-6">
-                            {href ? (
-                                <Link href={href} className="group-hover:text-primary transition-colors">
-                                    <h3 className="font-serif text-2xl text-gray-900 leading-tight mb-2 hover:text-primary transition-colors cursor-pointer">{title}</h3>
-                                </Link>
-                            ) : (
-                                <h3 className="font-serif text-2xl text-gray-900 leading-tight mb-2">{title}</h3>
-                            )}
-                            <div className="flex items-center gap-2 text-sm text-stone-500">
-                                <span className="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                Available for booking
-                            </div>
+                    {/* Departure time */}
+                    <div className={row}>
+                        <span className={label}>{t('departureTime')}</span>
+                        <div className="flex items-center gap-2 mb-2">
+                            <Clock className="w-4 h-4 text-secondary-dark shrink-0" />
+                            <select
+                                value={time}
+                                onChange={e => setTime(e.target.value)}
+                                className="flex-1 bg-transparent text-sm font-semibold text-text-primary focus:outline-none"
+                            >
+                                {TIME_SLOTS.map(s => (
+                                    <option key={s} value={s}>{t('departureAt')} {s}</option>
+                                ))}
+                            </select>
                         </div>
-
-                        {/* Details Grid */}
-                        <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-8 pt-6 border-t border-dashed border-gray-200">
-                            <div className="space-y-1.5">
-                                <span className="text-xs text-stone-400 uppercase tracking-wider font-semibold">Duration</span>
-                                <div className="flex items-center gap-2 text-stone-800 font-medium">
-                                    <Clock className="w-4 h-4 text-primary" />
-                                    {duration}
-                                </div>
-                            </div>
-                            <div className="space-y-1.5">
-                                <span className="text-xs text-stone-400 uppercase tracking-wider font-semibold">Group Size</span>
-                                <div className="flex items-center gap-2 text-stone-800 font-medium">
-                                    <div className="w-4 h-4 rounded-full border-2 border-primary flex items-center justify-center text-[8px] font-bold text-primary">G</div>
-                                    <span className="capitalize">{groupSize}</span>
-                                </div>
-                            </div>
-                            <div className="col-span-2 pt-4 border-t border-dashed border-stone-200">
-                                <div className="flex justify-between items-end">
-                                    <div className="space-y-1">
-                                        <span className="text-xs text-stone-400 uppercase tracking-wider font-semibold">Total Price</span>
-                                    </div>
-                                    <div className="text-right">
-                                        <div className="text-2xl font-bold text-gray-900">{price}</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em] text-text-tertiary">
+                            <CalendarCheck className="w-3.5 h-3.5 text-secondary-dark" />
+                            {t('availableDaily')}
                         </div>
+                    </div>
 
-                        {/* Action Button */}
+                    {/* Departure date */}
+                    <div className={row}>
+                        <span className={label}>{t('departureDate')}</span>
+                        <div className="flex items-center gap-2">
+                            <Calendar className="w-4 h-4 text-secondary-dark shrink-0" />
+                            <input
+                                type="date"
+                                value={date}
+                                onChange={e => setDate(e.target.value)}
+                                className="flex-1 bg-transparent text-sm font-semibold text-text-primary focus:outline-none"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Pickup hotel */}
+                    <div className={row}>
+                        <span className={label}>{t('pickupHotel')}</span>
+                        <div className="flex items-center gap-2">
+                            <Hotel className="w-4 h-4 text-secondary-dark shrink-0" />
+                            <input
+                                value={hotel}
+                                onChange={e => setHotel(e.target.value)}
+                                placeholder={t('pickupPlaceholder')}
+                                className="flex-1 bg-transparent text-sm font-semibold text-text-primary placeholder:text-text-tertiary/50 focus:outline-none"
+                            />
+                        </div>
+                    </div>
+
+                    {/* Private toggle */}
+                    <div className={`${row} flex items-center justify-between`}>
+                        <div>
+                            <span className="block text-[11px] font-black uppercase tracking-[0.15em] text-text-primary">
+                                {t('privateTitle')}
+                            </span>
+                            <span className="block text-[10px] font-bold uppercase tracking-[0.12em] text-text-tertiary mt-0.5">
+                                {t('privateSub')}
+                            </span>
+                        </div>
                         <button
-                            onClick={handleAddToCart}
-                            className={`w-full group relative flex items-center justify-center gap-3 py-4 px-6 rounded-xl transition-all duration-300 overflow-hidden shadow-lg ${isAdded ? 'bg-green-600 text-white cursor-default' : 'bg-primary hover:bg-primary-dark text-white shadow-primary/20'
-                                }`}
+                            type="button"
+                            role="switch"
+                            aria-checked={isPrivate}
+                            onClick={() => setIsPrivate(!isPrivate)}
+                            className={`relative w-11 h-6 rounded-full transition-colors ${isPrivate ? 'bg-secondary' : 'bg-border-dark'}`}
                         >
-                            {isAdded ? (
-                                <>
-                                    <Check className="w-5 h-5" />
-                                    <span className="font-bold tracking-wide">Already in Journey</span>
-                                </>
-                            ) : (
-                                <>
-                                    <span className="relative z-10 font-bold tracking-wide">Add to Journey</span>
-                                    <ArrowRight className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform" />
-                                </>
-                            )}
+                            <span
+                                className={`absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all ${isPrivate ? 'left-[22px]' : 'left-0.5'}`}
+                            />
                         </button>
-
-                        <div className="mt-4 text-center">
-                            <p className="text-xs text-stone-400">Configure dates & guests in your cart</p>
-                        </div>
                     </div>
+
+                    {/* Total */}
+                    <div className="py-5 flex items-center justify-between">
+                        <span className={label + ' mb-0'}>{t('total')}</span>
+                        <span className="text-3xl font-bold text-secondary-dark font-serif leading-none">
+                            {total > 0 ? `€${total}` : price}
+                        </span>
+                    </div>
+
+                    {/* Trust line */}
+                    <div className="pb-4 text-center text-[10px] text-text-tertiary flex items-center justify-center gap-1 flex-wrap">
+                        <Star className="w-3 h-3 fill-secondary text-secondary" />
+                        {googleReviewsConfig.rating.toFixed(1)} {t('trustLine')}
+                    </div>
+
+                    {/* Confirm — WhatsApp below it */}
+                    <button
+                        onClick={handleConfirm}
+                        className={`w-full flex items-center justify-center gap-2 py-3.5 rounded-sm font-black text-[12px] uppercase tracking-[0.18em] transition-all duration-300 ${
+                            isAdded
+                                ? 'bg-green-600 text-white cursor-default'
+                                : 'bg-secondary text-[#3b2f2f] hover:bg-secondary-dark hover:shadow-lg'
+                        }`}
+                    >
+                        {isAdded ? (
+                            <>
+                                <Check className="w-4 h-4" />
+                                {t('inCart')}
+                            </>
+                        ) : (
+                            t('confirm')
+                        )}
+                    </button>
+
+                    <a
+                        href={whatsappLink(waMessage)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-2.5 w-full flex items-center justify-center gap-2 py-3.5 rounded-sm bg-[#25D366] text-white font-black text-[12px] uppercase tracking-[0.18em] transition-all duration-300 hover:bg-[#1fb857] hover:shadow-lg"
+                    >
+                        <MessageCircle className="w-4 h-4" />
+                        {t('whatsapp')}
+                    </a>
+
+                    <p className="mt-3 text-center text-[10px] text-text-tertiary">
+                        {t('note', { duration, groupSize })}
+                    </p>
                 </div>
             </div>
         </div>

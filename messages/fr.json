@@ -18,12 +18,15 @@
     "artisans": "Nos Artisans",
     "catalog": "Catalogue",
     "followUs": "Suivez-nous",
-    "discover": "Découvrir plus"
+    "discover": "Découvrir plus",
+    "fleet": "Flotte",
+    "guides": "Guides",
+    "drivers": "Chauffeurs"
   },
   "home": {
     "hero": {
-      "title": "Découvrez le Maroc avec Xhosen",
-      "subtitle": "Votre agence de confiance pour des circuits authentiques et des voyages inoubliables à travers le Maroc.",
+      "title": "Transferts Privés & Excursions Premium à Marrakech",
+      "subtitle": "Des arrivées à l'aéroport Marrakech Ménara aux excursions dans l'Atlas et le désert — chauffeurs privés, prix fixes et service cinq étoiles avec Xhosen Gate.",
       "ctaPrimary": "Explorer nos circuits",
       "ctaSecondary": "Voir les expériences"
     },
@@ -49,6 +52,117 @@
       "title": "Prêt à découvrir le Maroc authentique ?",
       "description": "Laissez nos guides locaux experts créer un voyage personnalisé à travers la magie de Marrakech et au-delà. Des souks animés aux paysages désertiques sereins, votre aventure marocaine inoubliable vous attend.",
       "button": "Commencer à planifier"
+    },
+    "quote": {
+      "tabTransfers": "Transferts",
+      "tabExcursions": "Excursions",
+      "route": "Votre trajet",
+      "excursionLabel": "Expérience",
+      "selectExcursion": "Choisissez votre expérience…",
+      "date": "Date",
+      "time": "Heure",
+      "guests": "Voyageurs",
+      "priceFrom": "Dès",
+      "perVehicle": "/ véhicule",
+      "cta": "Voir les Prix",
+      "trustFixed": "Prix fixes tout compris",
+      "trustFlight": "Retards de vol couverts",
+      "trustCancel": "Annulation gratuite",
+      "waTransferIntro": "Bonjour Xhosen Gate ! Je souhaite réserver un transfert privé :",
+      "waExcursionIntro": "Bonjour Xhosen Gate ! Je souhaite réserver une excursion :",
+      "waPax": "passagers",
+      "from": "Départ",
+      "to": "Destination",
+      "fromPlaceholder": "D'où partez-vous ?",
+      "toPlaceholder": "Où allez-vous ?",
+      "addReturn": "Ajouter un retour",
+      "removeReturn": "Supprimer le retour",
+      "return": "Retour",
+      "returnDate": "Date de retour",
+      "trustGoogle": "sur Google"
+    },
+    "journey": {
+      "label": "Nos Services",
+      "title": "Choisissez Votre Voyage",
+      "subtitle": "Trois façons de voyager au Maroc en tout confort — transferts aéroport, une flotte premium avec chauffeurs privés et des excursions sur mesure depuis Marrakech.",
+      "transfers": {
+        "title": "Transferts Aéroport",
+        "description": "Prises en charge ponctuelles et professionnelles de l'aéroport Marrakech Ménara vers votre riad, hôtel ou toute destination au Maroc.",
+        "cta": "Réserver un transfert",
+        "kicker": "Transferts"
+      },
+      "fleet": {
+        "title": "Notre Flotte",
+        "description": "De la berline executive au minibus 17 places — chaque véhicule avec chauffeur, climatisé et impeccable.",
+        "cta": "Découvrir la flotte",
+        "kicker": "Excellence"
+      },
+      "excursions": {
+        "title": "Excursions Privées",
+        "description": "Vallées de l'Atlas, Essaouira, cascades et désert — des excursions sur mesure conçues autour de vous.",
+        "cta": "Voir les excursions",
+        "kicker": "Découverte"
+      },
+      "titleStart": "Choisissez Votre",
+      "titleAccent": "Voyage"
+    },
+    "routes": {
+      "label": "Prix Fixes",
+      "title": "Trajets les Plus Demandés",
+      "subtitle": "Prix fixes par véhicule — accueil personnalisé, suivi des vols et 60 minutes d'attente gratuite sur chaque trajet aéroport.",
+      "priceFrom": "Dès",
+      "perVehicle": "/ véhicule",
+      "book": "Réserver",
+      "note": "Tous les prix s'entendent par véhicule, et non par personne. Sièges enfants gratuits. Paiement en espèces ou par virement.",
+      "waIntro": "Bonjour Xhosen Gate ! Je souhaite un devis pour le trajet :",
+      "titleStart": "Trajets les Plus",
+      "titleAccent": "Demandés",
+      "startingFrom": "À partir de"
+    },
+    "fleetSection": {
+      "label": "La Collection",
+      "title": "Notre Flotte d'Élite",
+      "subtitle": "Avec chauffeur, climatisés et impeccables — choisissez le véhicule qui correspond à votre voyage.",
+      "upTo": "Jusqu'à",
+      "pax": "pers.",
+      "bags": "bagages",
+      "from": "Dès",
+      "details": "Détails",
+      "viewAll": "Découvrir Toute la Flotte",
+      "titleStart": "Notre Flotte",
+      "titleAccent": "d'Élite"
+    },
+    "whyUs": {
+      "label": "Le Standard Xhosen",
+      "title": "Pourquoi Nous Choisir",
+      "items": {
+        "licensed": {
+          "title": "Agréé & Assuré",
+          "description": "Conformité totale avec la réglementation marocaine du transport, pour votre sécurité et votre tranquillité."
+        },
+        "punctual": {
+          "title": "Ponctualité Garantie",
+          "description": "Suivi des vols et connaissance du trafic local : votre chauffeur est toujours là avant vous."
+        },
+        "drivers": {
+          "title": "Chauffeurs Experts",
+          "description": "Des professionnels multilingues qui connaissent chaque route, de la médina aux cols de montagne."
+        },
+        "support": {
+          "title": "Assistance 24h/7j",
+          "description": "Un vrai interlocuteur sur WhatsApp à toute heure — avant, pendant et après votre voyage."
+        }
+      }
+    },
+    "faq": {
+      "label": "Bon à Savoir",
+      "title": "Questions Fréquentes",
+      "subtitle": "Tout ce que les voyageurs nous demandent avant de réserver un transfert ou une excursion à Marrakech."
+    },
+    "heroExtras": {
+      "googleReviews": "avis Google",
+      "ctaBook": "Réserver Votre Voyage",
+      "ctaTransfers": "Transferts Aéroport Marrakech"
     }
   },
   "experiences": {
@@ -61,7 +175,9 @@
     "rating": "Note",
     "guests": "Invités",
     "featured": "À LA UNE",
-    "notForChildren": "Non adapté aux enfants"
+    "notForChildren": "Non adapté aux enfants",
+    "explore": "Découvrir l'Expérience",
+    "viewAll": "Voir Toutes les Expériences"
   },
   "tours": {
     "label": "DÉCOUVRIR NOS CIRCUITS",
@@ -174,13 +290,39 @@
       "call": "Appelez-nous",
       "email": "Envoyez-nous un email",
       "visit": "Rendez-nous visite",
-      "address": "Marrakech, Maroc"
+      "address": "Marrakech, Maroc",
+      "hours": "24h/7j — suivi des vols inclus"
     },
     "bottom": {
       "rights": "Tous droits réservés.",
       "privacy": "Politique de confidentialité",
       "terms": "Conditions d'utilisation",
       "sitemap": "Plan du site"
+    },
+    "nav": {
+      "title": "Navigation",
+      "home": "Accueil",
+      "transfers": "Transferts",
+      "fleet": "Flotte",
+      "excursions": "Excursions",
+      "tours": "Circuits",
+      "privateDriver": "Chauffeur Privé",
+      "guides": "Guides",
+      "about": "À Propos",
+      "contact": "Contact",
+      "drivers": "Nos Chauffeurs"
+    },
+    "routes": {
+      "title": "Trajets Aéroport & Transferts",
+      "all": "Tous les transferts"
+    },
+    "excursions": {
+      "title": "Excursions depuis Marrakech",
+      "all": "Toutes les excursions"
+    },
+    "payment": {
+      "secure": "Réservation sécurisée",
+      "methods": "Ou en espèces au chauffeur (EUR / MAD)"
     }
   },
   "booking": {
@@ -297,7 +439,7 @@
     "ratingScore": "Note {rating} / 5.0",
     "startJourney": "Commencez votre voyage",
     "customItinerary": "Itinéraire personnalisé",
-    "bookAgencyTour": "Réserver un circuit",
+    "bookAgencyTour": "Réserver un Circuit",
     "totalFlexibilityTitle": "Flexibilité totale",
     "totalFlexibilityDesc": "Engagez {name} pour la journée, la semaine ou un voyage spécifique. Vous décidez de l'itinéraire, des arrêts et du rythme. Parfait pour les explorateurs qui veulent sortir des sentiers battus.",
     "selectTour": "Sélectionnez un circuit à réserver avec {name} :",
@@ -379,10 +521,22 @@
       "quote": "Marrakech m'a appris la couleur.",
       "author": "Yves Saint Laurent",
       "highlights": {
-        "medina": { "title": "Ancienne Médina", "desc": "Labyrinthe classé au patrimoine mondial de l'UNESCO." },
-        "food": { "title": "Paradis Culinaire", "desc": "Cuisine de rue de renommée mondiale et gastronomie." },
-        "sun": { "title": "Soleil toute l'année", "desc": "Plus de 300 jours de soleil par an." },
-        "photo": { "title": "Rêve de photographe", "desc": "Couleurs vibrantes et architecture époustoustouflante." }
+        "medina": {
+          "title": "Ancienne Médina",
+          "desc": "Labyrinthe classé au patrimoine mondial de l'UNESCO."
+        },
+        "food": {
+          "title": "Paradis Culinaire",
+          "desc": "Cuisine de rue de renommée mondiale et gastronomie."
+        },
+        "sun": {
+          "title": "Soleil toute l'année",
+          "desc": "Plus de 300 jours de soleil par an."
+        },
+        "photo": {
+          "title": "Rêve de photographe",
+          "desc": "Couleurs vibrantes et architecture époustoustouflante."
+        }
       }
     },
     "tours": {
@@ -442,5 +596,83 @@
     "card": {
       "viewProfile": "Voir le profil"
     }
+  },
+  "reviews": {
+    "label": "Avis Google",
+    "title": "Ce Que Disent Nos Clients",
+    "onGoogle": "avis sur Google",
+    "seeAll": "Voir tous les avis sur Google Maps"
+  },
+  "fleetPage": {
+    "heroTitle": "Notre Flotte d'Élite",
+    "heroSubtitle": "Chaque voyage mérite le bon véhicule — berlines avec chauffeur, vans, minibus et 4x4 prêts pour le désert, tous climatisés et parfaitement entretenus.",
+    "gridLabel": "La Collection",
+    "gridTitle": "Choisissez Votre Véhicule",
+    "glanceLabel": "Comparer",
+    "glanceTitle": "En un Coup d'Œil",
+    "colVehicle": "Véhicule",
+    "colCategory": "Catégorie",
+    "colPax": "Passagers",
+    "colLuggage": "Bagages",
+    "colPrice": "Dès",
+    "bookVehicle": "Réserver ce véhicule",
+    "whatsapp": "WhatsApp",
+    "waIntro": "Bonjour Xhosen Gate ! Je souhaite réserver le véhicule :",
+    "notSureTitle": "Vous Hésitez Sur le Véhicule ?",
+    "notSureText": "Dites-nous combien vous êtes, où vous allez et ce que vous voulez voir — notre équipe vous proposera le véhicule idéal en quelques minutes.",
+    "notSureCta": "Demander sur WhatsApp"
+  },
+  "guidesPage": {
+    "heroTitle": "Guides de Voyage",
+    "heroSubtitle": "Guides d'initiés sur les transferts aéroport de Marrakech, les trajets interurbains et les plus belles excursions du Maroc — par l'équipe Xhosen Gate.",
+    "featuredKicker": "Guide de la Ville",
+    "featuredTitle": "Le Guide de Marrakech",
+    "featuredText": "Notre guide complet de la Ville Rouge — circuits signature, excursions, gastronomie et les expériences qui rendent Marrakech inoubliable.",
+    "featuredCta": "Explorer Marrakech",
+    "allGuides": "Tous les Guides",
+    "readGuide": "Lire le Guide",
+    "backToGuides": "Tous les Guides",
+    "relatedTitle": "À Lire Aussi",
+    "ctaTitle": "Prêt à Mettre ce Guide en Pratique ?",
+    "ctaText": "Prix fixes par véhicule, suivi des vols, sièges enfants gratuits et un vrai interlocuteur sur WhatsApp 24h/7j — dites-nous votre projet, nous nous occupons de la route.",
+    "ctaButton": "Planifier sur WhatsApp",
+    "ctaWa": "Bonjour Xhosen Gate ! J'ai lu un de vos guides et je souhaite planifier un voyage :"
+  },
+  "bookingCard": {
+    "book": "Réserver",
+    "type_tour": "Circuit",
+    "type_experience": "Expérience",
+    "type_activity": "Activité",
+    "type_service": "Service",
+    "guests": "Nombre de Voyageurs",
+    "departureTime": "Heure de Départ",
+    "departureAt": "Départ à",
+    "availableDaily": "Disponible tous les jours",
+    "departureDate": "Date de Départ",
+    "pickupHotel": "Hôtel / Riad de Prise en Charge",
+    "pickupPlaceholder": "Votre hôtel ou hébergement",
+    "privateTitle": "Excursion Privée",
+    "privateSub": "Flotte & guide dédiés",
+    "total": "Total",
+    "trustLine": "sur Google · Prix fixe par véhicule · Suivi des vols · Accueil personnalisé",
+    "confirm": "Confirmer la Réservation",
+    "whatsapp": "Réserver sur WhatsApp",
+    "inCart": "Déjà dans votre panier",
+    "waIntro": "Bonjour Xhosen Gate ! Je souhaite réserver :",
+    "waGuests": "voyageurs",
+    "note": "{duration} · Taille du groupe : {groupSize}"
+  },
+  "driversPage": {
+    "heroTitle": "Nos Chauffeurs Privés",
+    "heroSubtitle": "Rencontrez les professionnels au volant — chaque chauffeur est vérifié, expérimenté et conduit ses propres véhicules impeccables.",
+    "label": "L'Équipe",
+    "titleStart": "Choisissez Votre",
+    "titleAccent": "Chauffeur",
+    "subtitle": "Chaque chauffeur a sa propre page, sa propre flotte et sa façon de vous faire découvrir le Maroc. Choisissez celui qui correspond à votre voyage.",
+    "years": "{years}+ ans d'expérience",
+    "hisFleet": "Sa flotte",
+    "from": "Dès",
+    "perDay": "/ jour",
+    "viewProfile": "Voir le Profil"
   }
 }

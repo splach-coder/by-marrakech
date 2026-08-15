@@ -1,8 +1,11 @@
-export interface BrandInfo {
-    logo?: string;
-    banner?: string;
-    description?: string;
-    companyName?: string;
+// Drivers — individual professional chauffeurs, each with their own page
+// (/drivers/[id]) and their own personal fleet. No company/brand concept.
+
+export interface DriverVehicle {
+    name: string;
+    image: string;
+    pax: number;
+    luggage: number;
 }
 
 export interface Driver {
@@ -20,10 +23,9 @@ export interface Driver {
     pricePerDay: number;
     badges: string[]; // e.g., "History Buff", "Desert Expert"
     availability: boolean;
+    fleet: DriverVehicle[]; // the driver's own vehicles
     gallery: string[];
     features: string[]; // Wifi, Water, Child Seat, etc.
-    hasBrand?: boolean;
-    brandInfo?: BrandInfo;
 }
 
 export const driversData: Driver[] = [
@@ -34,21 +36,18 @@ export const driversData: Driver[] = [
         rating: 5.0,
         experienceYears: 15,
         languages: ['English', 'French', 'Arabic', 'Spanish'],
-        bio: 'Fetah is not just a driver; he is the founder of a premier transport service dedicated to luxury and comfort. With over 15 years of experience, he leads a team of professionals committed to excellence. His deep knowledge of Morocco’s history and hidden gems ensures every journey is an exclusive adventure.',
-        vehicleTypes: ['Luxury Mercedes V-Class', 'Luxury SUV'],
+        bio: 'Fetah is a professional private driver with over 15 years on Morocco\'s roads. Known for his impeccable punctuality and deep knowledge of the country\'s history and hidden gems, he turns every transfer and tour into an exclusive, comfortable journey — from VIP airport pickups to multi-day grand tours.',
+        vehicleTypes: ['Skoda Superb', 'Ford Tourneo Custom'],
         specialties: ['VIP Services', 'Custom Itineraries', 'Grand Tours'],
         locations: ['Marrakech', 'Casablanca', 'Fes', 'Tangier'],
         preferredTours: ['The Grand Morocco Tour', 'Imperial Cities Luxury'],
         pricePerDay: 200,
-        badges: ['Agency Owner', 'VIP Specialist', 'Luxury Expert'],
+        badges: ['VIP Specialist', 'Luxury Expert', 'Top Rated'],
         availability: true,
-        hasBrand: true,
-        brandInfo: {
-            companyName: 'Prestige Morocco Travels',
-            banner: '/images/drivers/fetah/brand2.webp',
-            logo: '/images/drivers/fetah/brand1.webp',
-            description: 'Experience the pinnacle of Moroccan hospitality with Fetah’s exclusive transport service.'
-        },
+        fleet: [
+            { name: 'Skoda Superb', image: '/images/drivers/fetah/car1.webp', pax: 3, luggage: 3 },
+            { name: 'Ford Tourneo Custom', image: '/images/drivers/fetah/car3.webp', pax: 8, luggage: 8 },
+        ],
         gallery: [
             '/images/drivers/fetah/car1.webp',
             '/images/drivers/fetah/car2.webp',
@@ -65,14 +64,16 @@ export const driversData: Driver[] = [
         experienceYears: 8,
         languages: ['English', 'French', 'Arabic'],
         bio: 'Ayoub is a passionate independent driver known for his warm smile and safe driving. Specializing in family trips and couples seeking a relaxed pace, he knows exactly how to curate a stress-free experience. His love for photography means he always knows the best spots for your vacation photos.',
-        vehicleTypes: ['Comfort SUV', 'Minivan'],
+        vehicleTypes: ['Ford Tourneo Custom'],
         specialties: ['Family Trips', 'Atlas Mountains', 'Photography'],
         locations: ['Marrakech', 'Ourika Valley', 'Essaouira'],
         preferredTours: ['Atlas Mountains Day Trip', 'Essaouira Coastal Escape'],
         pricePerDay: 130,
         badges: ['Family Favorite', 'Safe Driver', 'Local Expert'],
         availability: true,
-        hasBrand: false,
+        fleet: [
+            { name: 'Ford Tourneo Custom', image: '/images/drivers/ayoub/car1.webp', pax: 8, luggage: 8 },
+        ],
         gallery: [
             '/images/drivers/ayoub/car1.webp',
             '/images/drivers/ayoub/car2.webp'
@@ -89,21 +90,18 @@ export const driversDataFr: Driver[] = [
         rating: 5.0,
         experienceYears: 15,
         languages: ['Anglais', 'Français', 'Arabe', 'Espagnol'],
-        bio: 'Fetah n’est pas seulement un chauffeur ; il est le fondateur d’un service de transport de premier plan dédié au luxe et au confort. Avec plus de 15 ans d’expérience, il dirige une équipe de professionnels dévoués à l’excellence. Sa connaissance approfondie de l’histoire du Maroc et de ses trésors cachés garantit que chaque voyage est une aventure exclusive.',
-        vehicleTypes: ['Mercedes Classe V Luxe', 'SUV de Luxe'],
+        bio: 'Fetah est un chauffeur privé professionnel avec plus de 15 ans d\'expérience sur les routes du Maroc. Reconnu pour sa ponctualité irréprochable et sa connaissance approfondie de l\'histoire et des trésors cachés du pays, il transforme chaque transfert et chaque circuit en un voyage exclusif et confortable — de l\'accueil VIP à l\'aéroport aux grands tours de plusieurs jours.',
+        vehicleTypes: ['Skoda Superb', 'Ford Tourneo Custom'],
         specialties: ['Services VIP', 'Itinéraires sur mesure', 'Grands Tours'],
         locations: ['Marrakech', 'Casablanca', 'Fès', 'Tanger'],
         preferredTours: ['Le Grand Tour du Maroc', 'Luxe des Villes Impériales'],
         pricePerDay: 200,
-        badges: ['Propriétaire d’agence', 'Spécialiste VIP', 'Expert Luxe'],
+        badges: ['Spécialiste VIP', 'Expert Luxe', 'Meilleures Notes'],
         availability: true,
-        hasBrand: true,
-        brandInfo: {
-            companyName: 'Prestige Morocco Travels',
-            banner: '/images/drivers/fetah/brand2.webp',
-            logo: '/images/drivers/fetah/brand1.webp',
-            description: 'Vivez le summum de l’hospitalité marocaine avec le service de transport exclusif de Fetah.'
-        },
+        fleet: [
+            { name: 'Skoda Superb', image: '/images/drivers/fetah/car1.webp', pax: 3, luggage: 3 },
+            { name: 'Ford Tourneo Custom', image: '/images/drivers/fetah/car3.webp', pax: 8, luggage: 8 },
+        ],
         gallery: [
             '/images/drivers/fetah/car1.webp',
             '/images/drivers/fetah/car2.webp',
@@ -119,15 +117,17 @@ export const driversDataFr: Driver[] = [
         rating: 4.9,
         experienceYears: 8,
         languages: ['Anglais', 'Français', 'Arabe'],
-        bio: 'Ayoub est un chauffeur indépendant passionné, connu pour son sourire chaleureux et sa conduite sûre. Spécialisé dans les voyages en famille et les couples cherchant un rythme détendu, il sait exactement comment organiser une expérience sans stress. Son amour pour la photographie signifie qu’il connaît toujours les meilleurs endroits pour vos photos de vacances.',
-        vehicleTypes: ['SUV Confort', 'Minivan'],
-        specialties: ['Voyages en famille', 'Montagnes de l’Atlas', 'Photographie'],
-        locations: ['Marrakech', 'Vallée de l’Ourika', 'Essaouira'],
-        preferredTours: ['Excursion dans l’Atlas', 'Évasion à Essaouira'],
+        bio: 'Ayoub est un chauffeur indépendant passionné, connu pour son sourire chaleureux et sa conduite sûre. Spécialisé dans les voyages en famille et les couples cherchant un rythme détendu, il sait exactement comment organiser une expérience sans stress. Son amour pour la photographie signifie qu\'il connaît toujours les meilleurs endroits pour vos photos de vacances.',
+        vehicleTypes: ['Ford Tourneo Custom'],
+        specialties: ['Voyages en famille', 'Montagnes de l\'Atlas', 'Photographie'],
+        locations: ['Marrakech', 'Vallée de l\'Ourika', 'Essaouira'],
+        preferredTours: ['Excursion dans l\'Atlas', 'Évasion à Essaouira'],
         pricePerDay: 130,
         badges: ['Favori des familles', 'Chauffeur prudent', 'Expert local'],
         availability: true,
-        hasBrand: false,
+        fleet: [
+            { name: 'Ford Tourneo Custom', image: '/images/drivers/ayoub/car1.webp', pax: 8, luggage: 8 },
+        ],
         gallery: [
             '/images/drivers/ayoub/car1.webp',
             '/images/drivers/ayoub/car2.webp'

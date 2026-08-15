@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { ArrowRight, Clock, Star } from 'lucide-react';
-import { experiencesPreviewData } from '@/data/home-data';
+import { ArrowRight } from 'lucide-react';
 
 interface Experience {
   id: string;
@@ -13,8 +12,9 @@ interface Experience {
   image: string;
   duration: string;
   price: string;
-  rating: number;
-  guests: number;
+  description?: string;
+  rating?: number;
+  guests?: number;
   featured?: boolean;
   notForChildren?: boolean;
 }
@@ -25,60 +25,40 @@ interface ExperiencesSectionProps {
   experiences?: Experience[];
 }
 
-export default function ExperiencesSection({
-  label,
-  title,
-  experiences
-}: ExperiencesSectionProps) {
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+// Editorial card grid modeled on the reference "Curated Experiences" section:
+// image, then title + gold price row, short description, EXPLORE link.
+export default function ExperiencesSection({ label, title, experiences }: ExperiencesSectionProps) {
   const locale = useLocale();
   const t = useTranslations('experiences');
 
-  // Defaults if not provided
   const headerLabel = label || t('label');
   const headerTitle = title || t('title');
-
-  // Default data fallback could be English or French data depending on implementation
-  // ideally this component always receives data
-  const data = experiences || experiencesPreviewData;
-
-  // Show only 4 items
-  const displayExperiences = data.slice(0, 4);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 }
-    }
-  };
+  const data = (experiences || []).slice(0, 6);
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
-
       <div className="container-custom relative z-10">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           variants={containerVariants}
           className="mb-16 text-center max-w-3xl mx-auto"
         >
-          <motion.span variants={cardVariants} className="text-sm font-bold tracking-[0.2em] text-primary uppercase mb-4 block">
+          <motion.span variants={cardVariants} className="text-xs font-bold tracking-[0.25em] text-primary uppercase mb-3 block">
             {headerLabel}
           </motion.span>
-          <motion.h2 variants={cardVariants} className="text-4xl md:text-5xl font-bold text-[#3D322C] font-serif">
+          <motion.h2 variants={cardVariants} className="text-3xl md:text-4xl font-bold text-[#3D322C] font-serif">
             {headerTitle}
           </motion.h2>
         </motion.div>
@@ -88,53 +68,69 @@ export default function ExperiencesSection({
           whileInView="visible"
           viewport={{ once: true }}
           variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14"
         >
-          {displayExperiences.map((experience, index) => (
-            <motion.div
-              key={experience.id}
-              variants={cardVariants}
-              className={`group relative h-[400px] rounded-2xl overflow-hidden cursor-pointer ${index % 2 === 1 ? 'md:mt-12' : ''}`}
-            >
-              <Link href={`/${locale}/experiences/${experience.id}`} className="block h-full w-full">
+          {data.map(experience => (
+            <motion.article key={experience.id} variants={cardVariants} className="group">
+              <Link href={`/${locale}/experiences/${experience.id}`} className="block">
                 {/* Image */}
-                <Image
-                  src={experience.image}
-                  alt={experience.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+                <div className="relative h-56 rounded-md overflow-hidden mb-5">
+                  <Image
+                    src={experience.image}
+                    alt={experience.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
+                  {experience.duration && (
+                    <span className="absolute top-4 left-4 px-2.5 py-1 bg-black/50 backdrop-blur-sm rounded-md text-white text-[10px] font-black uppercase tracking-[0.15em]">
+                      {experience.duration}
+                    </span>
+                  )}
+                </div>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <div className="flex items-center gap-2 text-white/80 text-xs font-medium tracking-wider uppercase mb-2">
-                    <Clock className="w-3 h-3" />
-                    <span>{experience.duration}</span>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-white mb-4 leading-tight font-serif">
+                {/* Title + price */}
+                <div className="flex items-start justify-between gap-4 mb-2.5">
+                  <h3 className="text-xl font-bold text-text-primary font-serif leading-snug group-hover:text-primary transition-colors">
                     {experience.title}
                   </h3>
-
-                  <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                    <span className="text-white font-medium text-sm border-b border-white pb-0.5">
-                      {locale === 'fr' ? 'Découvrir l\'expérience' : 'Discover Experience'}
-                    </span>
-                    <ArrowRight className="w-4 h-4 text-white" />
-                  </div>
+                  <span className="shrink-0 text-secondary-dark font-bold font-serif text-lg">
+                    {experience.price}
+                  </span>
                 </div>
 
-                {/* Rating Badge (Top Right) */}
-                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
-                  <Star className="w-3 h-3 fill-white text-white" />
-                  <span className="text-white text-xs font-bold">{experience.rating || 5.0}</span>
-                </div>
+                {/* Description */}
+                {experience.description && (
+                  <p className="text-sm text-text-secondary leading-relaxed mb-4 line-clamp-3">
+                    {experience.description}
+                  </p>
+                )}
+
+                {/* Explore link */}
+                <span className="inline-flex items-center gap-2 text-primary text-[11px] font-black uppercase tracking-[0.2em] border-b border-primary/30 pb-1 group-hover:border-primary group-hover:gap-3 transition-all">
+                  {t('explore')}
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </Link>
-            </motion.div>
+            </motion.article>
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-14 text-center"
+        >
+          <Link
+            href={`/${locale}/experiences`}
+            className="inline-flex items-center gap-3 px-8 py-4 border border-border-dark text-text-primary rounded-sm font-medium transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
+          >
+            <span>{t('viewAll')}</span>
+            <ArrowRight className="w-5 h-5" />
+          </Link>
         </motion.div>
       </div>
     </section>

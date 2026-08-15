@@ -39,7 +39,7 @@ export default function PrivateDriverService() {
             {/* 1. HERO SECTION */}
             <section className="relative h-[60vh] min-h-[500px] overflow-hidden">
                 <Image
-                    src="/images/services/luxury_driver_service.png"
+                    src="/images/services/luxury_driver_service.webp"
                     alt={t('hero.title')}
                     fill
                     className="object-cover"
