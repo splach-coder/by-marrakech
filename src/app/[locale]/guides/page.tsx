@@ -145,7 +145,7 @@ export default function GuidesPage({ params }: GuidesPageProps) {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-text-tertiary">
-                        {formatGuideDate(guide.date, locale)}
+                        <time dateTime={guide.date}>{formatGuideDate(guide.date, locale)}</time>
                       </span>
                       <span className="inline-flex items-center gap-2 text-primary text-[11px] font-black uppercase tracking-[0.18em] group-hover:gap-3 transition-all">
                         {t('readGuide')}

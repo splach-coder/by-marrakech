@@ -9,7 +9,8 @@ export async function generateMetadata({
     const { locale } = await params;
     const meta = getExploreCopy(locale).meta;
     return {
-        title: meta.title,
+        // strip the brand the root template will append
+        title: meta.title.replace(/\s*\|\s*Xhosen Gate\s*$/, ''),
         description: meta.description,
         openGraph: {
             title: meta.title,

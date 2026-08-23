@@ -58,6 +58,8 @@ export const metadata = {
 };
 
 import { getMessages } from 'next-intl/server';
+import JsonLd from '@/components/JsonLd';
+import { localBusinessSchema } from '@/lib/schema';
 
 export default async function LocaleLayout({
   children,
@@ -106,6 +108,9 @@ export default async function LocaleLayout({
         />
       </head>
       <body cz-shortcut-listen="true">
+        {/* Sitewide entity. AI surfaces read this to establish who we are,
+            where we operate and what we sell. */}
+        <JsonLd data={localBusinessSchema(locale)} />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <CartProvider>
             <AnalyticsListener />

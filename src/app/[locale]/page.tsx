@@ -9,6 +9,11 @@ import WhyUsSection from './components/WhyUsSection';
 import FAQSection from './components/FAQSection';
 import CTASection from './components/CTASection';
 import { getSiteData } from '@/data/siteData';
+import { getFaq } from '@/data/transferData';
+import { pageMetadata } from '@/lib/seo';
+import { faqSchema } from '@/lib/schema';
+import JsonLd from '@/components/JsonLd';
+import type { Metadata } from 'next';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -18,6 +23,22 @@ interface HomePageProps {
 // (see docs/reference-audit/02-RESTRUCTURE-PLAN.md):
 // Hero+Quote → Journey → Fleet → Experiences → Tours →
 // Why Us → FAQ → CTA → Google Reviews (mounted globally in layout)
+export async function generateMetadata({ params }: HomePageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const fr = locale === 'fr';
+  return pageMetadata({
+    locale,
+    path: '',
+    title: fr
+      ? 'Transferts Privés & Circuits à Marrakech'
+      : 'Private Transfers & Tours in Marrakech',
+    description: fr
+      ? 'Transferts privés depuis l’aéroport de Marrakech Menara, excursions dans l’Atlas et circuits dans le désert. Prix fixes par véhicule, chauffeurs vérifiés, disponibles 24h/24.'
+      : 'Private transfers from Marrakech Menara Airport, Atlas day trips and Sahara tours. Fixed prices per vehicle, verified chauffeurs, available 24/7.',
+    image: '/images/heroes/fleet-hero.webp',
+  });
+}
+
 export default function HomePage({ params }: HomePageProps) {
   const { locale } = use(params);
   const t = useTranslations('home');
@@ -49,8 +70,12 @@ export default function HomePage({ params }: HomePageProps) {
     notForChildren: false
   })), [localizedSiteData]);
 
+  const faq = getFaq(locale);
+
   return (
     <main className="min-h-screen">
+      {/* The FAQ section below is genuine Q&A, so it earns FAQPage markup. */}
+      <JsonLd data={faqSchema(faq)} />
       {/* 1. Hero + instant quote widget */}
       <Hero
         title={t('hero.title')}

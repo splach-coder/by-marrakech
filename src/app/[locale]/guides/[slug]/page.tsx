@@ -69,7 +69,9 @@ export default function GuideArticlePage({ params }: GuidePageProps) {
                 {content.title}
               </h1>
               <div className="mt-5 text-white/70 text-sm font-medium">
-                {formatGuideDate(guide.date, locale)} · Xhosen Gate
+                <time dateTime={guide.date}>{formatGuideDate(guide.date, locale)}</time>
+                {' · '}
+                <span itemProp="author">Xhosen Gate</span>
               </div>
             </motion.div>
           </div>
