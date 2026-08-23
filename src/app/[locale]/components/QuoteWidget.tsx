@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { getRoutes, whatsappLink, googleReviewsConfig } from '@/data/transferData';
 import { getSiteData } from '@/data/siteData';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
 
 type Tab = 'transfer' | 'excursion';
 
@@ -283,6 +284,7 @@ export default function QuoteWidget() {
             rel="noopener noreferrer"
             className="group flex items-center justify-center gap-2 w-full py-4 bg-secondary text-[#3b2f2f] rounded-sm font-black text-sm uppercase tracking-[0.18em] transition-all duration-300 hover:bg-secondary-dark hover:shadow-lg"
           >
+            <WhatsAppIcon className="w-4 h-4" />
             <span>{t('cta')}</span>
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>

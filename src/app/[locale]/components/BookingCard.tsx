@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { Clock, Check, Minus, Plus, Calendar, Hotel, MessageCircle, CalendarCheck, Star } from 'lucide-react';
+import { Clock, Check, Minus, Plus, Calendar, Hotel, CalendarCheck, Star } from 'lucide-react';
+import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 import { useCart, parsePrice } from '@/context/CartContext';
 import { whatsappLink, googleReviewsConfig } from '@/data/transferData';
 
@@ -218,9 +219,9 @@ export default function BookingCard({
                         href={whatsappLink(waMessage)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mt-2.5 w-full flex items-center justify-center gap-2 py-3.5 rounded-sm bg-[#25D366] text-white font-black text-[12px] uppercase tracking-[0.18em] transition-all duration-300 hover:bg-[#1fb857] hover:shadow-lg"
+                        className={`mt-2.5 w-full flex items-center justify-center gap-2 py-3.5 rounded-sm font-black text-[12px] uppercase tracking-[0.18em] hover:shadow-lg ${WA_BUTTON}`}
                     >
-                        <MessageCircle className="w-4 h-4" />
+                        <WhatsAppIcon className="w-4 h-4" />
                         {t('whatsapp')}
                     </a>
 

@@ -1,184 +1,225 @@
-// Self-contained copy for the /explore experience hub.
+// Self-contained copy for the /explore catalogue page.
 // Kept out of messages/*.json on purpose — this page owns its own voice.
+//
+// /explore is the ONLY catalogue page on the site. Tours, excursions,
+// activities and ground services are four collections on one page, and
+// /tours, /experiences, /activities and /services redirect into its anchors.
+//
+// Layout follows an editorial catalogue structure:
+//   hero → trust bar → sticky collection nav → featured journey →
+//   four collections → interstitial band → concierge process → finale
+// Two-tone headings (ink lead + gold italic accent) are the page's signature;
+// every heading below is authored as a lead/accent pair for that reason.
 
 export type ExploreLocale = 'en' | 'fr';
 
-export interface ExploreItem {
-    id: number;
-    title: string;
-    description: string;
-    duration?: string;
-    price?: string;
-    trip_code?: string;
-    image: { url: string; alt: string };
-    banner_image?: { url: string; alt: string };
-    locations?: Array<{ name: string } | string>;
-    highlights?: string[];
-    itinerary?: Array<{ day: number; title: string; description?: string }>;
-    reviews?: Array<{ rating: number }>;
-}
+// Item shape and formatting live in @/lib/catalogue — the driver pages render
+// the same items and need the same cleanup. Re-exported here so this page's
+// components can keep importing everything from one place.
+export type { CatalogueItem as ExploreItem } from '@/lib/catalogue';
+export {
+    locationName,
+    cleanTitle,
+    splitTitle,
+    tidyDuration,
+    metaLine,
+    priceLabel,
+} from '@/lib/catalogue';
 
-export const locationName = (loc: { name: string } | string): string =>
-    typeof loc === 'string' ? loc : loc.name;
+export type CollectionId = 'journeys' | 'escapes' | 'moments' | 'services';
+
+/** Detail-page route for each collection — the index pages redirect here now. */
+export const COLLECTION_ROUTE: Record<CollectionId, string> = {
+    journeys: 'tours',
+    escapes: 'experiences',
+    moments: 'activities',
+    services: 'services',
+};
 
 const en = {
     meta: {
-        title: 'Tours, Excursions & Activities in Morocco | Xhosen Gate',
+        title: 'Tours, Excursions, Activities & Transfers in Morocco | Xhosen Gate',
         description:
-            'Every experience we run — grand Sahara journeys, one-day escapes from Marrakech and hands-on activities — gathered on a single page and told as one story.',
+            'Everything we run — grand Sahara journeys, one-day escapes from Marrakech, hands-on activities and the airport and city transfers that carry them — gathered on a single page.',
     },
     hero: {
-        eyebrow: 'Tours · Excursions · Activities — the complete collection',
-        titleLines: ['CHOOSE', 'YOUR', 'MOROCCO'],
-        goldLine: 2, // index of the line rendered in gold
-        sub: 'Grand desert journeys, sunrise-to-sunset escapes and moments you will retell forever — everything we run, on one page, told as one story.',
-        scrollCue: 'Scroll to begin',
-        statLabels: {
-            journeys: 'Grand Journeys',
-            escapes: 'Day Escapes',
-            moments: 'Signature Moments',
-            rating: 'Traveller rating',
-        },
-        chips: [
-            { numeral: '01', label: 'Grand Journeys', hint: 'Multi-day Sahara routes', href: '#journeys' },
-            { numeral: '02', label: 'Day Escapes', hint: 'One sunrise, one world away', href: '#escapes' },
-            { numeral: '03', label: 'Signature Moments', hint: 'Activities you feel in your chest', href: '#moments' },
+        eyebrow: 'Tours · Excursions · Activities · Transfers',
+        titleLead: 'CURATED',
+        titleAccent: 'MOROCCO',
+        sub: 'Grand desert journeys, day escapes from Marrakech, moments you will retell forever — and the drivers who carry you between them.',
+        scrollCue: 'Scroll',
+    },
+    trust: [
+        { icon: 'shield', label: 'Private & exclusive' },
+        { icon: 'users', label: 'Your own local driver' },
+        { icon: 'car', label: 'Premium fleet included' },
+        { icon: 'tag', label: 'Fixed prices, no surprises' },
+    ],
+    nav: {
+        label: 'Jump to',
+        items: [
+            { id: 'journeys', label: 'Journeys' },
+            { id: 'escapes', label: 'Escapes' },
+            { id: 'moments', label: 'Moments' },
+            { id: 'services', label: 'Services' },
         ],
     },
-    manifesto:
-        'Some countries you visit. Morocco you cross, taste, ride and breathe — and it stays with you long after the dust has settled.',
-    rail: [
-        { id: 'journeys', numeral: '01', label: 'Journeys' },
-        { id: 'escapes', numeral: '02', label: 'Escapes' },
-        { id: 'moments', numeral: '03', label: 'Moments' },
-    ],
-    journeys: {
-        numeral: '01',
-        watermark: 'JOURNEYS',
-        label: 'The Journeys',
-        title: 'Days that turn into stories',
-        blurb:
-            'Cross the High Atlas, sleep under Saharan stars, wake to dunes on fire with sunrise. These are our long-form adventures — planned to the hour, felt for a lifetime.',
-        itineraryLabel: 'The route, day by day',
-        durationLabel: 'Duration',
+    featured: {
+        tag: "Editor's pick",
+        kicker: 'Featured journey',
         fromLabel: 'from',
-        cta: 'View full journey',
-        routeLabel: 'Route',
+        cta: 'View details',
+        secondaryCta: 'Ask a question',
     },
-    escapes: {
-        numeral: '02',
-        label: 'The Escapes',
-        title: 'One sunrise. One sunset. One world away.',
-        blurb:
-            'Hand-built day trips out of Marrakech — waterfalls, ocean ramparts, kasbahs and imperial cities. Leave after breakfast, come back with a story.',
-        dragHint: 'Keep scrolling — the road unrolls sideways',
-        fromLabel: 'from',
-        cta: 'Plan this escape',
-        counterOf: 'of',
+    collections: {
+        journeys: {
+            kicker: 'Several days, one road',
+            headLead: 'Grand',
+            headAccent: 'Journeys',
+            blurb: 'Cross the High Atlas, sleep under Saharan stars, wake to dunes on fire with sunrise. Planned to the hour, felt for a lifetime.',
+        },
+        escapes: {
+            kicker: 'Out after breakfast, back by dark',
+            headLead: 'Day',
+            headAccent: 'Escapes',
+            blurb: 'Hand-built day trips out of Marrakech — waterfalls, ocean ramparts, kasbahs and imperial cities. One sunrise, one world away.',
+        },
+        moments: {
+            kicker: 'A few hours that stay with you',
+            headLead: 'Signature',
+            headAccent: 'Moments',
+            blurb: 'A balloon lifting at dawn. A tagine you cooked yourself. Dunes at full throttle. Short on hours, heavy on memory.',
+        },
+        services: {
+            kicker: 'The part you never think about',
+            headLead: 'Ground',
+            headAccent: 'Services',
+            blurb: 'Airport arrivals, hotel doors, long runs between cities. Fixed prices, tracked flights, and a driver who already knows where you are going.',
+        },
     },
-    moments: {
-        numeral: '03',
-        label: 'The Moments',
-        title: 'Small hours. Lifelong memories.',
-        blurb:
-            'A balloon lifting at dawn. A tagine you cooked yourself. Dunes taken at full throttle. Short on hours, heavy on memory — slot them into any day of your trip.',
-        fromLabel: 'from',
-        cta: 'Reserve this moment',
-        expandHint: 'Hover or tap a panel to open it',
+    itemCta: 'Explore',
+    band: {
+        headLead: 'One country.',
+        headAccent: 'Your route.',
+        copy: 'Nothing here is fixed. Tell us your dates and your pace and we will thread journeys, escapes, moments and transfers into a single seamless itinerary — one driver, zero logistics on your side.',
+        cta: 'Build my itinerary',
+    },
+    process: {
+        kicker: 'How it works',
+        headLead: 'Our Concierge',
+        headAccent: 'Process',
+        steps: [
+            { n: '01', title: 'Choose', copy: 'Browse the collections above and shortlist whatever catches your eye.' },
+            { n: '02', title: 'Customise', copy: 'Tell us your dates, your group and anything you would rather skip.' },
+            { n: '03', title: 'Confirm', copy: 'We send the finished itinerary and a fixed price on WhatsApp.' },
+            { n: '04', title: 'Travel', copy: 'Your driver is waiting. Everything else is already handled.' },
+        ],
     },
     finale: {
-        kicker: "Can't pick one?",
-        title: 'Weave them into one itinerary.',
-        copy:
-            'Tell us your dates, your pace and what makes your heart beat faster — we will thread journeys, escapes and moments into a single seamless route, with one driver and zero logistics on your side.',
+        headLead: 'READY TO EXPLORE',
+        headAccent: 'MOROCCO?',
         primaryCta: 'Start planning',
-        secondaryCta: 'Talk to us',
-        browseLabel: 'Or browse the classic way:',
+        secondaryCta: 'WhatsApp concierge',
+        waIntro: 'Hello Xhosen Gate! I am planning a trip to Morocco and would like some help putting it together.',
+        browseLabel: 'Or go deeper:',
         browseLinks: [
-            { label: 'All tours', href: '/tours' },
-            { label: 'All excursions', href: '/experiences' },
-            { label: 'All activities', href: '/activities' },
+            { label: 'Our drivers', href: '/drivers' },
+            { label: 'The fleet', href: '/fleet' },
+            { label: 'Travel guides', href: '/guides' },
         ],
     },
 };
 
 const fr: typeof en = {
     meta: {
-        title: 'Circuits, Excursions & Activités au Maroc | Xhosen Gate',
+        title: 'Circuits, Excursions, Activités & Transferts au Maroc | Xhosen Gate',
         description:
-            'Toutes nos expériences — grands circuits du Sahara, escapades d’une journée depuis Marrakech et activités immersives — réunies sur une seule page, racontées comme une seule histoire.',
+            'Tout ce que nous organisons — grands circuits du Sahara, escapades d’une journée depuis Marrakech, activités immersives et les transferts aéroport et ville qui les relient — sur une seule page.',
     },
     hero: {
-        eyebrow: 'Circuits · Excursions · Activités — la collection complète',
-        titleLines: ['CHOISISSEZ', 'VOTRE', 'MAROC'],
-        goldLine: 2,
-        sub: 'Grands voyages dans le désert, escapades du lever au coucher du soleil et moments que vous raconterez toute votre vie — tout ce que nous organisons, sur une seule page, raconté comme une seule histoire.',
-        scrollCue: 'Faites défiler pour commencer',
-        statLabels: {
-            journeys: 'Grands Circuits',
-            escapes: 'Escapades d’un Jour',
-            moments: 'Moments Signature',
-            rating: 'Note voyageurs',
-        },
-        chips: [
-            { numeral: '01', label: 'Grands Circuits', hint: 'Routes sahariennes de plusieurs jours', href: '#journeys' },
-            { numeral: '02', label: 'Escapades d’un Jour', hint: 'Un lever de soleil, un autre monde', href: '#escapes' },
-            { numeral: '03', label: 'Moments Signature', hint: 'Des activités qui font battre le cœur', href: '#moments' },
+        eyebrow: 'Circuits · Excursions · Activités · Transferts',
+        titleLead: 'LE MAROC',
+        titleAccent: 'CHOISI',
+        sub: 'Grands voyages dans le désert, escapades au départ de Marrakech, moments que vous raconterez toute votre vie — et les chauffeurs qui vous portent entre les deux.',
+        scrollCue: 'Défiler',
+    },
+    trust: [
+        { icon: 'shield', label: 'Privé & exclusif' },
+        { icon: 'users', label: 'Votre chauffeur local' },
+        { icon: 'car', label: 'Flotte premium incluse' },
+        { icon: 'tag', label: 'Prix fixes, sans surprise' },
+    ],
+    nav: {
+        label: 'Aller à',
+        items: [
+            { id: 'journeys', label: 'Circuits' },
+            { id: 'escapes', label: 'Escapades' },
+            { id: 'moments', label: 'Moments' },
+            { id: 'services', label: 'Services' },
         ],
     },
-    manifesto:
-        'Certains pays se visitent. Le Maroc se traverse, se goûte, se chevauche et se respire — et il reste en vous bien après que la poussière est retombée.',
-    rail: [
-        { id: 'journeys', numeral: '01', label: 'Circuits' },
-        { id: 'escapes', numeral: '02', label: 'Escapades' },
-        { id: 'moments', numeral: '03', label: 'Moments' },
-    ],
-    journeys: {
-        numeral: '01',
-        watermark: 'CIRCUITS',
-        label: 'Les Circuits',
-        title: 'Des jours qui deviennent des histoires',
-        blurb:
-            'Traversez le Haut Atlas, dormez sous les étoiles du Sahara, réveillez-vous face aux dunes embrasées par l’aube. Nos aventures au long cours — planifiées à l’heure près, ressenties pour la vie.',
-        itineraryLabel: 'La route, jour par jour',
-        durationLabel: 'Durée',
+    featured: {
+        tag: 'Coup de cœur',
+        kicker: 'Circuit à la une',
         fromLabel: 'dès',
-        cta: 'Voir le circuit complet',
-        routeLabel: 'Itinéraire',
+        cta: 'Voir le détail',
+        secondaryCta: 'Poser une question',
     },
-    escapes: {
-        numeral: '02',
-        label: 'Les Escapades',
-        title: 'Un lever de soleil. Un coucher. Un autre monde.',
-        blurb:
-            'Des excursions d’une journée au départ de Marrakech — cascades, remparts sur l’océan, kasbahs et villes impériales. Partez après le petit-déjeuner, revenez avec une histoire.',
-        dragHint: 'Continuez à défiler — la route se déroule sur le côté',
-        fromLabel: 'dès',
-        cta: 'Planifier cette escapade',
-        counterOf: 'sur',
+    collections: {
+        journeys: {
+            kicker: 'Plusieurs jours, une seule route',
+            headLead: 'Grands',
+            headAccent: 'Circuits',
+            blurb: 'Traversez le Haut Atlas, dormez sous les étoiles du Sahara, réveillez-vous face aux dunes embrasées par l’aube. Planifiés à l’heure près, ressentis pour la vie.',
+        },
+        escapes: {
+            kicker: 'Partir après le petit-déjeuner, rentrer à la nuit',
+            headLead: 'Escapades',
+            headAccent: 'd’un Jour',
+            blurb: 'Des excursions d’une journée au départ de Marrakech — cascades, remparts sur l’océan, kasbahs et villes impériales. Un lever de soleil, un autre monde.',
+        },
+        moments: {
+            kicker: 'Quelques heures qui restent',
+            headLead: 'Moments',
+            headAccent: 'Signature',
+            blurb: 'Une montgolfière à l’aube. Un tajine cuisiné de vos mains. Les dunes à plein régime. Courts en heures, immenses en souvenirs.',
+        },
+        services: {
+            kicker: 'Ce à quoi vous ne penserez jamais',
+            headLead: 'Services',
+            headAccent: 'au Sol',
+            blurb: 'Arrivées à l’aéroport, portes d’hôtel, longues liaisons entre les villes. Prix fixes, vols suivis, et un chauffeur qui sait déjà où vous allez.',
+        },
     },
-    moments: {
-        numeral: '03',
-        label: 'Les Moments',
-        title: 'Quelques heures. Des souvenirs pour la vie.',
-        blurb:
-            'Une montgolfière qui s’élève à l’aube. Un tajine cuisiné de vos mains. Les dunes à plein régime. Courts en heures, immenses en souvenirs — à glisser dans n’importe quelle journée de votre voyage.',
-        fromLabel: 'dès',
-        cta: 'Réserver ce moment',
-        expandHint: 'Survolez ou touchez un panneau pour l’ouvrir',
+    itemCta: 'Découvrir',
+    band: {
+        headLead: 'Un pays.',
+        headAccent: 'Votre route.',
+        copy: 'Rien n’est figé. Donnez-nous vos dates et votre rythme : nous relierons circuits, escapades, moments et transferts en un seul itinéraire fluide — un chauffeur, zéro logistique de votre côté.',
+        cta: 'Composer mon itinéraire',
+    },
+    process: {
+        kicker: 'Comment ça marche',
+        headLead: 'Notre Service',
+        headAccent: 'Conciergerie',
+        steps: [
+            { n: '01', title: 'Choisir', copy: 'Parcourez les collections ci-dessus et retenez ce qui vous attire.' },
+            { n: '02', title: 'Adapter', copy: 'Dites-nous vos dates, votre groupe et ce que vous préférez éviter.' },
+            { n: '03', title: 'Confirmer', copy: 'Nous envoyons l’itinéraire finalisé et un prix fixe sur WhatsApp.' },
+            { n: '04', title: 'Partir', copy: 'Votre chauffeur vous attend. Tout le reste est déjà réglé.' },
+        ],
     },
     finale: {
-        kicker: 'Impossible de choisir ?',
-        title: 'Tissez-les en un seul itinéraire.',
-        copy:
-            'Donnez-nous vos dates, votre rythme et ce qui fait battre votre cœur — nous relierons circuits, escapades et moments en une seule route fluide, avec un seul chauffeur et zéro logistique de votre côté.',
+        headLead: 'PRÊT À DÉCOUVRIR',
+        headAccent: 'LE MAROC ?',
         primaryCta: 'Commencer à planifier',
-        secondaryCta: 'Parlez-nous',
-        browseLabel: 'Ou parcourez à la manière classique :',
+        secondaryCta: 'Conciergerie WhatsApp',
+        waIntro: 'Bonjour Xhosen Gate ! Je prépare un voyage au Maroc et j’aimerais de l’aide pour l’organiser.',
+        browseLabel: 'Ou allez plus loin :',
         browseLinks: [
-            { label: 'Tous les circuits', href: '/tours' },
-            { label: 'Toutes les excursions', href: '/experiences' },
-            { label: 'Toutes les activités', href: '/activities' },
+            { label: 'Nos chauffeurs', href: '/drivers' },
+            { label: 'La flotte', href: '/fleet' },
+            { label: 'Guides de voyage', href: '/guides' },
         ],
     },
 };
@@ -187,3 +228,4 @@ export const exploreCopy: Record<ExploreLocale, typeof en> = { en, fr };
 
 export const getExploreCopy = (locale: string) =>
     exploreCopy[(locale === 'fr' ? 'fr' : 'en') as ExploreLocale];
+

@@ -84,7 +84,7 @@ export default function ServicesSection({
 
                         {/* View All Button - Top Right */}
                         <Link
-                            href={`/${locale}/services`}
+                            href={`/${locale}/explore#services`}
                             className="group flex items-center gap-3 px-6 py-3 text-primary-dark rounded-full transition-all hover:gap-4"
                         >
                             <span className="text-sm font-medium">{viewAllText}</span>

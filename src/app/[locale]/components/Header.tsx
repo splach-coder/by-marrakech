@@ -2,15 +2,28 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingBag, Instagram, Facebook, Phone, Mail, ChevronRight, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/context/CartContext';
 import { useTranslations, useLocale } from 'next-intl';
 
+// Routes that open on paper rather than a dark hero photograph. The header
+// needs its light treatment from the very top on these, or white nav links sit
+// on cream under a gradient band that reads as a rendering bug.
+// A trailing slash means "this subtree" — '/drivers/' catches driver profiles
+// without catching the /drivers index, which still opens on a photo banner.
+const LIGHT_TOP_ROUTES = ['/contact', '/drivers/'];
+
 export default function Header() {
   const locale = useLocale();
   const t = useTranslations('Header');
+  const pathname = usePathname();
+  const routePath = (pathname ?? '').replace(/^\/[a-z]{2}(?=\/|$)/, '') || '/';
+  const startsLight = LIGHT_TOP_ROUTES.some(
+    (route) => routePath === route || routePath.startsWith(route)
+  );
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,14 +39,14 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Tours, experiences, activities and services are one page now (/explore),
+  // so the nav carries one entry for the whole catalogue. In-page navigation is
+  // handled by the hero chips and the chapter rail on /explore itself.
   const navigationLinks = [
     { href: `/${locale}`, label: t('home') },
-    { href: `/${locale}/tours`, label: t('tours') },
-    { href: `/${locale}/experiences`, label: t('experiences') },
-    { href: `/${locale}/services`, label: t('services') },
+    { href: `/${locale}/explore`, label: t('explore') },
     { href: `/${locale}/fleet`, label: t('fleet') },
     { href: `/${locale}/drivers`, label: t('drivers') },
-    { href: `/${locale}/activities`, label: t('activities') },
     { href: `/${locale}/gallery`, label: t('gallery') },
     { href: `/${locale}/guides`, label: t('guides') },
     { href: `/${locale}/about`, label: t('about') },
@@ -53,7 +66,7 @@ export default function Header() {
   }, [isMobileMenuOpen]);
 
   // Determine logo source and text color based on state
-  const isDarkTheme = isScrolled || isMobileMenuOpen;
+  const isDarkTheme = isScrolled || isMobileMenuOpen || startsLight;
   const logoSrc = "/images/logo-red.webp";
   const textColor = isDarkTheme ? "text-text-primary" : "text-white";
   const buttonHover = isDarkTheme ? "hover:bg-gray-100" : "hover:bg-white/10";
@@ -64,7 +77,9 @@ export default function Header() {
       <header
         className={`left-0 right-0 z-[60] transition-all duration-500 ${isScrolled
           ? 'fixed top-0 bg-white/95 backdrop-blur-md shadow-sm py-2'
-          : 'absolute bg-gradient-to-b from-black/60 to-transparent py-4 md:py-8'
+          : startsLight
+            ? 'absolute py-4 md:py-8'
+            : 'absolute bg-gradient-to-b from-black/60 to-transparent py-4 md:py-8'
           }`}
       >
         <div className="container-custom">
@@ -88,7 +103,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`text-[12px] font-sans font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:text-primary hover:tracking-[0.25em] ${isScrolled ? 'text-text-primary' : 'text-white'
+                  className={`text-[12px] font-sans font-semibold uppercase tracking-[0.15em] transition-all duration-300 hover:text-primary hover:tracking-[0.25em] ${isDarkTheme ? 'text-text-primary' : 'text-white'
                     }`}
                 >
                   {link.label}

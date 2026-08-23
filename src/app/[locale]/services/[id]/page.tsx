@@ -20,7 +20,6 @@ import {
     Phone
 } from 'lucide-react';
 import GalleryGrid from '../../components/GalleryGrid';
-import PrivateDriverService from '../components/PrivateDriverService';
 import BookingCard from '../../components/BookingCard';
 import MobileBookingWidget from '../../components/MobileBookingWidget';
 
@@ -42,11 +41,6 @@ export default function ServicePage({ params }: ServicePageProps) {
     const localizedSiteData = getSiteData(locale);
 
     const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
-    // Check for special ID 501 (Driver Service)
-    if (id === '501') {
-        return <PrivateDriverService />;
-    }
 
     const service = localizedSiteData.services.find(s => String(s.id) === id) || siteData.services.find(s => String(s.id) === id);
 

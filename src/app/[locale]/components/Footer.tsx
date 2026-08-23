@@ -4,7 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, Clock, ArrowRight, Lock } from 'lucide-react';
-import { getRoutes } from '@/data/transferData';
+import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { getRoutes, whatsappLink } from '@/data/transferData';
 import { getSiteData } from '@/data/siteData';
 
 export default function Footer() {
@@ -13,18 +14,29 @@ export default function Footer() {
   const routes = getRoutes(locale);
   const excursions = (getSiteData(locale).excursions || []) as Array<{ id: number; title: string }>;
 
+  // WhatsApp leads the row: it is how most travellers actually reach us, and it
+  // keeps its own green on hover instead of the shared gold.
   const socialLinks = [
+    {
+      icon: WhatsAppIcon,
+      href: whatsappLink(t('social.waIntro')),
+      label: 'WhatsApp',
+      hover: 'hover:bg-[#25D366] hover:text-[#04331d]',
+    },
     { icon: Facebook, href: 'https://www.facebook.com/chosengate', label: 'Facebook' },
     { icon: Instagram, href: 'https://www.instagram.com/chosengate/', label: 'Instagram' },
     { icon: Youtube, href: 'https://www.youtube.com/@xhosengate', label: 'YouTube' },
   ];
 
+  // The catalogue is one page — these four land on their chapter of /explore
+  // rather than on four separate index pages.
   const navLinks = [
     { href: `/${locale}`, label: t('nav.home') },
-    { href: `/${locale}/services/421`, label: t('nav.transfers') },
+    { href: `/${locale}/explore#journeys`, label: t('nav.tours') },
+    { href: `/${locale}/explore#escapes`, label: t('nav.excursions') },
+    { href: `/${locale}/explore#moments`, label: t('nav.activities') },
+    { href: `/${locale}/explore#services`, label: t('nav.transfers') },
     { href: `/${locale}/fleet`, label: t('nav.fleet') },
-    { href: `/${locale}/experiences`, label: t('nav.excursions') },
-    { href: `/${locale}/tours`, label: t('nav.tours') },
     { href: `/${locale}/drivers`, label: t('nav.drivers') },
     { href: `/${locale}/guides`, label: t('nav.guides') },
     { href: `/${locale}/about`, label: t('nav.about') },
@@ -54,13 +66,13 @@ export default function Footer() {
               {t('description')}
             </p>
             <div className="flex gap-3 mb-7">
-              {socialLinks.map(({ icon: Icon, href, label }) => (
+              {socialLinks.map(({ icon: Icon, href, label, hover }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 bg-white/10 hover:bg-secondary hover:text-[#3b2f2f] rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
+                  className={`w-11 h-11 bg-white/10 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${hover ?? 'hover:bg-secondary hover:text-[#3b2f2f]'}`}
                   aria-label={label}
                 >
                   <Icon className="w-5 h-5" />
@@ -99,11 +111,11 @@ export default function Footer() {
             <h3 className={colHeading}>{t('routes.title')}</h3>
             <nav className="flex flex-col space-y-3.5">
               {routes.map(r => (
-                <Link key={r.id} href={`/${locale}#routes`} className={colLink}>
+                <Link key={r.id} href={`/${locale}#quote`} className={colLink}>
                   {r.from.replace('Marrakech Airport (RAK)', 'RAK ' + (locale === 'fr' ? 'Aéroport' : 'Airport'))} → {r.to}
                 </Link>
               ))}
-              <Link href={`/${locale}#routes`} className="text-secondary hover:text-secondary-light text-sm font-bold inline-flex items-center gap-1.5 transition-colors">
+              <Link href={`/${locale}#quote`} className="text-secondary hover:text-secondary-light text-sm font-bold inline-flex items-center gap-1.5 transition-colors">
                 {t('routes.all')}
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -143,7 +155,7 @@ export default function Footer() {
                 {x.title}
               </Link>
             ))}
-            <Link href={`/${locale}/experiences`} className="text-secondary hover:text-secondary-light text-sm font-bold inline-flex items-center gap-1.5 transition-colors">
+            <Link href={`/${locale}/explore#escapes`} className="text-secondary hover:text-secondary-light text-sm font-bold inline-flex items-center gap-1.5 transition-colors">
               {t('excursions.all')}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>

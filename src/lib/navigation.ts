@@ -9,30 +9,25 @@ export interface NavigationSection {
     items: NavigationItem[];
 }
 
+// Tours, experiences, activities and services all live on the single /explore
+// page now — each section is an anchor on it rather than its own index page.
 export function getNavigationSections(locale: string): NavigationSection[] {
     return [
         {
-            title: 'Services',
-            path: `/${locale}/services`,
+            title: 'Explore',
+            path: `/${locale}/explore`,
             items: [
-                { label: 'Private Driver', href: `/${locale}/services/501` },
-                { label: 'Airport Transfer', href: `/${locale}/services/502` },
-                // Add other services if needed
+                { label: 'Grand Journeys', href: `/${locale}/explore#journeys` },
+                { label: 'Day Escapes', href: `/${locale}/explore#escapes` },
+                { label: 'Signature Moments', href: `/${locale}/explore#moments` },
+                { label: 'Services', href: `/${locale}/explore#services` },
             ]
         },
         {
-            title: 'Tours',
-            path: `/${locale}/tours`,
+            title: 'Drivers',
+            path: `/${locale}/drivers`,
             items: [
-                // This can be populated dynamically if needed, or static
-                { label: 'All Tours', href: `/${locale}/tours` },
-            ]
-        },
-        {
-            title: 'Activities',
-            path: `/${locale}/activities`,
-            items: [
-                { label: 'All Activities', href: `/${locale}/activities` },
+                { label: 'All Drivers', href: `/${locale}/drivers` },
             ]
         },
         // Add other sections as necessary

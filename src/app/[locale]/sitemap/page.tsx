@@ -106,7 +106,7 @@ export default function SitemapPage() {
                             </div>
                             {siteData.tours && siteData.tours.length > 6 && (
                                 <Link
-                                    href="/tours"
+                                    href="/explore#journeys"
                                     className="block w-full p-4 bg-gray-50 text-center font-bold text-primary hover:bg-primary hover:text-white transition-all"
                                 >
                                     View All Tours ({siteData.tours.length})

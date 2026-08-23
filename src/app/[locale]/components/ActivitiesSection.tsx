@@ -67,7 +67,7 @@ export default function ActivitiesSection({
 
                         {/* View All Button */}
                         <Link
-                            href={`/${locale}/activities`}
+                            href={`/${locale}/explore#moments`}
                             className="group flex items-center gap-3 px-6 py-3 text-primary-dark rounded-full transition-all hover:gap-4"
                         >
                             <span className="text-sm font-medium">{viewAllText}</span>

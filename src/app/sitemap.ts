@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { siteData } from '@/data/siteData';
 import { getGuides } from '@/data/guidesData';
+import { driversData } from '@/data/drivers';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://xhosengate.com';
@@ -78,38 +79,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'weekly',
             priority: 0.8,
         },
-        {
-            url: `${baseUrl}/drivers/fetah`,
+        // One driver page per chauffeur, straight from the roster
+        ...driversData.map((driver) => ({
+            url: `${baseUrl}/drivers/${driver.id}`,
             lastModified: currentDate,
-            changeFrequency: 'monthly',
+            changeFrequency: 'monthly' as const,
             priority: 0.7,
-        },
+        })),
+        // /tours, /experiences, /activities and /services now redirect here —
+        // the whole catalogue lives on one page.
         {
-            url: `${baseUrl}/drivers/ayoub`,
-            lastModified: currentDate,
-            changeFrequency: 'monthly',
-            priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/tours`,
-            lastModified: currentDate,
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/activities`,
-            lastModified: currentDate,
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/experiences`,
-            lastModified: currentDate,
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/services`,
+            url: `${baseUrl}/explore`,
             lastModified: currentDate,
             changeFrequency: 'weekly',
             priority: 0.9,

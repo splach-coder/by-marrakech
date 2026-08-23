@@ -2,7 +2,6 @@ import { use, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import Hero from './components/Hero';
 import JourneySection from './components/JourneySection';
-import RoutesSection from './components/RoutesSection';
 import FleetSection from './components/FleetSection';
 import ExperiencesSection from './components/ExperiencesSection';
 import ToursSection from './components/ToursSection';
@@ -17,7 +16,7 @@ interface HomePageProps {
 
 // Homepage architecture mirrors justluxurytransfers.com
 // (see docs/reference-audit/02-RESTRUCTURE-PLAN.md):
-// Hero+Quote → Journey → Routes → Fleet → Experiences → Tours →
+// Hero+Quote → Journey → Fleet → Experiences → Tours →
 // Why Us → FAQ → CTA → Google Reviews (mounted globally in layout)
 export default function HomePage({ params }: HomePageProps) {
   const { locale } = use(params);
@@ -64,25 +63,22 @@ export default function HomePage({ params }: HomePageProps) {
       {/* 2. Choose Your Journey — Transfers / Fleet / Excursions */}
       <JourneySection />
 
-      {/* 3. Popular Transfer Routes (fixed prices per vehicle) */}
-      <RoutesSection />
-
-      {/* 4. Our Fleet */}
+      {/* 3. Our Fleet */}
       <FleetSection />
 
-      {/* 5. Curated Experiences (day trips from Marrakech) */}
+      {/* 4. Curated Experiences (day trips from Marrakech) */}
       <ExperiencesSection experiences={experiences} />
 
-      {/* 6. Signature multi-day Tours */}
+      {/* 5. Signature multi-day Tours */}
       <ToursSection tours={tours} />
 
-      {/* 7. Why Choose Us */}
+      {/* 6. Why Choose Us */}
       <WhyUsSection />
 
-      {/* 8. FAQ */}
+      {/* 7. FAQ */}
       <FAQSection />
 
-      {/* 9. CTA — 10. Google Reviews follows via layout */}
+      {/* 8. CTA — 9. Google Reviews follows via layout */}
       <CTASection />
     </main>
   );

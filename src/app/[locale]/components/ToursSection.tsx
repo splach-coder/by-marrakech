@@ -86,7 +86,7 @@ export default function ToursSection({
             viewport={{ once: true }}
           >
             <Link
-              href={`/${locale}/tours`}
+              href={`/${locale}/explore#journeys`}
               className="hidden md:inline-flex items-center justify-center w-16 h-16 rounded-full border border-[#2C2C2C]/20 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 group"
             >
               <ArrowUpRight className="w-6 h-6 transform group-hover:rotate-45 transition-transform duration-300" />
@@ -153,7 +153,7 @@ export default function ToursSection({
         {/* Mobile View All Button */}
         <div className="mt-12 text-center md:hidden">
           <Link
-            href={`/${locale}/tours`}
+            href={`/${locale}/explore#journeys`}
             className="inline-block px-8 py-4 border border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transition-colors"
           >
             {locale === 'fr' ? 'Voir tous les circuits' : 'View All Tours'}

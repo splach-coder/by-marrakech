@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Compass, Star } from 'lucide-react';
 import QuoteWidget from './QuoteWidget';
 import { googleReviewsConfig } from '@/data/transferData';
+import GoogleIcon from '@/components/GoogleIcon';
 
 interface HeroProps {
   title?: string;
@@ -96,7 +97,9 @@ export default function Hero({
                   transition={{ duration: 0.7, delay: 0.2 }}
                   className="flex items-center gap-2 mb-6"
                 >
-                  <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center text-[13px] font-black text-[#4285F4]">G</span>
+                  <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm">
+                    <GoogleIcon className="w-3.5 h-3.5" />
+                  </span>
                   <span className="text-white font-bold">{googleReviewsConfig.rating.toFixed(1)}</span>
                   <span className="flex items-center gap-0.5">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -133,7 +136,7 @@ export default function Hero({
                   className="flex flex-col sm:flex-row items-center gap-4"
                 >
                   <Link
-                    href={`/${locale}#routes`}
+                    href={`/${locale}#quote`}
                     className="inline-flex items-center gap-2.5 px-8 py-4 bg-secondary text-[#3b2f2f] rounded-sm font-black text-[13px] uppercase tracking-[0.15em] transition-all duration-300 hover:bg-secondary-dark hover:shadow-xl hover:scale-105"
                   >
                     {t('ctaBook')}
@@ -147,7 +150,9 @@ export default function Hero({
                 </motion.div>
               </div>
 
-              <div className="flex justify-center lg:justify-end">
+              {/* #quote is the target for every "pick a route" link now that the
+                  Popular Transfer Routes section is gone — the widget prices routes. */}
+              <div id="quote" className="flex scroll-mt-28 justify-center lg:justify-end">
                 <QuoteWidget />
               </div>
             </div>
@@ -177,7 +182,7 @@ export default function Hero({
                 className="flex flex-col sm:flex-row items-center justify-center gap-4"
               >
                 <Link
-                  href={`/${locale}/tours`}
+                  href={`/${locale}/explore#journeys`}
                   className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-sm font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:scale-105"
                 >
                   <Compass className="w-5 h-5" />

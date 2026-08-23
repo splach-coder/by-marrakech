@@ -4,6 +4,7 @@
 import { useState } from 'react';
 import type { BookingItem, BookingFormData } from '@/types/booking';
 import { formatWhatsAppMessage } from '../utils/whatsapp';
+import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 
 interface BookingFormProps {
   item: BookingItem;
@@ -250,8 +251,9 @@ export default function BookingForm({ item }: BookingFormProps) {
         <div className="pt-6">
           <button
             type="submit"
-            className="w-full bg-primary hover:bg-primary-dark text-white font-bold text-lg py-4 rounded-lg transition-all hover:shadow-lg"
+            className={`w-full flex items-center justify-center gap-3 font-bold text-lg py-4 rounded-lg hover:shadow-lg ${WA_BUTTON}`}
           >
+            <WhatsAppIcon className="h-5 w-5" />
             Continue to WhatsApp
           </button>
           <p className="mt-4 text-center text-sm text-text-tertiary">

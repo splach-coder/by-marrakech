@@ -21,7 +21,11 @@
     "discover": "Discover More",
     "fleet": "Fleet",
     "guides": "Guides",
-    "drivers": "Drivers"
+    "drivers": "Drivers",
+    "explore": "Explore",
+    "exploreJourneys": "Grand Journeys",
+    "exploreEscapes": "Day Escapes",
+    "exploreMoments": "Signature Moments"
   },
   "home": {
     "hero": {
@@ -230,20 +234,64 @@
     }
   },
   "contactPage": {
+    "kicker": "Get in touch",
+    "titleLead": "Let's Plan Your",
+    "titleAccent": "Journey.",
+    "sub": "Airport transfer, private excursion or a full custom itinerary — a real person answers, and we are here 24/7.",
     "hero": {
       "title": "Contact Us",
       "subtitle": "We're Here to Help Plan Your Dream Trip"
     },
     "form": {
-      "title": "Send us a Message",
-      "name": "Full Name",
-      "email": "Email Address",
-      "subject": "Subject",
+      "title": "Send a request",
+      "name": "Full name",
+      "namePlaceholder": "John Doe",
+      "email": "Email address",
+      "emailPlaceholder": "john@example.com",
+      "phone": "Phone (WhatsApp)",
+      "phonePlaceholder": "+44 7700 900000",
+      "service": "Service required",
+      "servicePlaceholder": "Choose a service",
+      "serviceOptions": [
+        "Airport transfer",
+        "Hotel or city transfer",
+        "Private driver for the day",
+        "Tour or excursion",
+        "Activity",
+        "Something else"
+      ],
       "message": "Message",
-      "submit": "Send Message",
+      "messagePlaceholder": "Tell us your dates, how many you are and what you would like to see...",
+      "submit": "Send via WhatsApp",
+      "responseNote": "We reply within 2 hours.",
+      "directLabel": "Prefer an instant answer?",
+      "directCta": "WhatsApp us directly",
+      "subject": "Subject",
       "sending": "Sending...",
       "success": "Message sent successfully!",
       "error": "Failed to send message. Please try again."
+    },
+    "wa": {
+      "intro": "Hello Xhosen Gate! I would like to request a quote.",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "service": "Service",
+      "message": "Details",
+      "directIntro": "Hello Xhosen Gate! I have a question about your transfers and tours."
+    },
+    "details": {
+      "label": "Direct lines",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "whatsappValue": "Quick chat",
+      "whatsappCta": "Chat now",
+      "email": "Email",
+      "address": "Address",
+      "hours": "Hours",
+      "hoursValue": "24 hours / 7 days",
+      "baseLabel": "Our base",
+      "mapTitle": "Xhosen Gate — Marrakech, Morocco"
     },
     "info": {
       "title": "Contact Information",
@@ -251,6 +299,57 @@
       "phone": "Phone",
       "email": "Email",
       "hours": "Business Hours"
+    },
+    "channels": [
+      {
+        "key": "whatsapp",
+        "title": "WhatsApp",
+        "copy": "Direct line for instant booking and priority support.",
+        "cta": "Open chat"
+      },
+      {
+        "key": "phone",
+        "title": "Voice call",
+        "copy": "Speak to our concierge team any hour of the day.",
+        "cta": "Call now"
+      },
+      {
+        "key": "email",
+        "title": "Email",
+        "copy": "Detailed enquiries, group travel and corporate accounts.",
+        "cta": "Send email"
+      }
+    ],
+    "faq": {
+      "headLead": "Have",
+      "headAccent": "Questions?",
+      "sub": "The things travellers ask us most before booking.",
+      "seeAll": "See all FAQs"
+    },
+    "assurances": [
+      {
+        "icon": "shield",
+        "label": "Licensed & insured"
+      },
+      {
+        "icon": "clock",
+        "label": "2-hour response"
+      },
+      {
+        "icon": "headset",
+        "label": "24/7 availability"
+      },
+      {
+        "icon": "lock",
+        "label": "100% private"
+      }
+    ],
+    "ready": {
+      "headLead": "Ready to",
+      "headAccent": "Book?",
+      "sub": "Send us your dates and we will come back with a fixed, all-in price.",
+      "primaryCta": "Book now",
+      "secondaryCta": "WhatsApp us"
     }
   },
   "events": {
@@ -310,7 +409,8 @@
       "guides": "Guides",
       "about": "About",
       "contact": "Contact",
-      "drivers": "Our Drivers"
+      "drivers": "Our Drivers",
+      "activities": "Activities"
     },
     "routes": {
       "title": "Airport & Transfer Routes",
@@ -323,6 +423,9 @@
     "payment": {
       "secure": "Secure booking",
       "methods": "Or cash to the driver (EUR / MAD)"
+    },
+    "social": {
+      "waIntro": "Hello Xhosen Gate! I found you online and would like some help."
     }
   },
   "booking": {
@@ -447,7 +550,20 @@
     "dayTrip": "Day Trip",
     "noToursMatch": "No specific tours match this driver's primary regions currently.",
     "chooseCustom": "Please choose \"Custom Itinerary\"",
-    "bookWhatsApp": "Book via WhatsApp"
+    "bookWhatsApp": "Book via WhatsApp",
+    "badges": "Recognition",
+    "regions": "Regions he knows",
+    "specialties": "Specialties",
+    "responseNote": "Usually replies within minutes",
+    "pickVehicle": "Pick your vehicle",
+    "suggestedTitle": "Ride with",
+    "suggestedAccent": "him",
+    "suggestedSub": "Tours and activities in the regions he drives most.",
+    "seeAll": "See the full collection",
+    "bookThis": "Book this",
+    "groupTours": "Multi-day tours",
+    "groupEscapes": "Day excursions",
+    "groupMoments": "Activities"
   },
   "galleryPage": {
     "hero": {
@@ -604,22 +720,66 @@
     "seeAll": "See all on Google Maps"
   },
   "fleetPage": {
+    "kicker": "The fleet",
+    "heroLead": "Our Elite",
+    "heroAccent": "Fleet",
     "heroTitle": "Our Elite Fleet",
-    "heroSubtitle": "Every journey deserves the right vehicle — chauffeur-driven sedans, vans, minibuses and desert-ready 4x4s, all air-conditioned and immaculately kept.",
-    "gridLabel": "The Collection",
+    "heroSubtitle": "Every journey begins with the right vehicle. Eight of them, chauffeur-driven, air-conditioned and immaculately kept.",
+    "trust": [
+      {
+        "icon": "sparkles",
+        "label": "Pristine condition"
+      },
+      {
+        "icon": "shield",
+        "label": "Fully insured"
+      },
+      {
+        "icon": "snowflake",
+        "label": "Climate controlled"
+      }
+    ],
+    "gridLabel": "The collection",
+    "gridLead": "Select Your",
+    "gridAccent": "Vehicle",
     "gridTitle": "Select Your Vehicle",
+    "countLabel": "{count} vehicles on the road",
+    "paxUpTo": "Up to {count} pax",
+    "bandLead": "Comfort is not an extra.",
+    "bandAccent": "It is the baseline.",
+    "includedLabel": "In every vehicle",
+    "included": [
+      {
+        "icon": "driver",
+        "label": "Professional driver"
+      },
+      {
+        "icon": "water",
+        "label": "Bottled water"
+      },
+      {
+        "icon": "wifi",
+        "label": "Free Wi-Fi"
+      },
+      {
+        "icon": "snowflake",
+        "label": "Full air con"
+      }
+    ],
     "glanceLabel": "Compare",
+    "glanceLead": "At a",
+    "glanceAccent": "Glance",
     "glanceTitle": "At a Glance",
     "colVehicle": "Vehicle",
-    "colCategory": "Category",
+    "colCategory": "Class",
     "colPax": "Passengers",
     "colLuggage": "Luggage",
     "colPrice": "From",
     "bookVehicle": "Book this vehicle",
     "whatsapp": "WhatsApp",
     "waIntro": "Hello Xhosen Gate! I would like to book the vehicle:",
-    "notSureTitle": "Not Sure Which Vehicle?",
-    "notSureText": "Tell us how many you are, where you are going and what you want to see — our team will match you with the perfect vehicle in minutes.",
+    "notSureTitle": "Not sure which vehicle?",
+    "notSureText": "Tell us how many you are, where you are going and what you want to see — we will match you with the right vehicle in minutes.",
     "notSureCta": "Ask on WhatsApp"
   },
   "guidesPage": {
@@ -671,8 +831,6 @@
     "subtitle": "Each driver has his own page, his own fleet and his own way of showing you Morocco. Pick the one that fits your trip.",
     "years": "{years}+ years experience",
     "hisFleet": "His fleet",
-    "from": "From",
-    "perDay": "/ day",
     "viewProfile": "View Profile"
   }
 }

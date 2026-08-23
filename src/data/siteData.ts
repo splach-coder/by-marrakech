@@ -1,34 +1,6 @@
 const siteData = {
     services: [
         {
-            id: 501,
-            title: "Private Driver & Luxury Car Service",
-            url: "#",
-            description: "Experience Morocco your way with our exclusive private driver service. Choose your personal driver from our curated selection of experienced, multilingual professionals, each with their own portfolio showcasing their expertise, preferred routes, and fleet of premium vehicles. Whether you're looking to explore our handpicked tours and excursions with a driver who knows every hidden gem, or simply need the freedom to wander the city at your own pace, our drivers are at your service. Browse through detailed profiles featuring photo galleries, language capabilities, vehicle options, and specialty routes to find your perfect match. Once you've selected your driver, you can either choose from our carefully designed tours or create your own adventure – the choice is entirely yours. Contact your chosen driver directly to discuss your plans and preferences, ensuring a personalized experience tailored to your unique travel vision. From sunrise in the Sahara to sunset in Marrakech's medinas, your dedicated driver becomes your local expert, guide, and companion on the journey.",
-            categories: ["Services", "Luxury"],
-            image: {
-                url: "/images/services/luxury_driver_service.webp",
-                alt: "Private Luxury Driver in Morocco"
-            },
-            banner_image: {
-                url: "/images/services/luxury_driver_service.webp",
-                alt: "Private Luxury Driver Service"
-            },
-            gallery: [
-                { url: "/images/services/luxury_driver_service.webp", alt: "Private Chauffeur" },
-            ],
-            highlights: [
-                "Curated selection of multilingual professionals",
-                "Detailed driver portfolios with photo galleries",
-                "Fleet of premium luxury vehicles",
-                "Total flexibility: Tours or freeform exploration",
-                "Direct communication for personalized planning"
-            ],
-            suitable_for: ["Luxury Travelers", "Couples", "VIPs", "Custom Itineraries"],
-            price: "Custom Quote",
-            reviews: []
-        },
-        {
             id: 421,
             title: "Airport Transfer Service In Morocco",
             url: "https://your-morocco.com/airport-transfer-service-in-morocco/",
@@ -1162,34 +1134,6 @@ const siteData = {
 
 const siteDataFR = {
     services: [
-        {
-            id: 501,
-            title: "Chauffeur Privé & Service de Véhicules de Luxe",
-            url: "#",
-            description: "Découvrez le Maroc à votre façon avec notre service exclusif de chauffeur privé. Choisissez votre chauffeur personnel parmi notre sélection de professionnels expérimentés et multilingues, chacun possédant son propre portfolio mettant en valeur son expertise, ses itinéraires préférés et sa flotte de véhicules haut de gamme. Que vous souhaitiez explorer nos circuits et excursions triés sur le volet avec un chauffeur connaissant chaque trésor caché, ou simplement avoir la liberté de flâner dans la ville à votre rythme, nos chauffeurs sont à votre service. Parcourez des profils détaillés comprenant des galeries photos, les langues parlées, les options de véhicules et les itinéraires spécialisés pour trouver votre partenaire idéal. Une fois votre chauffeur sélectionné, vous pouvez choisir parmi nos circuits soigneusement conçus ou créer votre propre aventure – le choix vous appartient entièrement. Contactez directement votre chauffeur choisi pour discuter de vos plans et préférences, assurant une expérience personnalisée adaptée à votre vision unique du voyage. Du lever de soleil dans le Sahara au coucher de soleil dans les médinas de Marrakech, votre chauffeur dévoué devient votre expert local, guide et compagnon de route.",
-            categories: ["Services", "Luxe"],
-            image: {
-                url: "/images/services/luxury_driver_service.webp",
-                alt: "Chauffeur Privé de Luxe au Maroc"
-            },
-            banner_image: {
-                url: "/images/services/luxury_driver_service.webp",
-                alt: "Service de Chauffeur Privé de Luxe"
-            },
-            gallery: [
-                { url: "/images/services/luxury_driver_service.webp", alt: "Chauffeur Privé" },
-            ],
-            highlights: [
-                "Sélection de professionnels multilingues",
-                "Portfolios détaillés des chauffeurs avec galeries photos",
-                "Flotte de véhicules de luxe premium",
-                "Flexibilité totale : Circuits ou exploration libre",
-                "Communication directe pour une planification personnalisée"
-            ],
-            suitable_for: ["Voyageurs de Luxe", "Couples", "VIPS", "Itinéraires Personnalisés"],
-            price: "Sur Devis",
-            reviews: []
-        },
         {
             id: 421,
             title: "Service de Transfert Aéroport au Maroc",

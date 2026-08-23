@@ -1,71 +1,113 @@
 'use client';
 
 /**
- * /explore — the unified experience hub.
- * Tours, excursions and activities, told as one cinematic scroll story:
+ * /explore — the site's single catalogue page.
  *
- *   Scene 1  Hero          — "Choose Your Morocco" (layered parallax)
- *   Scene 2  Manifesto     — word-by-word scroll lighting
- *   Scene 3  Chapter I     — Grand Journeys   (multi-day tours)
- *   Scene 4  Chapter II    — Day Escapes      (pinned horizontal excursions)
- *   Scene 5  Chapter III   — Signature Moments (expanding activity panels)
- *   Scene 6  Finale        — "Weave them into one itinerary"
+ * Layout (editorial catalogue, top to bottom):
+ *   1  Hero              full-bleed photograph + two-tone display title
+ *   2  Trust bar         four reassurance marks on a cream strip
+ *   3  Collection nav    sticky, four collections, active one underlined
+ *   4  Featured journey  split photo/panel card for the flagship tour
+ *   5  Collections       Journeys · Escapes · Moments · Services, one grid each
+ *   6  Journey band      full-bleed "one country, your route" breath
+ *   7  Concierge process four numbered steps
+ *   8  Finale            closing CTA on brand red
  *
- * All copy lives in ./content.ts (EN/FR) — nothing here touches the shared
- * messages/*.json files. All items come straight from siteData, so the page
- * stays in sync with the classic /tours, /experiences and /activities pages.
+ * /tours, /experiences, /activities and /services redirect into the four
+ * collection anchors, so this is the only catalogue URL on the site.
+ *
+ * All copy lives in ./content.ts (EN/FR); every item comes straight from
+ * siteData, so the page cannot drift from the detail pages it links to.
  */
 
 import './explore.css';
 
 import { useLocale } from 'next-intl';
 import { getSiteData } from '@/data/siteData';
-import { type ExploreItem } from './content';
+import { type CollectionId, type ExploreItem } from './content';
 import ExploreHero from './components/ExploreHero';
-import Manifesto from './components/Manifesto';
-import JourneysChapter from './components/JourneysChapter';
-import EscapesChapter from './components/EscapesChapter';
-import MomentsChapter from './components/MomentsChapter';
+import TrustBar from './components/TrustBar';
+import CollectionNav from './components/CollectionNav';
+import FeaturedJourney from './components/FeaturedJourney';
+import CollectionSection from './components/CollectionSection';
+import JourneyBand from './components/JourneyBand';
+import ConciergeProcess from './components/ConciergeProcess';
 import FinaleCTA from './components/FinaleCTA';
-import ChapterRail from './components/ChapterRail';
 
 export default function ExplorePage() {
     const locale = useLocale();
     const data = getSiteData(locale);
 
-    const tours = (data.tours ?? []) as unknown as ExploreItem[];
-    const excursions = (data.excursions ?? []) as unknown as ExploreItem[];
-    const activities = (data.activities ?? []) as unknown as ExploreItem[];
+    const journeys = (data.tours ?? []) as unknown as ExploreItem[];
+    const escapes = (data.excursions ?? []) as unknown as ExploreItem[];
+    const moments = (data.activities ?? []) as unknown as ExploreItem[];
+    const services = (data.services ?? []) as unknown as ExploreItem[];
 
-    // Aggregate traveller rating across everything shown on the page
-    const allReviews = [...tours, ...excursions, ...activities].flatMap(
-        (item) => item.reviews ?? []
-    );
-    const rating = allReviews.length
-        ? (allReviews.reduce((sum, r) => sum + r.rating, 0) / allReviews.length).toFixed(1)
-        : '5.0';
+    // The flagship tour headlines the page; the rest of its collection follows
+    // below, so it is shown once at the top and once in Journeys on purpose —
+    // the featured card is a poster, the grid is the index.
+    const featured = journeys[0];
+
+    const counts: Record<CollectionId, number> = {
+        journeys: journeys.length,
+        escapes: escapes.length,
+        moments: moments.length,
+        services: services.length,
+    };
+
+    // Running numerals continue across the four grids rather than restarting
+    const offsets = {
+        journeys: 1,
+        escapes: 1 + journeys.length,
+        moments: 1 + journeys.length + escapes.length,
+        services: 1 + journeys.length + escapes.length + moments.length,
+    };
 
     return (
         <main className="min-h-screen bg-background">
-            <ChapterRail locale={locale} />
+            <ExploreHero locale={locale} />
 
-            <ExploreHero
+            <TrustBar locale={locale} />
+
+            <CollectionNav locale={locale} counts={counts} />
+
+            {featured && <FeaturedJourney locale={locale} item={featured} collection="journeys" />}
+
+            <CollectionSection
                 locale={locale}
-                counts={{
-                    journeys: tours.length,
-                    escapes: excursions.length,
-                    moments: activities.length,
-                }}
-                rating={rating}
+                id="journeys"
+                items={journeys}
+                tone="cream"
+                numberFrom={offsets.journeys}
             />
 
-            <Manifesto locale={locale} />
+            <CollectionSection
+                locale={locale}
+                id="escapes"
+                items={escapes}
+                tone="paper"
+                numberFrom={offsets.escapes}
+            />
 
-            <JourneysChapter locale={locale} tours={tours} />
+            <CollectionSection
+                locale={locale}
+                id="moments"
+                items={moments}
+                tone="cream"
+                numberFrom={offsets.moments}
+            />
 
-            <EscapesChapter locale={locale} excursions={excursions} />
+            <CollectionSection
+                locale={locale}
+                id="services"
+                items={services}
+                tone="paper"
+                numberFrom={offsets.services}
+            />
 
-            <MomentsChapter locale={locale} activities={activities} />
+            <JourneyBand locale={locale} />
+
+            <ConciergeProcess locale={locale} />
 
             <FinaleCTA locale={locale} />
         </main>

@@ -2,7 +2,8 @@
 
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Check, MessageSquare, Home } from 'lucide-react';
+import { Check, Home } from 'lucide-react';
+import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -59,7 +60,7 @@ export default function ThankYouPage() {
                         className="bg-white rounded-2xl shadow-lg p-8 mb-6 border border-gray-100"
                     >
                         <div className="flex items-center justify-center gap-3 mb-4">
-                            <MessageSquare className="w-6 h-6 text-green-500" />
+                            <WhatsAppIcon className="w-6 h-6" />
                             <h2 className="text-xl font-bold text-gray-900">Complete Your Booking</h2>
                         </div>
                         <p className="text-gray-600 mb-6">
@@ -68,9 +69,9 @@ export default function ThankYouPage() {
 
                         <button
                             onClick={handleWhatsAppClick}
-                            className="w-full md:w-auto px-8 py-4 bg-green-500 text-white font-bold rounded-xl hover:bg-green-600 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto mb-4"
+                            className={`w-full md:w-auto px-8 py-4 font-bold rounded-xl shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto mb-4 ${WA_BUTTON}`}
                         >
-                            <MessageSquare className="w-5 h-5" />
+                            <WhatsAppIcon className="w-5 h-5" />
                             Send Booking via WhatsApp
                         </button>
 

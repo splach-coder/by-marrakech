@@ -12,8 +12,10 @@ interface PageBannerProps {
   imageAlt?: string;
 }
 
-// The single shared page banner: FULL-SCREEN background image with centered
-// kicker + title + subtitle. Every inner page opens with this same hero.
+// The single shared page banner: a full-screen background image with centered
+// kicker + title + subtitle. Every inner page opens with this same hero, at the
+// same height as /explore and /fleet — one screen, less the 2rem SubHeader bar.
+// svh rather than vh so mobile browser chrome cannot push the copy off-screen.
 export default function PageBanner({
   image,
   title,
@@ -22,7 +24,7 @@ export default function PageBanner({
   imageAlt,
 }: PageBannerProps) {
   return (
-    <section className="relative h-screen min-h-[600px] w-full overflow-hidden">
+    <section className="relative flex min-h-[calc(100svh-2rem)] w-full items-center overflow-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 1.08 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -38,11 +40,15 @@ export default function PageBanner({
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/75" />
+        {/* Centred type has to hold over whatever the photograph is doing behind
+            it — a person, a vehicle, carved plaster. Base wash for the whole
+            frame, plus a soft pool behind the text block itself. */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_45%_at_50%_50%,rgba(0,0,0,0.45),transparent_75%)]" />
       </motion.div>
 
       {/* Centered content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+      <div className="relative z-10 flex w-full flex-col items-center justify-center text-center px-4">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -25,6 +25,7 @@ import {
     PlusCircle
 } from 'lucide-react';
 import { siteData } from '@/data/siteData';
+import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 
 interface BookingPageProps {
     params: Promise<{
@@ -730,9 +731,9 @@ export default function BookingPage({ params }: BookingPageProps) {
                                         href="https://wa.me/212600000000?text=I need help with my transport coordination"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-3 px-10 py-5 bg-green-500 text-white rounded-2xl font-bold hover:bg-green-600 transition-all shadow-xl hover:shadow-green-500/20 hover:-translate-y-1"
+                                        className={`inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold shadow-xl hover:-translate-y-1 ${WA_BUTTON}`}
                                     >
-                                        <span className="bg-white/20 p-1 rounded-full"><MessageSquare className="w-5 h-5" /></span>
+                                        <WhatsAppIcon className="w-6 h-6" />
                                         Chat with Travel Expert
                                     </a>
                                 </div>

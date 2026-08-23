@@ -21,7 +21,11 @@
     "discover": "Découvrir plus",
     "fleet": "Flotte",
     "guides": "Guides",
-    "drivers": "Chauffeurs"
+    "drivers": "Chauffeurs",
+    "explore": "Explorer",
+    "exploreJourneys": "Grands Circuits",
+    "exploreEscapes": "Escapades d’un Jour",
+    "exploreMoments": "Moments Signature"
   },
   "home": {
     "hero": {
@@ -230,27 +234,122 @@
     }
   },
   "contactPage": {
+    "kicker": "Contactez-nous",
+    "titleLead": "Planifions Votre",
+    "titleAccent": "Voyage.",
+    "sub": "Transfert aéroport, excursion privée ou itinéraire entièrement sur mesure — une vraie personne vous répond, 24h/24 et 7j/7.",
     "hero": {
       "title": "Contactez-nous",
-      "subtitle": "Nous sommes là pour vous aider à planifier votre voyage de rêve"
+      "subtitle": "Nous sommes là pour organiser votre voyage de rêve"
     },
     "form": {
-      "title": "Envoyez-nous un message",
+      "title": "Envoyer une demande",
       "name": "Nom complet",
-      "email": "Adresse email",
-      "subject": "Sujet",
+      "namePlaceholder": "Jean Dupont",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "jean@exemple.com",
+      "phone": "Téléphone (WhatsApp)",
+      "phonePlaceholder": "+33 6 12 34 56 78",
+      "service": "Service souhaité",
+      "servicePlaceholder": "Choisissez un service",
+      "serviceOptions": [
+        "Transfert aéroport",
+        "Transfert hôtel ou ville",
+        "Chauffeur privé à la journée",
+        "Circuit ou excursion",
+        "Activité",
+        "Autre demande"
+      ],
       "message": "Message",
-      "submit": "Envoyer le message",
-      "sending": "Envoi en cours...",
+      "messagePlaceholder": "Indiquez vos dates, le nombre de voyageurs et ce que vous aimeriez voir...",
+      "submit": "Envoyer via WhatsApp",
+      "responseNote": "Nous répondons en moins de 2 heures.",
+      "directLabel": "Vous préférez une réponse immédiate ?",
+      "directCta": "Écrivez-nous sur WhatsApp",
+      "subject": "Sujet",
+      "sending": "Envoi...",
       "success": "Message envoyé avec succès !",
-      "error": "Échec de l'envoi du message. Veuillez réessayer."
+      "error": "Échec de l'envoi. Veuillez réessayer."
+    },
+    "wa": {
+      "intro": "Bonjour Xhosen Gate ! Je souhaite demander un devis.",
+      "name": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "service": "Service",
+      "message": "Détails",
+      "directIntro": "Bonjour Xhosen Gate ! J'ai une question sur vos transferts et circuits."
+    },
+    "details": {
+      "label": "Lignes directes",
+      "phone": "Téléphone",
+      "whatsapp": "WhatsApp",
+      "whatsappValue": "Discussion rapide",
+      "whatsappCta": "Discuter",
+      "email": "E-mail",
+      "address": "Adresse",
+      "hours": "Horaires",
+      "hoursValue": "24 heures / 7 jours",
+      "baseLabel": "Notre base",
+      "mapTitle": "Xhosen Gate — Marrakech, Maroc"
     },
     "info": {
-      "title": "Informations de contact",
+      "title": "Coordonnées",
       "address": "Adresse",
       "phone": "Téléphone",
-      "email": "Email",
-      "hours": "Heures d'ouverture"
+      "email": "E-mail",
+      "hours": "Horaires d'ouverture"
+    },
+    "channels": [
+      {
+        "key": "whatsapp",
+        "title": "WhatsApp",
+        "copy": "Ligne directe pour réserver instantanément et être prioritaire.",
+        "cta": "Ouvrir le chat"
+      },
+      {
+        "key": "phone",
+        "title": "Appel",
+        "copy": "Parlez à notre équipe conciergerie à toute heure.",
+        "cta": "Appeler"
+      },
+      {
+        "key": "email",
+        "title": "E-mail",
+        "copy": "Demandes détaillées, groupes et comptes entreprise.",
+        "cta": "Envoyer un e-mail"
+      }
+    ],
+    "faq": {
+      "headLead": "Des",
+      "headAccent": "Questions ?",
+      "sub": "Ce que les voyageurs nous demandent le plus avant de réserver.",
+      "seeAll": "Voir toutes les FAQ"
+    },
+    "assurances": [
+      {
+        "icon": "shield",
+        "label": "Licencié & assuré"
+      },
+      {
+        "icon": "clock",
+        "label": "Réponse en 2 h"
+      },
+      {
+        "icon": "headset",
+        "label": "Disponible 24/7"
+      },
+      {
+        "icon": "lock",
+        "label": "100 % privé"
+      }
+    ],
+    "ready": {
+      "headLead": "Prêt à",
+      "headAccent": "Réserver ?",
+      "sub": "Envoyez-nous vos dates et nous revenons avec un prix fixe, tout compris.",
+      "primaryCta": "Réserver",
+      "secondaryCta": "WhatsApp"
     }
   },
   "events": {
@@ -310,7 +409,8 @@
       "guides": "Guides",
       "about": "À Propos",
       "contact": "Contact",
-      "drivers": "Nos Chauffeurs"
+      "drivers": "Nos Chauffeurs",
+      "activities": "Activités"
     },
     "routes": {
       "title": "Trajets Aéroport & Transferts",
@@ -323,6 +423,9 @@
     "payment": {
       "secure": "Réservation sécurisée",
       "methods": "Ou en espèces au chauffeur (EUR / MAD)"
+    },
+    "social": {
+      "waIntro": "Bonjour Xhosen Gate ! Je vous ai trouvés en ligne et j’aimerais un peu d’aide."
     }
   },
   "booking": {
@@ -447,7 +550,20 @@
     "dayTrip": "Excursion d'une journée",
     "noToursMatch": "Aucun circuit spécifique ne correspond aux régions principales de ce chauffeur actuellement.",
     "chooseCustom": "Veuillez choisir \"Itinéraire personnalisé\"",
-    "bookWhatsApp": "Réserver via WhatsApp"
+    "bookWhatsApp": "Réserver via WhatsApp",
+    "badges": "Distinctions",
+    "regions": "Régions qu’il connaît",
+    "specialties": "Spécialités",
+    "responseNote": "Répond généralement en quelques minutes",
+    "pickVehicle": "Choisissez votre véhicule",
+    "suggestedTitle": "Partez",
+    "suggestedAccent": "avec lui",
+    "suggestedSub": "Circuits et activités dans les régions qu’il parcourt le plus.",
+    "seeAll": "Voir toute la collection",
+    "bookThis": "Réserver",
+    "groupTours": "Circuits",
+    "groupEscapes": "Excursions d’une journée",
+    "groupMoments": "Activités"
   },
   "galleryPage": {
     "hero": {
@@ -604,22 +720,66 @@
     "seeAll": "Voir tous les avis sur Google Maps"
   },
   "fleetPage": {
-    "heroTitle": "Notre Flotte d'Élite",
-    "heroSubtitle": "Chaque voyage mérite le bon véhicule — berlines avec chauffeur, vans, minibus et 4x4 prêts pour le désert, tous climatisés et parfaitement entretenus.",
-    "gridLabel": "La Collection",
+    "kicker": "La flotte",
+    "heroLead": "Notre Flotte",
+    "heroAccent": "d’Élite",
+    "heroTitle": "Notre Flotte d’Élite",
+    "heroSubtitle": "Chaque voyage commence par le bon véhicule. Huit au total, avec chauffeur, climatisés et impeccablement entretenus.",
+    "trust": [
+      {
+        "icon": "sparkles",
+        "label": "État impeccable"
+      },
+      {
+        "icon": "shield",
+        "label": "Entièrement assurés"
+      },
+      {
+        "icon": "snowflake",
+        "label": "Climatisation"
+      }
+    ],
+    "gridLabel": "La collection",
+    "gridLead": "Choisissez Votre",
+    "gridAccent": "Véhicule",
     "gridTitle": "Choisissez Votre Véhicule",
+    "countLabel": "{count} véhicules en service",
+    "paxUpTo": "Jusqu'à {count} pers.",
+    "bandLead": "Le confort n’est pas une option.",
+    "bandAccent": "C’est la base.",
+    "includedLabel": "Dans chaque véhicule",
+    "included": [
+      {
+        "icon": "driver",
+        "label": "Chauffeur professionnel"
+      },
+      {
+        "icon": "water",
+        "label": "Eau minérale"
+      },
+      {
+        "icon": "wifi",
+        "label": "Wi-Fi gratuit"
+      },
+      {
+        "icon": "snowflake",
+        "label": "Climatisation intégrale"
+      }
+    ],
     "glanceLabel": "Comparer",
-    "glanceTitle": "En un Coup d'Œil",
+    "glanceLead": "En un",
+    "glanceAccent": "Coup d’œil",
+    "glanceTitle": "En un Coup d’œil",
     "colVehicle": "Véhicule",
-    "colCategory": "Catégorie",
+    "colCategory": "Classe",
     "colPax": "Passagers",
     "colLuggage": "Bagages",
     "colPrice": "Dès",
     "bookVehicle": "Réserver ce véhicule",
     "whatsapp": "WhatsApp",
     "waIntro": "Bonjour Xhosen Gate ! Je souhaite réserver le véhicule :",
-    "notSureTitle": "Vous Hésitez Sur le Véhicule ?",
-    "notSureText": "Dites-nous combien vous êtes, où vous allez et ce que vous voulez voir — notre équipe vous proposera le véhicule idéal en quelques minutes.",
+    "notSureTitle": "Vous hésitez sur le véhicule ?",
+    "notSureText": "Dites-nous combien vous êtes, où vous allez et ce que vous voulez voir — nous vous proposons le bon véhicule en quelques minutes.",
     "notSureCta": "Demander sur WhatsApp"
   },
   "guidesPage": {
@@ -671,8 +831,6 @@
     "subtitle": "Chaque chauffeur a sa propre page, sa propre flotte et sa façon de vous faire découvrir le Maroc. Choisissez celui qui correspond à votre voyage.",
     "years": "{years}+ ans d'expérience",
     "hisFleet": "Sa flotte",
-    "from": "Dès",
-    "perDay": "/ jour",
     "viewProfile": "Voir le Profil"
   }
 }

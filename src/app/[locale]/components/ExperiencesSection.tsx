@@ -125,7 +125,7 @@ export default function ExperiencesSection({ label, title, experiences }: Experi
           className="mt-14 text-center"
         >
           <Link
-            href={`/${locale}/experiences`}
+            href={`/${locale}/explore#escapes`}
             className="inline-flex items-center gap-3 px-8 py-4 border border-border-dark text-text-primary rounded-sm font-medium transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
           >
             <span>{t('viewAll')}</span>

@@ -13,7 +13,7 @@ export default function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="py-24 bg-white">
+    <section id="faq" className="scroll-mt-24 py-24 bg-white">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Left: heading */}

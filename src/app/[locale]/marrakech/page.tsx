@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PageBanner from '../components/PageBanner';
 import { getSiteData, siteData } from '@/data/siteData';
+import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   ArrowRight,
@@ -320,8 +321,9 @@ export default function MarrakechPage() {
               href="https://wa.me/212600000000"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-10 py-5 bg-primary text-white font-bold rounded-full hover:bg-primary-600 transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3"
+              className={`px-10 py-5 font-bold rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3 ${WA_BUTTON}`}
             >
+              <WhatsAppIcon className="w-5 h-5" />
               <span>{t('cta.whatsapp')}</span>
               <ArrowRight className="w-5 h-5" />
             </a>

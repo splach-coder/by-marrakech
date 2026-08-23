@@ -6,7 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { ArrowLeft, ArrowRight, Check, MessageCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 import {
   getGuide, getGuideContent, getCategoryLabel, getRelatedGuides, formatGuideDate,
 } from '@/data/guidesData';
@@ -138,9 +139,9 @@ export default function GuideArticlePage({ params }: GuidePageProps) {
                 href={whatsappLink(t('ctaWa'))}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-8 py-4 bg-secondary text-[#3b2f2f] rounded-sm font-black text-[13px] uppercase tracking-[0.15em] transition-all duration-300 hover:bg-secondary-dark hover:shadow-lg hover:scale-105"
+                className={`inline-flex items-center gap-2.5 px-8 py-4 rounded-sm font-black text-[13px] uppercase tracking-[0.15em] hover:shadow-lg hover:scale-105 ${WA_BUTTON}`}
               >
-                <MessageCircle className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4" />
                 {t('ctaButton')}
               </a>
             </motion.div>

@@ -22,8 +22,8 @@ export default function JourneySection() {
 
   const cards = [
     { key: 'transfers', kicker: t('transfers.kicker'), image: '/images/services/car_rental.jpeg', href: `/${locale}/services/421` },
-    { key: 'fleet', kicker: t('fleet.kicker'), image: '/images/drivers/fetah/car1.webp', href: `/${locale}/fleet` },
-    { key: 'excursions', kicker: t('excursions.kicker'), image: '/images/ouzoud.webp', href: `/${locale}/experiences` },
+    { key: 'fleet', kicker: t('fleet.kicker'), image: '/images/fleet/ford-tourneo-custom.webp', href: `/${locale}/fleet` },
+    { key: 'excursions', kicker: t('excursions.kicker'), image: '/images/ouzoud.webp', href: `/${locale}/explore#escapes` },
   ] as const;
 
   return (

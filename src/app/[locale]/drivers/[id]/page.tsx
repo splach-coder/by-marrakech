@@ -1,458 +1,535 @@
-
 'use client';
+
+/**
+ * /drivers/[id] — a driver profile built to convert.
+ *
+ * Identity and bio on the left, a sticky booking panel on the right that puts
+ * the WhatsApp button inside the first screenful and keeps it there as you
+ * read. On mobile a fixed bottom bar carries the same action, so the way to
+ * book is never more than one tap away.
+ *
+ * This replaces an 850px-tall two-panel card whose booking action sat at the
+ * very bottom of the right column — a visitor had to scroll past the entire
+ * profile before they could see how to get in touch. The old page was also the
+ * last one on the pre-redesign palette (rounded-3xl cards, blue/purple/emerald
+ * chips); everything here uses the site's own tokens.
+ */
 
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { driversData, driversDataFr } from '@/data/drivers';
-import { getSiteData, siteData } from '@/data/siteData';
+import { motion } from 'framer-motion';
 import { use, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
-    ChevronRight,
-    Star,
-    Shield,
-    MapPin,
-    Globe,
-    Award,
+    ArrowRight,
     Car,
-    MessageCircle,
-    X,
-    ChevronLeft,
-    Home,
-    Info,
-    CalendarCheck,
-    Wifi,
     Check,
-    Camera
+    ChevronRight,
+    Globe,
+    Home,
+    MapPin,
+    Shield,
+    Star,
+    Wifi,
 } from 'lucide-react';
-import GalleryGrid from '../../components/GalleryGrid';
+import { driversData, driversDataFr, vehicleClassLabel } from '@/data/drivers';
+import { getSiteData, siteData } from '@/data/siteData';
+import { whatsappLink } from '@/data/transferData';
+import { cleanTitle, tidyDuration } from '@/lib/catalogue';
+import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
+import TwoTone from '@/components/TwoTone';
 
 interface DriverPageProps {
-    params: Promise<{
-        id: string;
-        locale: string;
-    }>;
+    params: Promise<{ id: string; locale: string }>;
 }
+
+const CHIP =
+    'inline-flex items-center border border-border bg-background px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.12em] text-text-secondary';
+const PANEL_LABEL =
+    'flex items-center gap-2 text-[9px] font-black uppercase tracking-[0.22em] text-text-tertiary';
+
+/** Detail route per catalogue group, mirroring /explore's collections. */
+const ROUTE_BY_GROUP: Record<string, string> = {
+    tours: 'tours',
+    escapes: 'experiences',
+    moments: 'activities',
+};
 
 export default function DriverPage({ params }: DriverPageProps) {
     const { id } = use(params);
     const locale = useLocale();
     const t = useTranslations('common');
     const tDriv = useTranslations('driverDetail');
-    const tGallery = useTranslations('galleryPage');
 
-    // Select data based on locale
     const drivers = locale === 'fr' ? driversDataFr : driversData;
-    const driver = drivers.find(d => d.id === id);
+    const driver = drivers.find((d) => d.id === id);
 
-    const [selectedImage, setSelectedImage] = useState<number | null>(null);
     const [bookingMode, setBookingMode] = useState<'custom' | 'tour'>('custom');
     const [selectedTourId, setSelectedTourId] = useState<string | null>(null);
-    const [selectedVehicle, setSelectedVehicle] = useState<string>(driver?.vehicleTypes?.[0] || '');
+    const [selectedVehicle, setSelectedVehicle] = useState<string>(driver?.fleet?.[0]?.name || '');
 
-    // Fetch localized data for suggestions
     const localizedSiteData = getSiteData(locale);
 
     if (!driver) {
         notFound();
     }
 
-    const galleryImages = driver.gallery || [driver.image];
+    const firstName = driver.name.split(' ')[0];
 
-    // Combine tours and activities for suggestions
-    const allSuggested = [
-        ...(localizedSiteData.tours || siteData.tours).map(t => ({ ...t, type: 'tour' })),
-        ...(localizedSiteData.activities || siteData.activities).map(a => ({ ...a, type: 'activity' }))
-    ].filter(item => {
-        const hasMatchingLocation = item.locations && driver.locations.some(driverLoc =>
-            item.locations.some((itemLoc: any) =>
-                (typeof itemLoc === 'string' ? itemLoc : itemLoc.name) === driverLoc
-            )
-        );
-        return driver.preferredTours.includes(item.title) || hasMatchingLocation; // Keep this consistent with the fix we just made
+    // Everything a visitor can book with him — the whole catalogue, grouped, so
+    // the picker is never the reason someone cannot find what they came for.
+    const groups = [
+        { key: 'tours', label: tDriv('groupTours'), items: localizedSiteData.tours || siteData.tours },
+        { key: 'escapes', label: tDriv('groupEscapes'), items: localizedSiteData.excursions || siteData.excursions },
+        { key: 'moments', label: tDriv('groupMoments'), items: localizedSiteData.activities || siteData.activities },
+    ].map((g) => ({ ...g, items: (g.items as any[]).map((item) => ({ ...item, type: g.key })) }));
+
+    const allBookable = groups.flatMap((g) => g.items);
+
+    // A shorter, curated set for the "Ride with him" rail: trips in the regions
+    // he actually drives.
+    const allSuggested = allBookable.filter((item) => {
+        const hasMatchingLocation =
+            item.locations &&
+            driver.locations.some((driverLoc: string) =>
+                item.locations.some(
+                    (itemLoc: any) => (typeof itemLoc === 'string' ? itemLoc : itemLoc.name) === driverLoc
+                )
+            );
+        return driver.preferredTours.includes(item.title) || hasMatchingLocation;
     });
 
-    const handleBook = () => {
-        let message = '';
-        const nameToUse = driver.name;
-        const vehicleInfo = `Vehicle: ${selectedVehicle}`;
+    // six at most, and if that leaves an odd one out it spans the full row
+    const suggestedShown = allSuggested.slice(0, 6);
+    const oddLast = suggestedShown.length % 2 === 1 ? suggestedShown.length - 1 : -1;
 
-        if (bookingMode === 'custom') {
-            message = `I'm interested in booking a custom itinerary with ${nameToUse}. \n\n${vehicleInfo}`;
-        } else {
-            const selectedItem = allSuggested.find(i => String(i.id) === selectedTourId);
-            const tourName = selectedItem ? selectedItem.title : 'a tour';
-            message = `I'm interested in booking the tour "${tourName}" with ${nameToUse}. \n\n${vehicleInfo}`;
-        }
-        const url = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-    };
+    const selectedItem = allBookable.find((i) => String(i.id) === selectedTourId);
+    const bookDisabled = bookingMode === 'tour' && !selectedTourId;
+
+    const bookHref = () =>
+        whatsappLink(
+            [
+                bookingMode === 'custom'
+                    ? `Hello Xhosen Gate! I would like to book a custom itinerary with ${driver.name}.`
+                    : `Hello Xhosen Gate! I would like to book "${selectedItem?.title ?? ''}" with ${driver.name}.`,
+                '',
+                `Vehicle: ${selectedVehicle}`,
+            ].join('\n')
+        );
 
     return (
-        <main className="min-h-screen bg-stone-50">
-
-            {/* HEADER */}
-            <div className="bg-white border-b border-stone-100 pt-24 md:pt-32">
-                <div className="container-custom py-4">
-                    <nav className="flex items-center gap-2 text-xs md:text-sm text-gray-500">
-                        <Link href={`/${locale}`} className="hover:text-primary transition-colors flex items-center gap-1">
-                            <Home className="w-3.5 h-3.5 mb-0.5" />
-                            <span>{t('home')}</span>
+        <main className="min-h-screen bg-background pb-24 lg:pb-0">
+            {/* breadcrumb — one thin line, not a section of its own */}
+            <div className="border-b border-border bg-background-cream pt-28 md:pt-40 lg:pt-48">
+                <div className="container-custom py-3">
+                    <nav className="flex flex-wrap items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em] text-text-tertiary">
+                        <Link href={`/${locale}`} className="flex items-center gap-1.5 transition-colors hover:text-primary">
+                            <Home className="h-3 w-3" aria-hidden="true" />
+                            {t('home')}
                         </Link>
-                        <ChevronRight className="w-3 h-3" />
-                        <Link href={`/${locale}/drivers`} className="hover:text-primary transition-colors capitalize">
+                        <ChevronRight className="h-3 w-3 opacity-50" aria-hidden="true" />
+                        <Link href={`/${locale}/drivers`} className="transition-colors hover:text-primary">
                             {tDriv('backToDrivers')}
                         </Link>
-                        <ChevronRight className="w-3 h-3" />
-                        <span className="text-gray-900 font-medium">{driver.name}</span>
+                        <ChevronRight className="h-3 w-3 opacity-50" aria-hidden="true" />
+                        <span className="text-text-primary">{driver.name}</span>
                     </nav>
                 </div>
             </div>
 
-            {/* MAIN CONTENT */}
             <div className="container-custom py-8 md:py-12">
-                {/* Main Profile Card */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-white rounded-md shadow-2xl overflow-hidden border border-stone-100 flex flex-col lg:flex-row min-h-[850px]"
-                >
-                    {/* LEFT SIDE: Visuals & Core Info */}
-                    <div className="w-full lg:w-5/12 bg-stone-50 px-4 py-8 md:p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-stone-100 flex flex-col">
-
-                        {/* Driver profile */}
-                        <div className="flex flex-col items-center mb-8">
-                            <div className="relative w-40 md:w-56 h-40 md:h-56 rounded-full overflow-hidden border-[6px] border-white shadow-xl mb-6 cursor-pointer group">
+                <div className="grid items-start gap-8 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+                    {/* ---------------- left: who he is ---------------- */}
+                    <div className="space-y-8">
+                        {/* identity */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            className="flex flex-col border border-border bg-white sm:flex-row"
+                        >
+                            <div className="relative aspect-[4/3] w-full shrink-0 overflow-hidden bg-background-cream sm:aspect-auto sm:w-56">
                                 <Image
                                     src={driver.image}
                                     alt={driver.name}
                                     fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                                    sizes="(max-width: 640px) 100vw, 224px"
+                                    className="object-cover object-top"
                                     priority
                                 />
                             </div>
-                            <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 text-center mb-3">
-                                {driver.name}
-                            </h1>
-                            <div className="flex items-center gap-2 text-sm text-gray-500 mb-6 bg-white px-5 py-2.5 rounded-full shadow-sm border border-stone-100">
-                                <Shield className="w-4 h-4 text-primary" />
-                                <span className="font-semibold tracking-wide uppercase text-xs">
-                                    {tDriv('verifiedProfessional', { years: driver.experienceYears })}
-                                </span>
-                            </div>
-                        </div>
 
-                        <div className="w-full space-y-6">
-                            {/* Vehicle Selection */}
-                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
-                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                                    <Car className="w-4 h-4 text-primary" /> {tDriv('vehicleFleet')}
-                                </h4>
+                            <div className="flex-1 p-6 md:p-8">
+                                <p className="mb-3 flex items-center gap-3 text-[9px] font-black uppercase tracking-[0.28em] text-secondary-dark">
+                                    <span className="inline-block h-px w-6 bg-secondary" aria-hidden="true" />
+                                    {tDriv('yourDriver')}
+                                </p>
 
-                                {/* The driver's own vehicles — selectable fleet cards */}
-                                <div className="space-y-3">
-                                    {driver.fleet.map((vehicle) => (
-                                        <button
-                                            key={vehicle.name}
-                                            onClick={() => setSelectedVehicle(vehicle.name)}
-                                            className={`w-full text-left rounded-sm border-2 overflow-hidden transition-all group ${selectedVehicle === vehicle.name
-                                                ? 'border-primary bg-primary/5'
-                                                : 'border-stone-100 hover:border-primary/20 hover:bg-stone-50'}`}
-                                        >
-                                            <div className="relative aspect-[16/8] overflow-hidden bg-gray-100">
-                                                <Image
-                                                    src={vehicle.image}
-                                                    alt={vehicle.name}
-                                                    fill
-                                                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                                                />
-                                            </div>
-                                            <div className="px-4 py-3 flex items-center justify-between gap-3">
-                                                <div>
-                                                    <span className={`block text-xs font-bold uppercase tracking-wider ${selectedVehicle === vehicle.name ? 'text-primary' : 'text-stone-700'}`}>
-                                                        {vehicle.name}
-                                                    </span>
-                                                    <span className="block text-[11px] text-stone-500 mt-0.5">
-                                                        {vehicle.pax} pax · {vehicle.luggage} {locale === 'fr' ? 'bagages' : 'bags'}
-                                                    </span>
-                                                </div>
-                                                <div className={`w-5 h-5 shrink-0 rounded-full border-2 flex items-center justify-center ${selectedVehicle === vehicle.name ? 'border-primary bg-primary' : 'border-stone-200'}`}>
-                                                    {selectedVehicle === vehicle.name && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
-                                                </div>
-                                            </div>
-                                        </button>
-                                    ))}
+                                <h1 className="font-serif text-[clamp(1.9rem,4vw,2.8rem)] font-black leading-none tracking-tight text-text-primary">
+                                    {driver.name}
+                                </h1>
+
+                                <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] font-black uppercase tracking-[0.14em] text-text-secondary">
+                                    <span className="inline-flex items-center gap-1.5">
+                                        <Star className="h-3.5 w-3.5 fill-secondary text-secondary" aria-hidden="true" />
+                                        {driver.rating.toFixed(1)}
+                                    </span>
+                                    <span className="inline-flex items-center gap-1.5">
+                                        <Shield className="h-3.5 w-3.5 text-secondary-dark" aria-hidden="true" />
+                                        {tDriv('verifiedProfessional', { years: driver.experienceYears })}
+                                    </span>
                                 </div>
-                            </div>
 
-                            {/* Languages */}
-                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
-                                <div className="flex items-center justify-between mb-4">
-                                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider flex items-center gap-2">
-                                        <Globe className="w-4 h-4 text-primary" /> {tDriv('languages')}
-                                    </h4>
+                                <div className="mt-3 flex items-start gap-2 text-xs text-text-tertiary">
+                                    <Globe className="mt-0.5 h-3.5 w-3.5 shrink-0 text-secondary-dark" aria-hidden="true" />
+                                    <span className="leading-snug">{driver.languages.join(' · ')}</span>
                                 </div>
-                                <div className="flex flex-wrap gap-2">
-                                    {driver.languages.map(l => (
-                                        <span key={l} className="px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-lg text-sm font-bold border border-emerald-100">
-                                            {l}
+
+                                <div className="mt-5 flex flex-wrap gap-2">
+                                    {driver.specialties.map((s) => (
+                                        <span key={s} className={CHIP}>
+                                            {s}
                                         </span>
                                     ))}
                                 </div>
                             </div>
+                        </motion.div>
 
-                            {/* Onboard Comforts */}
-                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
-                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                                    <Wifi className="w-4 h-4 text-primary" /> {tDriv('onboardComforts')}
-                                </h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {(driver.features || []).map((feature, i) => (
-                                        <span key={i} className="px-3 py-1.5 bg-stone-50 text-stone-600 rounded-lg text-xs font-bold border border-stone-200 flex items-center gap-1.5">
-                                            <Check className="w-3 h-3 text-emerald-500" />
-                                            {feature}
-                                        </span>
+                        {/* bio */}
+                        <section>
+                            <TwoTone
+                                as="h2"
+                                lead={tDriv('aboutDriver')}
+                                accent={firstName}
+                                className="text-[clamp(1.3rem,2.4vw,1.8rem)] leading-tight"
+                            />
+                            <p className="mt-4 text-sm leading-relaxed text-text-secondary md:text-[15px]">{driver.bio}</p>
+                        </section>
+
+                        {/* regions · comforts · recognition — three tight columns, hairline grid */}
+                        <div className="grid gap-px border border-border bg-border sm:grid-cols-3">
+                            <div className="bg-white p-5">
+                                <p className={PANEL_LABEL}>
+                                    <MapPin className="h-3.5 w-3.5 text-secondary-dark" aria-hidden="true" />
+                                    {tDriv('regions')}
+                                </p>
+                                <ul className="mt-3 space-y-1.5">
+                                    {driver.locations.map((loc) => (
+                                        <li key={loc} className="text-[13px] font-bold text-text-primary">
+                                            {loc}
+                                        </li>
                                     ))}
-                                </div>
+                                </ul>
                             </div>
 
-                            {/* Badges */}
-                            <div className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100">
-                                <h4 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-                                    <Shield className="w-4 h-4 text-primary" /> {t('privateDriverPage.details.badges')}
-                                </h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {driver.badges.map((b, i) => (
-                                        <span key={i} className="text-sm font-medium text-purple-700 bg-purple-50 px-3 py-1.5 rounded-lg border border-purple-100">
+                            <div className="bg-white p-5">
+                                <p className={PANEL_LABEL}>
+                                    <Wifi className="h-3.5 w-3.5 text-secondary-dark" aria-hidden="true" />
+                                    {tDriv('onboardComforts')}
+                                </p>
+                                <ul className="mt-3 space-y-1.5">
+                                    {(driver.features || []).map((f) => (
+                                        <li key={f} className="flex items-start gap-1.5 text-[13px] text-text-secondary">
+                                            <Check className="mt-0.5 h-3 w-3 shrink-0 text-secondary-dark" aria-hidden="true" />
+                                            {f}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className="bg-white p-5">
+                                <p className={PANEL_LABEL}>
+                                    <Shield className="h-3.5 w-3.5 text-secondary-dark" aria-hidden="true" />
+                                    {tDriv('badges')}
+                                </p>
+                                <div className="mt-3 flex flex-wrap gap-1.5">
+                                    {driver.badges.map((b) => (
+                                        <span key={b} className={CHIP}>
                                             {b}
                                         </span>
                                     ))}
                                 </div>
                             </div>
                         </div>
+
+                        {/* what you can do with him */}
+                        {allSuggested.length > 0 && (
+                            <section>
+                                <div className="mb-5 flex items-end justify-between gap-6">
+                                    <div>
+                                        <TwoTone
+                                            as="h2"
+                                            lead={tDriv('suggestedTitle')}
+                                            accent={tDriv('suggestedAccent')}
+                                            className="text-[clamp(1.3rem,2.4vw,1.8rem)] leading-tight"
+                                        />
+                                        <p className="mt-2 text-sm text-text-tertiary">{tDriv('suggestedSub')}</p>
+                                    </div>
+                                    <Link
+                                        href={`/${locale}/explore`}
+                                        className="group hidden shrink-0 items-center gap-2 text-[10px] font-black uppercase tracking-[0.18em] text-primary transition-all hover:gap-3.5 sm:inline-flex"
+                                    >
+                                        {tDriv('seeAll')}
+                                        <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                                    </Link>
+                                </div>
+
+                                <ul className="grid gap-px border border-border bg-border sm:grid-cols-2">
+                                    {suggestedShown.map((item, i) => (
+                                        <li
+                                            key={`${item.type}-${item.id}`}
+                                            className={`bg-white ${
+                                                oddLast === i ? 'sm:col-span-2' : ''
+                                            }`}
+                                        >
+                                            <Link
+                                                href={`/${locale}/${ROUTE_BY_GROUP[item.type]}/${item.id}`}
+                                                className="group flex items-center gap-4 p-3 transition-colors hover:bg-background"
+                                            >
+                                                <div className="relative h-16 w-20 shrink-0 overflow-hidden bg-background-cream">
+                                                    <Image
+                                                        src={item.image?.url || (item as any).banner_image?.url}
+                                                        alt={item.title}
+                                                        fill
+                                                        sizes="80px"
+                                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                                    />
+                                                </div>
+                                                <div className="min-w-0 flex-1">
+                                                    <h3 className="line-clamp-2 font-serif text-sm font-black leading-tight text-text-primary group-hover:text-primary">
+                                                        {cleanTitle(item.title)}
+                                                    </h3>
+                                                    <p className="mt-1 text-[9px] font-black uppercase tracking-[0.16em] text-text-tertiary">
+                                                        {item.duration ? tidyDuration(item.duration) : t('flexible')}
+                                                    </p>
+                                                </div>
+                                                <ChevronRight
+                                                    className="h-4 w-4 shrink-0 text-text-tertiary/40 transition-all group-hover:translate-x-1 group-hover:text-primary"
+                                                    aria-hidden="true"
+                                                />
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        )}
                     </div>
 
-                    {/* RIGHT SIDE: Details & Booking */}
-                    <div className="w-full lg:w-7/12 p-6 md:p-10 lg:p-12 bg-white flex flex-col">
+                    {/* ---------------- right: book him ---------------- */}
+                    <motion.aside
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                        className="lg:sticky lg:top-24"
+                    >
+                        {/* Bounded so the CTA below can never be pushed off-screen by a
+                            long tour list — the middle scrolls instead. The 22rem allows for
+                            the panel's own offset down the page at scroll 0, where it has not
+                            pinned to the top yet; it scales with the viewport on tall screens. */}
+                        <div className="border border-border bg-white lg:flex lg:max-h-[calc(100svh-22rem)] lg:flex-col">
+                            {/* panel header — no day rate: every trip is quoted on WhatsApp */}
+                            <div className="flex shrink-0 items-center justify-between gap-4 border-b border-border-light px-6 py-5">
+                                <div>
+                                    <span className="block text-[9px] font-black uppercase tracking-[0.22em] text-secondary-dark">
+                                        {tDriv('startJourney')}
+                                    </span>
+                                    <span className="mt-1 block font-serif text-xl font-black leading-none text-text-primary">
+                                        {driver.name}
+                                    </span>
+                                </div>
+                                <span className="inline-flex items-center gap-1.5 text-[11px] font-black text-text-primary">
+                                    <Star className="h-3.5 w-3.5 fill-secondary text-secondary" aria-hidden="true" />
+                                    {driver.rating.toFixed(1)}
+                                </span>
+                            </div>
 
-                        <div className="flex flex-col md:flex-row justify-between items-start mb-8 border-b border-stone-100 pb-8">
-                            <div>
-                                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-2 font-serif">{tDriv('aboutDriver')}</h2>
-                                <div className="flex items-center gap-2">
-                                    <div className="flex text-amber-500">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star key={i} className={`w-4 h-4 ${i < Math.floor(driver.rating) ? 'fill-current' : 'text-gray-300'}`} />
-                                        ))}
-                                    </div>
-                                    <span className="font-bold text-gray-900">{driver.rating}</span>
+                            {/* soft bottom fade so the clipped edge reads as "more below", not broken */}
+                            <div className="lg:min-h-0 lg:flex-1 lg:overflow-y-auto lg:[mask-image:linear-gradient(to_bottom,black_calc(100%-2.5rem),transparent)]">
+                            {/* vehicle picker — compact rows with the real photos */}
+                            <div className="px-6 py-5">
+                                <p className={PANEL_LABEL}>
+                                    <Car className="h-3.5 w-3.5 text-secondary-dark" aria-hidden="true" />
+                                    {tDriv('pickVehicle')}
+                                </p>
+                                <div className="mt-3 space-y-2">
+                                    {driver.fleet.map((vehicle) => {
+                                        const active = selectedVehicle === vehicle.name;
+                                        return (
+                                            <button
+                                                key={vehicle.name}
+                                                type="button"
+                                                onClick={() => setSelectedVehicle(vehicle.name)}
+                                                aria-pressed={active}
+                                                className={`flex w-full items-center gap-3 border p-2 text-left transition-colors ${
+                                                    active
+                                                        ? 'border-primary bg-primary/5'
+                                                        : 'border-border hover:border-border-dark hover:bg-background'
+                                                }`}
+                                            >
+                                                <div className="relative h-11 w-16 shrink-0 overflow-hidden bg-background-cream">
+                                                    <Image
+                                                        src={vehicle.image}
+                                                        alt={vehicle.name}
+                                                        fill
+                                                        sizes="64px"
+                                                        className="object-cover"
+                                                    />
+                                                </div>
+                                                <div className="min-w-0 flex-1">
+                                                    <span
+                                                        className={`block truncate text-[11px] font-black uppercase tracking-[0.1em] ${
+                                                            active ? 'text-primary' : 'text-text-primary'
+                                                        }`}
+                                                    >
+                                                        {vehicle.name}
+                                                    </span>
+                                                    <span className="block text-[10px] text-text-tertiary">
+                                                        {vehicleClassLabel(vehicle.vehicleClass, locale)} · {vehicle.pax} pax ·{' '}
+                                                        {vehicle.luggage} {locale === 'fr' ? 'bagages' : 'bags'}
+                                                    </span>
+                                                </div>
+                                                <span
+                                                    className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 ${
+                                                        active ? 'border-primary bg-primary' : 'border-border-dark'
+                                                    }`}
+                                                    aria-hidden="true"
+                                                >
+                                                    {active && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
+                                                </span>
+                                            </button>
+                                        );
+                                    })}
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="prose prose-lg prose-stone mb-10 max-w-none">
-                            <p className="text-gray-600 leading-relaxed font-light text-base md:text-lg">
-                                {driver.bio}
-                            </p>
-                        </div>
-
-                        {/* Booking Section */}
-                        <div className="mt-auto">
-                            <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 uppercase tracking-wider">
-                                <CalendarCheck className="w-5 h-5 text-primary" />
-                                {tDriv('startJourney')}
-                            </h3>
-
-                            <div className="bg-stone-50 p-1.5 rounded-2xl mb-8 flex shadow-inner">
-                                <button
-                                    onClick={() => setBookingMode('custom')}
-                                    className={`flex-1 py-4 text-sm font-bold rounded-xl transition-all ${bookingMode === 'custom' ? 'bg-white shadow text-gray-900 ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-900'}`}
-                                >
-                                    {tDriv('customItinerary')}
-                                </button>
-                                <button
-                                    onClick={() => setBookingMode('tour')}
-                                    className={`flex-1 py-4 text-sm font-bold rounded-xl transition-all ${bookingMode === 'tour' ? 'bg-white shadow text-gray-900 ring-1 ring-black/5' : 'text-gray-500 hover:text-gray-900'}`}
-                                >
-                                    {tDriv('bookAgencyTour')}
-                                </button>
-                            </div>
-
-                            <div className="min-h-[300px] mb-8 relative">
-                                {bookingMode === 'custom' ? (
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        className="bg-blue-50/50 rounded-2xl py-8 px-6 border border-blue-100 h-full"
-                                    >
-                                        <div className="flex items-start gap-4">
-                                            <div className="hidden md:flex w-12 h-12 rounded-full bg-blue-100  items-center justify-center text-blue-600 flex-shrink-0 shadow-sm">
-                                                <MapPin className="w-6 h-6" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-gray-900 text-lg mb-2">{tDriv('totalFlexibilityTitle')}</h4>
-                                                <p className="text-gray-600 leading-relaxed">
-                                                    {tDriv('totalFlexibilityDesc', { name: driver.name.split(' ')[0] })}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                ) : (
-                                    <motion.div
-                                        initial={{ opacity: 0, x: 10 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        className="h-full flex flex-col"
-                                    >
-                                        <div className="flex justify-between items-center mb-4">
-                                            <p className="text-stone-500 font-medium text-sm">
-                                                {tDriv('selectTour', { name: driver.name.split(' ')[0] })}
-                                            </p>
-                                            <span className="text-xs font-bold bg-primary/10 text-primary px-2 py-1 rounded">
-                                                {tDriv('availableCount', { count: allSuggested.length })}
-                                            </span>
-                                        </div>
-
-                                        <div className="grid grid-cols-1 gap-3 overflow-y-auto pr-2 custom-scrollbar max-h-[350px]">
-                                            {allSuggested.length > 0 ? allSuggested.map((item) => (
-                                                <div
-                                                    key={item.id}
-                                                    onClick={() => setSelectedTourId(String(item.id))}
-                                                    className={`group relative flex items-center gap-4 p-3 rounded-2xl border-2 transition-all cursor-pointer ${selectedTourId === String(item.id) ? 'border-primary bg-primary/5 shadow-sm' : 'border-stone-100 hover:border-sidebar-primary/30 bg-white hover:shadow-lg'}`}
-                                                >
-                                                    <div className="relative w-24 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-200 shadow-sm">
-                                                        <Image src={item.image?.url || (item as any).banner_image?.url} alt={item.title} fill className="object-cover" />
-                                                    </div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <h5 className="font-bold text-gray-900 text-base mb-1 truncate pr-8">{item.title}</h5>
-                                                        <div className="text-sm text-gray-500 flex items-center gap-2">
-                                                            <span>{item.duration || t('flexible')}</span>
-                                                            <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                                                            <span className="capitalize text-stone-400">{item.type}</span>
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Selection Circle */}
-                                                    <div className="pr-2">
-                                                        <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-colors ${selectedTourId === String(item.id) ? 'border-primary bg-primary' : 'border-gray-200 group-hover:border-primary/50'}`}>
-                                                            {selectedTourId === String(item.id) && <div className="w-2.5 h-2.5 rounded-full bg-white" />}
-                                                        </div>
-                                                    </div>
-
-                                                    {/* Info Link */}
-                                                    <Link
-                                                        href={item.type === 'tour' ? `/${locale}/tours/${item.id}` : `/${locale}/activities/${item.id}`}
-                                                        className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-primary hover:bg-white rounded-full transition-all z-10"
-                                                        onClick={(e) => e.stopPropagation()}
-                                                        title="View Details"
-                                                    >
-                                                        <Info className="w-5 h-5" />
-                                                    </Link>
-                                                </div>
-                                            )) : (
-                                                <div className="text-center py-12 bg-stone-50 rounded-2xl border border-stone-100 text-stone-400 flex flex-col items-center justify-center h-full">
-                                                    <MapPin className="w-12 h-12 mb-3 text-stone-200" />
-                                                    <p>{tDriv('noToursMatch')}</p>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </div>
-
-                            <button
-                                onClick={handleBook}
-                                disabled={bookingMode === 'tour' && !selectedTourId}
-                                className={`w-full py-4 text-white font-bold rounded-2xl shadow-lg transition-all flex items-center justify-center gap-3 ${bookingMode === 'tour' && !selectedTourId ? 'bg-gray-300 cursor-not-allowed shadow-none' : 'bg-[#25D366] hover:bg-[#20bd5a] hover:shadow-green-500/30'}`}
-                            >
-                                <MessageCircle className="w-6 h-6" />
-                                <span className="text-lg">{tDriv('bookWhatsApp')}</span>
-                            </button>
-                        </div>
-                    </div>
-                </motion.div>
-            </div>
-
-
-            {/* Lightbox Gallery */}
-            <AnimatePresence>
-                {selectedImage !== null && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/95 z-[60] flex items-center justify-center p-4 md:p-12"
-                        onClick={() => setSelectedImage(null)}
-                    >
-                        <button
-                            className="absolute top-4 md:top-6 right-4 md:right-6 text-white/80 hover:text-white transition-colors z-50 bg-black/30 backdrop-blur-sm rounded-full p-2"
-                            onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
-                        >
-                            <X className="w-6 md:w-8 h-6 md:h-8" />
-                        </button>
-
-                        <button
-                            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedImage(selectedImage > 0 ? selectedImage - 1 : galleryImages.length - 1);
-                            }}
-                        >
-                            <ChevronLeft className="w-10 h-10" />
-                        </button>
-
-                        <button
-                            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2"
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                setSelectedImage(selectedImage < galleryImages.length - 1 ? selectedImage + 1 : 0);
-                            }}
-                        >
-                            <ChevronRight className="w-10 h-10" />
-                        </button>
-
-                        <div className="relative w-full h-full max-w-7xl flex flex-col items-center justify-center">
-                            <div className="relative w-full flex-1 flex items-center justify-center">
-                                <Image
-                                    src={galleryImages[selectedImage]}
-                                    alt="Gallery view"
-                                    fill
-                                    className="object-contain"
-                                />
-                            </div>
-
-                            {/* Thumbnail Navigation */}
-                            <div className="w-full max-w-4xl mt-4 px-4">
-                                <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide">
-                                    {galleryImages.map((url, idx) => (
+                            {/* what to book */}
+                            <div className="border-t border-border-light px-6 py-5">
+                                <div className="flex border border-border">
+                                    {(['custom', 'tour'] as const).map((mode) => (
                                         <button
-                                            key={idx}
-                                            onClick={(e) => { e.stopPropagation(); setSelectedImage(idx); }}
-                                            className={`relative flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden snap-center transition-all ${idx === selectedImage
-                                                ? 'ring-2 ring-white scale-110'
-                                                : 'opacity-50 hover:opacity-100'
-                                                }`}
+                                            key={mode}
+                                            type="button"
+                                            onClick={() => setBookingMode(mode)}
+                                            className={`flex-1 px-3 py-2.5 text-[10px] font-black uppercase tracking-[0.14em] transition-colors ${
+                                                bookingMode === mode
+                                                    ? 'bg-primary text-white'
+                                                    : 'bg-white text-text-tertiary hover:text-text-primary'
+                                            }`}
                                         >
-                                            <Image
-                                                src={url}
-                                                alt={`Thumbnail ${idx + 1}`}
-                                                fill
-                                                className="object-cover"
-                                            />
+                                            {mode === 'custom' ? tDriv('customItinerary') : tDriv('bookAgencyTour')}
                                         </button>
                                     ))}
                                 </div>
+
+                                {bookingMode === 'custom' ? (
+                                    <p className="mt-4 text-[13px] leading-relaxed text-text-tertiary">
+                                        {tDriv('totalFlexibilityDesc', { name: firstName })}
+                                    </p>
+                                ) : (
+                                    <>
+                                        <p className="mt-4 text-[11px] font-black uppercase tracking-[0.16em] text-text-tertiary">
+                                            {tDriv('availableCount', { count: allBookable.length })}
+                                        </p>
+                                        <div className="mt-2 max-h-64 space-y-3 overflow-y-auto pr-1 lg:max-h-none lg:overflow-visible">
+                                            {groups.map((group) =>
+                                                group.items.length === 0 ? null : (
+                                                    <div key={group.key}>
+                                                        <p className="sticky top-0 bg-white py-1 text-[9px] font-black uppercase tracking-[0.22em] text-secondary-dark">
+                                                            {group.label}
+                                                        </p>
+                                                        <div className="space-y-1.5">
+                                                            {group.items.map((item) => {
+                                                                const active = selectedTourId === String(item.id);
+                                                                return (
+                                                                    <button
+                                                                        key={`${item.type}-${item.id}`}
+                                                                        type="button"
+                                                                        onClick={() => setSelectedTourId(String(item.id))}
+                                                                        aria-pressed={active}
+                                                                        className={`flex w-full items-center gap-2.5 border px-2.5 py-2 text-left transition-colors ${
+                                                                            active
+                                                                                ? 'border-primary bg-primary/5'
+                                                                                : 'border-border hover:border-border-dark hover:bg-background'
+                                                                        }`}
+                                                                    >
+                                                                        <span
+                                                                            className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border-2 ${
+                                                                                active ? 'border-primary bg-primary' : 'border-border-dark'
+                                                                            }`}
+                                                                            aria-hidden="true"
+                                                                        >
+                                                                            {active && <span className="h-1 w-1 rounded-full bg-white" />}
+                                                                        </span>
+                                                                        <span
+                                                                            className={`min-w-0 flex-1 truncate text-[12px] font-bold ${
+                                                                                active ? 'text-primary' : 'text-text-primary'
+                                                                            }`}
+                                                                        >
+                                                                            {cleanTitle(item.title)}
+                                                                        </span>
+                                                                    </button>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    </div>
+                                                )
+                                            )}
+                                        </div>
+                                    </>
+                                )}
                             </div>
 
-                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/80 font-medium tracking-widest text-sm bg-black/30 backdrop-blur-sm px-3 py-1 rounded-full">
-                                {selectedImage + 1} / {galleryImages.length}
+                            </div>
+
+                            {/* the action — always on screen, in either mode */}
+                            <div className="shrink-0 border-t border-border-light px-6 py-5">
+                                {bookDisabled ? (
+                                    <span className="flex w-full cursor-not-allowed items-center justify-center gap-2.5 bg-border px-6 py-4 text-[11px] font-black uppercase tracking-[0.18em] text-text-tertiary">
+                                        <WhatsAppIcon className="h-4 w-4" />
+                                        {tDriv('bookWhatsApp')}
+                                    </span>
+                                ) : (
+                                    <a
+                                        href={bookHref()}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className={`flex w-full items-center justify-center gap-2.5 px-6 py-4 text-[11px] font-black uppercase tracking-[0.18em] shadow-lg shadow-[#25D366]/25 ${WA_BUTTON}`}
+                                    >
+                                        <WhatsAppIcon className="h-4 w-4" />
+                                        {tDriv('bookWhatsApp')}
+                                    </a>
+                                )}
+                                <p className="mt-3 text-center text-[9px] font-black uppercase tracking-[0.16em] text-text-tertiary/70">
+                                    {tDriv('responseNote')}
+                                </p>
                             </div>
                         </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                    </motion.aside>
+                </div>
+            </div>
+
+            {/* mobile: the action follows you down the page */}
+            <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-white/95 backdrop-blur-md lg:hidden">
+                <div className="container-custom flex items-center gap-4 py-3">
+                    {bookDisabled ? (
+                        <span className="flex flex-1 cursor-not-allowed items-center justify-center gap-2 bg-border px-4 py-3.5 text-[10px] font-black uppercase tracking-[0.16em] text-text-tertiary">
+                            <WhatsAppIcon className="h-4 w-4" />
+                            {tDriv('bookWhatsApp')}
+                        </span>
+                    ) : (
+                        <a
+                            href={bookHref()}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex flex-1 items-center justify-center gap-2 px-4 py-3.5 text-[10px] font-black uppercase tracking-[0.16em] ${WA_BUTTON}`}
+                        >
+                            <WhatsAppIcon className="h-4 w-4" />
+                            {tDriv('bookWhatsApp')}
+                        </a>
+                    )}
+                </div>
+            </div>
         </main>
     );
 }
-

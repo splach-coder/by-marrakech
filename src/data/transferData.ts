@@ -3,8 +3,9 @@
 // Architecture mirrors justluxurytransfers.com (see docs/reference-audit/)
 // with by-marrakech design + Marrakech-based content.
 //
-// ⚠️ PLACEHOLDER CONTENT: prices, vehicle photos and Google reviews
-// must be confirmed/replaced by the client before launch.
+// ⚠️ PLACEHOLDER CONTENT: prices and Google reviews must be confirmed by
+// the client before launch. Vehicle photos are real shots of each model,
+// licensed per docs/fleet-image-credits.md — replace with our own when shot.
 // ============================================================
 
 export interface FleetVehicle {
@@ -43,111 +44,128 @@ export interface GoogleReview {
 
 // ------------------------------------------------------------
 // FLEET — EN
-// TODO(client): replace placeholder photos marked below with real fleet shots
+// The real fleet: 8 vehicles, listed one card per vehicle rather than
+// "3× Ford Tourneo", so the page reads as an actual inventory.
+// Photographs are real shots of each model (see docs/fleet-image-credits.md);
+// swap them for photos of our own vehicles when we have them.
 // ------------------------------------------------------------
 const fleetEN: FleetVehicle[] = [
     {
-        id: 'skoda-superb',
-        name: 'Skoda Superb',
-        category: 'SEDAN',
-        pax: 3,
-        luggage: 3,
-        fromPrice: 20,
-        image: '/images/drivers/fetah/car1.webp',
-        description: 'Our essential executive sedan — quiet, spacious and perfect for airport arrivals and city transfers.',
-        features: ['Air conditioning', 'Extended legroom', 'Phone chargers', 'Bottled water'],
-    },
-    {
-        id: 'mercedes-e-class',
-        name: 'Mercedes E-Class',
-        category: 'VIP',
-        pax: 3,
-        luggage: 3,
-        fromPrice: 80,
-        image: '/images/drivers/fetah/car2.webp', // TODO(client): real E-Class photo
-        description: 'First-class travel for VIP arrivals, business trips and special occasions.',
-        features: ['Premium leather interior', 'Privacy glass', 'WiFi on board', 'Bottled water'],
-    },
-    {
-        id: 'mercedes-vito',
-        name: 'Mercedes Vito',
-        category: 'VAN',
-        pax: 7,
-        luggage: 6,
-        fromPrice: 35,
-        image: '/images/services/car_rental.jpeg', // TODO(client): real Vito photo
-        description: 'The family favourite — a premium van with space for up to 7 guests and their luggage.',
-        features: ['Up to 7 passengers', 'Rear climate control', 'USB charging', 'Child seats on request'],
-    },
-    {
-        id: 'ford-tourneo',
+        id: 'ford-tourneo-1',
         name: 'Ford Tourneo Custom',
         category: 'VAN',
         pax: 8,
         luggage: 8,
         fromPrice: 35,
-        image: '/images/drivers/ayoub/car1.webp',
+        image: '/images/fleet/ford-tourneo-custom.webp',
         description: 'A modern 8-seater van, ideal for groups and families heading to the medina, the Atlas or the coast.',
         features: ['Up to 8 passengers', 'Full air conditioning', 'Generous luggage space', 'Comfort suspension'],
     },
     {
-        id: 'mercedes-sprinter',
-        name: 'Mercedes Sprinter',
-        category: 'MINIBUS',
-        pax: 17,
-        luggage: 16,
-        fromPrice: 60,
-        image: '/images/drivers/fetah/car4.webp', // TODO(client): real Sprinter photo
-        description: 'Group travel without compromise — up to 17 guests in air-conditioned comfort.',
-        features: ['Up to 17 passengers', 'Full air conditioning', 'PA-ready cabin', 'Trailer on request'],
+        id: 'ford-tourneo-2',
+        name: 'Ford Tourneo Custom',
+        category: 'VAN',
+        pax: 8,
+        luggage: 8,
+        fromPrice: 35,
+        image: '/images/fleet/ford-tourneo-custom.webp',
+        description: 'A modern 8-seater van, ideal for groups and families heading to the medina, the Atlas or the coast.',
+        features: ['Up to 8 passengers', 'Full air conditioning', 'Generous luggage space', 'Comfort suspension'],
     },
     {
-        id: 'luxury-4x4',
-        name: 'Luxury 4x4 — Desert & Atlas',
+        id: 'ford-tourneo-3',
+        name: 'Ford Tourneo Custom',
+        category: 'VAN',
+        pax: 8,
+        luggage: 8,
+        fromPrice: 35,
+        image: '/images/fleet/ford-tourneo-custom.webp',
+        description: 'A modern 8-seater van, ideal for groups and families heading to the medina, the Atlas or the coast.',
+        features: ['Up to 8 passengers', 'Full air conditioning', 'Generous luggage space', 'Comfort suspension'],
+    },
+    {
+        id: 'fiat-scudo-1',
+        name: 'Fiat Scudo',
+        category: 'VAN',
+        pax: 8,
+        luggage: 6,
+        fromPrice: 30,
+        image: '/images/fleet/fiat-scudo.webp',
+        description: 'Compact and easy through the medina lanes — a nimble 8-seater for city transfers and short excursions.',
+        features: ['Up to 8 passengers', 'Air conditioning', 'Easy medina access', 'USB charging'],
+    },
+    {
+        id: 'volkswagen-crafter-1',
+        name: 'Volkswagen Crafter',
+        category: 'MINIBUS',
+        pax: 16,
+        luggage: 16,
+        fromPrice: 60,
+        image: '/images/fleet/volkswagen-crafter.webp',
+        description: 'Group travel without compromise — up to 16 guests in air-conditioned comfort, with room for every case.',
+        features: ['Up to 16 passengers', 'Full air conditioning', 'High roof, easy boarding', 'Large luggage hold'],
+    },
+    {
+        id: 'volkswagen-crafter-2',
+        name: 'Volkswagen Crafter',
+        category: 'MINIBUS',
+        pax: 16,
+        luggage: 16,
+        fromPrice: 60,
+        image: '/images/fleet/volkswagen-crafter.webp',
+        description: 'Group travel without compromise — up to 16 guests in air-conditioned comfort, with room for every case.',
+        features: ['Up to 16 passengers', 'Full air conditioning', 'High roof, easy boarding', 'Large luggage hold'],
+    },
+    {
+        id: 'man-tge-1',
+        name: 'MAN TGE',
+        category: 'MINIBUS',
+        pax: 19,
+        luggage: 19,
+        fromPrice: 70,
+        image: '/images/fleet/man-tge.webp',
+        description: 'Our largest minibus — nineteen seats for weddings, corporate groups and multi-family trips.',
+        features: ['Up to 19 passengers', 'Full air conditioning', 'PA-ready cabin', 'Trailer on request'],
+    },
+    {
+        id: 'skoda-kodiaq-1',
+        name: 'Skoda Kodiaq',
         category: '4X4',
-        pax: 6,
-        luggage: 5,
+        pax: 5,
+        luggage: 4,
         fromPrice: 45,
-        image: '/images/services/luxury_driver_service.webp',
-        description: 'Land Cruiser or similar — built for the Agafay desert, Atlas passes and off-road adventures.',
-        features: ['Off-road capable', 'Experienced desert drivers', 'Full air conditioning', 'Bottled water'],
+        image: '/images/fleet/skoda-kodiaq.webp',
+        description: 'A comfortable SUV for couples and small families — sure-footed on the Atlas passes and Agafay tracks.',
+        features: ['Up to 5 passengers', 'All-wheel drive', 'Full air conditioning', 'Bottled water'],
     },
 ];
 
-// FLEET — FR
-const fleetFR: FleetVehicle[] = [
-    {
-        ...fleetEN[0],
-        description: 'Notre berline executive essentielle — silencieuse, spacieuse, parfaite pour les arrivées aéroport et les transferts en ville.',
-        features: ['Climatisation', 'Espace jambes étendu', 'Chargeurs de téléphone', 'Eau minérale offerte'],
-    },
-    {
-        ...fleetEN[1],
-        description: 'Le voyage en première classe pour les arrivées VIP, les déplacements d\'affaires et les grandes occasions.',
-        features: ['Intérieur cuir premium', 'Vitres teintées', 'WiFi à bord', 'Eau minérale offerte'],
-    },
-    {
-        ...fleetEN[2],
-        description: 'Le favori des familles — un van premium pouvant accueillir jusqu\'à 7 passagers avec leurs bagages.',
-        features: ['Jusqu\'à 7 passagers', 'Climatisation arrière', 'Recharge USB', 'Sièges enfants sur demande'],
-    },
-    {
-        ...fleetEN[3],
-        description: 'Un van moderne 8 places, idéal pour les groupes et familles en route vers la médina, l\'Atlas ou la côte.',
-        features: ['Jusqu\'à 8 passagers', 'Climatisation intégrale', 'Grand espace bagages', 'Suspension confort'],
-    },
-    {
-        ...fleetEN[4],
-        description: 'Le voyage en groupe sans compromis — jusqu\'à 17 passagers dans un confort climatisé.',
-        features: ['Jusqu\'à 17 passagers', 'Climatisation intégrale', 'Cabine sonorisée', 'Remorque sur demande'],
-    },
-    {
-        ...fleetEN[5],
-        name: 'Luxe 4x4 — Désert & Atlas',
-        description: 'Land Cruiser ou similaire — conçu pour le désert d\'Agafay, les cols de l\'Atlas et les pistes.',
-        features: ['Tout-terrain', 'Chauffeurs expérimentés désert', 'Climatisation intégrale', 'Eau minérale offerte'],
-    },
-];
+// FLEET — FR (same vehicles, localised copy)
+const fleetFR: FleetVehicle[] = fleetEN.map((vehicle) => {
+    const copy: Record<string, { description: string; features: string[] }> = {
+        'Ford Tourneo Custom': {
+            description: 'Un van moderne 8 places, idéal pour les groupes et familles en route vers la médina, l\'Atlas ou la côte.',
+            features: ['Jusqu\'à 8 passagers', 'Climatisation intégrale', 'Grand espace bagages', 'Suspension confort'],
+        },
+        'Fiat Scudo': {
+            description: 'Compact et agile dans les ruelles de la médina — un 8 places maniable pour les transferts en ville et les courtes excursions.',
+            features: ['Jusqu\'à 8 passagers', 'Climatisation', 'Accès facile à la médina', 'Recharge USB'],
+        },
+        'Volkswagen Crafter': {
+            description: 'Le voyage en groupe sans compromis — jusqu\'à 16 passagers dans un confort climatisé, avec de la place pour chaque valise.',
+            features: ['Jusqu\'à 16 passagers', 'Climatisation intégrale', 'Toit haut, accès facile', 'Grande soute à bagages'],
+        },
+        'MAN TGE': {
+            description: 'Notre plus grand minibus — dix-neuf places pour les mariages, les groupes d\'entreprise et les voyages multi-familles.',
+            features: ['Jusqu\'à 19 passagers', 'Climatisation intégrale', 'Cabine sonorisée', 'Remorque sur demande'],
+        },
+        'Skoda Kodiaq': {
+            description: 'Un SUV confortable pour les couples et les petites familles — sûr sur les cols de l\'Atlas et les pistes de l\'Agafay.',
+            features: ['Jusqu\'à 5 passagers', 'Transmission intégrale', 'Climatisation intégrale', 'Eau minérale offerte'],
+        },
+    };
+    return { ...vehicle, ...(copy[vehicle.name] ?? {}) };
+});
 
 // ------------------------------------------------------------
 // TRANSFER ROUTES — from Marrakech (RAK)

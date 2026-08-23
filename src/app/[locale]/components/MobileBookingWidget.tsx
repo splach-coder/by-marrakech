@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
-import { Check, ShoppingBag, MessageCircle } from 'lucide-react';
+import { Check, ShoppingBag } from 'lucide-react';
+import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 import { motion, AnimatePresence } from 'framer-motion';
 import { whatsappLink } from '@/data/transferData';
 
@@ -115,9 +116,9 @@ export default function MobileBookingWidget({
                                 href={whatsappLink(`Hello Xhosen Gate! I would like to book: ${title} (${price})`)}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="mt-2 flex items-center justify-center gap-2 py-2.5 rounded-sm bg-[#25D366] text-white font-bold text-[12px] uppercase tracking-wider active:scale-95 transition-all"
+                                className={`mt-2 flex items-center justify-center gap-2 py-2.5 rounded-sm font-bold text-[12px] uppercase tracking-wider active:scale-95 ${WA_BUTTON}`}
                             >
-                                <MessageCircle className="w-4 h-4" />
+                                <WhatsAppIcon className="w-4 h-4" />
                                 <span>Book on WhatsApp</span>
                             </a>
                         </div>
