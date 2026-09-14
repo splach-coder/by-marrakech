@@ -67,6 +67,7 @@ export default function ActivitiesSection({
 
                         {/* View All Button */}
                         <Link
+                            prefetch={false}
                             href={`/${locale}/explore#moments`}
                             className="group flex items-center gap-3 px-6 py-3 text-primary-dark rounded-full transition-all hover:gap-4"
                         >
@@ -97,13 +98,14 @@ export default function ActivitiesSection({
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(0)}
                             >
-                                <Link href={`/${locale}/activities/${activity.id}`} className="block h-full">
+                                <Link prefetch={false} href={`/${locale}/activities/${activity.id}`} className="block h-full">
                                     {/* Background Image */}
                                     <div className="absolute inset-0">
                                         <Image
                                             src={activity.image}
                                             alt={activity.title}
                                             fill
+                                            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                                             className="object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />

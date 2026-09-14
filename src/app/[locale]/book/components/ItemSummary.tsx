@@ -17,6 +17,7 @@ export default function ItemSummary({ item }: ItemSummaryProps) {
           src={item.image}
           alt={item.title}
           fill
+          sizes="(min-width: 768px) 50vw, 100vw"
           className="object-cover"
         />
         <div className="absolute top-4 left-4 px-4 py-2 bg-white/90 backdrop-blur-sm rounded-full">

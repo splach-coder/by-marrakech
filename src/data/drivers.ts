@@ -112,6 +112,26 @@ export const driversData: Driver[] = [
         gallery: ['/images/drivers/hassan/driver.webp'],
         features: ['Free Wi-Fi', 'Bottled Water', 'Child Seats', 'Cool Box', 'Extra Luggage Space'],
     },
+    {
+        id: 'mohammed',
+        name: 'Mohammed',
+        image: '/images/drivers/mohammed/driver.webp',
+        rating: 5.0,
+        experienceYears: 12,
+        languages: ['English', 'French', 'Arabic'],
+        bio: "Mohammed is the driver our guests describe as effortless company. Calm at the wheel, quick with the small courtesies — the door, the bags, the cold water waiting in the cup holder — and completely unfazed by a 5am airport run or an afternoon in medina traffic. He works the airport and city routes most days of the week and knows exactly which gate, which lane and which shortcut gets you to your riad without the usual scramble.",
+        vehicleTypes: ['Ford Tourneo Custom'],
+        specialties: ['Airport Transfers', 'City Transfers', 'Day Excursions'],
+        locations: ['Marrakech', 'Marrakech Menara Airport', 'Ourika Valley'],
+        preferredTours: ['Ourika Valley 1 Day Excursion', 'Marrakech Excursion'],
+        badges: ['Airport Specialist', 'Always On Time', 'Top Rated'],
+        availability: true,
+        fleet: [
+            { name: 'Ford Tourneo Custom', vehicleClass: 'van', pax: 8, luggage: 8, image: '/images/fleet/ford-tourneo-custom.webp' },
+        ],
+        gallery: ['/images/drivers/mohammed/driver.webp'],
+        features: ['Free Wi-Fi', 'Bottled Water', 'Child Seats', 'USB Charging'],
+    },
 ];
 
 export const driversDataFr: Driver[] = [
@@ -179,5 +199,25 @@ export const driversDataFr: Driver[] = [
         ],
         gallery: ['/images/drivers/hassan/driver.webp'],
         features: ['Wi-Fi gratuit', 'Eau embouteillée', 'Sièges bébé', 'Glacière', 'Grand coffre'],
+    },
+    {
+        id: 'mohammed',
+        name: 'Mohammed',
+        image: '/images/drivers/mohammed/driver.webp',
+        rating: 5.0,
+        experienceYears: 12,
+        languages: ['Anglais', 'Français', 'Arabe'],
+        bio: "Mohammed, c'est le chauffeur dont nos clients disent qu'on l'oublie tant tout est simple avec lui. Calme au volant, attentif aux petites attentions — la portière, les bagages, l'eau fraîche déjà prête — et parfaitement à l'aise pour un transfert à 5h du matin comme pour un après-midi dans la circulation de la médina. Il assure les liaisons aéroport et les trajets en ville presque tous les jours : il sait quelle porte, quelle voie et quel raccourci vous mèneront à votre riad sans la moindre complication.",
+        vehicleTypes: ['Ford Tourneo Custom'],
+        specialties: ['Transferts aéroport', 'Trajets en ville', 'Excursions à la journée'],
+        locations: ['Marrakech', 'Aéroport Marrakech Ménara', "Vallée de l'Ourika"],
+        preferredTours: ["Excursion à la Vallée de l'Ourika 1 Jour", 'Excursion à Marrakech'],
+        badges: ['Spécialiste aéroport', 'Toujours à l\'heure', 'Meilleures Notes'],
+        availability: true,
+        fleet: [
+            { name: 'Ford Tourneo Custom', vehicleClass: 'van', pax: 8, luggage: 8, image: '/images/fleet/ford-tourneo-custom.webp' },
+        ],
+        gallery: ['/images/drivers/mohammed/driver.webp'],
+        features: ['Wi-Fi gratuit', 'Eau embouteillée', 'Sièges bébé', 'Chargeurs USB'],
     },
 ];

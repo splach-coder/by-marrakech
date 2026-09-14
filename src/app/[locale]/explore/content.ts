@@ -58,10 +58,12 @@ const en = {
     nav: {
         label: 'Jump to',
         items: [
-            { id: 'journeys', label: 'Journeys' },
-            { id: 'escapes', label: 'Escapes' },
-            { id: 'moments', label: 'Moments' },
-            { id: 'services', label: 'Services' },
+            // Labels carry the search terms people actually type — the poetic
+            // names (Journeys / Escapes / Moments) stay on the section headings.
+            { id: 'journeys', label: 'Multi-Day Tours' },
+            { id: 'escapes', label: 'Day Trips' },
+            { id: 'moments', label: 'Activities' },
+            { id: 'services', label: 'Airport Transfers' },
         ],
     },
     featured: {
@@ -152,10 +154,10 @@ const fr: typeof en = {
     nav: {
         label: 'Aller à',
         items: [
-            { id: 'journeys', label: 'Circuits' },
-            { id: 'escapes', label: 'Escapades' },
-            { id: 'moments', label: 'Moments' },
-            { id: 'services', label: 'Services' },
+            { id: 'journeys', label: 'Circuits Plusieurs Jours' },
+            { id: 'escapes', label: 'Excursions 1 Jour' },
+            { id: 'moments', label: 'Activités' },
+            { id: 'services', label: 'Transferts Aéroport' },
         ],
     },
     featured: {

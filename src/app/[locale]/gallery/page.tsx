@@ -148,6 +148,7 @@ export default function GalleryPage() {
                                                 src={img.img}
                                                 alt={`Thumbnail ${idx + 1}`}
                                                 fill
+                                                sizes="80px"
                                                 className="object-cover"
                                             />
                                         </button>

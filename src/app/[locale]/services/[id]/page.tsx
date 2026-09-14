@@ -1,7 +1,6 @@
 'use client';
 
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { getSiteData, siteData } from '@/data/siteData';
@@ -9,19 +8,16 @@ import { use, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
     X,
-    ChevronRight,
     Check,
     Star,
-    ArrowRight,
     Shield,
     Clock,
-    MapPin,
-    Home,
-    Phone
+    MapPin
 } from 'lucide-react';
 import GalleryGrid from '../../components/GalleryGrid';
 import BookingCard from '../../components/BookingCard';
 import MobileBookingWidget from '../../components/MobileBookingWidget';
+import HeroBreadcrumb from '../../components/HeroBreadcrumb';
 
 interface ServicePageProps {
     params: Promise<{
@@ -52,179 +48,133 @@ export default function ServicePage({ params }: ServicePageProps) {
         service.image.url
     ];
 
-    const avgRating = service.reviews && service.reviews.length > 0
-        ? (service.reviews.reduce((acc, rev) => acc + rev.rating, 0) / service.reviews.length).toFixed(1)
-        : '5.0';
-
-    const handleBook = () => {
-        const message = `I'm interested in booking the service: ${service.title}`;
-        const url = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-    };
-
     return (
         <main className="min-h-screen bg-white">
 
-            {/* 1. IMAGE FIRST (Top Section) */}
-            <section className="relative h-[50vh] md:h-[70vh] w-full">
+            {/* 1. HERO SECTION */}
+            <section className="relative h-[60vh] md:h-[75vh] w-full">
                 <Image
                     src={service.banner_image?.url || service.image.url}
                     alt={service.title}
                     fill
+                    sizes="100vw"
                     className="object-cover"
                     priority
                 />
-                {/* Subtle gradient at bottom only for transition */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
 
-                {/* Breadcrumbs Overlay */}
-                <div className="absolute bottom-20 left-0 p-6 md:p-10 w-full z-10">
-                    <nav className="inline-flex items-center gap-2 text-xs md:text-sm text-white/90 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full">
-                        <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
-                            <Home className="w-3.5 h-3.5 mb-0.5" />
-                            <span className="uppercase tracking-wider font-semibold">{t('home')}</span>
-                        </Link>
-                        <ChevronRight className="w-3 h-3 text-white/70" />
-                        <Link href="/services" className="hover:text-white transition-colors">
-                            <span className="uppercase tracking-wider font-semibold">{tHeader('services')}</span>
-                        </Link>
-                        <ChevronRight className="w-3 h-3 text-white/70" />
-                        <span className="text-white font-serif font-medium truncate max-w-[150px] md:max-w-none">
-                            {service.title}
-                        </span>
-                    </nav>
+                <div className="absolute inset-0 flex flex-col justify-end pb-8 md:pb-24">
+                    <div className="container-custom mx-auto px-4 md:px-8">
+                        {/* Breadcrumbs */}
+                        <motion.div
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="mb-5 md:mb-6"
+                        >
+                            <HeroBreadcrumb
+                                items={[
+                                    { label: t('home'), href: `/${locale}` },
+                                    { label: tHeader('services'), href: `/${locale}/explore#services` },
+                                    { label: service.title },
+                                ]}
+                            />
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="max-w-4xl"
+                        >
+                            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/90 text-white font-bold uppercase tracking-wider text-xs rounded-full mb-6 backdrop-blur-sm">
+                                <Star className="w-3.5 h-3.5 fill-white" />
+                                {tServ('premiumService')}
+                            </span>
+
+                            <h1 className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 md:mb-6 leading-[1.1]">
+                                {service.title}
+                            </h1>
+
+                            <div className="flex flex-wrap gap-3 md:gap-6 text-white/90 text-sm md:text-base">
+                                <div className="flex items-center gap-2">
+                                    <Clock className="w-5 h-5 text-primary" />
+                                    <span className="font-medium text-lg">{tServ('available247')}</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <MapPin className="w-5 h-5 text-primary" />
+                                    <span className="font-medium text-lg">{tServ('moroccoWide')}</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 
-            {/* 2. DATA / CONTENT SECTION */}
-            <section className="relative -mt-20 z-10 md:px-0 pb-8 md:pb-20">
-                <div className="container-custom max-w-7xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="bg-white rounded-3xl shadow-xl py-8 px-4 md:p-12 border border-stone-100"
-                    >
-                        {/* Header Info */}
-                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8 border-b border-stone-100 pb-8">
+            {/* 2. DESCRIPTION, HIGHLIGHTS & BOOKING */}
+            <section className="py-8 md:py-20 bg-white">
+                <div className="px-4 md:container-custom md:mx-auto md:px-8 max-w-7xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                        <div className="lg:col-span-2 space-y-12">
                             <div>
-                                <div className="flex items-center gap-2 text-sm text-primary font-bold uppercase tracking-wider mb-3">
-                                    <Star className="w-4 h-4 fill-primary" />
-                                    <span>{tServ('premiumService')}</span>
-                                </div>
-                                <h1 className="text-2xl md:text-5xl font-serif font-bold text-gray-900 mb-4">
-                                    {service.title}
-                                </h1>
-                                <div className="flex items-center gap-4 text-gray-500">
-                                    <div className="flex items-center gap-1.5">
-                                        <Clock className="w-4 h-4 text-primary" />
-                                        <span>{tServ('available247')}</span>
-                                    </div>
-                                    <div className="flex items-center gap-1.5">
-                                        <MapPin className="w-4 h-4 text-primary" />
-                                        <span>{tServ('moroccoWide')}</span>
-                                    </div>
+                                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-6">{tServ('description')}</h2>
+                                <p className="text-xl text-gray-600 leading-relaxed font-light">
+                                    {service.description}
+                                </p>
+                            </div>
+
+                            <div>
+                                <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-primary mb-6">{tServ('serviceHighlights')}</h2>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {service.highlights.map((highlight, index) => (
+                                        <div key={index} className="flex items-start gap-3 p-4 bg-[#faf9f6] rounded-xl border border-stone-100">
+                                            <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                                            <span className="text-gray-700">{highlight}</span>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
-                            {/* CTAs */}
-                            <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
-                                <button
-                                    onClick={() => {
-                                        const element = document.getElementById('booking-card-section');
-                                        if (element) {
-                                            const y = element.getBoundingClientRect().top + window.pageYOffset - 100;
-                                            window.scrollTo({ top: y, behavior: 'smooth' });
-                                        }
-                                    }}
-                                    className="px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2"
-                                >
-                                    <span>{t('bookNow')}</span>
-                                    <ArrowRight className="w-4 h-4" />
-                                </button>
-                                <span className="text-sm text-gray-400 font-medium">
-                                    {tTour('contactForPrice')}
-                                </span>
-                            </div>
-                        </div>
-
-                        {/* Description & Details */}
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                            <div className="lg:col-span-2 space-y-8">
-                                <div>
-                                    <h2 className="text-xl font-bold text-gray-900 mb-4">{tServ('description')}</h2>
-                                    <p className="text-lg text-gray-600 leading-relaxed font-light">
-                                        {service.description}
-                                    </p>
-                                </div>
-
-                                <div>
-                                    <h2 className="text-xl font-bold text-gray-900 mb-4">{tServ('serviceHighlights')}</h2>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        {service.highlights.map((highlight, index) => (
-                                            <div key={index} className="flex items-start gap-3 p-3 bg-stone-50 rounded-lg">
-                                                <Check className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                                                <span className="text-gray-700">{highlight}</span>
-                                            </div>
-                                        ))}
+                            {/* Why Choose Us */}
+                            <div>
+                                <div className="flex items-center gap-3 mb-6">
+                                    <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shrink-0">
+                                        <Shield className="w-6 h-6 text-white" />
                                     </div>
+                                    <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900">{tServ('whyChooseUs')}</h2>
                                 </div>
-
-                                {/* Why Choose Us - Moved to left with new design */}
-                                <div className="bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 p-8 rounded-2xl border border-primary/20">
-                                    <div className="flex items-center gap-3 mb-6">
-                                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                                            <Shield className="w-6 h-6 text-white" />
-                                        </div>
-                                        <h3 className="text-2xl font-serif font-bold text-gray-900">{tServ('whyChooseUs')}</h3>
-                                    </div>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                        <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    {[
+                                        { title: tServ('driversTitle'), desc: tServ('experiencedDrivers') },
+                                        { title: tServ('vehiclesTitle'), desc: tServ('modernVehicles') },
+                                        { title: tServ('insuredTitle'), desc: tServ('fullyInsured') },
+                                        { title: tServ('pricingTitle'), desc: tServ('fixedPricing') },
+                                    ].map((item, index) => (
+                                        <div key={index} className="flex items-start gap-3 bg-stone-50 p-5 rounded-xl hover:bg-stone-100 transition-colors duration-300">
                                             <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
                                             <div>
-                                                <div className="font-bold text-gray-900 mb-1">{tServ('driversTitle')}</div>
-                                                <p className="text-sm text-gray-600">{tServ('experiencedDrivers')}</p>
+                                                <div className="font-bold text-gray-900 mb-1">{item.title}</div>
+                                                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
                                             </div>
                                         </div>
-                                        <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
-                                            <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
-                                            <div>
-                                                <div className="font-bold text-gray-900 mb-1">{tServ('vehiclesTitle')}</div>
-                                                <p className="text-sm text-gray-600">{tServ('modernVehicles')}</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
-                                            <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
-                                            <div>
-                                                <div className="font-bold text-gray-900 mb-1">{tServ('insuredTitle')}</div>
-                                                <p className="text-sm text-gray-600">{tServ('fullyInsured')}</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start gap-3 bg-white/60 backdrop-blur p-4 rounded-xl">
-                                            <div className="w-2 h-2 rounded-full bg-primary mt-2 shrink-0" />
-                                            <div>
-                                                <div className="font-bold text-gray-900 mb-1">{tServ('pricingTitle')}</div>
-                                                <p className="text-sm text-gray-600">{tServ('fixedPricing')}</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    ))}
                                 </div>
-                            </div>
-
-                            {/* Sidebar Booking Card Only */}
-                            <div id="booking-card-section" className="lg:col-span-1">
-                                <BookingCard
-                                    id={String(service.id)}
-                                    title={service.title}
-                                    price={service.price || tTour('contactForPrice')}
-                                    duration={t('flexible')}
-                                    groupSize={tServ('privateTransfer')}
-                                    type="service"
-                                    imageUrl={service.image.url}
-                                />
                             </div>
                         </div>
-                    </motion.div>
+
+                        {/* Sidebar Booking Card */}
+                        <div id="booking-card-section" className="lg:col-span-1">
+                            <BookingCard
+                                id={String(service.id)}
+                                title={service.title}
+                                price={service.price || tTour('contactForPrice')}
+                                duration={t('flexible')}
+                                groupSize={tServ('privateTransfer')}
+                                type="service"
+                                imageUrl={service.image.url}
+                            />
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -285,6 +235,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                                     src={galleryImages[selectedImage]}
                                     alt="Gallery"
                                     fill
+                                    sizes="100vw"
                                     className="object-contain"
                                 />
                             </div>
@@ -305,6 +256,7 @@ export default function ServicePage({ params }: ServicePageProps) {
                                                 src={url}
                                                 alt={`Thumbnail ${idx + 1}`}
                                                 fill
+                                                sizes="80px"
                                                 className="object-cover"
                                             />
                                         </button>

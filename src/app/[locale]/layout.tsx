@@ -78,14 +78,18 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <head>
-        {/* Google Analytics (GA4) */}
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
+        {/* Google Analytics (GA4) — only when an ID is actually configured.
+            Without this guard the site requested gtag/js?id=undefined on every
+            page load: a third-party round trip that measures nothing. */}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <>
+            <Script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga-init" strategy="afterInteractive">
+              {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -93,7 +97,9 @@ export default async function LocaleLayout({
               page_path: window.location.pathname
             });
           `}
-        </Script>
+            </Script>
+          </>
+        )}
 
         {/* Chatling Chatbot */}
         <Script id="chatling-config" strategy="afterInteractive">

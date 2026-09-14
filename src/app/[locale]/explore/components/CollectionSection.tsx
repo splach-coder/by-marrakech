@@ -138,7 +138,7 @@ export default function CollectionSection({
                                     },
                                 }}
                             >
-                                <Link href={`/${locale}/${route}/${item.id}`} className="group block">
+                                <Link prefetch={false} href={`/${locale}/${route}/${item.id}`} className="group block">
                                     <div className="relative aspect-[4/5] overflow-hidden bg-background-cream">
                                         <Image
                                             src={item.image.url}

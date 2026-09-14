@@ -95,7 +95,7 @@ export default function TestimonialsSection({
                     }}
                     className="absolute inset-0"
                   >
-                    <Image src={currentTestimonial.image} alt={currentTestimonial.name} fill className="object-cover" />
+                    <Image src={currentTestimonial.image} alt={currentTestimonial.name} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
                   </motion.div>
                 </AnimatePresence>
 

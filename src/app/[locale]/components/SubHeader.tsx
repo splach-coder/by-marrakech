@@ -19,7 +19,8 @@ export default function SubHeader({
   const t = useTranslations('SubHeader');
 
   return (
-    <div className="bg-primary text-white overflow-hidden">
+    // overflow stays visible: the language dropdown hangs below this 32px bar
+    <div className="relative z-[70] bg-primary text-white">
       <div className="container-custom mx-auto px-4">
         <div className="h-8 flex items-center justify-between relative text-sm">
           {/* Left - Contact */}

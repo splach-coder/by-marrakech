@@ -17,6 +17,7 @@ import {
   Utensils,
   Landmark,
 } from 'lucide-react';
+import { WHATSAPP_NUMBER } from '@/data/transferData';
 
 // Animation variants
 const fadeInUp = {
@@ -117,6 +118,7 @@ export default function MarrakechPage() {
                 src="/images/marrakech/marrakech13.webp"
                 alt="Marrakech Riad"
                 fill
+                sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
@@ -165,6 +167,7 @@ export default function MarrakechPage() {
                       src={tour.image?.url}
                       alt={tour.title}
                       fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className="object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-90" />
@@ -239,6 +242,7 @@ export default function MarrakechPage() {
                     src={excursion.image?.url}
                     alt={excursion.title}
                     fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors" />
@@ -283,6 +287,7 @@ export default function MarrakechPage() {
                     src={activity.image?.url}
                     alt={activity.title}
                     fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
@@ -318,7 +323,7 @@ export default function MarrakechPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/212600000000"
+              href={`https://wa.me/${WHATSAPP_NUMBER}`}
               target="_blank"
               rel="noopener noreferrer"
               className={`px-10 py-5 font-bold rounded-full shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-3 ${WA_BUTTON}`}

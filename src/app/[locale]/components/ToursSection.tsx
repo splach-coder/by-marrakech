@@ -86,6 +86,7 @@ export default function ToursSection({
             viewport={{ once: true }}
           >
             <Link
+              prefetch={false}
               href={`/${locale}/explore#journeys`}
               className="hidden md:inline-flex items-center justify-center w-16 h-16 rounded-full border border-[#2C2C2C]/20 hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 group"
             >
@@ -108,11 +109,12 @@ export default function ToursSection({
               variants={cardVariants}
               className={`group relative ${index === 0 || index === 3 ? 'md:col-span-1' : 'md:col-span-1'} h-[500px] w-full cursor-pointer`}
             >
-              <Link href={`/${locale}/tours/${tour.slug}`} className="block h-full w-full relative overflow-hidden rounded-xl">
+              <Link prefetch={false} href={`/${locale}/tours/${tour.slug}`} className="block h-full w-full relative overflow-hidden rounded-xl">
                 <Image
                   src={tour.image}
                   alt={tour.title}
                   fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
 
@@ -153,6 +155,7 @@ export default function ToursSection({
         {/* Mobile View All Button */}
         <div className="mt-12 text-center md:hidden">
           <Link
+            prefetch={false}
             href={`/${locale}/explore#journeys`}
             className="inline-block px-8 py-4 border border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transition-colors"
           >

@@ -14,6 +14,7 @@ import {
     ArrowRight,
     Info
 } from 'lucide-react';
+import HeroBreadcrumb from '../../components/HeroBreadcrumb';
 import Link from 'next/link';
 
 interface EventPageProps {
@@ -24,7 +25,7 @@ interface EventPageProps {
 }
 
 export default function EventPage({ params }: EventPageProps) {
-    const { id } = use(params);
+    const { id, locale } = use(params);
     const event = eventsData.find((e) => e.id === id);
 
     if (!event) {
@@ -61,6 +62,7 @@ export default function EventPage({ params }: EventPageProps) {
                         src={event.image}
                         alt={event.title}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                         priority
                     />
@@ -75,17 +77,15 @@ export default function EventPage({ params }: EventPageProps) {
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
                             {/* Breadcrumbs - First element */}
-                            <nav className="inline-flex items-center gap-2 text-xs md:text-sm text-white/90 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                                <Link href="/" className="hover:text-white transition-colors">
-                                    Home
-                                </Link>
-                                <span className="text-white/50">/</span>
-                                <Link href="/events" className="hover:text-white transition-colors">
-                                    Events
-                                </Link>
-                                <span className="text-white/50">/</span>
-                                <span className="text-white font-medium truncate max-w-[200px]">{event.title}</span>
-                            </nav>
+                            <div className="mb-4 md:mb-6">
+                                <HeroBreadcrumb
+                                    items={[
+                                        { label: 'Home', href: `/${locale}` },
+                                        { label: 'Events', href: `/${locale}/events` },
+                                        { label: event.title },
+                                    ]}
+                                />
+                            </div>
 
                             <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6 ${statusColor === 'bg-red-100 text-red-800 animate-pulse' ? 'bg-red-600 text-white' : 'bg-white/20 text-white backdrop-blur-md'}`}>
                                 {status === 'Happening Now' && <span className="w-2 h-2 rounded-full bg-white animate-pulse" />}
@@ -151,6 +151,7 @@ export default function EventPage({ params }: EventPageProps) {
                                         src={event.image} // Reusing main image as placeholder for gallery
                                         alt="Gallery"
                                         fill
+                                        sizes="(min-width: 768px) 33vw, 50vw"
                                         className={`object-cover hover:scale-110 transition-transform duration-700 ${i === 2 ? 'hidden md:block' : ''}`}
                                     />
                                 </div>

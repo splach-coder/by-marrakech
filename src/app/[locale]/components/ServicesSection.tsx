@@ -84,6 +84,7 @@ export default function ServicesSection({
 
                         {/* View All Button - Top Right */}
                         <Link
+                            prefetch={false}
                             href={`/${locale}/explore#services`}
                             className="group flex items-center gap-3 px-6 py-3 text-primary-dark rounded-full transition-all hover:gap-4"
                         >
@@ -115,6 +116,7 @@ export default function ServicesSection({
                                     src={service.image}
                                     alt={service.title}
                                     fill
+                                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                                 />
 
@@ -154,7 +156,7 @@ export default function ServicesSection({
                                 </div>
 
                                 {/* View Details Button */}
-                                <Link href={`/${locale}/services/${service.id}`}>
+                                <Link prefetch={false} href={`/${locale}/services/${service.id}`}>
                                     <button className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-semibold hover:bg-primary-dark transition-colors">
                                         <span>{viewDetailsText}</span>
                                         <ArrowRight className="w-4 h-4" />

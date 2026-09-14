@@ -127,6 +127,7 @@ export default function AboutSection({
                   src={img.src}
                   alt={img.alt}
                   fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
                   className="object-cover"
                 />
               </motion.div>

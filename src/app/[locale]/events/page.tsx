@@ -104,6 +104,7 @@ export default function EventsPage() {
                                                 src={event.image}
                                                 alt={event.title}
                                                 fill
+                                                sizes="(min-width: 768px) 50vw, 100vw"
                                                 className="object-cover group-hover:scale-105 transition-transform duration-1000"
                                             />
                                             <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors" />
@@ -194,6 +195,7 @@ export default function EventsPage() {
                                                 src={event.image}
                                                 alt={event.title}
                                                 fill
+                                                sizes="(min-width: 768px) 50vw, 100vw"
                                                 className="object-cover"
                                             />
                                         </div>
@@ -236,6 +238,7 @@ export default function EventsPage() {
                                             src={event.image}
                                             alt={event.title}
                                             fill
+                                            sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
                                             className="object-cover"
                                         />
                                     </div>

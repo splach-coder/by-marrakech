@@ -1,7 +1,6 @@
 'use client';
 
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { getSiteData, siteData } from '@/data/siteData';
@@ -9,6 +8,7 @@ import Itinerary from '../../components/Itinerary';
 import GalleryGrid from '../../components/GalleryGrid';
 import BookingCard from '../../components/BookingCard';
 import MobileBookingWidget from '../../components/MobileBookingWidget';
+import HeroBreadcrumb from '../../components/HeroBreadcrumb';
 import { use, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import {
@@ -22,7 +22,6 @@ import {
     Check,
     AlertCircle,
     Quote,
-    Home
 } from 'lucide-react';
 
 interface ExperiencePageProps {
@@ -70,6 +69,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                     src={experience.banner_image?.url || experience.image.url}
                     alt={experience.title}
                     fill
+                    sizes="100vw"
                     className="object-cover"
                     priority
                 />
@@ -85,20 +85,15 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                             className="max-w-5xl"
                         >
                             {/* Breadcrumbs */}
-                            <nav className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-3 md:mb-6 overflow-x-auto whitespace-nowrap">
-                                <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
-                                    <Home className="w-3.5 h-3.5 mb-0.5" />
-                                    <span className="uppercase tracking-wider font-semibold">{t('home')}</span>
-                                </Link>
-                                <ChevronRight className="w-3 h-3 text-white/50" />
-                                <Link href="/experiences" className="hover:text-white transition-colors">
-                                    <span className="uppercase tracking-wider font-semibold">{tHeader('experiences')}</span>
-                                </Link>
-                                <ChevronRight className="w-3 h-3 text-white/50" />
-                                <span className="text-white font-serif font-medium truncate">
-                                    {experience.title}
-                                </span>
-                            </nav>
+                            <div className="mb-4 md:mb-6">
+                                <HeroBreadcrumb
+                                    items={[
+                                        { label: t('home'), href: `/${locale}` },
+                                        { label: tHeader('experiences'), href: `/${locale}/explore#escapes` },
+                                        { label: experience.title },
+                                    ]}
+                                />
+                            </div>
                             <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-6">
                                 <span className="px-4 py-1.5 bg-white/20 backdrop-blur-md text-white border border-white/30 text-sm font-bold rounded-full uppercase tracking-wider">
                                     {tExp('experienceBadge')}
@@ -324,6 +319,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                                     src={galleryImages[selectedImage]}
                                     alt={`${experience.title} ${selectedImage + 1}`}
                                     fill
+                                    sizes="100vw"
                                     className="object-contain"
                                 />
                             </div>
@@ -344,6 +340,7 @@ export default function ExperiencePage({ params }: ExperiencePageProps) {
                                                 src={url}
                                                 alt={`Thumbnail ${idx + 1}`}
                                                 fill
+                                                sizes="80px"
                                                 className="object-cover"
                                             />
                                         </button>

@@ -72,7 +72,7 @@ export default function ExperiencesSection({ label, title, experiences }: Experi
         >
           {data.map(experience => (
             <motion.article key={experience.id} variants={cardVariants} className="group">
-              <Link href={`/${locale}/experiences/${experience.id}`} className="block">
+              <Link prefetch={false} href={`/${locale}/experiences/${experience.id}`} className="block">
                 {/* Image */}
                 <div className="relative h-56 rounded-md overflow-hidden mb-5">
                   <Image
@@ -125,6 +125,7 @@ export default function ExperiencesSection({ label, title, experiences }: Experi
           className="mt-14 text-center"
         >
           <Link
+            prefetch={false}
             href={`/${locale}/explore#escapes`}
             className="inline-flex items-center gap-3 px-8 py-4 border border-border-dark text-text-primary rounded-sm font-medium transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary"
           >

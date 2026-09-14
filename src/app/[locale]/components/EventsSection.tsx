@@ -100,12 +100,13 @@ export default function EventsSection({
                 variants={cardVariants}
                 className="md:col-span-4 group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-[400px]"
               >
-                <Link href={`/${locale}/events/${displayEvents[0].id}`}>
+                <Link prefetch={false} href={`/${locale}/events/${displayEvents[0].id}`}>
                   <div className="absolute inset-0">
                     <Image
                       src={displayEvents[0].image}
                       alt={displayEvents[0].title}
                       fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -152,12 +153,13 @@ export default function EventsSection({
                 variants={cardVariants}
                 className="md:col-span-8 group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-[400px]"
               >
-                <Link href={`/${locale}/events/${displayEvents[1].id}`}>
+                <Link prefetch={false} href={`/${locale}/events/${displayEvents[1].id}`}>
                   <div className="absolute inset-0">
                     <Image
                       src={displayEvents[1].image}
                       alt={displayEvents[1].title}
                       fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -212,12 +214,13 @@ export default function EventsSection({
                 variants={cardVariants}
                 className="md:col-span-8 group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-[400px]"
               >
-                <Link href={`/${locale}/events/${displayEvents[2].id}`}>
+                <Link prefetch={false} href={`/${locale}/events/${displayEvents[2].id}`}>
                   <div className="absolute inset-0">
                     <Image
                       src={displayEvents[2].image}
                       alt={displayEvents[2].title}
                       fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -269,12 +272,13 @@ export default function EventsSection({
                 variants={cardVariants}
                 className="md:col-span-4 group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-[400px]"
               >
-                <Link href={`/${locale}/events/${displayEvents[3].id}`}>
+                <Link prefetch={false} href={`/${locale}/events/${displayEvents[3].id}`}>
                   <div className="absolute inset-0">
                     <Image
                       src={displayEvents[3].image}
                       alt={displayEvents[3].title}
                       fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
@@ -320,6 +324,7 @@ export default function EventsSection({
         {/* View All Link */}
         <div className="text-center mt-12">
           <Link
+            prefetch={false}
             href={`/${locale}/events`}
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-primary-dark transition-colors shadow-lg hover:shadow-xl"
           >

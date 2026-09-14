@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { siteData } from '@/data/siteData';
 import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
+import { whatsappLink } from '@/data/transferData';
 
 interface BookingPageProps {
     params: Promise<{
@@ -92,6 +93,7 @@ function DraggableBookingItem({
                             src={item.image}
                             alt={item.title}
                             fill
+                            sizes="(min-width: 768px) 128px, 100vw"
                             className="object-cover"
                         />
                     )}
@@ -300,8 +302,7 @@ export default function BookingPage({ params }: BookingPageProps) {
 
         message += `\n--------------------------------\nSent via Xhosen Gate Website`;
 
-        const whatsappNumber = '212600000000';
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = whatsappLink(message);
 
         clearCart();
         router.push(`/${locale}/confetti?whatsappUrl=${encodeURIComponent(whatsappUrl)}`);
@@ -728,7 +729,7 @@ export default function BookingPage({ params }: BookingPageProps) {
                                         Our travel experts can coordinate complex transfers, group transport, and VIP logistics for your entire Moroccan journey.
                                     </p>
                                     <a
-                                        href="https://wa.me/212600000000?text=I need help with my transport coordination"
+                                        href={whatsappLink('I need help with my transport coordination')}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className={`inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold shadow-xl hover:-translate-y-1 ${WA_BUTTON}`}

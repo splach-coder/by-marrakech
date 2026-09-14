@@ -21,6 +21,7 @@ const cardVariants = {
 export function FleetCard({ vehicle, locale, t }: { vehicle: FleetVehicle; locale: string; t: (k: string) => string }) {
   return (
     <Link
+      prefetch={false}
       href={`/${locale}/fleet`}
       className="group relative block h-[480px] rounded-md overflow-hidden bg-background-cream"
     >
@@ -149,6 +150,7 @@ export default function FleetSection() {
           className="mt-12 text-center"
         >
           <Link
+            prefetch={false}
             href={`/${locale}/fleet`}
             className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-sm font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:scale-105"
           >

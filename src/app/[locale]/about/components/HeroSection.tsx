@@ -12,6 +12,7 @@ export default function HeroSection() {
           src="/images/about/hero-bg.jpg"
           alt="About Xhosen Gate"
           fill
+          sizes="100vw"
           priority
           fetchPriority="high"
           quality={80}

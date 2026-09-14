@@ -28,6 +28,7 @@ export default function SitemapPage() {
                     src="/images/marrakech/marrakech.webp"
                     alt="Morocco Travel Destinations"
                     fill
+                    sizes="100vw"
                     className="object-cover"
                     priority
                 />

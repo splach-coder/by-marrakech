@@ -53,7 +53,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-10 gap-y-12 pb-14">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <Link href={`/${locale}`} className="inline-block mb-4">
+            <Link prefetch={false} href={`/${locale}`} className="inline-block mb-4">
               <Image
                 src="/images/logo-red.webp"
                 alt="Xhosen Gate"
@@ -99,7 +99,7 @@ export default function Footer() {
             <h3 className={colHeading}>{t('nav.title')}</h3>
             <nav className="flex flex-col space-y-3.5">
               {navLinks.map(link => (
-                <Link key={link.href + link.label} href={link.href} className={colLink}>
+                <Link prefetch={false} key={link.href + link.label} href={link.href} className={colLink}>
                   {link.label}
                 </Link>
               ))}
@@ -111,11 +111,11 @@ export default function Footer() {
             <h3 className={colHeading}>{t('routes.title')}</h3>
             <nav className="flex flex-col space-y-3.5">
               {routes.map(r => (
-                <Link key={r.id} href={`/${locale}#quote`} className={colLink}>
+                <Link prefetch={false} key={r.id} href={`/${locale}#quote`} className={colLink}>
                   {r.from.replace('Marrakech Airport (RAK)', 'RAK ' + (locale === 'fr' ? 'Aéroport' : 'Airport'))} → {r.to}
                 </Link>
               ))}
-              <Link href={`/${locale}#quote`} className="text-secondary hover:text-secondary-light text-sm font-bold inline-flex items-center gap-1.5 transition-colors">
+              <Link prefetch={false} href={`/${locale}#quote`} className="text-secondary hover:text-secondary-light text-sm font-bold inline-flex items-center gap-1.5 transition-colors">
                 {t('routes.all')}
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -151,11 +151,11 @@ export default function Footer() {
           <h3 className={colHeading}>{t('excursions.title')}</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-3.5">
             {excursions.map(x => (
-              <Link key={x.id} href={`/${locale}/experiences/${x.id}`} className={colLink}>
+              <Link prefetch={false} key={x.id} href={`/${locale}/experiences/${x.id}`} className={colLink}>
                 {x.title}
               </Link>
             ))}
-            <Link href={`/${locale}/explore#escapes`} className="text-secondary hover:text-secondary-light text-sm font-bold inline-flex items-center gap-1.5 transition-colors">
+            <Link prefetch={false} href={`/${locale}/explore#escapes`} className="text-secondary hover:text-secondary-light text-sm font-bold inline-flex items-center gap-1.5 transition-colors">
               {t('excursions.all')}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -197,13 +197,13 @@ export default function Footer() {
               © {new Date().getFullYear()} <span className="text-white font-medium">Xhosen Gate</span>. {t('bottom.rights')}
             </p>
             <div className="flex gap-8">
-              <Link href={`/${locale}/privacy`} className="hover:text-secondary transition-colors">
+              <Link prefetch={false} href={`/${locale}/privacy`} className="hover:text-secondary transition-colors">
                 {t('bottom.privacy')}
               </Link>
-              <Link href={`/${locale}/terms`} className="hover:text-secondary transition-colors">
+              <Link prefetch={false} href={`/${locale}/terms`} className="hover:text-secondary transition-colors">
                 {t('bottom.terms')}
               </Link>
-              <Link href={`/${locale}/sitemap`} className="hover:text-secondary transition-colors">
+              <Link prefetch={false} href={`/${locale}/sitemap`} className="hover:text-secondary transition-colors">
                 {t('bottom.sitemap')}
               </Link>
             </div>

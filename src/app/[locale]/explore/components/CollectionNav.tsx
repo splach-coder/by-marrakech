@@ -48,7 +48,7 @@ export default function CollectionNav({ locale, counts }: CollectionNavProps) {
             className="sticky top-14 z-40 border-y border-border bg-background/92 backdrop-blur-md md:top-16"
         >
             <div className="container-custom">
-                <ul className="no-scrollbar -mx-1 flex items-stretch gap-1 overflow-x-auto md:justify-center">
+                <ul className="no-scrollbar -mx-1 flex items-stretch gap-1 overflow-x-auto pt-2 md:justify-center md:pt-0">
                     {copy.items.map((item) => {
                         const isActive = active === item.id;
                         return (
@@ -56,7 +56,7 @@ export default function CollectionNav({ locale, counts }: CollectionNavProps) {
                                 <a
                                     href={`#${item.id}`}
                                     aria-current={isActive ? 'true' : undefined}
-                                    className={`group relative flex items-baseline gap-2 px-4 py-4 text-[10px] font-black uppercase tracking-[0.2em] transition-colors duration-300 md:px-6 ${
+                                    className={`group relative flex items-baseline gap-2 px-4 pb-4 pt-5 text-[10px] font-black uppercase tracking-[0.2em] transition-colors duration-300 md:px-6 md:py-4 ${
                                         isActive ? 'text-primary' : 'text-text-tertiary hover:text-text-primary'
                                     }`}
                                 >

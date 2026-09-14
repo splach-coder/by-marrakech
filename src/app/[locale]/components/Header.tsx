@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingBag, Instagram, Facebook, Phone, Mail, ChevronRight, Globe } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { Menu, X, ShoppingBag, Instagram, Facebook, Phone, Mail, ChevronRight, ChevronDown, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/context/CartContext';
 import { useTranslations, useLocale } from 'next-intl';
@@ -26,22 +26,41 @@ export default function Header() {
   );
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isExploreOpen, setIsExploreOpen] = useState(false);
   const { toggleCart, cartTotal } = useCart();
 
+  // No scroll listener: reading window.scrollY on every scroll event forces a
+  // synchronous layout, and the trace blamed exactly that for ~90ms of forced
+  // reflow per scroll of the home page. A 40px sentinel at the top of the
+  // document (40 = SubHeader height) tells us the same thing through an
+  // IntersectionObserver, which costs no layout work on the main thread.
   useEffect(() => {
-    const handleScroll = () => {
-      // 40 is the height of the SubHeader (h-10)
-      setIsScrolled(window.scrollY > 40);
-    };
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsScrolled(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
   }, []);
 
   // Tours, experiences, activities and services are one page now (/explore),
   // so the nav carries one entry for the whole catalogue. In-page navigation is
   // handled by the hero chips and the chapter rail on /explore itself.
+  // /explore holds three collections behind one anchor each. On mobile the nav
+  // entry expands into them so a reader who wants one specific kind of trip
+  // does not have to land on the page and hunt the sticky rail.
+  const exploreChildren = [
+    { href: `/${locale}/explore#journeys`, label: t('exploreJourneys') },
+    { href: `/${locale}/explore#escapes`, label: t('exploreEscapes') },
+    { href: `/${locale}/explore#moments`, label: t('exploreMoments') },
+    { href: `/${locale}/explore`, label: t('exploreAll') },
+  ];
+
   const navigationLinks = [
     { href: `/${locale}`, label: t('home') },
     { href: `/${locale}/explore`, label: t('explore') },
@@ -55,6 +74,7 @@ export default function Header() {
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
+    if (!isMobileMenuOpen) setIsExploreOpen(false);
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -73,6 +93,9 @@ export default function Header() {
 
   return (
     <>
+      {/* Scroll sentinel — watched instead of listening to scroll events. */}
+      <div ref={sentinelRef} aria-hidden="true" className="absolute top-0 left-0 h-10 w-px" />
+
       {/* Header Bar */}
       <header
         className={`left-0 right-0 z-[60] transition-all duration-500 ${isScrolled
@@ -178,25 +201,76 @@ export default function Header() {
                 <p className="text-[10px] font-black uppercase tracking-[0.4em] text-primary mb-8 opacity-60">Navigation</p>
 
                 <div className="space-y-1">
-                  {navigationLinks.map((link, index) => (
+                  {navigationLinks.map((link, index) => {
+                    const isExplore = link.href === `/${locale}/explore`;
+                    return (
                     <motion.div
                       key={link.href}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 + 0.2 }}
                     >
-                      <Link
-                        href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="group flex items-center justify-between py-1.5"
-                      >
-                        <span className="text-2xl md:text-3xl font-nohemi font-black text-text-primary group-hover:text-primary transition-all duration-300">
-                          {link.label}
-                        </span>
-                        <ChevronRight className="w-6 h-6 text-stone-200 group-hover:text-primary group-hover:translate-x-2 transition-all" />
-                      </Link>
+                      {isExplore ? (
+                        <>
+                          <button
+                            type="button"
+                            onClick={() => setIsExploreOpen((open) => !open)}
+                            aria-expanded={isExploreOpen}
+                            aria-controls="mobile-explore-submenu"
+                            className="group flex w-full items-center justify-between py-1.5 text-left"
+                          >
+                            <span className={`text-2xl md:text-3xl font-nohemi font-black transition-all duration-300 ${isExploreOpen ? 'text-primary' : 'text-text-primary group-hover:text-primary'}`}>
+                              {link.label}
+                            </span>
+                            <ChevronDown
+                              className={`w-6 h-6 transition-all duration-300 ${isExploreOpen ? 'rotate-180 text-primary' : 'text-stone-200 group-hover:text-primary'}`}
+                            />
+                          </button>
+
+                          <AnimatePresence initial={false}>
+                            {isExploreOpen && (
+                              <motion.ul
+                                id="mobile-explore-submenu"
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: 'auto', opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                                className="overflow-hidden"
+                              >
+                                <li className="pt-1 pb-2 pl-4 border-l border-stone-200 space-y-1">
+                                  {exploreChildren.map((child) => (
+                                    <Link
+                                      key={child.href}
+                                      href={child.href}
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                      className="group flex items-center justify-between py-2"
+                                    >
+                                      <span className="text-base font-sans font-semibold uppercase tracking-[0.12em] text-text-secondary group-hover:text-primary transition-colors duration-300">
+                                        {child.label}
+                                      </span>
+                                      <ChevronRight className="w-4 h-4 text-stone-200 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                                    </Link>
+                                  ))}
+                                </li>
+                              </motion.ul>
+                            )}
+                          </AnimatePresence>
+                        </>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="group flex items-center justify-between py-1.5"
+                        >
+                          <span className="text-2xl md:text-3xl font-nohemi font-black text-text-primary group-hover:text-primary transition-all duration-300">
+                            {link.label}
+                          </span>
+                          <ChevronRight className="w-6 h-6 text-stone-200 group-hover:text-primary group-hover:translate-x-2 transition-all" />
+                        </Link>
+                      )}
                     </motion.div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 

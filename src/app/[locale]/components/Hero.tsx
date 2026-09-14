@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,6 +17,40 @@ interface HeroProps {
   ctaSecondary?: string;
   backgroundImage?: string;
   showQuoteWidget?: boolean;
+}
+
+/**
+ * Parallax backdrop — desktop only. Mounting this is what turns on
+ * framer-motion's scroll measurement, so phones never mount it.
+ */
+function ParallaxLayer({ children }: { children: React.ReactNode }) {
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 200]);
+  return (
+    <motion.div style={{ y }} className="absolute inset-0 w-full h-full">
+      {children}
+    </motion.div>
+  );
+}
+
+/** Mobile counterparts: same boxes, no scroll listeners. */
+function StaticLayer({ children }: { children: React.ReactNode }) {
+  return <div className="absolute inset-0 w-full h-full">{children}</div>;
+}
+
+function PlainLayer({ className, children }: { className: string; children: React.ReactNode }) {
+  return <div className={className}>{children}</div>;
+}
+
+/** Hero content that fades out as you scroll past it — desktop only. */
+function ScrollFadeLayer({ className, children }: { className: string; children: React.ReactNode }) {
+  const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  return (
+    <motion.div style={{ opacity }} className={className}>
+      {children}
+    </motion.div>
+  );
 }
 
 // Last word of the title gets the reference-style gold italic treatment
@@ -39,22 +74,40 @@ export default function Hero({
 }: HeroProps) {
   const locale = useLocale();
   const t = useTranslations('home.heroExtras');
-  const { scrollY } = useScroll();
 
-  const y = useTransform(scrollY, [0, 1000], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 500], [1, 0]);
+  // Parallax and the scroll fade-out are desktop-only: on phones the hero is
+  // barely taller than the viewport, so fading it made the headline/CTAs
+  // vanish immediately — and the scroll measurement behind both effects cost
+  // real frame time on mobile.
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Static wrappers on mobile, scroll-driven ones on desktop.
+  const Backdrop = isDesktop ? ParallaxLayer : StaticLayer;
+  const Content = isDesktop ? ScrollFadeLayer : PlainLayer;
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
 
   return (
     <section className={`relative w-full overflow-hidden bg-background ${showQuoteWidget ? 'min-h-screen' : 'h-screen'}`}>
-      {/* Background with parallax */}
-      <motion.div
-        initial={{ opacity: 0, scale: 1.1 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
-        style={{ y }}
-        className="absolute inset-0 w-full h-full"
-      >
-        <div className="relative w-full h-full">
+      {/* Background with parallax.
+          Never animate this layer's opacity on mount: the hero photograph is
+          the LCP element, and starting it at opacity 0 means the largest paint
+          cannot happen until React has hydrated and framer-motion has run —
+          measured at 1.9s of pure render delay on a mid-range phone. The scale
+          settle is a transform, so it costs nothing and paints immediately. */}
+      <Backdrop>
+        <motion.div
+          initial={{ scale: 1.06 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+          className="relative w-full h-full"
+        >
           <Image
             src="/images/hero.jpeg"
             alt="Marrakech"
@@ -77,12 +130,11 @@ export default function Hero({
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/70" />
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 to-transparent md:hidden" />
-        </div>
-      </motion.div>
+        </motion.div>
+      </Backdrop>
 
       {/* Content */}
-      <motion.div
-        style={{ opacity }}
+      <Content
         className={`relative z-10 ${showQuoteWidget ? 'min-h-screen flex items-center pt-32 pb-16 md:pt-36 md:pb-20' : 'h-full flex items-center justify-center pt-20'}`}
       >
         <div className="container-custom w-full">
@@ -94,7 +146,7 @@ export default function Hero({
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.2 }}
+                  transition={{ duration: 0.45, delay: 0.05 }}
                   className="flex items-center gap-2 mb-6"
                 >
                   <span className="w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-sm">
@@ -114,7 +166,7 @@ export default function Hero({
                 <motion.h1
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
                   className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-[1.05] mb-6"
                 >
                   <SplitTitle title={title} />
@@ -123,7 +175,7 @@ export default function Hero({
                 <motion.p
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.45 }}
+                  transition={{ duration: 0.5, delay: 0.18 }}
                   className="text-base md:text-lg text-white/85 leading-relaxed max-w-xl mb-9"
                 >
                   {subtitle}
@@ -132,7 +184,7 @@ export default function Hero({
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
+                  transition={{ duration: 0.5, delay: 0.26 }}
                   className="flex flex-col sm:flex-row items-center gap-4"
                 >
                   <Link
@@ -162,7 +214,7 @@ export default function Hero({
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
               >
                 <SplitTitle title={title} />
@@ -192,7 +244,7 @@ export default function Hero({
             </div>
           )}
         </div>
-      </motion.div>
+      </Content>
     </section>
   );
 }

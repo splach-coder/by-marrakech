@@ -30,9 +30,10 @@ export default function GuideArticlePage({ params }: GuidePageProps) {
     <main className="min-h-screen bg-background">
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[440px] overflow-hidden">
+        {/* scale only — fading this in would delay the guide's LCP image */}
         <motion.div
-          initial={{ opacity: 0, scale: 1.06 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ scale: 1.06 }}
+          animate={{ scale: 1 }}
           transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
         >

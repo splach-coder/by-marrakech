@@ -72,6 +72,7 @@ export default function Testimonials() {
                 src={currentTestimonial.image}
                 alt={currentTestimonial.name}
                 fill
+                sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover"
               />
             </motion.div>

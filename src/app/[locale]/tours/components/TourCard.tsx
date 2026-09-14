@@ -26,6 +26,7 @@ export default function TourCard({ tour }: TourCardProps) {
   return (
     <motion.div variants={cardVariants}>
       <Link
+        prefetch={false}
         href={`/${locale}/tours/${tour.id}`}
         className="group block bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
       >
@@ -35,6 +36,7 @@ export default function TourCard({ tour }: TourCardProps) {
             src={tour.image.url}
             alt={tour.title}
             fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             className="object-cover group-hover:scale-110 transition-transform duration-500"
           />
 

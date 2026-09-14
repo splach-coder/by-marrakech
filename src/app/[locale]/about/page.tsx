@@ -85,6 +85,7 @@ export default function AboutPage() {
                 src="/images/marrakech/marrakech14.webp"
                 alt="Our Story"
                 fill
+                sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover"
               />
               <div className="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-6 rounded-xl border border-white/20">
@@ -205,6 +206,7 @@ export default function AboutPage() {
                     src="/images/logo-red.webp"
                     alt="Xhosen Gate Logo"
                     fill
+                    sizes="64px"
                     className="object-contain p-2"
                   />
                 </div>

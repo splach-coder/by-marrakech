@@ -3,7 +3,6 @@
 import { notFound } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
 import { getSiteData, siteData } from '@/data/siteData';
 import { use, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
@@ -17,11 +16,11 @@ import {
     Users,
     Camera,
     ArrowRight,
-    Home
 } from 'lucide-react';
 import GalleryGrid from '../../components/GalleryGrid';
 import BookingCard from '../../components/BookingCard';
 import MobileBookingWidget from '../../components/MobileBookingWidget';
+import HeroBreadcrumb from '../../components/HeroBreadcrumb';
 
 interface ActivityPageProps {
     params: Promise<{
@@ -57,6 +56,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                     src={activity.banner_image?.url || activity.image.url}
                     alt={activity.title}
                     fill
+                    sizes="100vw"
                     className="object-cover"
                     priority
                 />
@@ -65,25 +65,20 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                 <div className="absolute inset-0 flex flex-col justify-end pb-8 md:pb-24">
                     <div className="container-custom mx-auto px-4 md:px-8">
                         {/* Breadcrumbs */}
-                        <motion.nav
+                        <motion.div
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-3 md:mb-6 overflow-x-auto whitespace-nowrap"
+                            className="mb-5 md:mb-6"
                         >
-                            <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
-                                <Home className="w-3.5 h-3.5" />
-                                <span className="uppercase tracking-wider font-semibold">{t('home')}</span>
-                            </Link>
-                            <ChevronRight className="w-3 h-3 text-white/50" />
-                            <Link href="/activities" className="hover:text-white transition-colors">
-                                <span className="uppercase tracking-wider font-semibold">{tHeader('activities')}</span>
-                            </Link>
-                            <ChevronRight className="w-3 h-3 text-white/50" />
-                            <span className="text-white font-serif font-medium truncate">
-                                {activity.title}
-                            </span>
-                        </motion.nav>
+                            <HeroBreadcrumb
+                                items={[
+                                    { label: t('home'), href: `/${locale}` },
+                                    { label: tHeader('activities'), href: `/${locale}/explore#moments` },
+                                    { label: activity.title },
+                                ]}
+                            />
+                        </motion.div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
@@ -310,6 +305,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                     src={galleryImages[selectedImage]}
                                     alt={`${activity.title} ${selectedImage + 1}`}
                                     fill
+                                    sizes="100vw"
                                     className="object-contain"
                                 />
                             </div>
@@ -330,6 +326,7 @@ export default function ActivityPage({ params }: ActivityPageProps) {
                                                 src={url}
                                                 alt={`Thumbnail ${idx + 1}`}
                                                 fill
+                                                sizes="80px"
                                                 className="object-cover"
                                             />
                                         </button>

@@ -317,7 +317,156 @@ const siteData = {
                     highlights: ["Return trip", "End of services"]
                 }
             ]
-        }
+        },
+        {
+            id: 469,
+            trip_code: "WT-CODE 469",
+            title: "Zagora & Erg Chegaga 3 Days Tour From Marrakech",
+            url: "https://xhosengate.com/en/tours/469",
+            duration: "3 Day(s) 2 Night(s)",
+            locations: [
+                { name: "Marrakech" },
+                { name: "Ouarzazate" },
+                { name: "Zagora" },
+                { name: "Erg Chegaga" }
+            ],
+            group_size: "unlimited",
+            description: "Cross the High Atlas to Ait Ben Haddou, sleep in Zagora and reach the remote Erg Chegaga dunes by 4x4. Camel ride, sunset over the sand, a night in a Sahara camp and a return through the carpet town of Taznakht.",
+            image: {
+                url: "/images/Zagoura/kristijan-nikodinovski-RfK4AQchykw-unsplash.webp",
+                alt: "Erg Chegaga dunes near Zagora"
+            },
+            banner_image: {
+                url: "/images/Zagoura/marvin-meyer-X0XRRXSVLU4-unsplash.webp",
+                alt: "Sahara dunes at Erg Chegaga"
+            },
+            gallery: [
+                { url: "/images/Zagoura/kristijan-nikodinovski-yrweAIJtSzo-unsplash.webp", alt: "Draa Valley palm groves" },
+                { url: "/images/Zagoura/darolti-dan-GJw9zRK_VBs-unsplash.webp", alt: "Zagora desert track" },
+                { url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.webp", alt: "Ait Ben Haddou kasbah" },
+                { url: "/images/Zagoura/ismail-el-youssefi-geeSPCxnKzU-unsplash.webp", alt: "Camel trek in the Sahara" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Sunset over the dunes" },
+                { url: "/images/Zagoura/raul-mermans-garcia-oWzVpeYyJ-w-unsplash.webp", alt: "Sahara desert camp" }
+            ],
+            highlights: [
+                "Tizi n'Tichka pass across the High Atlas Mountains",
+                "Ait Ben Haddou, a UNESCO World Heritage kasbah",
+                "Draa Valley palm groves and old kasbahs",
+                "4x4 crossing from M'Hamid El Ghizlane to Erg Chegaga",
+                "Camel ride and sunset over Morocco's most remote dunes",
+                "Night in a Sahara desert camp under the stars",
+                "Return through Foum Zguid and Taznakht, known for its Berber carpets"
+            ],
+            suitable_for: ["Couples", "Friends", "Families", "Adventure seekers"],
+            // No published price yet — the pages fall back to "contact for price".
+            price: "",
+            reviews: [],
+            itinerary: [
+                {
+                    day: 1,
+                    title: "Marrakech to Zagora via Ouarzazate",
+                    location: "Zagora",
+                    description: "Depart Marrakech in the morning and drive across the High Atlas Mountains via the Tizi n'Tichka pass. Continue to Ait Ben Haddou, a UNESCO World Heritage site, for a visit and lunch. Drive on through Ouarzazate and the Draa Valley, famous for its palm groves and kasbahs, arriving in Zagora in the afternoon. Overnight in a hotel or riad.",
+                    highlights: ["Tizi n'Tichka Pass", "Ait Ben Haddou", "Ouarzazate", "Draa Valley", "Overnight in Zagora"]
+                },
+                {
+                    day: 2,
+                    title: "Zagora to Erg Chegaga via M'Hamid El Ghizlane",
+                    location: "Erg Chegaga",
+                    description: "After breakfast, drive south through the Draa Valley to M'Hamid El Ghizlane, the gateway to the Sahara. From M'Hamid, continue by 4x4 across the sands to Erg Chegaga, one of the largest and most remote dune fields in Morocco. Camel ride and sunset over the dunes, then dinner and a night at a desert camp under the stars.",
+                    highlights: ["M'Hamid El Ghizlane", "4x4 desert crossing", "Erg Chegaga dunes", "Camel ride at sunset", "Overnight in a Sahara camp"]
+                },
+                {
+                    day: 3,
+                    title: "Erg Chegaga to Marrakech via Taznakht",
+                    location: "Marrakech",
+                    description: "Wake early for sunrise over the dunes. After breakfast, leave Erg Chegaga by 4x4 towards Foum Zguid, then drive through the Anti-Atlas Mountains and Taznakht, famous for its traditional Berber carpets, reaching Marrakech in the late afternoon or evening.",
+                    highlights: ["Sunrise over the Sahara", "Foum Zguid", "Anti-Atlas Mountains", "Berber carpets in Taznakht", "Return to Marrakech"]
+                }
+            ]
+        },
+        {
+            id: 471,
+            trip_code: "WT-CODE 471",
+            title: "Zagora, Erg Chegaga, Taroudant & Essaouira 5 Days Tour",
+            url: "https://xhosengate.com/en/tours/471",
+            duration: "5 Day(s) 4 Night(s)",
+            locations: [
+                { name: "Marrakech" },
+                { name: "Zagora" },
+                { name: "Erg Chegaga" },
+                { name: "Taroudant" },
+                { name: "Essaouira" }
+            ],
+            group_size: "unlimited",
+            description: "Five days from Marrakech through the Sahara to the Atlantic: Ait Ben Haddou and the Draa Valley, a desert camp at Erg Chegaga, the saffron road to Taliouine, the red walls of Taroudant and the medina of Essaouira.",
+            image: {
+                url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.webp",
+                alt: "Sahara dunes on the road to Erg Chegaga"
+            },
+            banner_image: {
+                url: "/images/Zagoura/kristijan-nikodinovski-yrweAIJtSzo-unsplash.webp",
+                alt: "Draa Valley on the way to Zagora"
+            },
+            gallery: [
+                { url: "/images/ouarzazate/laurent-gence-UMEcD4j--_I-unsplash.webp", alt: "Ait Ben Haddou" },
+                { url: "/images/Zagoura/darolti-dan-GJw9zRK_VBs-unsplash.webp", alt: "Zagora and the Draa Valley" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Erg Chegaga dunes at sunset" },
+                { url: "/images/Zagoura/raul-mermans-garcia-oWzVpeYyJ-w-unsplash.webp", alt: "Sahara desert camp" },
+                { url: "/images/essaouira/rigel-QWJjSOB9t0Y-unsplash.webp", alt: "Essaouira medina" },
+                { url: "/images/essaouira/pete-bread-4eZeMUKdV-8-unsplash.webp", alt: "Essaouira fishing port" }
+            ],
+            highlights: [
+                "Tizi n'Tichka pass and the kasbah of Ait Ben Haddou",
+                "Draa Valley palm groves on the way to Zagora",
+                "4x4 crossing to the remote dunes of Erg Chegaga",
+                "Camel ride, sunset and a night in a Sahara camp",
+                "Taliouine, Morocco's saffron country, and the Anti-Atlas",
+                "Taroudant, the walled town known as Little Marrakech",
+                "Essaouira: medina, port, Skala and Atlantic air"
+            ],
+            suitable_for: ["Couples", "Families", "Friends", "Groups"],
+            // No published price yet — the pages fall back to "contact for price".
+            price: "",
+            reviews: [],
+            itinerary: [
+                {
+                    day: 1,
+                    title: "Marrakech to Zagora via Ouarzazate",
+                    location: "Zagora",
+                    description: "Depart Marrakech in the morning and cross the High Atlas Mountains via the Tizi n'Tichka pass. Stop at Ait Ben Haddou, a UNESCO World Heritage site, to explore the historic kasbah and have lunch. Continue through Ouarzazate and along the Draa Valley, with its palm groves and traditional kasbahs, to Zagora for the night.",
+                    highlights: ["Tizi n'Tichka Pass", "Ait Ben Haddou", "Ouarzazate", "Draa Valley", "Overnight in Zagora"]
+                },
+                {
+                    day: 2,
+                    title: "Zagora to Erg Chegaga via M'Hamid El Ghizlane",
+                    location: "Erg Chegaga",
+                    description: "After breakfast, drive to M'Hamid El Ghizlane, the gateway to the Sahara, then continue by 4x4 through the desert to Erg Chegaga, one of Morocco's largest and most remote dune fields. Camel ride and sunset over the dunes, dinner and overnight at a desert camp.",
+                    highlights: ["M'Hamid El Ghizlane", "4x4 desert crossing", "Erg Chegaga dunes", "Camel ride at sunset", "Overnight in a Sahara camp"]
+                },
+                {
+                    day: 3,
+                    title: "Erg Chegaga to Taroudant via Foum Zguid and Taliouine",
+                    location: "Taroudant",
+                    description: "Wake early for sunrise over the Sahara. After breakfast, leave Erg Chegaga by 4x4 towards Foum Zguid and drive through the Anti-Atlas Mountains to Taliouine, famous for its high-quality saffron. Continue to Taroudant, known as Little Marrakech for its red ochre walls and traditional souks. Overnight in Taroudant.",
+                    highlights: ["Sunrise over the Sahara", "Foum Zguid", "Anti-Atlas Mountains", "Taliouine saffron country", "Overnight in Taroudant"]
+                },
+                {
+                    day: 4,
+                    title: "Taroudant to Essaouira via Agadir",
+                    location: "Essaouira",
+                    description: "After breakfast, explore Taroudant's historic medina and city walls, then drive towards Agadir through the Souss Valley and its argan forests. Continue north along the Atlantic coast to Essaouira and explore the medina, port, Skala and souks. Overnight in Essaouira.",
+                    highlights: ["Taroudant medina and ramparts", "Souss Valley argan forests", "Atlantic coast road", "Essaouira medina and Skala", "Overnight in Essaouira"]
+                },
+                {
+                    day: 5,
+                    title: "Essaouira to Marrakech",
+                    location: "Marrakech",
+                    description: "Free morning in Essaouira to walk the medina, visit the fishing port or relax by the beach. Later, drive back to Marrakech through the argan tree landscapes, arriving in the afternoon.",
+                    highlights: ["Free morning in Essaouira", "Fishing port and beach", "Argan tree landscapes", "Arrival in Marrakech"]
+                }
+            ]
+        },
     ],
 
     excursions: [
@@ -585,109 +734,8 @@ const siteData = {
                 { time: "19:00", title: "Drop off", description: "Drop off at your hotel or riad" }
             ]
         },
-        {
-            id: 253,
-            trip_code: "WT-CODE 253",
-            title: "Rabat Excursion",
-            url: "https://your-morocco.com/itinerary/rabat-excursion/",
-            duration: "1 Day(s)",
-            locations: [
-                { name: "Rabat" }
-            ],
-            group_size: "unlimited",
-            description: "Visit Morocco's capital on a guided Rabat excursion. Explore Hassan Tower, Kasbah of the Udayas, Chellah ruins, and the Royal Palace in a day.",
-            image: {
-                url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp",
-                alt: "visit Rabat Morocco"
-            },
-            banner_image: {
-                url: "/images/rabat/niklas-VqouWpsuziE-unsplash.webp",
-                alt: "visit Rabat Morocco"
-            },
-            gallery: [
-                { url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp", alt: "Hassan Tower" },
-                { url: "/images/rabat/hamza-nouasria-7zVLZu5twJs-unsplash.webp", alt: "Kasbah of the Udayas" },
-                { url: "/images/rabat/mehdi-lamaaffar-PqX7EELWjh0-unsplash.webp", alt: "Rabat Architecture" },
-                { url: "/images/rabat/soulaymane-elyoussfi-oDSEPEtrQFo-unsplash.webp", alt: "Mausoleum of Mohammed V" },
-                { url: "/images/rabat/yous-gil-2Kyh6kB5Yh8-unsplash.webp", alt: "Rabat City View" }
-            ],
-            highlights: [
-                "See the Hassan Tower and Mausoleum of Mohammed V",
-                "Explore the Kasbah of the Udayas",
-                "Visit the Chellah Necropolis",
-                "View the Royal Palace exterior",
-                "Stroll through the Andalusian Gardens"
-            ],
-            suitable_for: ["History buffs", "Culture lovers"],
-            price: `${process.env.NEXT_PUBLIC_CURRENCY_SYMBOL}90`,
-            reviews: [
-                { name: "Elijah Van Dijk", country: "Netherlands", rating: 5, text: "Surprised by how clean and green Rabat is. The Hassan Tower looks impressive even unfinished." },
-                { name: "Abigail Scott", country: "Canada", rating: 5, text: "Great history lesson. The Kasbah of the Udayas feels like a Greek island with its blue and white walls." }
-            ],
-            programSteps: [
-                { time: "07:00", title: "Pick up", description: "Pick up from your hotel in Marrakech (or meet in Rabat)" },
-                { time: "10:30", title: "Hassan Tower", description: "Visit the 12th-century minaret and Mausoleum of Mohammed V" },
-                { time: "12:00", title: "Kasbah of the Udayas", description: "Explore the historic fortress and blue-painted streets" },
-                { time: "13:00", title: "Lunch", description: "Lunch at a traditional restaurant in the medina" },
-                { time: "14:30", title: "Chellah Necropolis", description: "Visit the Roman and medieval ruins" },
-                { time: "15:30", title: "Royal Palace", description: "View the exterior of the King's palace" },
-                { time: "16:30", title: "Andalusian Gardens", description: "Relax in the peaceful botanical gardens" },
-                { time: "17:30", title: "Return", description: "Depart for Marrakech" },
-                { time: "20:30", title: "Drop off", description: "Drop off at your hotel in Marrakech" }
-            ]
-        },
-        {
-            id: 251,
-            trip_code: "WT-CODE 251",
-            title: "Fes Excursion",
-            url: "https://your-morocco.com/itinerary/fes-excursion/",
-            duration: "1 Day(s)",
-            locations: [
-                { name: "Fes" }
-            ],
-            group_size: "unlimited",
-            description: "Explore the cultural heart of Morocco with a guided Fes excursion. Visit Al Quaraouiyine, Chouara Tannery, and the old medina in one unforgettable day.",
-            image: {
-                url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp",
-                alt: "Visit Fez Morocco"
-            },
-            banner_image: {
-                url: "/images/fes/mauro-lima-buvA1ofvTMY-unsplash.webp",
-                alt: "Visit Fez Morocco"
-            },
-            gallery: [
-                { url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp", alt: "Fes Tannery" },
-                { url: "/images/fes/hamza-demnati-CJ_DC8Nd2Fk-unsplash.webp", alt: "Fes Medina" },
-                { url: "/images/fes/hazy-momo-YSTtLgsvRa8-unsplash.webp", alt: "Medina Streets" },
-                { url: "/images/fes/mauro-lima-mPD9BJ_QGXw-unsplash.webp", alt: "Bab Bou Jeloud" },
-                { url: "/images/fes/toni-DBNhQdCG-XA-unsplash.webp", alt: "Traditional Crafts" }
-            ],
-            highlights: [
-                "Get lost in the Medina of Fes el-Bali",
-                "Visit the Chouara Tannery",
-                "See the Al Quaraouiyine University",
-                "Admire the Bou Inania Madrasa",
-                "Explore the souks and artisan workshops"
-            ],
-            suitable_for: ["Culture lovers", "History buffs", "Shoppers"],
-            price: `${process.env.NEXT_PUBLIC_CURRENCY_SYMBOL}95`,
-            reviews: [
-                { name: "James Peterson", country: "USA", rating: 5, text: "The medina is crazy big! Explore it with a guide is a must. It feels like stepping back in time." },
-                { name: "Emily Robinson", country: "UK", rating: 4, text: "History in every corner. The tannery smell is strong as they say, but it's fascinating to watch the process." }
-            ],
-            programSteps: [
-                { time: "07:00", title: "Pick up", description: "Pick up from your hotel in Marrakech (or meet in Fes)" },
-                { time: "10:30", title: "Medina Entrance", description: "Enter through Bab Bou Jeloud (Blue Gate)" },
-                { time: "11:00", title: "Chouara Tannery", description: "Visit the ancient leather tannery with overview" },
-                { time: "12:00", title: "Al Quaraouiyine", description: "See the oldest university in the world (exterior)" },
-                { time: "13:00", title: "Lunch", description: "Traditional Moroccan lunch in the medina" },
-                { time: "14:30", title: "Bou Inania Madrasa", description: "Visit the exquisite Islamic school" },
-                { time: "15:30", title: "Artisan Quarters", description: "Explore pottery, weaving, and metalwork souks" },
-                { time: "16:30", title: "Royal Palace", description: "View the grand exterior of the Royal Palace" },
-                { time: "17:30", title: "Return", description: "Depart for Marrakech" },
-                { time: "20:30", title: "Drop off", description: "Drop off at your hotel in Marrakech" }
-            ]
-        },
+
+
         {
             id: 40,
             trip_code: "WT-CODE 40",
@@ -1451,7 +1499,156 @@ const siteDataFR = {
                     highlights: ["Trajet de retour", "Fin des services"]
                 }
             ]
-        }
+        },
+        {
+            id: 469,
+            trip_code: "WT-CODE 469",
+            title: "Circuit de 3 Jours Zagora & Erg Chegaga depuis Marrakech",
+            url: "https://xhosengate.com/fr/tours/469",
+            duration: "3 Jour(s) 2 Nuit(s)",
+            locations: [
+                { name: "Marrakech" },
+                { name: "Ouarzazate" },
+                { name: "Zagora" },
+                { name: "Erg Chegaga" }
+            ],
+            group_size: "illimité",
+            description: "Traversez le Haut Atlas jusqu'à Aït Benhaddou, dormez à Zagora et rejoignez les dunes isolées de l'Erg Chegaga en 4x4. Balade à dos de chameau, coucher de soleil sur le sable, nuit au campement saharien et retour par Taznakht, la ville des tapis berbères.",
+            image: {
+                url: "/images/Zagoura/kristijan-nikodinovski-RfK4AQchykw-unsplash.webp",
+                alt: "Dunes de l'Erg Chegaga près de Zagora"
+            },
+            banner_image: {
+                url: "/images/Zagoura/marvin-meyer-X0XRRXSVLU4-unsplash.webp",
+                alt: "Dunes du Sahara à l'Erg Chegaga"
+            },
+            gallery: [
+                { url: "/images/Zagoura/kristijan-nikodinovski-yrweAIJtSzo-unsplash.webp", alt: "Palmeraies de la vallée du Draâ" },
+                { url: "/images/Zagoura/darolti-dan-GJw9zRK_VBs-unsplash.webp", alt: "Piste du désert de Zagora" },
+                { url: "/images/ouarzazate/abdou-faiz-lA-P8-vagrI-unsplash.webp", alt: "Kasbah d'Aït Benhaddou" },
+                { url: "/images/Zagoura/ismail-el-youssefi-geeSPCxnKzU-unsplash.webp", alt: "Randonnée à chameau dans le Sahara" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Coucher de soleil sur les dunes" },
+                { url: "/images/Zagoura/raul-mermans-garcia-oWzVpeYyJ-w-unsplash.webp", alt: "Campement dans le désert" }
+            ],
+            highlights: [
+                "Col de Tizi n'Tichka à travers le Haut Atlas",
+                "Aït Benhaddou, kasbah classée au patrimoine mondial de l'UNESCO",
+                "Palmeraies et kasbahs de la vallée du Draâ",
+                "Traversée en 4x4 de M'Hamid El Ghizlane à l'Erg Chegaga",
+                "Balade à dos de chameau et coucher de soleil sur les dunes les plus reculées du Maroc",
+                "Nuit au campement saharien sous les étoiles",
+                "Retour par Foum Zguid et Taznakht, réputée pour ses tapis berbères"
+            ],
+            suitable_for: ["Couples", "Amis", "Familles", "Aventuriers"],
+            // Aucun tarif publié pour l'instant — les pages affichent « nous contacter ».
+            price: "",
+            reviews: [],
+            itinerary: [
+                {
+                    day: 1,
+                    title: "De Marrakech à Zagora via Ouarzazate",
+                    location: "Zagora",
+                    description: "Départ de Marrakech le matin et traversée du Haut Atlas par le col de Tizi n'Tichka. Visite d'Aït Benhaddou, site classé au patrimoine mondial de l'UNESCO, et déjeuner. Route par Ouarzazate et la vallée du Draâ, célèbre pour ses palmeraies et ses kasbahs, arrivée à Zagora dans l'après-midi. Nuit à l'hôtel ou en riad.",
+                    highlights: ["Col de Tizi n'Tichka", "Aït Benhaddou", "Ouarzazate", "Vallée du Draâ", "Nuit à Zagora"]
+                },
+                {
+                    day: 2,
+                    title: "De Zagora à l'Erg Chegaga via M'Hamid El Ghizlane",
+                    location: "Erg Chegaga",
+                    description: "Après le petit-déjeuner, route vers le sud à travers la vallée du Draâ jusqu'à M'Hamid El Ghizlane, la porte du Sahara. De M'Hamid, continuation en 4x4 à travers les sables jusqu'à l'Erg Chegaga, l'un des plus grands et des plus isolés ergs du Maroc. Balade à dos de chameau et coucher de soleil sur les dunes, dîner et nuit au campement sous les étoiles.",
+                    highlights: ["M'Hamid El Ghizlane", "Traversée du désert en 4x4", "Dunes de l'Erg Chegaga", "Chameau au coucher du soleil", "Nuit au campement saharien"]
+                },
+                {
+                    day: 3,
+                    title: "De l'Erg Chegaga à Marrakech via Taznakht",
+                    location: "Marrakech",
+                    description: "Lever tôt pour le lever du soleil sur les dunes. Après le petit-déjeuner, départ de l'Erg Chegaga en 4x4 vers Foum Zguid, puis route à travers l'Anti-Atlas et Taznakht, réputée pour ses tapis berbères traditionnels, avec arrivée à Marrakech en fin d'après-midi ou en soirée.",
+                    highlights: ["Lever de soleil sur le Sahara", "Foum Zguid", "Montagnes de l'Anti-Atlas", "Tapis berbères de Taznakht", "Retour à Marrakech"]
+                }
+            ]
+        },
+        {
+            id: 471,
+            trip_code: "WT-CODE 471",
+            title: "Circuit de 5 Jours Zagora, Erg Chegaga, Taroudant & Essaouira",
+            url: "https://xhosengate.com/fr/tours/471",
+            duration: "5 Jour(s) 4 Nuit(s)",
+            locations: [
+                { name: "Marrakech" },
+                { name: "Zagora" },
+                { name: "Erg Chegaga" },
+                { name: "Taroudant" },
+                { name: "Essaouira" }
+            ],
+            group_size: "illimité",
+            description: "Cinq jours de Marrakech au Sahara puis à l'Atlantique : Aït Benhaddou et la vallée du Draâ, un campement à l'Erg Chegaga, la route du safran de Taliouine, les murailles ocres de Taroudant et la médina d'Essaouira.",
+            image: {
+                url: "/images/Zagoura/gabriele-stravinskaite--mKpYC4RacA-unsplash.webp",
+                alt: "Dunes du Sahara sur la route de l'Erg Chegaga"
+            },
+            banner_image: {
+                url: "/images/Zagoura/kristijan-nikodinovski-yrweAIJtSzo-unsplash.webp",
+                alt: "Vallée du Draâ en route vers Zagora"
+            },
+            gallery: [
+                { url: "/images/ouarzazate/laurent-gence-UMEcD4j--_I-unsplash.webp", alt: "Aït Benhaddou" },
+                { url: "/images/Zagoura/darolti-dan-GJw9zRK_VBs-unsplash.webp", alt: "Zagora et la vallée du Draâ" },
+                { url: "/images/merzouga/merzouga4.webp", alt: "Dunes de l'Erg Chegaga au coucher du soleil" },
+                { url: "/images/Zagoura/raul-mermans-garcia-oWzVpeYyJ-w-unsplash.webp", alt: "Campement dans le désert" },
+                { url: "/images/essaouira/rigel-QWJjSOB9t0Y-unsplash.webp", alt: "Médina d'Essaouira" },
+                { url: "/images/essaouira/pete-bread-4eZeMUKdV-8-unsplash.webp", alt: "Port de pêche d'Essaouira" }
+            ],
+            highlights: [
+                "Col de Tizi n'Tichka et kasbah d'Aït Benhaddou",
+                "Palmeraies de la vallée du Draâ vers Zagora",
+                "Traversée en 4x4 jusqu'aux dunes isolées de l'Erg Chegaga",
+                "Chameau, coucher de soleil et nuit au campement saharien",
+                "Taliouine, pays du safran, et l'Anti-Atlas",
+                "Taroudant, la ville fortifiée surnommée « la petite Marrakech »",
+                "Essaouira : médina, port, Skala et air atlantique"
+            ],
+            suitable_for: ["Couples", "Familles", "Amis", "Groupes"],
+            // Aucun tarif publié pour l'instant — les pages affichent « nous contacter ».
+            price: "",
+            reviews: [],
+            itinerary: [
+                {
+                    day: 1,
+                    title: "De Marrakech à Zagora via Ouarzazate",
+                    location: "Zagora",
+                    description: "Départ de Marrakech le matin et traversée du Haut Atlas par le col de Tizi n'Tichka. Arrêt à Aït Benhaddou, site classé au patrimoine mondial de l'UNESCO, pour visiter la kasbah historique et déjeuner. Route par Ouarzazate et la vallée du Draâ, ses palmeraies et ses kasbahs traditionnelles, jusqu'à Zagora pour la nuit.",
+                    highlights: ["Col de Tizi n'Tichka", "Aït Benhaddou", "Ouarzazate", "Vallée du Draâ", "Nuit à Zagora"]
+                },
+                {
+                    day: 2,
+                    title: "De Zagora à l'Erg Chegaga via M'Hamid El Ghizlane",
+                    location: "Erg Chegaga",
+                    description: "Après le petit-déjeuner, route vers M'Hamid El Ghizlane, la porte du Sahara, puis continuation en 4x4 à travers le désert jusqu'à l'Erg Chegaga, l'un des plus grands et des plus isolés ergs du Maroc. Balade à dos de chameau et coucher de soleil sur les dunes, dîner et nuit au campement.",
+                    highlights: ["M'Hamid El Ghizlane", "Traversée du désert en 4x4", "Dunes de l'Erg Chegaga", "Chameau au coucher du soleil", "Nuit au campement saharien"]
+                },
+                {
+                    day: 3,
+                    title: "De l'Erg Chegaga à Taroudant via Foum Zguid et Taliouine",
+                    location: "Taroudant",
+                    description: "Lever tôt pour le lever du soleil sur le Sahara. Après le petit-déjeuner, départ de l'Erg Chegaga en 4x4 vers Foum Zguid, puis route à travers l'Anti-Atlas jusqu'à Taliouine, réputée pour son safran de grande qualité. Continuation vers Taroudant, surnommée « la petite Marrakech » pour ses murailles ocres et ses souks traditionnels. Nuit à Taroudant.",
+                    highlights: ["Lever de soleil sur le Sahara", "Foum Zguid", "Montagnes de l'Anti-Atlas", "Safran de Taliouine", "Nuit à Taroudant"]
+                },
+                {
+                    day: 4,
+                    title: "De Taroudant à Essaouira via Agadir",
+                    location: "Essaouira",
+                    description: "Après le petit-déjeuner, découverte de la médina historique et des remparts de Taroudant, puis route vers Agadir par la vallée du Souss et ses forêts d'arganiers. Continuation vers le nord le long de la côte atlantique jusqu'à Essaouira : médina, port, Skala et souks. Nuit à Essaouira.",
+                    highlights: ["Médina et remparts de Taroudant", "Arganiers de la vallée du Souss", "Route côtière atlantique", "Médina et Skala d'Essaouira", "Nuit à Essaouira"]
+                },
+                {
+                    day: 5,
+                    title: "D'Essaouira à Marrakech",
+                    location: "Marrakech",
+                    description: "Matinée libre à Essaouira pour parcourir la médina, visiter le port de pêche ou profiter de la plage. Puis retour vers Marrakech à travers les paysages d'arganiers, avec arrivée dans l'après-midi.",
+                    highlights: ["Matinée libre à Essaouira", "Port de pêche et plage", "Paysages d'arganiers", "Arrivée à Marrakech"]
+                }
+            ]
+        },
     ],
 
     excursions: [
@@ -1719,109 +1916,8 @@ const siteDataFR = {
                 { time: "19:00", title: "Dépose", description: "Dépose à votre hôtel ou riad" }
             ]
         },
-        {
-            id: 253,
-            trip_code: "WT-CODE 253",
-            title: "Excursion à Rabat",
-            url: "https://your-morocco.com/itinerary/rabat-excursion/",
-            duration: "1 Jour(s)",
-            locations: [
-                { name: "Rabat" }
-            ],
-            group_size: "illimité",
-            description: "Visitez la capitale du Maroc lors d'une excursion guidée à Rabat. Explorez la Tour Hassan, la Kasbah des Oudayas, les ruines de Chellah et le Palais Royal en une journée.",
-            image: {
-                url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp",
-                alt: "Visiter Rabat Maroc"
-            },
-            banner_image: {
-                url: "/images/rabat/niklas-VqouWpsuziE-unsplash.webp",
-                alt: "Visiter Rabat Maroc"
-            },
-            gallery: [
-                { url: "/images/rabat/framopia-EZqHkkyc0wg-unsplash.webp", alt: "Tour Hassan" },
-                { url: "/images/rabat/hamza-nouasria-7zVLZu5twJs-unsplash.webp", alt: "Kasbah des Oudayas" },
-                { url: "/images/rabat/mehdi-lamaaffar-PqX7EELWjh0-unsplash.webp", alt: "Architecture de Rabat" },
-                { url: "/images/rabat/soulaymane-elyoussfi-oDSEPEtrQFo-unsplash.webp", alt: "Mausolée de Mohammed V" },
-                { url: "/images/rabat/yous-gil-2Kyh6kB5Yh8-unsplash.webp", alt: "Vue sur la ville de Rabat" }
-            ],
-            highlights: [
-                "Visite de la Tour Hassan et du Mausolée de Mohammed V",
-                "Exploration de la Kasbah des Oudayas",
-                "Visite de la Nécropole de Chellah",
-                "Vue extérieure du Palais Royal",
-                "Promenade dans les Jardins Andaloux"
-            ],
-            suitable_for: ["Passionnés d'histoire", "Amoureux de la culture"],
-            price: `${process.env.NEXT_PUBLIC_CURRENCY_SYMBOL}90`,
-            reviews: [
-                { name: "Arthur Roux", country: "Belgique", rating: 5, text: "Rabat est une capitale très verte et propre. La Tour Hassan est impressionnante." },
-                { name: "Juliette Fournier", country: "France", rating: 5, text: "Belle leçon d'histoire. La Kasbah des Oudayas ressemble à un village grec." }
-            ],
-            programSteps: [
-                { time: "07:00", title: "Prise en charge", description: "Prise en charge à votre hôtel à Marrakech (ou rendez-vous à Rabat)" },
-                { time: "10:30", title: "Tour Hassan", description: "Visite du minaret du 12ème siècle et du Mausolée de Mohammed V" },
-                { time: "12:00", title: "Kasbah des Oudayas", description: "Exploration de la forteresse historique et des rues peintes en bleu" },
-                { time: "13:00", title: "Déjeuner", description: "Déjeuner dans un restaurant traditionnel de la médina" },
-                { time: "14:30", title: "Nécropole de Chellah", description: "Visite des ruines romaines et médiévales" },
-                { time: "15:30", title: "Palais Royal", description: "Vue extérieure du palais du Roi" },
-                { time: "16:30", title: "Jardins Andaloux", description: "Détente dans les jardins botaniques paisibles" },
-                { time: "17:30", title: "Retour", description: "Départ pour Marrakech" },
-                { time: "20:30", title: "Dépose", description: "Dépose à votre hôtel à Marrakech" }
-            ]
-        },
-        {
-            id: 251,
-            trip_code: "WT-CODE 251",
-            title: "Excursion à Fès",
-            url: "https://your-morocco.com/itinerary/fes-excursion/",
-            duration: "1 Jour(s)",
-            locations: [
-                { name: "Fès" }
-            ],
-            group_size: "illimité",
-            description: "Explorez le cœur culturel du Maroc avec une excursion guidée à Fès. Visitez Al Quaraouiyine, la Tannerie Chouara et la vieille médina en une journée inoubliable.",
-            image: {
-                url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp",
-                alt: "Visiter Fès Maroc"
-            },
-            banner_image: {
-                url: "/images/fes/mauro-lima-buvA1ofvTMY-unsplash.webp",
-                alt: "Visiter Fès Maroc"
-            },
-            gallery: [
-                { url: "/images/fes/ben-ostrower-bjNv5Bg6h4U-unsplash.webp", alt: "Tannerie de Fès" },
-                { url: "/images/fes/hamza-demnati-CJ_DC8Nd2Fk-unsplash.webp", alt: "Médina de Fès" },
-                { url: "/images/fes/hazy-momo-YSTtLgsvRa8-unsplash.webp", alt: "Ruelles de la médina" },
-                { url: "/images/fes/mauro-lima-mPD9BJ_QGXw-unsplash.webp", alt: "Bab Bou Jeloud" },
-                { url: "/images/fes/toni-DBNhQdCG-XA-unsplash.webp", alt: "Artisanat traditionnel" }
-            ],
-            highlights: [
-                "Perdez-vous dans la Médina de Fès el-Bali",
-                "Visite de la Tannerie Chouara",
-                "Découverte de l'Université Al Quaraouiyine",
-                "Admirez la Médersa Bou Inania",
-                "Exploration des souks et des ateliers d'artisans"
-            ],
-            suitable_for: ["Amoureux de la culture", "Passionnés d'histoire", "Acheteurs"],
-            price: `${process.env.NEXT_PUBLIC_CURRENCY_SYMBOL}95`,
-            reviews: [
-                { name: "Gabriel Morel", country: "France", rating: 5, text: "La médina est un labyrinthe incroyable ! Avoir un guide est indispensable." },
-                { name: "Emma Girard", country: "Suisse", rating: 4, text: "L'histoire est partout. L'odeur des tanneries est forte mais c'est fascinant à voir." }
-            ],
-            programSteps: [
-                { time: "07:00", title: "Prise en charge", description: "Prise en charge à votre hôtel à Marrakech (ou rendez-vous à Fès)" },
-                { time: "10:30", title: "Entrée de la médina", description: "Entrée par Bab Bou Jeloud (Porte Bleue)" },
-                { time: "11:00", title: "Tannerie Chouara", description: "Visite de l'ancienne tannerie de cuir avec vue d'ensemble" },
-                { time: "12:00", title: "Al Quaraouiyine", description: "Découverte de la plus ancienne université du monde (extérieur)" },
-                { time: "13:00", title: "Déjeuner", description: "Déjeuner marocain traditionnel dans la médina" },
-                { time: "14:30", title: "Médersa Bou Inania", description: "Visite de l'exquise école islamique" },
-                { time: "15:30", title: "Quartiers d'artisans", description: "Exploration des souks de poterie, tissage et métallurgie" },
-                { time: "16:30", title: "Palais Royal", description: "Vue extérieure du grand Palais Royal" },
-                { time: "17:30", title: "Retour", description: "Départ pour Marrakech" },
-                { time: "20:30", title: "Dépose", description: "Dépose à votre hôtel à Marrakech" }
-            ]
-        },
+
+
         {
             id: 40,
             trip_code: "WT-CODE 40",

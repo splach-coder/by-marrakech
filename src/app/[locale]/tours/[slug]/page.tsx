@@ -1,7 +1,6 @@
 'use client';
 
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { getSiteData, siteData } from '@/data/siteData';
@@ -16,7 +15,6 @@ import {
   AlertCircle,
   ChevronLeft,
   ChevronRight,
-  Home,
   Flag,
   Calendar,
   X,
@@ -26,6 +24,8 @@ import Itinerary from '@/app/[locale]/components/Itinerary';
 import BookingCard from '@/app/[locale]/components/BookingCard';
 import GalleryGrid from '@/app/[locale]/components/GalleryGrid';
 import MobileBookingWidget from '@/app/[locale]/components/MobileBookingWidget';
+import HeroBreadcrumb from '@/app/[locale]/components/HeroBreadcrumb';
+import { whatsappLink } from '@/data/transferData';
 
 interface TourPageProps {
   params: Promise<{
@@ -72,8 +72,7 @@ export default function TourPage({ params }: TourPageProps) {
 
   const handleBook = () => {
     const message = `I'm interested in booking the tour: ${tour.title} (${tour.trip_code})`;
-    const url = `https://wa.me/212600000000?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    window.open(whatsappLink(message), '_blank');
   };
 
   return (
@@ -84,6 +83,7 @@ export default function TourPage({ params }: TourPageProps) {
           src={tour.banner_image?.url || tour.image.url}
           alt={tour.title}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />
@@ -101,28 +101,27 @@ export default function TourPage({ params }: TourPageProps) {
               className="max-w-4xl"
             >
               {/* Breadcrumbs */}
-              <nav className="flex items-center gap-2 text-xs md:text-sm text-white/70 mb-3 md:mb-6 overflow-x-auto whitespace-nowrap">
-                <Link href="/" className="hover:text-white transition-colors flex items-center gap-1">
-                  <Home className="w-3.5 h-3.5 mb-0.5" />
-                  <span className="uppercase tracking-wider font-semibold">{t('home')}</span>
-                </Link>
-                <ChevronRight className="w-3 h-3 text-white/50" />
-                <Link href="/tours" className="hover:text-white transition-colors">
-                  <span className="uppercase tracking-wider font-semibold">{tHeader('tours')}</span>
-                </Link>
-                <ChevronRight className="w-3 h-3 text-white/50" />
-                <span className="text-white font-serif font-medium truncate">
-                  {tour.title}
-                </span>
-              </nav>
-
-              <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-3 md:mb-6">
-                <div className="flex items-center gap-1.5 md:gap-2 bg-white/20 backdrop-blur-md px-2 md:px-4 py-1 md:py-1.5 rounded-full border border-white/30 text-white">
-                  <Star className="w-3 md:w-4 h-3 md:h-4 fill-amber-400 text-amber-400" />
-                  <span className="font-bold text-xs md:text-base">{avgRating}</span>
-                  <span className="text-white/80 text-xs md:text-sm">({tTour('reviewsCount', { count: tour.reviews?.length || 24 })})</span>
-                </div>
+              <div className="mb-4 md:mb-6">
+                <HeroBreadcrumb
+                  items={[
+                    { label: t('home'), href: `/${locale}` },
+                    { label: tHeader('tours'), href: `/${locale}/explore#journeys` },
+                    { label: tour.title },
+                  ]}
+                />
               </div>
+
+              {/* Rating chip only where real reviews exist — a new tour must not
+                  advertise a review count it has not earned. */}
+              {tour.reviews && tour.reviews.length > 0 && (
+                <div className="flex flex-wrap items-center gap-2 md:gap-4 mb-3 md:mb-6">
+                  <div className="flex items-center gap-1.5 md:gap-2 bg-white/20 backdrop-blur-md px-2 md:px-4 py-1 md:py-1.5 rounded-full border border-white/30 text-white">
+                    <Star className="w-3 md:w-4 h-3 md:h-4 fill-amber-400 text-amber-400" />
+                    <span className="font-bold text-xs md:text-base">{avgRating}</span>
+                    <span className="text-white/80 text-xs md:text-sm">({tTour('reviewsCount', { count: tour.reviews.length })})</span>
+                  </div>
+                </div>
+              )}
 
               <h1 className="text-3xl md:text-7xl font-serif font-bold text-white mb-4 md:mb-8 leading-tight drop-shadow-lg">
                 {tour.title}
@@ -345,6 +344,7 @@ export default function TourPage({ params }: TourPageProps) {
                   src={galleryUrls[selectedImage]}
                   alt="Gallery view"
                   fill
+                  sizes="100vw"
                   className="object-contain"
                 />
               </div>
@@ -365,6 +365,7 @@ export default function TourPage({ params }: TourPageProps) {
                         src={url}
                         alt={`Thumbnail ${idx + 1}`}
                         fill
+                        sizes="80px"
                         className="object-cover"
                       />
                     </button>
