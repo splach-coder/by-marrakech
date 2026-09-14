@@ -185,17 +185,23 @@ export default function Hero({
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.26 }}
-                  className="flex flex-col sm:flex-row items-center gap-4"
+                  /* Both CTAs live in one grid so they always match: stacked and
+                     full width on a phone, two equal columns from sm up. The
+                     grid needs a definite width for 1fr columns to equalise,
+                     hence w-full + max-w-xl rather than a fit-content grid. */
+                  className="grid w-full max-w-xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4"
                 >
                   <Link
                     href={`/${locale}#quote`}
-                    className="inline-flex items-center gap-2.5 px-8 py-4 bg-secondary text-[#3b2f2f] rounded-sm font-black text-[13px] uppercase tracking-[0.15em] transition-all duration-300 hover:bg-secondary-dark hover:shadow-xl hover:scale-105"
+                    /* transparent border so it is exactly as tall as the
+                       outlined button beside it */
+                    className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-2xl border border-transparent bg-secondary px-6 py-4 text-center text-[12px] font-black uppercase tracking-[0.12em] text-[#3b2f2f] transition-all duration-300 hover:bg-secondary-dark hover:shadow-xl hover:scale-105"
                   >
                     {t('ctaBook')}
                   </Link>
                   <Link
                     href={`/${locale}/services/421`}
-                    className="inline-flex items-center gap-2.5 px-8 py-4 border border-white/40 text-white rounded-sm font-black text-[13px] uppercase tracking-[0.15em] transition-all duration-300 hover:bg-white/10 hover:border-white"
+                    className="inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-2xl border border-white/40 px-6 py-4 text-center text-[12px] font-black uppercase tracking-[0.12em] text-white transition-all duration-300 hover:border-white hover:bg-white/10"
                   >
                     {t('ctaTransfers')}
                   </Link>
@@ -235,7 +241,7 @@ export default function Hero({
               >
                 <Link
                   href={`/${locale}/explore#journeys`}
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-sm font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:scale-105"
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-2xl font-medium transition-all duration-300 hover:bg-primary-dark hover:shadow-lg hover:scale-105"
                 >
                   <Compass className="w-5 h-5" />
                   <span>{ctaPrimary}</span>
