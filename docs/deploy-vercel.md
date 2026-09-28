@@ -83,14 +83,17 @@ plan; you would lose the mailboxes.
 
 ---
 
-## Still on placeholders
+## Contact details
 
-The site is live with placeholder contact details. Every WhatsApp booking button
-opens a chat to a number that does not exist:
+The business line below is the number every call and WhatsApp button must reach.
+It is set in Vercel's environment variables, and the same values are hardcoded
+as fallbacks in the source so a missing variable can never surface a wrong
+number:
 
 ```
-NEXT_PUBLIC_WHATSAPP_NUMBER  = 212600000000
-NEXT_PUBLIC_BUSINESS_PHONE   = +212 600 000 000
+NEXT_PUBLIC_WHATSAPP_NUMBER  = 212663227698
+NEXT_PUBLIC_BUSINESS_PHONE   = +212 663 227 698
+NEXT_PUBLIC_BUSINESS_PHONE_RAW = +212663227698
 NEXT_PUBLIC_BUSINESS_EMAIL   = hello@xhosen.com
 NEXT_PUBLIC_BUSINESS_ADDRESS = 123 Medina Avenue, Marrakech 40000, Morocco
 ```

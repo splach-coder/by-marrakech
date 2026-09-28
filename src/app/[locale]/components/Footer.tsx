@@ -130,9 +130,9 @@ export default function Footer() {
                 <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                 <span className="text-sm leading-relaxed">{t('contact.address')}</span>
               </div>
-              <a href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212600000000'}`} className="flex items-start gap-3.5 text-white/80 hover:text-white transition-colors">
+              <a href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698'}`} className="flex items-start gap-3.5 text-white/80 hover:text-white transition-colors">
                 <Phone className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                <span className="text-sm">{process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 600 000 000'}</span>
+                <span className="text-sm">{process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 663 227 698'}</span>
               </a>
               <a href="mailto:contact@xhosengate.com" className="flex items-start gap-3.5 text-white/80 hover:text-white transition-colors">
                 <Mail className="w-5 h-5 text-secondary shrink-0 mt-0.5" />

@@ -12,8 +12,8 @@ import { Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { whatsappLink } from '@/data/transferData';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 
-const PHONE = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 600 000 000';
-const PHONE_RAW = process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212600000000';
+const PHONE = process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 663 227 698';
+const PHONE_RAW = process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698';
 const EMAIL = process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@xhosen.com';
 const ADDRESS = process.env.NEXT_PUBLIC_BUSINESS_ADDRESS || 'Marrakech, Morocco';
 

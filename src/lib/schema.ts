@@ -14,7 +14,7 @@
 
 import { SITE_NAME, SITE_URL } from './seo';
 
-const PHONE = process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212672958587';
+const PHONE = process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698';
 const EMAIL = process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'contact@xhosengate.com';
 
 /**

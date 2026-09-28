@@ -95,8 +95,8 @@ export default function ThankYouPage() {
                             Back to Home
                         </Link>
                         <span className="hidden sm:block text-gray-300">•</span>
-                        <a href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212600000000'}`} className="text-gray-600 hover:text-primary transition-colors font-medium">
-                            Call: {process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 600 000 000'}
+                        <a href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698'}`} className="text-gray-600 hover:text-primary transition-colors font-medium">
+                            Call: {process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 663 227 698'}
                         </a>
                     </motion.div>
                 </motion.div>

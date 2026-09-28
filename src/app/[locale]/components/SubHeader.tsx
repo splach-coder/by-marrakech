@@ -25,7 +25,7 @@ export default function SubHeader({
         <div className="h-8 flex items-center justify-between relative text-sm">
           {/* Left - Contact */}
           <Link
-            href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW}`}
+            href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698'}`}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <Phone className="w-4 h-4" />

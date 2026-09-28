@@ -323,7 +323,7 @@ export function getGoogleReviews(): GoogleReview[] {
     return googleReviews;
 }
 
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '212600000000';
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '212663227698';
 
 export function whatsappLink(message: string): string {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
