@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Shield, Lock, Mail, Phone, MapPin } from 'lucide-react';
+import { PHONE_DISPLAY, PHONE_RAW } from '@/lib/contact';
 
 export const metadata: Metadata = {
     title: 'Privacy Policy | Xhosen Gate',
@@ -237,8 +238,8 @@ export default function PrivacyPolicyPage() {
                                 </div>
                                 <div className="flex items-center gap-3 text-gray-700">
                                     <Phone className="w-5 h-5 text-primary" />
-                                    <a href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698'}`} className="hover:text-primary transition-colors">
-                                        {process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 663 227 698'}
+                                    <a href={`tel:${PHONE_RAW}`} className="hover:text-primary transition-colors">
+                                        {PHONE_DISPLAY}
                                     </a>
                                 </div>
                                 <div className="flex items-start gap-3 text-gray-700">

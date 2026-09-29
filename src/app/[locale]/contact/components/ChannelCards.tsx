@@ -11,8 +11,8 @@ import { useTranslations } from 'next-intl';
 import { Mail, Phone } from 'lucide-react';
 import { whatsappLink } from '@/data/transferData';
 import WhatsAppIcon from '@/components/WhatsAppIcon';
+import { PHONE_RAW } from '@/lib/contact';
 
-const PHONE_RAW = process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698';
 const EMAIL = process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'hello@xhosen.com';
 
 interface Channel {

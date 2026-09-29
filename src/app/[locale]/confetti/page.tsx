@@ -6,6 +6,7 @@ import { Check, Home } from 'lucide-react';
 import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 import Image from 'next/image';
 import Link from 'next/link';
+import { PHONE_DISPLAY, PHONE_RAW } from '@/lib/contact';
 
 export default function ThankYouPage() {
     const searchParams = useSearchParams();
@@ -95,8 +96,8 @@ export default function ThankYouPage() {
                             Back to Home
                         </Link>
                         <span className="hidden sm:block text-gray-300">•</span>
-                        <a href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698'}`} className="text-gray-600 hover:text-primary transition-colors font-medium">
-                            Call: {process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 663 227 698'}
+                        <a href={`tel:${PHONE_RAW}`} className="text-gray-600 hover:text-primary transition-colors font-medium">
+                            Call: {PHONE_DISPLAY}
                         </a>
                     </motion.div>
                 </motion.div>

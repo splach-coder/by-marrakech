@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Phone } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import { useTranslations } from 'next-intl';
+import { PHONE_RAW } from '@/lib/contact';
 
 interface SubHeaderProps {
   helpText?: string;
@@ -25,7 +26,7 @@ export default function SubHeader({
         <div className="h-8 flex items-center justify-between relative text-sm">
           {/* Left - Contact */}
           <Link
-            href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698'}`}
+            href={`tel:${PHONE_RAW}`}
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <Phone className="w-4 h-4" />

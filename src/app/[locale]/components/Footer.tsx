@@ -7,6 +7,7 @@ import { Facebook, Instagram, Youtube, Mail, Phone, MapPin, Clock, ArrowRight, L
 import WhatsAppIcon from '@/components/WhatsAppIcon';
 import { getRoutes, whatsappLink } from '@/data/transferData';
 import { getSiteData } from '@/data/siteData';
+import { PHONE_DISPLAY, PHONE_RAW } from '@/lib/contact';
 
 export default function Footer() {
   const locale = useLocale();
@@ -130,9 +131,9 @@ export default function Footer() {
                 <MapPin className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
                 <span className="text-sm leading-relaxed">{t('contact.address')}</span>
               </div>
-              <a href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698'}`} className="flex items-start gap-3.5 text-white/80 hover:text-white transition-colors">
+              <a href={`tel:${PHONE_RAW}`} className="flex items-start gap-3.5 text-white/80 hover:text-white transition-colors">
                 <Phone className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                <span className="text-sm">{process.env.NEXT_PUBLIC_BUSINESS_PHONE || '+212 663 227 698'}</span>
+                <span className="text-sm">{PHONE_DISPLAY}</span>
               </a>
               <a href="mailto:contact@xhosengate.com" className="flex items-start gap-3.5 text-white/80 hover:text-white transition-colors">
                 <Mail className="w-5 h-5 text-secondary shrink-0 mt-0.5" />

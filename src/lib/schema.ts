@@ -13,8 +13,9 @@
  */
 
 import { SITE_NAME, SITE_URL } from './seo';
+import { PHONE_RAW } from './contact';
 
-const PHONE = process.env.NEXT_PUBLIC_BUSINESS_PHONE_RAW || '+212663227698';
+const PHONE = PHONE_RAW;
 const EMAIL = process.env.NEXT_PUBLIC_BUSINESS_EMAIL || 'contact@xhosengate.com';
 
 /**
