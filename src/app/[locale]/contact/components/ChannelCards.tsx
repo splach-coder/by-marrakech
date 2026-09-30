@@ -48,7 +48,7 @@ export default function ChannelCards() {
     };
 
     return (
-        <section className="bg-background-cream py-20 md:py-24">
+        <section className="bg-background-cream py-12 md:py-24">
             <div className="container-custom">
                 <motion.ul
                     initial="hidden"
@@ -66,7 +66,7 @@ export default function ChannelCards() {
                                     hidden: { opacity: 0, y: 26 },
                                     visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
                                 }}
-                                className="flex flex-col items-center bg-white px-7 py-11 text-center transition-colors duration-500 hover:bg-background-light"
+                                className="flex flex-col items-center bg-white px-6 py-8 text-center transition-colors duration-500 hover:bg-background-light md:px-7 md:py-11"
                             >
                                 {cfg.icon}
                                 <h3 className="mt-6 text-[11px] font-black uppercase tracking-[0.22em] text-text-primary">

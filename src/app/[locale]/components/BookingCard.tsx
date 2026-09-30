@@ -6,6 +6,7 @@ import { Clock, Check, Minus, Plus, Calendar, Hotel, CalendarCheck, Star } from 
 import WhatsAppIcon, { WA_BUTTON } from '@/components/WhatsAppIcon';
 import { useCart, parsePrice } from '@/context/CartContext';
 import { whatsappLink, googleReviewsConfig } from '@/data/transferData';
+import QuickChannels from '@/components/QuickChannels';
 
 interface BookingCardProps {
     id?: string;
@@ -37,6 +38,7 @@ export default function BookingCard({
     const [isAdded, setIsAdded] = useState(false);
     const locale = useLocale();
     const t = useTranslations('bookingCard');
+    const tApps = useTranslations('contactPage.apps');
 
     const [guests, setGuests] = useState(2);
     const [time, setTime] = useState(TIME_SLOTS[0]);
@@ -225,7 +227,16 @@ export default function BookingCard({
                         {t('whatsapp')}
                     </a>
 
-                    <p className="mt-3 text-center text-[10px] text-text-tertiary">
+                    {/* the apps people already have open — same number as the
+                        call button, one tap from the booking card */}
+                    <div className="mt-5 border-t border-border/60 pt-4">
+                        <p className="mb-3 text-center text-[9px] font-black uppercase tracking-[0.22em] text-text-tertiary">
+                            {tApps('orReach')}
+                        </p>
+                        <QuickChannels variant="row" includeCall />
+                    </div>
+
+                    <p className="mt-4 text-center text-[10px] text-text-tertiary">
                         {t('note', { duration, groupSize })}
                     </p>
                 </div>

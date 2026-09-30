@@ -321,6 +321,16 @@
         "cta": "Envoyer un e-mail"
       }
     ],
+    "apps": {
+      "title": "Joignez-nous comme vous voulez",
+      "imessage": "iMessage",
+      "sms": "SMS",
+      "facetime": "FaceTime",
+      "messenger": "Messenger",
+      "note": "Tous ces canaux aboutissent à la même ligne que le bouton d'appel.",
+      "call": "Appeler",
+      "orReach": "Ou joignez-nous sur"
+    },
     "faq": {
       "headLead": "Des",
       "headAccent": "Questions ?",
@@ -819,6 +829,8 @@
     "confirm": "Confirmer la Réservation",
     "whatsapp": "Réserver sur WhatsApp",
     "inCart": "Déjà dans votre panier",
+    "mobileAdd": "Ajouter au Voyage",
+    "mobileInCart": "Dans le Voyage",
     "waIntro": "Bonjour Xhosen Gate ! Je souhaite réserver :",
     "waGuests": "voyageurs",
     "note": "{duration} · Taille du groupe : {groupSize}"

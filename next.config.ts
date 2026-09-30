@@ -16,6 +16,18 @@ const nextConfig: NextConfig = {
   // does its own tracing, so this stays off there.
   ...(isCpanelBuild ? { output: 'standalone' as const } : {}),
 
+  // Renamed driver profiles. The old URL was live and in the sitemap, so it
+  // redirects permanently rather than 404ing for anyone who saved or indexed it.
+  async redirects() {
+    return [
+      {
+        source: '/:locale(en|fr)/drivers/mohammed',
+        destination: '/:locale/drivers/abdelghani',
+        permanent: true,
+      },
+    ];
+  },
+
   images: {
     unoptimized: isCpanelBuild,
     remotePatterns: [

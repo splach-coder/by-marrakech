@@ -220,7 +220,7 @@ export default function TourPage({ params }: TourPageProps) {
                   {tour.reviews.map((review, index) => (
                     <div
                       key={index}
-                      className="min-w-[300px] md:min-w-[350px] bg-gray-50 p-8 rounded-2xl snap-center border border-gray-100"
+                      className="min-w-[280px] md:min-w-[350px] bg-gray-50 p-5 md:p-8 rounded-2xl snap-center border border-gray-100"
                     >
                       <div className="flex gap-1 mb-4">
                         {[...Array(5)].map((_, i) => (
@@ -256,7 +256,7 @@ export default function TourPage({ params }: TourPageProps) {
             </section>
 
             {/* Travel Advice */}
-            <div className="bg-[#fcfbf9] border border-[#f0ebe3] rounded-2xl p-10 relative overflow-hidden">
+            <div className="bg-[#fcfbf9] border border-[#f0ebe3] rounded-2xl p-5 md:p-10 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-amber-100/50 rounded-bl-[100px] -mr-8 -mt-8" />
 
               <div className="relative z-10">

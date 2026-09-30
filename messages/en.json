@@ -321,6 +321,16 @@
         "cta": "Send email"
       }
     ],
+    "apps": {
+      "title": "Reach us your way",
+      "imessage": "iMessage",
+      "sms": "Text message",
+      "facetime": "FaceTime",
+      "messenger": "Messenger",
+      "note": "All of these reach the same line as the call button.",
+      "call": "Call",
+      "orReach": "Or reach us on"
+    },
     "faq": {
       "headLead": "Have",
       "headAccent": "Questions?",
@@ -819,6 +829,8 @@
     "confirm": "Confirm Booking",
     "whatsapp": "Book on WhatsApp",
     "inCart": "Already in Journey",
+    "mobileAdd": "Add to Journey",
+    "mobileInCart": "In Journey",
     "waIntro": "Hello Xhosen Gate! I would like to book:",
     "waGuests": "guests",
     "note": "{duration} · Group size: {groupSize}"

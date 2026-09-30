@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Clock,
@@ -48,6 +48,19 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
     const [viewMode, setViewMode] = useState<'timeline' | 'map'>(defaultView);
     const [expandedDn, setExpandedDn] = useState<string | null>(null); // dayIndex-stepIndex
 
+    // The route drawing needs room a phone does not have, so below md there is
+    // no toggle and the timeline is the only view.
+    const [isDesktop, setIsDesktop] = useState(false);
+    useEffect(() => {
+        const mq = window.matchMedia('(min-width: 768px)');
+        const update = () => setIsDesktop(mq.matches);
+        update();
+        mq.addEventListener('change', update);
+        return () => mq.removeEventListener('change', update);
+    }, []);
+
+    const activeView = isDesktop ? viewMode : 'timeline';
+
     // Normalize data into DayGroups
     const normalizedData = NormalizeData(days, steps);
 
@@ -72,11 +85,11 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
             {/* Creative Header */}
             <div className="relative p-1">
                 <div className="absolute inset-0 bg-stone-50/50" />
-                <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between p-4 md:p-6 gap-4 z-10">
+                <div className="relative flex flex-col md:flex-row items-start md:items-center justify-between px-4 py-3 md:p-6 gap-4 z-10">
                     <div>
                         <h3 className="text-xl md:text-2xl font-serif font-bold text-gray-900 flex items-center gap-3">
                             {title}
-                            {viewMode === 'map' && (
+                            {activeView === 'map' && (
                                 <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800 animate-pulse">
                                     Exploration Mode
                                 </span>
@@ -85,7 +98,7 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
                     </div>
 
                     {/* Floating Tab Interaction */}
-                    <div className="relative flex bg-gray-200/50 p-1 md:p-1.5 rounded-full overflow-hidden backdrop-blur-sm w-full md:w-auto">
+                    <div className="relative hidden md:flex bg-gray-200/50 p-1 md:p-1.5 rounded-full overflow-hidden backdrop-blur-sm w-full md:w-auto">
                         {/* Sliding Background */}
                         <div
                             className={`absolute top-1 md:top-1.5 bottom-1 md:bottom-1.5 rounded-full bg-white shadow-sm transition-all duration-300 ease-spring ${viewMode === 'timeline' ? 'left-1 md:left-1.5 w-[calc(50%-4px)]' : 'left-[50%] w-[calc(50%-4px)]'
@@ -113,8 +126,8 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
             </div>
 
             {/* Content Display */}
-            <div className="p-8 bg-white min-h-[400px]">
-                {viewMode === 'map' ? (
+            <div className="px-4 py-5 md:p-8 bg-white md:min-h-[400px]">
+                {activeView === 'map' ? (
                     <div className="relative group">
                         {/* Decorative corners for Map */}
                         <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-300 rounded-tl-lg z-20" />
@@ -129,14 +142,14 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
                         </div>
                     </div>
                 ) : (
-                    <div className="space-y-10">
+                    <div className="space-y-7 md:space-y-10">
                         {normalizedData.map((day, dayIdx) => (
                             <div key={`day-${dayIdx}`} className="relative">
                                 {/* Day Header (only if multiple days) */}
                                 {normalizedData.length > 1 && (
-                                    <div className="flex items-center gap-4 mb-6 sticky top-0 bg-white/95 backdrop-blur-sm z-20 py-2">
-                                        <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
-                                            <Calendar className="w-6 h-6 text-primary" />
+                                    <div className="flex items-center gap-3 md:gap-4 mb-4 md:mb-6 sticky top-0 bg-white/95 backdrop-blur-sm z-20 py-2">
+                                        <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center border border-primary/20">
+                                            <Calendar className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                                         </div>
                                         <div>
                                             <div className="text-xs font-bold text-primary tracking-wider uppercase mb-0.5">
@@ -180,13 +193,13 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
                                                     onClick={() => toggleExpand(itemId)}
                                                 >
                                                     {/* Card Header (Compact View) */}
-                                                    <div className="p-4 md:p-5 flex gap-4 items-start">
+                                                    <div className="p-3 md:p-5 flex gap-3 md:gap-4 items-start">
                                                         {/* Icon Box */}
                                                         <div className={`
-                                                            flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-colors
+                                                            flex-shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-colors
                                                             ${isExpanded ? 'bg-primary text-white' : 'bg-gray-100 text-gray-500 group-hover:bg-gray-200'}
                                                         `}>
-                                                            <Icon className="w-6 h-6" />
+                                                            <Icon className="w-5 h-5 md:w-6 md:h-6" />
                                                         </div>
 
                                                         <div className="flex-grow min-w-0 pt-1">
@@ -218,7 +231,7 @@ export default function Itinerary({ days, steps, title = "Itinerary", defaultVie
                                                                 exit={{ height: 0, opacity: 0 }}
                                                                 transition={{ duration: 0.3 }}
                                                             >
-                                                                <div className="px-5 pb-5 pt-0 border-t border-gray-50 mt-2">
+                                                                <div className="px-3 pb-4 md:px-5 md:pb-5 pt-0 border-t border-gray-50 mt-2">
                                                                     <div className="pt-4 space-y-4">
                                                                         <p className="text-gray-600 leading-relaxed">
                                                                             {item.description}

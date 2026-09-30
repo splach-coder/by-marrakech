@@ -21,6 +21,7 @@ import ContactHeader from './components/ContactHeader';
 import RequestForm from './components/RequestForm';
 import ContactAside from './components/ContactAside';
 import ChannelCards from './components/ChannelCards';
+import AppChannels from './components/AppChannels';
 import ContactFaq from './components/ContactFaq';
 import AssurancesStrip from './components/AssurancesStrip';
 import ReadyToBook from './components/ReadyToBook';
@@ -41,6 +42,8 @@ export default function ContactPage() {
             </section>
 
             <ChannelCards />
+
+            <AppChannels />
 
             <ContactFaq />
 
