@@ -11,10 +11,10 @@ export async function generateMetadata({
     return pageMetadata({
         locale,
         path: '/fleet',
-        title: fr ? 'Notre Flotte : 8 Véhicules avec Chauffeur à Marrakech' : 'Our Fleet: 8 Chauffeur-Driven Vehicles in Marrakech',
+        title: fr ? 'Notre Flotte : 10 Véhicules avec Chauffeur à Marrakech' : 'Our Fleet: 10 Chauffeur-Driven Vehicles in Marrakech',
         description: fr
-            ? 'Huit véhicules pour vos transferts et circuits à Marrakech — Ford Tourneo Custom, Fiat Scudo, Volkswagen Crafter, MAN TGE et Skoda Kodiaq. De 5 à 19 places, prix fixes dès 30 €.'
-            : 'Eight vehicles for Marrakech transfers and tours — Ford Tourneo Custom, Fiat Scudo, Volkswagen Crafter, MAN TGE and Skoda Kodiaq. Seats 5 to 19, fixed prices from €30.',
+            ? 'Dix véhicules pour vos transferts et circuits à Marrakech — Ford Tourneo Custom, Fiat Scudo, Volkswagen Crafter et MAN TGE. De 7 à 17 places, prix fixes dès 130 €.'
+            : 'Ten vehicles for Marrakech transfers and tours — Ford Tourneo Custom, Fiat Scudo, Volkswagen Crafter and MAN TGE. Seats 7 to 17, fixed prices from €130.',
         image: '/images/heroes/fleet-hero.webp',
     });
 }

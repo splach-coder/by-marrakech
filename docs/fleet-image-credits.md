@@ -1,5 +1,11 @@
 # Fleet vehicle image credits
 
+> **Update 2026-10-14:** the Ford Tourneo Custom, Fiat Scudo, Volkswagen Crafter and
+> MAN TGE photos in `public/images/fleet/` are now the client's own fleet renders
+> (black Tourneo and Scudo, white Crafter and TGE), not the Wikimedia photos below.
+> Skoda Kodiaq is no longer in the fleet. The Commons table below is kept for
+> reference only and no longer describes the files in use.
+
 Real photographs of each model, sourced from Wikimedia Commons because we do not
 yet have shots of our own vehicles. Each is fitted whole into a 4:3 plate on a
 white ground (no cropping — the entire vehicle is visible) and saved as WebP.
